@@ -1,0 +1,210 @@
+projectName: "School Management System"
+projectCode: "EG12-08"
+description: "Comprehensive EdTech Unified School Portal with role-based access control"
+version: "2.0"
+type: "Manual School Operations"
+
+# ====================
+# CORE FEATURES
+# ====================
+
+features:
+  - attendance: "Track student attendance with automated reporting"
+  - results: "Manage academic results and grade assessment"
+  - fees: "Handle fee management and payment tracking"
+  - roles: "Role-based access control and permission management"
+  - notices: "School announcements and notice board system"
+
+# ====================
+# USER ROLES & PERMISSIONS
+# ====================
+
+roles:
+  - admin:
+      permissions: ["manage_users", "manage_roles", "view_all_data", "system_settings"]
+      access: "all"
+  
+  - principal:
+      permissions: ["view_reports", "approve_attendance", "manage_notices", "view_fees", "view_all_dashboards"]
+      access: "school_wide"
+  
+  - teacher:
+      permissions: ["mark_attendance", "submit_results", "view_assigned_students", "send_notices_to_class"]
+      access: "assigned_classes"
+  
+  - student:
+      permissions: ["view_attendance", "view_results", "view_fees_status", "view_notices"]
+      access: "own_data"
+  
+  - parent:
+      permissions: ["view_child_attendance", "view_child_results", "view_fees", "view_notices"]
+      access: "child_data"
+  
+  - accountant:
+      permissions: ["manage_fees", "view_payments", "generate_fee_reports", "manage_fee_structure"]
+      access: "financial_data"
+
+# ====================
+# ROUTES STRUCTURE
+# ====================
+
+routes:
+  # ========== AUTHENTICATION ROUTES ==========
+  auth:
+    login: "/auth/login"
+    signup: "/auth/signup"
+    forgot_password: "/auth/forgot-password"
+    reset_password: "/auth/reset-password"
+    verify_email: "/auth/verify-email"
+    verify_email_link: "/auth/verify-email/[token]"
+    mfa_setup: "/auth/mfa-setup"
+    mfa_verify: "/auth/mfa-verify"
+    session_timeout: "/auth/session-timeout"
+    unauthorized: "/auth/unauthorized"
+    confirmation: "/auth/confirmation"
+
+  # ========== DASHBOARD ROUTES ==========
+  dashboard:
+    home: "/dashboard"
+    admin: "/dashboard/admin"
+    principal: "/dashboard/principal"
+    teacher: "/dashboard/teacher"
+    student: "/dashboard/student"
+    parent: "/dashboard/parent"
+
+  # ========== CORE FEATURES - ATTENDANCE ==========
+  attendance:
+    dashboard: "/dashboard/attendance"
+    mark: "/dashboard/attendance/mark"
+    reports: "/dashboard/attendance/reports"
+    corrections: "/dashboard/attendance/corrections"
+
+  # ========== CORE FEATURES - ACADEMIC RESULTS ==========
+  results:
+    dashboard: "/dashboard/results"
+    enter: "/dashboard/results/enter"
+    view: "/dashboard/results/view"
+    report_cards: "/dashboard/results/report-cards"
+    analytics: "/dashboard/results/analytics"
+
+  # ========== CORE FEATURES - FEES ==========
+  fees:
+    dashboard: "/dashboard/fees"
+    structure: "/dashboard/fees/structure"
+    collection: "/dashboard/fees/collection"
+    statements: "/dashboard/fees/statements"
+    tracking: "/dashboard/fees/tracking"
+
+  # ========== CORE FEATURES - NOTICES ==========
+  notices:
+    board: "/dashboard/notices"
+    publish: "/dashboard/notices/publish"
+    manage: "/dashboard/notices/manage"
+    analytics: "/dashboard/notices/analytics"
+
+  # ========== CORE FEATURES - ROLES & PERMISSIONS ==========
+  roles:
+    dashboard: "/dashboard/roles"
+    manage: "/dashboard/roles/manage"
+    permissions: "/dashboard/roles/permissions"
+    users: "/dashboard/roles/users"
+
+  # ========== OPERATIONS - SCHOOL MANAGEMENT ==========
+  operations:
+    classes: "/dashboard/operations/classes"
+    students: "/dashboard/operations/students"
+    staff: "/dashboard/operations/staff"
+    calendar: "/dashboard/operations/calendar"
+    settings: "/dashboard/operations/settings"
+
+  # ========== ADMIN - USER MANAGEMENT ==========
+  users:
+    management: "/dashboard/users"
+    credentials: "/dashboard/users/credentials"
+    activity: "/dashboard/users/activity"
+
+  # ========== REPORTING & ANALYTICS ==========
+  reports:
+    standard: "/dashboard/reports/standard"
+    custom: "/dashboard/reports/custom"
+    analytics: "/dashboard/reports/analytics"
+
+  # ========== MARKETING - PUBLIC PAGES ==========
+  marketing:
+    landing: "/"
+    features: "/features"
+    pricing: "/pricing"
+    about: "/about"
+    contact: "/contact"
+    testimonials: "/testimonials"
+    blog: "/blog"
+    faq: "/faq"
+    case_studies: "/case-studies"
+    demo: "/demo"
+    comparison: "/comparison"
+    integrations: "/integrations"
+    security_privacy: "/security-privacy"
+    resources: "/resources"
+
+# ====================
+# MODULES STRUCTURE
+# ====================
+
+modules:
+  attendance:
+    - mark_attendance_module
+    - attendance_reports_module
+    - leave_management_module
+    - attendance_notifications_module
+  
+  results:
+    - grade_entry_module
+    - result_analysis_module
+    - report_card_generation_module
+    - academic_transcript_module
+  
+  fees:
+    - fee_structure_management_module
+    - payment_collection_module
+    - financial_reporting_module
+    - fee_reminder_module
+  
+  notices:
+    - notice_creation_module
+    - notice_distribution_module
+    - notice_analytics_module
+  
+  roles:
+    - role_management_module
+    - permission_assignment_module
+    - access_control_module
+  
+  operations:
+    - class_management_module
+    - student_management_module
+    - staff_management_module
+    - calendar_management_module
+  
+  powerschool:
+    - data_sync_module
+    - api_integration_module
+    - conflict_resolution_module
+
+# ====================
+# TECHNICAL STACK
+# ====================
+
+tech_stack:
+  frontend: "Next.js 16, React19, TypeScript, Tailwind CSS, shadcn/ui"
+  backend: "Node.js, APIs"
+  database: "Mongoose9"
+  authentication: "JWT, OAuth2"
+  api_integration: "PowerSchool 2 REST API"
+  deployment: "Vercel/Self-hosted"
+
+# ====================
+# STATUS
+# ====================
+
+status: "Planning Phase"
+last_updated: "2026-02-15"

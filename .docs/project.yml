@@ -1,0 +1,741 @@
+projectName: "School Management System"
+projectCode: "EG12-08"
+description: "Comprehensive EdTech Unified School Portal with role-based access control"
+version: "2.0"
+type: "Manual School Operations"
+
+# ====================
+# CORE FEATURES
+# ====================
+
+features:
+  - attendance: "Track student attendance with automated reporting"
+  - results: "Manage academic results and grade assessment"
+  - fees: "Handle fee management and payment tracking"
+  - roles: "Role-based access control and permission management"
+  - notices: "School announcements and notice board system"
+
+# ====================
+# USER ROLES & PERMISSIONS
+# ====================
+
+roles:
+  - admin:
+      permissions: ["manage_users", "manage_roles", "view_all_data", "system_settings"]
+      access: "all"
+  
+  - principal:
+      permissions: ["view_reports", "approve_attendance", "manage_notices", "view_fees", "view_all_dashboards"]
+      access: "school_wide"
+  
+  - teacher:
+      permissions: ["mark_attendance", "submit_results", "view_assigned_students", "send_notices_to_class"]
+      access: "assigned_classes"
+  
+  - student:
+      permissions: ["view_attendance", "view_results", "view_fees_status", "view_notices"]
+      access: "own_data"
+  
+  - parent:
+      permissions: ["view_child_attendance", "view_child_results", "view_fees", "view_notices"]
+      access: "child_data"
+  
+  - accountant:
+      permissions: ["manage_fees", "view_payments", "generate_fee_reports", "manage_fee_structure"]
+      access: "financial_data"
+
+# ====================
+# PAGES & SECTIONS
+# ====================
+
+pages:
+  # ==================
+  # MAIN DASHBOARD PAGES (Role-Based)
+  # ==================
+  dashboard:
+    - dashboard_home:
+        path: "/dashboard"
+        sections:
+          - role_based_redirect: "Redirect user to role-specific dashboard"
+          - quick_stats: "Quick statistics and summary for logged-in user"
+          - recent_activities: "Recent activities feed"
+          - notifications: "System notifications and alerts"
+
+    - admin_dashboard:
+        path: "/dashboard/admin"
+        sections:
+          - system_overview: "System health, user count, data sync status"
+          - recent_activities: "Admin action logs and audit trail"
+          - school_statistics: "Total students, teachers, fees collected"
+          - system_alerts: "Critical system notifications"
+          - user_management_quick: "Quick user management actions"
+          - system_performance: "System performance metrics and health"
+    
+    - principal_dashboard:
+        path: "/dashboard/principal"
+        sections:
+          - school_overview: "Attendance rates, fee collection, academic performance"
+          - staff_insights: "Teacher performance, class statistics"
+          - financial_summary: "Fee collection status, pending payments"
+          - recent_notices: "Recently published announcements"
+          - approval_queue: "Pending approvals for attendance corrections"
+          - academic_performance: "Overall school academic metrics"
+    
+    - teacher_dashboard:
+        path: "/dashboard/teacher"
+        sections:
+          - my_classes: "Assigned classes and sections"
+          - quick_attendance: "Mark attendance for today"
+          - students_overview: "Class statistics and performance"
+          - upcoming_assessments: "Scheduled tests and deadlines"
+          - recent_notices: "Class-specific notices"
+          - pending_tasks: "Grading and submission tasks"
+    
+    - student_dashboard:
+        path: "/dashboard/student"
+        sections:
+          - attendance_summary: "Personal attendance percentage and history"
+          - academic_performance: "Grades, test results, report cards"
+          - fees_status: "Current fee balance and payment history"
+          - announcements: "School-wide and class-specific notices"
+          - upcoming_events: "School calendar and important dates"
+          - class_timetable: "My class schedule and timetable"
+    
+    - parent_dashboard:
+        path: "/dashboard/parent"
+        sections:
+          - child_progress: "Child's attendance and academic performance"
+          - fees_overview: "Child's fee status and payment history"
+          - school_notices: "Announcements from school"
+          - communication: "Messages from teachers and school"
+          - academic_summary: "Child's academic progress summary"
+          - upcoming_events: "Important school events and dates"
+
+  # ==================
+  # ATTENDANCE MANAGEMENT
+  # ==================
+  attendance:
+    - attendance_dashboard:
+        path: "/dashboard/attendance"
+        sections:
+          - attendance_overview: "Overall attendance statistics by class/grade"
+          - attendance_trends: "Weekly/monthly attendance patterns"
+          - absent_students: "List of absent students today"
+          - leave_requests: "Pending leave request approvals"
+    
+    - mark_attendance:
+        path: "/dashboard/attendance/mark"
+        sections:
+          - class_selection: "Select class and section"
+          - attendance_form: "Mark present/absent/leave for each student"
+          - bulk_actions: "Mark all present, mark all absent"
+          - comments: "Add attendance notes or reasons"
+          - submit_attendance: "Verify and submit attendance data"
+    
+    - attendance_reports:
+        path: "/dashboard/attendance/reports"
+        sections:
+          - individual_reports: "Attendance report for each student"
+          - class_reports: "Class-wise attendance summary"
+          - monthly_reports: "Month-wise attendance breakdown"
+          - attendance_analysis: "Trends and patterns analysis"
+          - export_options: "Download as PDF/Excel"
+    
+    - attendance_corrections:
+        path: "/dashboard/attendance/corrections"
+        sections:
+          - correction_requests: "Submit attendance correction requests"
+          - correction_history: "View past corrections"
+          - approval_status: "Track pending approvals"
+          - bulk_corrections: "Correct multiple attendance records"
+
+  # ==================
+  # RESULTS & GRADES
+  # ==================
+  results:
+    - results_dashboard:
+        path: "/dashboard/results"
+        sections:
+          - grades_overview: "Overall grade distribution"
+          - subject_performance: "Performance by subject"
+          - top_performers: "Highest scoring students"
+          - academic_trends: "Performance trends over time"
+    
+    - enter_results:
+        path: "/dashboard/results/enter"
+        sections:
+          - exam_selection: "Select exam/assessment type"
+          - subject_selection: "Choose subject and class"
+          - grade_entry: "Enter marks/grades for each student"
+          - evaluation_criteria: "Grade scale and evaluation standards"
+          - comments: "Add feedback comments"
+          - submit_results: "Review and submit results"
+    
+    - view_results:
+        path: "/dashboard/results/view"
+        sections:
+          - student_transcript: "Complete academic transcript"
+          - exam_wise_results: "Results for each exam/assessment"
+          - subject_wise_performance: "Performance by subject"
+          - grade_breakdown: "Marks breakdown by topic/question"
+    
+    - report_cards:
+        path: "/dashboard/results/report-cards"
+        sections:
+          - generate_report_cards: "Generate report cards for term/semester"
+          - report_card_template: "Customize report card layout"
+          - preview_report_cards: "Preview before generation"
+          - download_report_cards: "Download/print report cards"
+    
+    - analytics:
+        path: "/dashboard/results/analytics"
+        sections:
+          - class_performance: "Overall class performance metrics"
+          - subject_analytics: "Subject-wise analytics and trends"
+          - student_progress_tracking: "Individual student progress over time"
+          - comparison_analysis: "Comparative analysis between classes/terms"
+
+  # ==================
+  # FEES MANAGEMENT
+  # ==================
+  fees:
+    - fees_dashboard:
+        path: "/dashboard/fees"
+        sections:
+          - collection_overview: "Total fees collected vs target"
+          - payment_status: "Paid, pending, overdue payments breakdown"
+          - revenue_summary: "Monthly/annual revenue charts"
+          - outstanding_dues: "Outstanding fees list"
+    
+    - fee_structure:
+        path: "/dashboard/fees/structure"
+        sections:
+          - manage_fee_categories: "Create/edit fee types (tuition, transport, etc.)"
+          - fee_slabs: "Different fee amounts by class/grade"
+          - discounts_exemptions: "Manage student discounts and exemptions"
+          - fee_schedules: "Payment due dates and schedules"
+    
+    - fee_collection:
+        path: "/dashboard/fees/collection"
+        sections:
+          - record_payment: "Record student fee payments"
+          - payment_modes: "Cash, bank transfer, online payment options"
+          - receipt_generation: "Generate and print payment receipts"
+          - bulk_payment_entry: "Enter multiple payments at once"
+    
+    - fee_statements:
+        path: "/dashboard/fees/statements"
+        sections:
+          - student_statement: "Fees and payment history for individual student"
+          - fee_register: "Class-wise fee collection register"
+          - default_list: "Students with pending/overdue payments"
+          - customized_reports: "Generate custom fee reports"
+    
+    - payment_tracking:
+        path: "/dashboard/fees/tracking"
+        sections:
+          - payment_history: "Complete payment transaction history"
+          - pending_payments: "Payments yet to be received"
+          - payment_reminders: "Send/view payment reminder notifications"
+          - refund_management: "Process and track refunds"
+
+  # ==================
+  # ROLES & PERMISSIONS
+  # ==================
+  roles:
+    - roles_dashboard:
+        path: "/dashboard/roles"
+        sections:
+          - all_roles: "List of all system roles"
+          - role_statistics: "User count per role"
+          - permission_overview: "Overview of all permissions"
+    
+    - manage_roles:
+        path: "/dashboard/roles/manage"
+        sections:
+          - create_role: "Create custom role with specific permissions"
+          - edit_role: "Modify existing role permissions"
+          - delete_role: "Archive or delete unused roles"
+          - role_templates: "Pre-built role templates (Standard, Custom)"
+    
+    - permissions_management:
+        path: "/dashboard/roles/permissions"
+        sections:
+          - permission_list: "Complete list of system permissions"
+          - assign_permissions: "Assign permissions to roles"
+          - permission_groups: "Group related permissions"
+          - permission_audit: "Audit permission assignments"
+    
+    - user_role_assignment:
+        path: "/dashboard/roles/users"
+        sections:
+          - assign_role_to_user: "Assign role to individual user"
+          - bulk_role_assignment: "Assign roles to multiple users"
+          - role_change_history: "Track role change history"
+          - multi_role_users: "Users with multiple roles"
+
+  # ==================
+  # NOTICES & ANNOUNCEMENTS
+  # ==================
+  notices:
+    - notice_board:
+        path: "/dashboard/notices"
+        sections:
+          - all_notices: "View all school notices and announcements"
+          - notice_by_category: "Filter notices by type/category"
+          - recent_notices: "Latest announcements"
+          - important_notices: "Pinned/highlighted notices"
+          - search_notices: "Search across all notices"
+    
+    - publish_notice:
+        path: "/dashboard/notices/publish"
+        sections:
+          - create_notice: "Compose new notice/announcement"
+          - notice_types: "General, Academic, Administrative, Event notices"
+          - target_audience: "Select recipients (class, role, everyone)"
+          - schedule_notice: "Schedule notice for future publishing"
+          - add_attachments: "Attach files/documents to notice"
+    
+    - notice_management:
+        path: "/dashboard/notices/manage"
+        sections:
+          - published_notices: "View all published notices"
+          - draft_notices: "Save and edit draft notices"
+          - edit_notice: "Modify existing published notices"
+          - archive_notice: "Archive old notices"
+          - delete_notice: "Delete notices"
+    
+    - notice_analytics:
+        path: "/dashboard/notices/analytics"
+        sections:
+          - view_statistics: "Notice view count and engagement"
+          - read_status: "Track who read each notice"
+          - engagement_report: "Notice engagement analytics"
+          - distribution_report: "Notice delivery and reach statistics"
+
+  # ==================
+  # SCHOOL OPERATIONS
+  # ==================
+  operations:
+    - class_management:
+        path: "/dashboard/operations/classes"
+        sections:
+          - manage_classes: "Create and manage classes/sections"
+          - class_structure: "Define class hierarchy and naming"
+          - class_strength: "Monitor student strength per class"
+          - class_assignments: "Assign teachers to classes"
+    
+    - student_management:
+        path: "/dashboard/operations/students"
+        sections:
+          - add_student: "Enroll new student"
+          - edit_student: "Update student information"
+          - student_list: "View all students with filters"
+          - student_promotion: "Promote students to next class"
+          - student_transfer: "Handle student transfers"
+          - student_documents: "Upload and manage student documents"
+    
+    - staff_management:
+        path: "/dashboard/operations/staff"
+        sections:
+          - add_staff: "Add new staff member"
+          - edit_staff: "Update staff information"
+          - staff_directory: "Complete staff listing"
+          - staff_leave_management: "Track staff leave and attendance"
+          - staff_documents: "Manage staff credentials and certificates"
+    
+    - calendar_management:
+        path: "/dashboard/operations/calendar"
+        sections:
+          - academic_calendar: "Define academic year and terms"
+          - holidays: "Manage school holidays"
+          - events: "Create and manage school events"
+          - important_dates: "Set important dates and deadlines"
+    
+    - school_settings:
+        path: "/dashboard/operations/settings"
+        sections:
+          - basic_info: "School name, address, contact details"
+          - academic_settings: "Academic year configuration"
+          - grading_system: "Configure grading scale and standards"
+          - system_configuration: "General system preferences"
+
+
+  # ==================
+  # AUTHENTICATION ROUTES
+  # ==================
+  auth:
+    - login_page:
+        path: "/auth/login"
+        sections:
+          - login_form: "Email and password login form"
+          - remember_me: "Remember me checkbox"
+          - forgot_password_link: "Link to password reset"
+          - signup_link: "Link to signup page"
+          - social_login: "Google, Microsoft OAuth options"
+          - error_handling: "Login error messages"
+          - loading_state: "Loading indicator during authentication"
+
+    - signup_page:
+        path: "/auth/signup"
+        sections:
+          - signup_form: "User registration form"
+          - user_type_selection: "Select role (Admin, Principal, Teacher, Student, Parent)"
+          - school_selection: "Search and select school"
+          - email_verification: "Email verification step"
+          - password_requirements: "Password strength indicator"
+          - terms_acceptance: "Accept terms and conditions"
+          - login_link: "Link back to login"
+          - error_handling: "Validation error messages"
+
+    - forgot_password:
+        path: "/auth/forgot-password"
+        sections:
+          - email_input: "Enter registered email address"
+          - verification_message: "Message confirming email sent"
+          - resend_option: "Option to resend email"
+          - help_text: "Help text for password recovery"
+          - back_to_login: "Link back to login page"
+
+    - reset_password:
+        path: "/auth/reset-password"
+        sections:
+          - token_verification: "Verify reset token validity"
+          - new_password_form: "Enter new password"
+          - confirm_password: "Confirm new password field"
+          - password_requirements: "Display password requirements"
+          - password_strength_meter: "Visual password strength indicator"
+          - success_message: "Confirmation after reset"
+          - redirect_to_login: "Redirect to login after success"
+
+    - email_verification:
+        path: "/auth/verify-email"
+        sections:
+          - verification_code_input: "Enter 6-digit verification code"
+          - resend_code: "Resend verification code button"
+          - countdown_timer: "Timer for resend option"
+          - error_messages: "Invalid or expired code errors"
+          - success_page: "Email verification successful"
+          - auto_redirect: "Auto-redirect to next step"
+
+    - verify_email_link:
+        path: "/auth/verify-email/[token]"
+        sections:
+          - token_processing: "Process email verification token"
+          - verification_status: "Success or failure message"
+          - redirect_action: "Redirect based on verification result"
+
+    - mfa_setup:
+        path: "/auth/mfa-setup"
+        sections:
+          - mfa_options: "Select MFA method (SMS, Email, Authenticator)"
+          - qr_code: "Display QR code for authenticator app"
+          - backup_codes: "Generate and display backup codes"
+          - verification_step: "Verify MFA setup with code"
+          - confirmation_message: "MFA successfully configured"
+
+    - mfa_verify:
+        path: "/auth/mfa-verify"
+        sections:
+          - mfa_code_input: "Enter MFA code"
+          - remember_device: "Remember device checkbox"
+          - backup_code_option: "Use backup code instead"
+          - resend_option: "Resend MFA code"
+          - error_handling: "Invalid code error messages"
+
+    - session_timeout:
+        path: "/auth/session-timeout"
+        sections:
+          - timeout_warning: "Session expiration warning message"
+          - extend_session: "Button to extend session"
+          - logout_button: "Logout button"
+          - countdown_timer: "Timer showing remaining time"
+          - return_to_login: "Redirect to login after timeout"
+
+    - unauthorized_page:
+        path: "/auth/unauthorized"
+        sections:
+          - access_denied_message: "Access denied message"
+          - reason_explanation: "Explain why access is denied"
+          - contact_support: "Contact support link"
+          - go_back_button: "Go back to previous page"
+          - dashboard_link: "Link to dashboard"
+
+    - email_confirmation:
+        path: "/auth/confirmation"
+        sections:
+          - confirmation_message: "Account successfully created"
+          - verification_status: "Email verification status"
+          - next_steps: "Instructions for next steps"
+          - login_button: "Button to proceed to login"
+
+  # ==================
+  # MARKETING PAGES
+  # ==================
+  marketing:
+    - landing_page:
+        path: "/"
+        sections:
+          - hero_banner: "Eye-catching header with main value proposition"
+          - key_features: "Highlight top 5-7 school management features"
+          - benefits_section: "Benefits for different stakeholders (admin, teachers, students, parents)"
+          - cta_buttons: "Call-to-action buttons for demos and sign-ups"
+          - social_proof: "School logos, testimonials, ratings"
+
+    - features_showcase:
+        path: "/features"
+        sections:
+          - features_grid: "All system features organized by category"
+          - attendance_features: "Attendance tracking, reporting, automation"
+          - academic_features: "Results management, grades, report cards"
+          - fee_management_features: "Fee structure, payment processing, tracking"
+          - communication_features: "Notices, announcements, messaging"
+          - role_based_access: "Permissions, user roles, access control"
+          - powerschool_integration: "PowerSchool 2 API integration benefits"
+          - feature_details: "In-depth description of each feature"
+          - interactive_demos: "Live demo sections for key features"
+
+    - pricing_page:
+        path: "/pricing"
+        sections:
+          - pricing_plans: "Free, Professional, Enterprise tiers"
+          - plan_comparison: "Side-by-side comparison table"
+          - plan_features: "Features included in each plan"
+          - pricing_faqs: "Frequently asked pricing questions"
+          - contact_sales: "Enterprise plan contact section"
+          - billing_options: "Monthly/annual billing options"
+          - money_back_guarantee: "30-day money-back guarantee"
+
+    - about_us:
+        path: "/about"
+        sections:
+          - company_story: "Company mission and vision"
+          - our_team: "Team members and expertise"
+          - company_values: "Core values and principles"
+          - our_mission: "What we aim to achieve in education"
+          - company_timeline: "Milestones and achievements"
+          - awards_recognition: "Awards and recognitions received"
+          - partnerships: "School and institutional partnerships"
+
+    - contact_us:
+        path: "/contact"
+        sections:
+          - contact_form: "Email, message form for inquiries"
+          - contact_info: "Phone, email, physical address"
+          - office_locations: "Multiple office locations"
+          - contact_departments: "Sales, Support, Technical, Billing"
+          - response_time: "Expected response times"
+          - social_media_links: "Links to social media profiles"
+
+    - testimonials:
+        path: "/testimonials"
+        sections:
+          - school_testimonials: "Testimonials from school administrators"
+          - teacher_testimonials: "Teacher experiences and feedback"
+          - student_testimonials: "Student feedback and experiences"
+          - parent_testimonials: "Parent satisfaction and reviews"
+          - case_studies_preview: "Preview of successful implementations"
+          - rating_display: "Overall ratings and star reviews"
+          - video_testimonials: "Video testimonials from users"
+
+    - blog:
+        path: "/blog"
+        sections:
+          - blog_list: "List of all blog posts with pagination"
+          - blog_categories: "Organized blog categories"
+          - featured_articles: "Highlighted featured blog posts"
+          - search_functionality: "Search blog posts by keyword"
+          - author_profiles: "Author bios and credentials"
+          - related_posts: "Suggested related articles"
+          - subscription: "Newsletter subscription form"
+
+    - faq_page:
+        path: "/faq"
+        sections:
+          - general_faqs: "General questions about the platform"
+          - technical_faqs: "Technical setup and integration questions"
+          - billing_faqs: "Billing and subscription questions"
+          - feature_faqs: "Questions about specific features"
+          - security_faqs: "Security and data privacy questions"
+          - support_faqs: "Customer support and help questions"
+          - expandable_sections: "Collapsible FAQ sections"
+
+    - case_studies:
+        path: "/case-studies"
+        sections:
+          - case_study_list: "List of all case studies"
+          - school_success_stories: "Success stories from implemented schools"
+          - implementation_details: "Details of implementation process"
+          - results_metrics: "Measurable results achieved"
+          - school_testimonials: "Direct quotes from school administrators"
+          - download_pdf: "Downloadable case study PDFs"
+          - industry_categories: "Filter by school type/size"
+
+    - demo_request:
+        path: "/demo"
+        sections:
+          - demo_form: "Form to request product demo"
+          - demo_scheduling: "Calendar for scheduling demo sessions"
+          - demo_options: "Live demo, recorded demo, personalized demo"
+          - demo_topics: "Select areas of interest for demo"
+          - demo_confirmation: "Confirmation page after booking"
+          - upcoming_webinars: "List of upcoming webinar demos"
+
+    - comparison_page:
+        path: "/comparison"
+        sections:
+          - competitor_comparison: "Compare with competing solutions"
+          - feature_matrix: "Side-by-side feature comparison table"
+          - pricing_comparison: "Price comparison with alternatives"
+          - why_choose_us: "Why choose this platform over competitors"
+          - migration_benefits: "Benefits of migrating from other systems"
+
+    - integrations_page:
+        path: "/integrations"
+        sections:
+          - integration_list: "All available integrations"
+          - powerschool_integration: "PowerSchool 2 integration details"
+          - third_party_api: "Third-party API integrations"
+          - sso_integration: "Single Sign-On options"
+          - payment_gateways: "Supported payment processors"
+          - integration_guides: "Setup guides for integrations"
+
+    - security_privacy:
+        path: "/security-privacy"
+        sections:
+          - security_overview: "Security measures and standards"
+          - data_privacy: "Data privacy policy and compliance"
+          - compliance_certifications: "GDPR, FERPA, ISO certifications"
+          - encryption_details: "Data encryption information"
+          - backup_recovery: "Backup and disaster recovery procedures"
+          - security_audits: "Third-party security audit reports"
+
+    - resource_center:
+        path: "/resources"
+        sections:
+          - documentation: "Complete system documentation"
+          - video_tutorials: "Video guides and tutorials"
+          - webinars: "Recorded webinar sessions"
+          - whitepapers: "Technical whitepapers"
+          - guides: "Setup and best practice guides"
+          - template_library: "Pre-built templates and configurations"
+
+  # ==================
+  # USER MANAGEMENT
+  # ==================
+  users:
+    - user_management:
+        path: "/dashboard/users"
+        sections:
+          - all_users: "View all system users"
+          - create_user: "Add new user account"
+          - edit_user: "Update user information"
+          - user_status: "Active/inactive user status"
+          - user_search: "Search and filter users"
+    
+    - user_credentials:
+        path: "/dashboard/users/credentials"
+        sections:
+          - change_password: "Update user password"
+          - reset_password: "Reset user password"
+          - password_policy: "Configure password requirements"
+          - multi_factor_auth: "Setup two-factor authentication"
+    
+    - user_activity:
+        path: "/dashboard/users/activity"
+        sections:
+          - login_history: "User login/logout records"
+          - activity_logs: "Track user activities in system"
+          - session_management: "Manage active user sessions"
+          - audit_trail: "Complete audit trail of user actions"
+
+  # ==================
+  # REPORTS & ANALYTICS
+  # ==================
+  reports:
+    - standard_reports:
+        path: "/dashboard/reports/standard"
+        sections:
+          - academic_reports: "Academic performance reports"
+          - attendance_reports: "Attendance summary reports"
+          - financial_reports: "Fee collection and financial reports"
+          - operational_reports: "Operational statistics reports"
+    
+    - custom_reports:
+        path: "/dashboard/reports/custom"
+        sections:
+          - create_custom_report: "Build custom report with filters"
+          - saved_reports: "View previously saved custom reports"
+          - report_templates: "Report template library"
+          - export_reports: "Download reports in PDF/Excel"
+    
+    - analytics_dashboard:
+        path: "/dashboard/reports/analytics"
+        sections:
+          - performance_analytics: "Overall system performance metrics"
+          - user_analytics: "User engagement and activity metrics"
+          - data_analytics: "Data-driven insights and trends"
+          - predictive_insights: "AI-based predictions and recommendations"
+
+# ====================
+# MODULES STRUCTURE
+# ====================
+
+modules:
+  attendance:
+    - mark_attendance_module
+    - attendance_reports_module
+    - leave_management_module
+    - attendance_notifications_module
+  
+  results:
+    - grade_entry_module
+    - result_analysis_module
+    - report_card_generation_module
+    - academic_transcript_module
+  
+  fees:
+    - fee_structure_management_module
+    - payment_collection_module
+    - financial_reporting_module
+    - fee_reminder_module
+  
+  notices:
+    - notice_creation_module
+    - notice_distribution_module
+    - notice_analytics_module
+  
+  roles:
+    - role_management_module
+    - permission_assignment_module
+    - access_control_module
+  
+  operations:
+    - class_management_module
+    - student_management_module
+    - staff_management_module
+    - calendar_management_module
+  
+  powerschool:
+    - data_sync_module
+    - api_integration_module
+    - conflict_resolution_module
+
+# ====================
+# TECHNICAL STACK
+# ====================
+
+tech_stack:
+  frontend: "Next.js 16, React19, TypeScript, Tailwind CSS, shadcn/ui"
+  backend: "Node.js, APIs"
+  database: "Mongoose9"
+  authentication: "JWT, OAuth2"
+  api_integration: "PowerSchool 2 REST API"
+  deployment: "Vercel/Self-hosted"
+
+# ====================
+# STATUS
+# ====================
+
+status: "Planning Phase"
+last_updated: "2026-02-15"
