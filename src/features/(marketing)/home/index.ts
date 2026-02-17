@@ -1,0 +1,10 @@
+export { default as Hero } from './sections/hero';
+export { default as Features } from './sections/features';
+export { default as HowItWorks } from './sections/how-it-works';
+export { default as Testimonials } from './sections/testimonials';
+export { default as PricingPreview } from './sections/pricing-preview';
+export { default as TrustedBy } from './sections/trusted-by';
+export { default as Benefits } from './sections/benefits';
+export { default as FAQPreview } from './sections/faq-preview';
+export { default as CTA } from './sections/cta';
+export { default as WhyChooseUs } from './sections/why-choose-us';
