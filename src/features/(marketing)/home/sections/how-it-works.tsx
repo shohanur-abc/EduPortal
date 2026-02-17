@@ -1,16 +1,15 @@
 import { CheckCircle2 } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Section } from '@/components/section';
+import Heading from '@/components/heading';
 
 // ============= MAIN COMPONENT =============
 export default function HowItWorks({ eyebrow, title, subtitle, steps }: IHowItWorks) {
     return (
         <Section containerClass="bg-muted/50">
             <div className="space-y-16">
-                <Header eyebrow={eyebrow} title={title} subtitle={subtitle} />
+                <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
                 <StepsList steps={steps} />
             </div>
         </Section>
@@ -18,13 +17,6 @@ export default function HowItWorks({ eyebrow, title, subtitle, steps }: IHowItWo
 }
 
 // ============= CHILD COMPONENTS =============
-const Header = ({ eyebrow, title, subtitle }: Pick<IHowItWorks, 'eyebrow' | 'title' | 'subtitle'>) => (
-    <div className="text-center space-y-4">
-        <Badge variant="secondary" className="rounded-full">{eyebrow}</Badge>
-        <h2 className="text-3xl @sm:text-4xl @lg:text-5xl font-bold tracking-tight">{title}</h2>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{subtitle}</p>
-    </div>
-);
 
 const StepsList = ({ steps }: { steps: IHowItWorks['steps'] }) => (
     <div className="space-y-20">

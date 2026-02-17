@@ -1,5 +1,4 @@
 import { ArrowRight, Play } from 'lucide-react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -21,7 +20,7 @@ export default function Hero({ announcement, title, description, cta, stats }: I
 // ============= CHILD COMPONENTS =============
 const Announcement = ({ text, href, badge }: IHero['announcement']) => (
     <div className="flex justify-center">
-        <Link href={href} className="group inline-flex items-center gap-2 rounded-full border bg-background px-4 py-1.5 text-sm transition-colors hover:bg-muted">
+        <Link href={href} className="group inline-flex items-center gap-2 rounded-full border bg-background px-4 py-1.5 text-xs @sm:text-sm transition-colors hover:bg-muted">
             <Badge variant="secondary" className="rounded-full px-2 py-0.5 text-xs">{badge}</Badge>
             <span>{text}</span>
             <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
@@ -30,7 +29,7 @@ const Announcement = ({ text, href, badge }: IHero['announcement']) => (
 );
 
 const Title = ({ text, highlight }: IHero['title']) => (
-    <h1 className="text-4xl @sm:text-5xl @lg:text-6xl @3xl:text-7xl font-bold tracking-tight text-center leading-tight">
+    <h1 className="text-3xl @lg:text-5xl @3xl:text-6xl font-bold tracking-tight text-center leading-tight">
         {text}{' '}
         {highlight && <span className="text-primary">{highlight}</span>}
     </h1>

@@ -15,7 +15,7 @@ export default function WhyChooseUs({ eyebrow, title, subtitle, reasons }: IWhyC
 
 // ============= CHILD COMPONENTS =============
 const ReasonsGrid = ({ reasons }: { reasons: IWhyChooseUs['reasons'] }) => (
-    <div className="grid grid-cols-1 @sm:grid-cols-2 @3xl:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 @lg:grid-cols-2 @3xl:grid-cols-3 gap-8">
         {reasons.map((reason, i) => (
             <ReasonCard key={i} {...reason} index={i} />
         ))}

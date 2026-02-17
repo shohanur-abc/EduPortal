@@ -52,7 +52,7 @@ const eyebrowVariants = cva(
 );
 
 const titleVariants = cva(
-  "text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl",
+  "text-3xl @lg:text-4xl @4xl:text-5xl font-bold tracking-tight text-foreground",
   {
     variants: {
       align: {
@@ -66,7 +66,7 @@ const titleVariants = cva(
 );
 
 const subtitleVariants = cva(
-  "mx-auto text-base text-muted-foreground sm:text-lg",
+  "mx-auto text-base text-muted-foreground @lg:text-lg",
   {
     variants: {
       align: {

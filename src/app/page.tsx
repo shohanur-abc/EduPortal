@@ -42,11 +42,11 @@ export default function Page() {
                 title="Powering Schools Worldwide"
                 subtitle="From small private schools to large school districts, leading institutions trust EduManager."
                 logos={[
-                    { name: 'Springfield Academy', logo: '/placeholder.svg', href: '#' },
-                    { name: 'Oakridge International', logo: '/placeholder.svg', href: '#' },
-                    { name: 'Delhi Public School', logo: '/placeholder.svg', href: '#' },
-                    { name: 'St. Xavier\'s', logo: '/placeholder.svg', href: '#' },
-                    { name: 'Cambridge Schools', logo: '/placeholder.svg', href: '#' },
+                    { name: 'Springfield Academy', logo: 'https://images.unsplash.com/photo-1481114070102-72f9d11057dc?q=80&w=1240&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', href: '#' },
+                    { name: 'Oakridge International', logo: 'https://plus.unsplash.com/premium_vector-1724653697938-cc4868490f8f?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', href: '#' },
+                    { name: 'Delhi Public School', logo: 'https://plus.unsplash.com/premium_vector-1697729742720-9306a6f8f154?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', href: '#' },
+                    { name: 'St. Xavier\'s', logo: 'https://plus.unsplash.com/premium_vector-1711987811926-f3b7c9c43909?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', href: '#' },
+                    { name: 'Cambridge Schools', logo: 'https://images.unsplash.com/photo-1642945857774-15b323312d00?q=80&w=832&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', href: '#' },
                 ]}
                 metrics={[
                     { value: '50+', label: 'Countries', description: 'Global presence' },
@@ -80,21 +80,21 @@ export default function Page() {
                         title: 'Sign Up & Configure',
                         description: 'Create your school account and configure settings to match your institution\'s structure and requirements.',
                         features: ['Custom school profile setup', 'Grade & section configuration', 'Academic year planning', 'Staff role assignment'],
-                        image: '/placeholder.svg',
+                        image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1422&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
                     },
                     {
                         number: '02',
                         title: 'Import Your Data',
                         description: 'Seamlessly migrate your existing data. We support imports from spreadsheets and other school management systems.',
                         features: ['Bulk student data import', 'Staff records migration', 'Historical grade transfer', 'Fee structure setup'],
-                        image: '/placeholder.svg',
+                        image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
                     },
                     {
                         number: '03',
                         title: 'Go Live & Grow',
                         description: 'Launch your platform with confidence. Our support team ensures a smooth transition for your entire school community.',
                         features: ['Staff training sessions', 'Parent onboarding support', '24/7 technical assistance', 'Regular feature updates'],
-                        image: '/placeholder.svg',
+                        image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop',
                     },
                 ]}
             />
@@ -158,13 +158,13 @@ export default function Page() {
                     author: 'Dr. Sarah Mitchell',
                     role: 'Principal',
                     school: 'Springfield International Academy',
-                    avatar: '/placeholder.svg',
+                    avatar: 'https://images.unsplash.com/photo-1722926323079-0836a07d2340?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
                     rating: 5,
                 }}
                 testimonials={[
-                    { quote: 'The fee management module saved us countless hours of manual work. Parents love the online payment option.', author: 'James Rodriguez', role: 'Administrator', school: 'Oakridge School', avatar: '/placeholder.svg', rating: 5 },
-                    { quote: 'As a teacher, the gradebook feature is intuitive and makes report card generation a breeze.', author: 'Emily Chen', role: 'Teacher', school: 'Cambridge Academy', avatar: '/placeholder.svg', rating: 5 },
-                    { quote: 'I can track my child\'s attendance and grades in real-time. The parent portal is fantastic.', author: 'Michael Brown', role: 'Parent', school: 'Delhi Public School', avatar: '/placeholder.svg', rating: 4 },
+                    { quote: 'The fee management module saved us countless hours of manual work. Parents love the online payment option.', author: 'James Rodriguez', role: 'Administrator', school: 'Oakridge School', avatar: 'https://images.unsplash.com/photo-1577975882846-431adc8c2009?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', rating: 5 },
+                    { quote: 'As a teacher, the gradebook feature is intuitive and makes report card generation a breeze.', author: 'Emily Chen', role: 'Teacher', school: 'Cambridge Academy', avatar: 'https://images.unsplash.com/photo-1718754323904-6866d4e9b5d1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', rating: 5 },
+                    { quote: 'I can track my child\'s attendance and grades in real-time. The parent portal is fantastic.', author: 'Michael Brown', role: 'Parent', school: 'Delhi Public School', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop', rating: 4 },
                 ]}
             />
 
