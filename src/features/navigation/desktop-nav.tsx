@@ -16,7 +16,7 @@ import { cn } from '@/lib/utils';
 // ============= MAIN COMPONENT =============
 export default function DesktopNav({ routes, isAuthenticated, userRole }: IDesktopNav) {
     return (
-        <section className="border-b bg-background sticky top-0 z-40">
+        <section className={cn("border-b bg-background top-0 z-40", process.env.NODE_ENV === 'development' || "sticky")}>
             <nav className='max-w-7xl mx-auto flex items-center justify-between gap-8 px-6 py-4 '>
                 <div className="flex items-center gap-12">
                     <BrandLogo />
@@ -49,7 +49,7 @@ const NavMenu = ({ routes }: { routes: IDesktopNav['routes'] }) => (
                                 {route.label}
                             </NavigationMenuTrigger>
                             <NavigationMenuContent>
-                                <ul className="grid gap-3 p-4 md:w-96 lg:w-96">
+                                <ul className="grid gap-3 p-4 md:w-96 lg:w-120">
                                     {route.submenu.map((item) => (
                                         <li key={item.href}>
                                             <NavigationMenuLink asChild>
