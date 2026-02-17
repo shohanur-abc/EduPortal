@@ -26,7 +26,7 @@ const Description = ({ text }: { text: string }) => (
 );
 
 const Actions = ({ primary, secondary }: { primary: IPricingCTA['primaryCta']; secondary?: IPricingCTA['secondaryCta'] }) => (
-    <div className="flex flex-col @sm:flex-row items-center justify-center gap-4">
+    <div className="flex flex-col @lg:flex-row items-center justify-center gap-4">
         <Button size="lg" variant="secondary" className="rounded-full px-8" asChild>
             <Link href={primary.href}>
                 {primary.text}
