@@ -40,7 +40,7 @@ const FormatCard = ({ icon: Icon, name, description, badge, duration, features, 
             )}
         </CardHeader>
         <CardContent className="space-y-4">
-            <p className="text-sm text-muted-foreground text-center leading-relaxed">{description}</p>
+            <p className="text-sm text-muted-foreground text-left leading-relaxed">{description}</p>
             {features && (
                 <FeaturesList features={features} />
             )}

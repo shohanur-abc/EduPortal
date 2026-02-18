@@ -16,7 +16,7 @@ export default function SupportComparison({ eyebrow, title, subtitle, providers 
 
 // ============= CHILD COMPONENTS =============
 const ProvidersGrid = ({ providers }: { providers: ISupportComparison['providers'] }) => (
-    <div className="grid grid-cols-1 @lg:grid-cols-2 @3xl:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 @2xl:grid-cols-2 @5xl:grid-cols-3 gap-8">
         {providers.map((provider, i) => (
             <ProviderCard key={i} {...provider} />
         ))}

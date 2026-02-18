@@ -32,7 +32,7 @@ const SpotlightTabs = ({ spotlights }: { spotlights: IFeatureSpotlight['spotligh
                         className="gap-2 px-4 py-2 text-sm @3xl:text-base whitespace-nowrap"
                     >
                         <spotlight.icon className="size-4 shrink-0" />
-                        <div className='hidden @md:block'>
+                        <div className='hidden @3xl:block'>
                             {spotlight.label}
                         </div>
                     </TabsTrigger>
