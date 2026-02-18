@@ -89,7 +89,7 @@ export default function Page() {
                     'But we\'re just getting started. With the launch of AI-powered insights and predictive analytics, we\'re entering our next chapter — one where technology doesn\'t just manage schools, but actively helps them improve student outcomes.',
                 ]}
                 image={{
-                    src: '/placeholder.svg',
+                    src: 'https://learningmole.com/wp-content/uploads/2025/07/v2-t5dhi-cc2yt.jpg',
                     alt: 'EduManager founding story — from a small classroom to a global education platform',
                 }}
             />
