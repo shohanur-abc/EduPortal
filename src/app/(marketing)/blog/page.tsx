@@ -164,7 +164,7 @@ export default function Page() {
                         title: 'How to Launch a Successful Parent Communication Portal in Under 2 Weeks',
                         excerpt:
                             'A practical implementation roadmap for schools looking to centralize parent-teacher communication, from announcement boards to real-time chat.',
-                        image: 'https://www.billabonghighschool.com/blogs/wp-content/uploads/2024/02/blog-14-7-Reasons-Why-Parent-Teacher-Meetings-Are-Important.jpg',
+                        image: 'https://www.growthengineering.co.uk/wp-content/uploads/2024/10/Evo-of-Learning-Tech-ills_Hero.png',
                         href: `${ROUTES.marketing.blog}/parent-communication-portal`,
                         category: 'Parent Engagement',
                         date: 'Jan 21, 2026',
