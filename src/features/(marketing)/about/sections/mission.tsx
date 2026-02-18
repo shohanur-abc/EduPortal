@@ -8,7 +8,7 @@ export default function Mission({ eyebrow, title, subtitle, content, image }: IM
         <Section containerClass="bg-muted/50">
             <div className="grid grid-cols-1 @4xl:grid-cols-2 gap-12 items-center">
                 <ContentBlock eyebrow={eyebrow} title={title} subtitle={subtitle} content={content} />
-                <ImageBlock src={`https://i.ibb.co.com/pv99cVDt/city-committed-education-collage-concept.jpg`} alt={image.alt} />
+                <ImageBlock src={image.src} alt={image.alt} />
             </div>
         </Section>
     );

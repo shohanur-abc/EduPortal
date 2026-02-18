@@ -17,7 +17,7 @@ export default function Story({ eyebrow, title, subtitle, paragraphs, image }: I
 // ============= CHILD COMPONENTS =============
 const ImageBlock = ({ src, alt }: { src: string; alt: string }) => (
     <div className="relative aspect-square rounded-2xl overflow-hidden shadow-xl">
-        <Image src={`https://i.ibb.co.com/Kxs6qdPJ/6871644-29493-2.jpg`} alt={alt} fill className="object-cover" />
+        <Image src={src} alt={alt} fill className="object-cover" />
     </div>
 );
 

@@ -35,7 +35,7 @@ export default function Page() {
                     'Every feature we build, every update we ship, and every support call we answer is driven by a single question: does this help educators spend more time with their students?',
                 ]}
                 image={{
-                    src: '/placeholder.svg',
+                    src: 'https://cdn.dribbble.com/userupload/46750025/file/170b1a89bd3b9666a908d788958f5468.png?resize=2048x1536&vertical=center',
                     alt: 'EduManager team collaborating on education technology solutions',
                 }}
             />
@@ -89,7 +89,7 @@ export default function Page() {
                     'But we\'re just getting started. With the launch of AI-powered insights and predictive analytics, we\'re entering our next chapter — one where technology doesn\'t just manage schools, but actively helps them improve student outcomes.',
                 ]}
                 image={{
-                    src: '/placeholder.svg',
+                    src: 'https://www.growthengineering.co.uk/wp-content/uploads/2024/10/Evo-of-Learning-Tech-ills_Hero.png',
                     alt: 'EduManager founding story — from a small classroom to a global education platform',
                 }}
             />
