@@ -1,0 +1,10 @@
+export { default as BlogHero } from './sections/hero';
+export { default as FeaturedPost } from './sections/featured-post';
+export { default as PostGrid } from './sections/post-grid';
+export { default as Categories } from './sections/categories';
+export { default as Newsletter } from './sections/newsletter';
+export { default as Trending } from './sections/trending';
+export { default as Authors } from './sections/authors';
+export { default as Topics } from './sections/topics';
+export { default as Resources } from './sections/resources';
+export { default as BlogCTA } from './sections/cta';
