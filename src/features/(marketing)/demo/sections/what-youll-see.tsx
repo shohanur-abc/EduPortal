@@ -15,7 +15,7 @@ export default function WhatYoullSee({ eyebrow, title, subtitle, items }: IWhatY
 
 // ============= CHILD COMPONENTS =============
 const ModulesGrid = ({ items }: { items: IWhatYoullSee['items'] }) => (
-    <div className="grid grid-cols-1 @sm:grid-cols-2 @xl:grid-cols-3 @3xl:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 @2xl:grid-cols-2 @3xl:grid-cols-3 @6xl:grid-cols-4 gap-6">
         {items.map((item, i) => (
             <ModuleCard key={i} {...item} />
         ))}

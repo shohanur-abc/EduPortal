@@ -15,7 +15,7 @@ export default function DemoGuarantee({ eyebrow, title, subtitle, guarantees }: 
 
 // ============= CHILD COMPONENTS =============
 const GuaranteesList = ({ guarantees }: { guarantees: IDemoGuarantee['guarantees'] }) => (
-    <div className="grid grid-cols-1 @md:grid-cols-2 @xl:grid-cols-3 gap-6 max-w-4xl mx-auto">
+    <div className="grid grid-cols-1 @md:grid-cols-2 @3xl:grid-cols-3 gap-6 max-w-4xl mx-auto">
         {guarantees.map((guarantee, i) => (
             <GuaranteeCard key={i} {...guarantee} />
         ))}
