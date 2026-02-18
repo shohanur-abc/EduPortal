@@ -9,7 +9,7 @@ import { Menu } from 'lucide-react';
 export default function MobileNav({ routes, isAuthenticated, userRole }: IMobileNav) {
   return (
     <nav className="md:hidden fixed top-0 left-0 right-0 z-40 bg-background border-b">
-      <div className="flex items-center justify-between p-4">
+      <div className="flex items-center justify-between px-4 py-2">
         <BrandLogo />
         <MobileMenuSheet routes={routes} isAuthenticated={isAuthenticated} userRole={userRole} />
       </div>
@@ -36,7 +36,7 @@ const MobileMenuSheet = ({ routes, isAuthenticated, userRole }: IMobileNav) => (
     </SheetTrigger>
     <SheetContent side="right" className="w-62 p-0">
       <div className="flex flex-col h-full">
-        <div className="flex items-center gap-2 p-4 border-b">
+        <div className="flex items-center gap-2 px-4 py-3 border-b">
           <div className="bg-primary text-primary-foreground flex aspect-square size-6 items-center justify-center rounded font-bold text-xs">
             E
           </div>
