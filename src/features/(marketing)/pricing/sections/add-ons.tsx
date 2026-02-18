@@ -16,7 +16,7 @@ export default function AddOns({ eyebrow, title, subtitle, addOns }: IAddOns) {
 
 // ============= CHILD COMPONENTS =============
 const AddOnsGrid = ({ addOns }: { addOns: IAddOnItem[] }) => (
-    <div className="grid grid-cols-1 @sm:grid-cols-2 @xl:grid-cols-3 @3xl:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 @xl:grid-cols-2 @3xl:grid-cols-3 gap-6">
         {addOns.map((addOn, i) => (
             <AddOnCard key={i} {...addOn} />
         ))}

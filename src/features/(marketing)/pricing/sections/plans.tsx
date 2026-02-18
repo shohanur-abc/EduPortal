@@ -19,7 +19,7 @@ export default function PricingPlans({ eyebrow, title, subtitle, plans }: IPrici
 
 // ============= CHILD COMPONENTS =============
 const PlansGrid = ({ plans }: { plans: IPlanItem[] }) => (
-    <div className="grid grid-cols-1 @md:grid-cols-2 @3xl:grid-cols-3 gap-8 items-stretch">
+    <div className="grid grid-cols-1 @md:grid-cols-2 @4xl:grid-cols-3 gap-8 items-stretch">
         {plans.map((plan, i) => (
             <PlanCard key={i} {...plan} />
         ))}

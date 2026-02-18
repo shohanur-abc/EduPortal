@@ -60,7 +60,7 @@ const TiersList = ({ tiers }: { tiers: IPricingTier[] }) => (
 );
 
 const TierRow = ({ range, pricePerStudent, icon: Icon }: IPricingTier) => (
-    <div className="flex items-center justify-between rounded-lg border p-4">
+    <div className="flex flex-col @md:flex-row gap-2 items-center justify-between rounded-lg border p-4">
         <div className="flex items-center gap-3">
             {Icon && <Icon className="size-5 text-primary" />}
             <span className="text-sm font-medium">{range}</span>
