@@ -391,7 +391,7 @@ export default function Page() {
                 title="Never Miss an Insight"
                 description="Join 12,000+ school administrators, teachers, and education leaders who receive our weekly digest of the best school management strategies, EdTech news, and practical tips."
                 inputPlaceholder="Enter your school email address"
-                buttonText="Subscribe to Newsletter"
+                buttonText="Subscribe"
                 benefits={[
                     'Weekly curated articles on school management & EdTech',
                     'Exclusive downloadable templates and checklists',

@@ -18,7 +18,7 @@ export default function Resources({ eyebrow, title, subtitle, resources }: IReso
 
 // ============= CHILD COMPONENTS =============
 const ResourcesGrid = ({ resources }: { resources: IResources['resources'] }) => (
-    <div className="grid grid-cols-1 @sm:grid-cols-2 @3xl:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 @2xl:grid-cols-2 gap-6 @4xl:grid-cols-3">
         {resources.map((resource, i) => (
             <ResourceCard key={i} {...resource} />
         ))}
@@ -27,7 +27,7 @@ const ResourcesGrid = ({ resources }: { resources: IResources['resources'] }) =>
 
 const ResourceCard = ({ icon: Icon, title, description, type, href, downloadable }: IResources['resources'][number]) => (
     <Card className="group hover:shadow-lg transition-shadow">
-        <CardContent className="pt-6 space-y-4">
+        <CardContent className="space-y-4">
             <div className="flex items-start justify-between">
                 <div className="size-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
                     <Icon className="size-6 text-primary" />

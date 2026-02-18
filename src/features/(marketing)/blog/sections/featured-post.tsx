@@ -46,7 +46,7 @@ const CoverImage = ({ src, alt }: { src: string; alt: string }) => (
 );
 
 const PostDetails = ({ post }: { post: IFeaturedPost['post'] }) => (
-    <div className="flex flex-col justify-center gap-4 p-6 @3xl:p-10">
+    <div className="flex flex-col justify-center gap-4 px-6 py-2 @3xl:p-10">
         <Badge variant="secondary" className="w-fit rounded-full">{post.category}</Badge>
         <h2 className="text-2xl @sm:text-3xl @3xl:text-4xl font-bold tracking-tight group-hover:text-primary transition-colors">
             {post.title}
@@ -58,7 +58,7 @@ const PostDetails = ({ post }: { post: IFeaturedPost['post'] }) => (
 );
 
 const PostMeta = ({ author, date, readTime }: { author: IFeaturedPost['post']['author']; date: string; readTime: string }) => (
-    <div className="flex items-center gap-4 text-sm text-muted-foreground">
+    <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
         <div className="flex items-center gap-2">
             <Avatar className="size-8">
                 <AvatarImage src={author.avatar} alt={author.name} />
