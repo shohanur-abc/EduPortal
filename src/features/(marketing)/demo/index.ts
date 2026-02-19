@@ -1,0 +1,10 @@
+export { default as DemoHero } from './sections/hero';
+export { default as DemoForm } from './sections/demo-form';
+export { default as WhatYoullSee } from './sections/what-youll-see';
+export { default as DemoFormats } from './sections/demo-formats';
+export { default as DemoTestimonial } from './sections/testimonial';
+export { default as DemoProcess } from './sections/process';
+export { default as DemoStats } from './sections/stats';
+export { default as DemoFAQ } from './sections/faq';
+export { default as DemoGuarantee } from './sections/guarantee';
+export { default as DemoCTA } from './sections/cta';
