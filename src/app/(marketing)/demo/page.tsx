@@ -12,9 +12,9 @@ import { ROUTES } from '@/lib/routes';
 // TODO: Add Open Graph image specific to demo page (demo-og.png)
 // TODO: Add hreflang alternates for multilingual demo pages
 export const metadata: Metadata = {
-    title: 'Request a Demo | EduSync – School Management System',
+    title: 'Request a Demo | EduPortal – School Management System',
     description:
-        'See EduSync in action. Schedule a personalized demo of our all-in-one school management platform covering admissions, attendance, fees, exams, and parent communication.',
+        'See EduPortal in action. Schedule a personalized demo of our all-in-one school management platform covering admissions, attendance, fees, exams, and parent communication.',
     keywords: [
         'school management system demo',
         'edtech demo',
@@ -22,12 +22,12 @@ export const metadata: Metadata = {
         'education software demo',
         'school administration platform',
         'student information system demo',
-        'EduSync demo',
+        'EduPortal demo',
     ],
     openGraph: {
-        title: 'Request a Demo | EduSync – School Management System',
+        title: 'Request a Demo | EduPortal – School Management System',
         description:
-            'See EduSync in action. Schedule a personalized demo of our all-in-one school management platform covering admissions, attendance, fees, exams, and parent communication.',
+            'See EduPortal in action. Schedule a personalized demo of our all-in-one school management platform covering admissions, attendance, fees, exams, and parent communication.',
         url: '/demo',
         type: 'website',
         images: [
@@ -35,15 +35,15 @@ export const metadata: Metadata = {
                 url: '/placeholder.svg',
                 width: 1200,
                 height: 630,
-                alt: 'EduSync School Management System Demo',
+                alt: 'EduPortal School Management System Demo',
             },
         ],
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Request a Demo | EduSync – School Management System',
+        title: 'Request a Demo | EduPortal – School Management System',
         description:
-            'See EduSync in action. Schedule a personalized demo and discover how 2,500+ schools streamline their operations.',
+            'See EduPortal in action. Schedule a personalized demo and discover how 2,500+ schools streamline their operations.',
         images: ['/placeholder.svg'],
     },
     alternates: {
@@ -56,10 +56,10 @@ export default function DemoPage() {
         <>
             {/* TODO: Add breadcrumb structured data */}
             <DemoHero
-                eyebrow="See EduSync in Action"
+                eyebrow="See EduPortal in Action"
                 title="Experience the Future of"
                 highlight="School Management"
-                description="Join 2,500+ schools that have transformed their operations with EduSync. Get a personalized walkthrough tailored to your institution's size, curriculum, and unique challenges."
+                description="Join 2,500+ schools that have transformed their operations with EduPortal. Get a personalized walkthrough tailored to your institution's size, curriculum, and unique challenges."
                 trustBadges={[
                     { icon: ShieldCheck as LucideIcon, label: 'SOC 2 Certified' },
                     { icon: Clock as LucideIcon, label: '30-Minute Walkthrough' },
@@ -77,7 +77,7 @@ export default function DemoPage() {
                 form={{
                     heading: 'Request Your Free Demo',
                     description:
-                        'No commitment required — see how EduSync fits your institution in just 30 minutes.',
+                        'No commitment required — see how EduPortal fits your institution in just 30 minutes.',
                     fields: [
                         {
                             label: 'Full Name',
@@ -189,7 +189,7 @@ export default function DemoPage() {
                         icon: PlayCircle as LucideIcon,
                         name: 'Self-Guided Tour',
                         description:
-                            'Explore EduSync at your own pace with our interactive product walkthrough. Perfect for initial evaluation before scheduling a live session.',
+                            'Explore EduPortal at your own pace with our interactive product walkthrough. Perfect for initial evaluation before scheduling a live session.',
                         duration: '15 minutes',
                         features: [
                             'Interactive product walkthrough',
@@ -233,14 +233,14 @@ export default function DemoPage() {
 
             {/* TODO: Fetch testimonial dynamically from CMS */}
             <DemoTestimonial
-                quote="The demo completely changed our perspective on school management software. Within 30 minutes, our team saw exactly how EduSync could replace five separate tools we were juggling. We signed up the same week and haven't looked back since."
+                quote="The demo completely changed our perspective on school management software. Within 30 minutes, our team saw exactly how EduPortal could replace five separate tools we were juggling. We signed up the same week and haven't looked back since."
                 author={{
                     name: 'Dr. Meera Krishnan',
                     role: 'Principal',
                     school: 'Sunrise International Academy, Bangalore',
                     avatar: '/placeholder.svg',
                 }}
-                context="Sunrise International Academy migrated 3,200 students to EduSync in under 4 weeks with zero data loss."
+                context="Sunrise International Academy migrated 3,200 students to EduPortal in under 4 weeks with zero data loss."
             />
 
             <DemoProcess
@@ -281,8 +281,8 @@ export default function DemoPage() {
 
             <DemoStats
                 eyebrow="Proven Results"
-                title="The Impact Schools See After Switching to EduSync"
-                subtitle="Real metrics from real schools — see the measurable difference EduSync makes in day-to-day operations and long-term outcomes."
+                title="The Impact Schools See After Switching to EduPortal"
+                subtitle="Real metrics from real schools — see the measurable difference EduPortal makes in day-to-day operations and long-term outcomes."
                 stats={[
                     {
                         value: '2,500+',
@@ -328,7 +328,7 @@ export default function DemoPage() {
                     },
                     {
                         question: 'Is the demo truly free with no obligations?',
-                        answer: 'Yes, 100%. The demo is completely free with no credit card required and no contractual obligations. Our goal is to help you evaluate whether EduSync is the right fit for your institution — no pressure, no sales gimmicks.',
+                        answer: 'Yes, 100%. The demo is completely free with no credit card required and no contractual obligations. Our goal is to help you evaluate whether EduPortal is the right fit for your institution — no pressure, no sales gimmicks.',
                     },
                     {
                         question: 'Will I see my school\'s actual data during the demo?',
@@ -339,12 +339,12 @@ export default function DemoPage() {
                         answer: 'After the demo, you\'ll receive a session recording, a personalized proposal, and access to a 14-day free trial. Our onboarding specialist will be assigned to guide you through setup, data migration, and staff training at no extra cost.',
                     },
                     {
-                        question: 'How does EduSync handle data security and privacy?',
-                        answer: 'EduSync is SOC 2 Type II certified and fully GDPR compliant. All data is encrypted at rest and in transit using AES-256 encryption. We perform regular third-party security audits and offer data residency options for schools in regulated regions.',
+                        question: 'How does EduPortal handle data security and privacy?',
+                        answer: 'EduPortal is SOC 2 Type II certified and fully GDPR compliant. All data is encrypted at rest and in transit using AES-256 encryption. We perform regular third-party security audits and offer data residency options for schools in regulated regions.',
                     },
                     {
-                        question: 'Can EduSync integrate with tools we already use?',
-                        answer: 'Yes. EduSync offers pre-built integrations with popular tools like Google Workspace, Microsoft 365, Tally, Razorpay, Zoom, and WhatsApp Business. We also provide REST APIs and webhooks for custom integrations with your existing systems.',
+                        question: 'Can EduPortal integrate with tools we already use?',
+                        answer: 'Yes. EduPortal offers pre-built integrations with popular tools like Google Workspace, Microsoft 365, Tally, Razorpay, Zoom, and WhatsApp Business. We also provide REST APIs and webhooks for custom integrations with your existing systems.',
                     },
                 ]}
             />
@@ -378,7 +378,7 @@ export default function DemoPage() {
             {/* TODO: Add urgency element (limited slots this week) */}
             <DemoCTA
                 title="Ready to Transform Your School?"
-                description="Join 2,500+ schools already using EduSync to save 65% of admin time, improve parent satisfaction, and make data-driven decisions every day."
+                description="Join 2,500+ schools already using EduPortal to save 65% of admin time, improve parent satisfaction, and make data-driven decisions every day."
                 primaryCta={{
                     text: 'Schedule Your Free Demo',
                     href: ROUTES.marketing.contact,
