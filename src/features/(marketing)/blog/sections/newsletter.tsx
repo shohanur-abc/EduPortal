@@ -1,8 +1,7 @@
 import { Mail, CheckCircle } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
 import { Section } from '@/components/section';
+import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from '@/components/ui/input-group';
 
 // ============= MAIN COMPONENT =============
 export default function Newsletter({ title, description, inputPlaceholder, buttonText, benefits, disclaimer }: INewsletter) {
@@ -22,8 +21,8 @@ export default function Newsletter({ title, description, inputPlaceholder, butto
 
 // ============= CHILD COMPONENTS =============
 const NewsletterCard = ({ title, description, inputPlaceholder, buttonText, benefits, disclaimer }: INewsletter) => (
-    <Card className="border-0 bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5">
-        <CardContent className="grid grid-cols-1 @3xl:grid-cols-2 gap-10 p-8 @lg:p-12">
+    <Card className="max-w-xl mx-auto py-0 border-0 bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5">
+        <CardContent className="grid grid-cols-1 gap-10 px-4 py-8 @lg:p-12">
             <ContentSide title={title} description={description} benefits={benefits} />
             <FormSide inputPlaceholder={inputPlaceholder} buttonText={buttonText} disclaimer={disclaimer} />
         </CardContent>
@@ -44,8 +43,8 @@ const ContentSide = ({ title, description, benefits }: Pick<INewsletter, 'title'
 const BenefitsList = ({ benefits }: { benefits: string[] }) => (
     <ul className="space-y-2">
         {benefits.map((benefit, i) => (
-            <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
-                <CheckCircle className="size-4 text-primary shrink-0" />
+            <li key={i} className="flex center gap-2 text-sm text-muted-foreground">
+                <CheckCircle className="size-4 mt-0.5 text-primary shrink-0" />
                 <span>{benefit}</span>
             </li>
         ))}
@@ -54,16 +53,18 @@ const BenefitsList = ({ benefits }: { benefits: string[] }) => (
 
 const FormSide = ({ inputPlaceholder, buttonText, disclaimer }: Pick<INewsletter, 'inputPlaceholder' | 'buttonText' | 'disclaimer'>) => (
     <div className="flex flex-col justify-center gap-4">
-        <div className="space-y-3">
-            <Input
-                type="email"
-                placeholder={inputPlaceholder}
-                className="h-12 rounded-xl text-base"
-            />
-            <Button size="lg" className="w-full rounded-xl text-base">
-                <Mail className="mr-2 size-4" />
-                {buttonText}
-            </Button>
+        <div >
+            <InputGroup>
+
+                <InputGroupInput
+                    type="email"
+                    placeholder={inputPlaceholder}
+                />
+                <InputGroupAddon> <Mail /></InputGroupAddon>
+                <InputGroupButton variant="default" className='h-full px-4'>
+                    {buttonText}
+                </InputGroupButton>
+            </InputGroup>
         </div>
         <p className="text-xs text-muted-foreground text-center">{disclaimer}</p>
     </div>

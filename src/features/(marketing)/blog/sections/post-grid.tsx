@@ -21,7 +21,7 @@ export default function PostGrid({ eyebrow, title, subtitle, posts, showMoreHref
 
 // ============= CHILD COMPONENTS =============
 const Grid = ({ posts }: { posts: IPostGrid['posts'] }) => (
-    <div className="grid grid-cols-1 @sm:grid-cols-2 @3xl:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 @lg:grid-cols-2 @5xl:grid-cols-3 gap-6">
         {posts.map((post, i) => (
             <PostCard key={i} {...post} />
         ))}
@@ -30,7 +30,7 @@ const Grid = ({ posts }: { posts: IPostGrid['posts'] }) => (
 
 const PostCard = ({ title, excerpt, image, href, category, date, readTime, author }: IPostGrid['posts'][number]) => (
     <Link href={href} className="group block">
-        <Card className="h-full overflow-hidden hover:shadow-lg transition-shadow">
+        <Card className="h-full overflow-hidden hover:shadow-lg transition-shadow py-0 gap-3">
             <CardHeader className="p-0">
                 <div className="relative aspect-[16/10] overflow-hidden">
                     <Image
@@ -44,7 +44,7 @@ const PostCard = ({ title, excerpt, image, href, category, date, readTime, autho
                     </Badge>
                 </div>
             </CardHeader>
-            <CardContent className="space-y-3 pt-5">
+            <CardContent className="space-y-3 pb-5">
                 <h3 className="font-semibold text-lg leading-snug line-clamp-2 group-hover:text-primary transition-colors">
                     {title}
                 </h3>

@@ -51,18 +51,18 @@ const TrendingItem = ({ post, rank }: { post: ITrending['posts'][number]; rank: 
                     </Avatar>
                     <span>{post.author.name}</span>
                 </div>
-                <span>·</span>
+                <span className='hidden @md:block'>·</span>
                 <span>{post.date}</span>
-                <span>·</span>
+                <span className='hidden @md:block'>·</span>
                 <span>{post.readTime}</span>
             </div>
         </div>
-        <ArrowRight className="size-4 text-muted-foreground mt-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all shrink-0" />
+        {/* <ArrowRight className="size-4 text-muted-foreground mt-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all shrink-0" /> */}
     </Link>
 );
 
 const RankNumber = ({ rank }: { rank: number }) => (
-    <span className="text-3xl font-black text-muted-foreground/20 leading-none min-w-[2.5rem] select-none">
+    <span className="text-3xl hidden @md:block font-black text-muted-foreground/20 leading-none min-w-[2.5rem] select-none">
         {String(rank).padStart(2, '0')}
     </span>
 );
