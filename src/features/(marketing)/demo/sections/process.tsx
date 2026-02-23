@@ -24,7 +24,7 @@ const StepsList = ({ steps }: { steps: IDemoProcess['steps'] }) => (
 
 const StepCard = ({ step, index, isLast }: { step: IProcessStep; index: number; isLast: boolean }) => (
     <div className="relative">
-        <Card className="h-full">
+        <Card className="h-full py-0">
             <CardContent className="pt-8 pb-6 space-y-4 text-center">
                 <StepNumber number={index + 1} />
                 <StepIcon icon={step.icon} />

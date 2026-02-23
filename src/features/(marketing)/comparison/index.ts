@@ -1,0 +1,9 @@
+export { default as ComparisonHero } from './sections/hero';
+export { default as ComparisonTable } from './sections/comparison-table';
+export { default as Advantages } from './sections/advantages';
+export { default as Migration } from './sections/migration';
+export { default as ComparisonTestimonial } from './sections/testimonial';
+export { default as FeatureSpotlight } from './sections/feature-spotlight';
+export { default as SupportComparison } from './sections/support-comparison';
+export { default as ComparisonFAQ } from './sections/faq';
+export { default as ComparisonCTA } from './sections/cta';

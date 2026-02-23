@@ -1,0 +1,10 @@
+export { default as AboutHero } from './sections/hero';
+export { default as Mission } from './sections/mission';
+export { default as Values } from './sections/values';
+export { default as Timeline } from './sections/timeline';
+export { default as Team } from './sections/team';
+export { default as Story } from './sections/story';
+export { default as Stats } from './sections/stats';
+export { default as Partners } from './sections/partners';
+export { default as AboutCTA } from './sections/cta';
+export { default as Culture } from './sections/culture';
