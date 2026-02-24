@@ -18,7 +18,7 @@ export default function VideoGuides({ eyebrow, title, subtitle, videos }: IVideo
 
 // ============= CHILD COMPONENTS =============
 const VideosGrid = ({ videos }: { videos: IVideoGuides['videos'] }) => (
-    <div className="grid grid-cols-1 @sm:grid-cols-2 @lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 @md:grid-cols-2 @3xl:grid-cols-3 gap-6">
         {videos.map((video, i) => (
             <VideoCard key={i} {...video} />
         ))}
@@ -49,8 +49,8 @@ const VideoCard = ({ title, description, thumbnailUrl, duration, category, href 
 
 const VideoOverlay = ({ duration }: { duration: string }) => (
     <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors">
-        <div className="size-12 rounded-full bg-white/90 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-            <Play className="size-5 text-foreground ml-0.5" />
+        <div className="size-12 rounded-full bg-destructive/90 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+            <Play className="size-5 text-primary ml-0.5" />
         </div>
         <span className="absolute bottom-2 right-2 text-xs text-white bg-black/70 rounded px-1.5 py-0.5 flex items-center gap-1">
             <Clock className="size-3" />
