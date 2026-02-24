@@ -16,7 +16,7 @@ export default function Offices({ eyebrow, title, subtitle, offices }: IOffices)
 
 // ============= CHILD COMPONENTS =============
 const OfficesGrid = ({ offices }: { offices: IOffice[] }) => (
-    <div className="grid grid-cols-1 @lg:grid-cols-2 @3xl:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 @2xl:grid-cols-2 @5xl:grid-cols-3 gap-8">
         {offices.map((office, i) => (
             <OfficeCard key={i} {...office} />
         ))}
@@ -24,7 +24,7 @@ const OfficesGrid = ({ offices }: { offices: IOffice[] }) => (
 );
 
 const OfficeCard = ({ icon: Icon, city, country, address, phone, email, isHQ, mapPlaceholder }: IOffice) => (
-    <Card>
+    <Card className='pt-0'>
         <div className="aspect-video bg-muted rounded-t-xl flex items-center justify-center">
             {mapPlaceholder ? (
                 <span className="text-sm text-muted-foreground">{mapPlaceholder}</span>

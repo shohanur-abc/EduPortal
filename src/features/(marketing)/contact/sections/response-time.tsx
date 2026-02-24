@@ -1,10 +1,8 @@
-'use client';
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import Heading from '@/components/heading';
 import { Section } from '@/components/section';
-import { getIcon } from '@/lib/icons';
 
 // ============= MAIN COMPONENT =============
 export default function ResponseTime({ eyebrow, title, subtitle, channels }: IResponseTime) {
@@ -18,15 +16,14 @@ export default function ResponseTime({ eyebrow, title, subtitle, channels }: IRe
 
 // ============= CHILD COMPONENTS =============
 const ChannelsGrid = ({ channels }: { channels: IResponseChannel[] }) => (
-    <div className="grid grid-cols-1 @md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+    <div className="grid grid-cols-1 @xl:grid-cols-2 gap-6 max-w-4xl mx-auto">
         {channels.map((channel, i) => (
             <ChannelCard key={i} {...channel} />
         ))}
     </div>
 );
 
-const ChannelCard = ({ icon: iconName, channel, averageTime, satisfactionPercent, note }: IResponseChannel) => {
-    const Icon = getIcon(iconName);
+const ChannelCard = ({ icon: Icon, channel, averageTime, satisfactionPercent, note }: IResponseChannel) => {
     return (
         <Card>
             <CardHeader>
@@ -67,7 +64,7 @@ interface IResponseTime {
 }
 
 interface IResponseChannel {
-    icon: string;
+    icon: React.ElementType;
     channel: string;
     averageTime: string;
     satisfactionPercent: number;

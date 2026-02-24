@@ -17,7 +17,7 @@ export default function SupportOptions({ eyebrow, title, subtitle, options }: IS
 
 // ============= CHILD COMPONENTS =============
 const OptionsGrid = ({ options }: { options: ISupportOption[] }) => (
-    <div className="grid grid-cols-1 @md:grid-cols-2 @3xl:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 @md:grid-cols-2 @5xl:grid-cols-4 gap-6">
         {options.map((option, i) => (
             <OptionCard key={i} {...option} />
         ))}
@@ -27,7 +27,7 @@ const OptionsGrid = ({ options }: { options: ISupportOption[] }) => (
 const OptionCard = ({ icon: Icon, name, description, availability, badge, ctaLabel }: ISupportOption) => (
     <Card className="text-center">
         <CardHeader className="items-center space-y-3">
-            <div className="size-14 rounded-2xl bg-primary/10 flex items-center justify-center">
+            <div className="mx-auto size-14 rounded-2xl bg-primary/10 flex items-center justify-center">
                 <Icon className="size-7 text-primary" />
             </div>
             <div className="flex items-center gap-2 justify-center">
