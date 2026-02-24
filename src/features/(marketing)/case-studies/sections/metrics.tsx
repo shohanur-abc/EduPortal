@@ -15,7 +15,7 @@ export default function Metrics({ eyebrow, title, subtitle, metrics }: IMetrics)
 
 // ============= CHILD COMPONENTS =============
 const MetricsGrid = ({ metrics }: { metrics: IMetrics['metrics'] }) => (
-    <div className="grid grid-cols-1 @sm:grid-cols-2 @3xl:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 @lg:grid-cols-2 @5xl:grid-cols-4 gap-6">
         {metrics.map((metric, i) => (
             <MetricCard key={i} {...metric} />
         ))}

@@ -8,7 +8,7 @@ import { Section } from '@/components/section';
 export default function DownloadCaseStudy({ title, description, downloads }: IDownloadCaseStudy) {
     return (
         <Section>
-            <div className="grid grid-cols-1 @3xl:grid-cols-[1fr_auto] gap-8 items-center">
+            <div className="grid grid-cols-1 @4xl:grid-cols-[1fr_auto] gap-8 items-center">
                 <ContentArea title={title} description={description} />
                 <DownloadsList downloads={downloads} />
             </div>

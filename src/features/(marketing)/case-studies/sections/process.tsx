@@ -15,7 +15,7 @@ export default function Process({ eyebrow, title, subtitle, steps }: IProcess) {
 
 // ============= CHILD COMPONENTS =============
 const StepsGrid = ({ steps }: { steps: IProcess['steps'] }) => (
-    <div className="grid grid-cols-1 @sm:grid-cols-2 @3xl:grid-cols-4 gap-6 @3xl:gap-4">
+    <div className="grid grid-cols-1 @xl:grid-cols-2 @5xl:grid-cols-4 gap-6 @3xl:gap-4">
         {steps.map((step, i) => (
             <StepCard key={i} step={step} index={i} isLast={i === steps.length - 1} />
         ))}

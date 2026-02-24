@@ -15,7 +15,7 @@ export default function Results({ eyebrow, title, subtitle, comparisons }: IResu
 
 // ============= CHILD COMPONENTS =============
 const ComparisonsGrid = ({ comparisons }: { comparisons: IResults['comparisons'] }) => (
-    <div className="grid grid-cols-1 @lg:grid-cols-2 gap-6">
+    <div className="grid grid-cols-1 @3xl:grid-cols-2 gap-6">
         {comparisons.map((comparison, i) => (
             <ComparisonCard key={i} {...comparison} />
         ))}

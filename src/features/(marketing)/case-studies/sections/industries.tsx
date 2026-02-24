@@ -16,7 +16,7 @@ export default function Industries({ eyebrow, title, subtitle, industries }: IIn
 
 // ============= CHILD COMPONENTS =============
 const IndustriesGrid = ({ industries }: { industries: IIndustries['industries'] }) => (
-    <div className="grid grid-cols-1 @sm:grid-cols-2 @lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 @xl:grid-cols-2 @5xl:grid-cols-3 gap-6">
         {industries.map((industry, i) => (
             <IndustryCard key={i} {...industry} />
         ))}
