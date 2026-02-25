@@ -7,16 +7,17 @@ import { useIsMobile } from '@/hooks/use-mobile';
 import { usePathname } from 'next/navigation';
 import { ROUTES } from '@/lib/routes';
 
-export default function LayoutClient({ children }: { children: React.ReactNode }) {
+export default function LayoutClient({ children, user }: { children: React.ReactNode; user?: { name: string; email: string; role: string; avatar?: string } }) {
     const pathname = usePathname();
     const isMobile = useIsMobile();
 
     if (pathname.startsWith('/dashboard')) return <>{children}</>;
+    if (pathname.startsWith('/auth')) return <>{children}</>;
 
     const Nav = isMobile ? MobileNav : DesktopNav;
     return (
         <div>
-            <Nav routes={NAVIGATION_MENU} isAuthenticated={false} />
+            <Nav routes={NAVIGATION_MENU} user={user} />
             <main className="min-h-[40vh]">{children}</main>
             <Footer sections={FOOTER_SECTIONS} />
         </div>

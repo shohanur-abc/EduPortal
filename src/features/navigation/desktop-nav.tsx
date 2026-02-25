@@ -1,4 +1,3 @@
-'use client';
 
 import Link from 'next/link';
 import {
@@ -12,9 +11,10 @@ import {
 } from '@/components/ui/navigation-menu';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import UserMenu from './user-menu';
 
 // ============= MAIN COMPONENT =============
-export default function DesktopNav({ routes, isAuthenticated, userRole }: IDesktopNav) {
+export default function DesktopNav({ routes, user }: IDesktopNav) {
     return (
         <section className={cn("border-b bg-background top-0 z-40", process.env.NODE_ENV === 'development' || "sticky")}>
             <nav className='max-w-7xl mx-auto flex items-center justify-between gap-8 px-6 py-2 '>
@@ -22,7 +22,7 @@ export default function DesktopNav({ routes, isAuthenticated, userRole }: IDeskt
                     <BrandLogo />
                     <NavMenu routes={routes} />
                 </div>
-                <NavActions isAuthenticated={isAuthenticated} userRole={userRole} />
+                <NavActions user={user} />
             </nav>
         </section>
     );
@@ -81,18 +81,10 @@ const NavMenu = ({ routes }: { routes: IDesktopNav['routes'] }) => (
     </NavigationMenu>
 );
 
-const NavActions = ({ isAuthenticated, userRole }: { isAuthenticated: boolean; userRole?: string }) => (
+const NavActions = ({ user }: { user?: IDesktopNav['user'] }) => (
     <div className="flex items-center gap-2">
-        {isAuthenticated ? (
-            <>
-                <span className="text-sm text-muted-foreground capitalize">{userRole}</span>
-                <Button variant="outline" size="sm" asChild>
-                    <Link href="/dashboard">Dashboard</Link>
-                </Button>
-                <Button variant="ghost" size="sm" asChild>
-                    <Link href="/api/auth/logout">Logout</Link>
-                </Button>
-            </>
+        {user ? (
+            <UserMenu user={user} />
         ) : (
             <>
                 <Button variant="ghost" size="sm" asChild>
@@ -118,6 +110,10 @@ interface IDesktopNav {
             description?: string;
         }[];
     }[];
-    isAuthenticated: boolean;
-    userRole?: string;
+    user?: {
+        name: string;
+        email: string;
+        role: string;
+        avatar?: string;
+    };
 }

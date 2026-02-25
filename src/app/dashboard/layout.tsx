@@ -1,16 +1,34 @@
-"use client";
+import { auth } from '@/lib/auth';
 import { Separator } from '@/components/ui/separator';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import DashboardSidebar from '@/features/navigation/dashboard-sidebar';
 import NotificationMenu from '@/features/navigation/notification-menu';
 import UserMenu from '@/features/navigation/user-menu';
 import { ROUTES } from '@/lib/routes';
-import React from 'react';
 import { LayoutDashboard, CheckCircle2, BarChart3, FileText, DollarSign, Settings, Bell, Users, Shield, Lock } from 'lucide-react';
 
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
+    const session = await auth()
+
+    const user = session?.user ? {
+        name: session.user.name || 'User',
+        email: session.user.email || '',
+        role: session.user.role || 'user',
+        avatar: session.user.image,
+    } : null
+
+    if (!user) {
+        return (
+            <div className="flex items-center justify-center min-h-screen">
+                <div className="text-center">
+                    <h1 className="text-2xl font-bold">Not Authenticated</h1>
+                    <p className="text-muted-foreground">Please log in to continue</p>
+                </div>
+            </div>
+        )
+    }
     return (
-        <DashboardSidebar sidebarItems={DASHBOARD_MENU} userRole="admin">
+        <DashboardSidebar sidebarItems={DASHBOARD_MENU} userRole={user.role}>
             <header className="bg-background sticky top-0 z-50 flex w-full items-center border-b h-14 shrink-0">
                 <div className="flex h-14 w-full items-center gap-2 px-4">
                     <SidebarTrigger className="-ml-1" />
@@ -35,7 +53,7 @@ export const DASHBOARD_MENU = [
             {
                 label: "Overview",
                 href: ROUTES.dashboard.home,
-                icon: <LayoutDashboard/>,
+                icon: <LayoutDashboard />,
             },
         ],
     },
@@ -45,17 +63,17 @@ export const DASHBOARD_MENU = [
             {
                 label: "Attendance",
                 href: ROUTES.dashboard.attendance.root,
-                icon: <CheckCircle2/>,
+                icon: <CheckCircle2 />,
             },
             {
                 label: "Results",
                 href: ROUTES.dashboard.results.root,
-                icon: <BarChart3/>,
+                icon: <BarChart3 />,
             },
             {
                 label: "Reports",
                 href: ROUTES.dashboard.reports.root,
-                icon: <FileText/>,
+                icon: <FileText />,
             },
         ],
     },
@@ -65,7 +83,7 @@ export const DASHBOARD_MENU = [
             {
                 label: "Fees",
                 href: ROUTES.dashboard.fees.root,
-                icon: <DollarSign/>,
+                icon: <DollarSign />,
             },
         ],
     },
@@ -75,12 +93,12 @@ export const DASHBOARD_MENU = [
             {
                 label: "Operations",
                 href: ROUTES.dashboard.operations.root,
-                icon: <Settings/>,
+                icon: <Settings />,
             },
             {
                 label: "Notices",
                 href: ROUTES.dashboard.notices.root,
-                icon: <Bell/>,
+                icon: <Bell />,
             },
         ],
     },
@@ -90,28 +108,21 @@ export const DASHBOARD_MENU = [
             {
                 label: "Users",
                 href: ROUTES.dashboard.users.root,
-                icon: <Users/>,
+                icon: <Users />,
             },
             {
                 label: "Roles",
                 href: ROUTES.dashboard.roles.root,
-                icon: <Shield/>,
+                icon: <Shield />,
             },
             {
                 label: "Admin",
                 href: ROUTES.dashboard.admin,
-                icon: <Lock/>,
+                icon: <Lock />,
             },
         ],
     },
 ];
-
-const user = {
-    name: 'John Doe',
-    email: 'john@example.com',
-    role: 'admin',
-    avatar: 'https://github.com/shadcn.png',
-};
 
 const notifications = [
     {

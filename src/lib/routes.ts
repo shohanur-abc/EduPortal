@@ -37,6 +37,10 @@ export const ROUTES = {
     dashboard: {
         home: "/dashboard",
         admin: "/dashboard/admin",
+        parent: "/dashboard/parent",
+        principal: "/dashboard/principal",
+        student: "/dashboard/student",
+        teacher: "/dashboard/teacher",
 
         attendance: {
             root: "/dashboard/attendance",
@@ -97,10 +101,6 @@ export const ROUTES = {
             activity: "/dashboard/users/activity",
         },
 
-        parent: "/dashboard/parent",
-        principal: "/dashboard/principal",
-        student: "/dashboard/student",
-        teacher: "/dashboard/teacher",
     },
 };
 

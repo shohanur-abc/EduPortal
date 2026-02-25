@@ -3,14 +3,24 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Provider from "./provider";
 import LayoutClient from "./layout-client";
+import { auth } from "@/lib/auth";
 
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
+export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
+    const session = await auth();
+
+    const user = session?.user ? {
+        name: session.user.name || 'User',
+        email: session.user.email || '',
+        role: session.user.role || 'user',
+        avatar: session.user.image,
+    } : undefined;
+
     return (
         <html lang="en">
             <body className={`${geistSans.variable} ${geistMono.variable} antialiased dark`} >
                 <Provider>
-                    <LayoutClient>{children}</LayoutClient>
+                    <LayoutClient user={user}>{children}</LayoutClient>
                 </Provider>
             </body>
         </html>
