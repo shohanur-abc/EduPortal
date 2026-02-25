@@ -1,0 +1,10 @@
+export { default as Hero } from './sections/hero';
+export { default as FeatureGrid } from './sections/feature-grid';
+export { default as Attendance } from './sections/attendance';
+export { default as Gradebook } from './sections/gradebook';
+export { default as Communication } from './sections/communication';
+export { default as Reporting } from './sections/reporting';
+export { default as Administration } from './sections/administration';
+export { default as MobileApp } from './sections/mobile-app';
+export { default as IntegrationsPreview } from './sections/integrations-preview';
+export { default as CTA } from './sections/cta';
