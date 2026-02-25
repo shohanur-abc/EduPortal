@@ -8,18 +8,9 @@ import { cn } from '@/lib/utils';
 // ============= MAIN COMPONENT =============
 export default function AccessControl({ eyebrow, title, subtitle, roles }: IAccessControl) {
     return (
-        /* Surgical precision with @container for responsiveness across all tiers (3XS-7XL).
-           Padding scales to maintain visual balance on micro and ultra-wide displays.
-        */
-        <Section className="px-4 py-12 @xs:py-16 @lg:py-24 @container overflow-hidden">
-            <div className="max-w-7xl mx-auto space-y-10 @3xl:space-y-16">
-                <div className="text-center px-2">
-                    <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
-                </div>
-                
-                {/* Responsive grid for access roles */}
-                <RoleGrid roles={roles} />
-            </div>
+        <Section >
+            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+            <RoleGrid roles={roles} />
         </Section>
     );
 }
@@ -27,11 +18,6 @@ export default function AccessControl({ eyebrow, title, subtitle, roles }: IAcce
 // ============= CHILD COMPONENTS =============
 
 const RoleGrid = ({ roles }: { roles: IRoleItem[] }) => (
-    /* Adaptive Grid Strategy:
-       - @3xs to @xs: 1 column (Ensures badges don't overflow on tiny screens)
-       - @sm to @4xl: 2 columns (Balanced layout for tablets and laptops)
-       - @5xl to @7xl: 3 columns (Optimized for desktop readability)
-    */
     <div className={cn(
         "grid gap-4 @sm:gap-6 @3xl:gap-8",
         "grid-cols-1",
@@ -45,8 +31,7 @@ const RoleGrid = ({ roles }: { roles: IRoleItem[] }) => (
 );
 
 const RoleCard = ({ icon: Icon, role, description, permissions }: IRoleItem) => (
-    /* Preserved original effects with responsive scaling for text and padding */
-    <Card className="group h-full flex flex-col hover:border-primary/50 hover:shadow-md transition-all duration-300 border-border/60 bg-card">
+    <Card className="group h-full hover:border-primary/50 hover:shadow-md transition-all duration-300 border-border/60">
         <CardHeader className="pb-4 pt-6 @3xl:pt-8">
             <div className="flex items-center gap-4">
                 <IconBox icon={Icon} />
@@ -78,9 +63,9 @@ const PermissionList = ({ permissions }: { permissions: string[] }) => (
     /* Flexible badge container with responsive typography */
     <div className="flex flex-wrap gap-1.5 @3xl:gap-2 pt-4 border-t border-border/40">
         {permissions.map((permission, i) => (
-            <Badge 
-                key={i} 
-                variant="secondary" 
+            <Badge
+                key={i}
+                variant="secondary"
                 className="text-[9px] @sm:text-[10px] @3xl:text-xs font-medium bg-secondary/50 hover:bg-primary/10 hover:text-primary transition-colors cursor-default"
             >
                 {permission}

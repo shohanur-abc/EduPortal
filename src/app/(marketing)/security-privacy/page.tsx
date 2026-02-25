@@ -175,8 +175,6 @@ export default function SecurityPrivacyPage() {
                 ]}
             />
 
-            
-
             <AccessControl
                 eyebrow="Role-Based Access"
                 title="Granular Permission Controls"

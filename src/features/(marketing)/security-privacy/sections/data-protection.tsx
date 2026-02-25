@@ -7,18 +7,9 @@ import { cn } from '@/lib/utils';
 // ============= MAIN COMPONENT =============
 export default function DataProtection({ eyebrow, title, subtitle, measures }: IDataProtection) {
     return (
-        /* Surgical precision with @container query from 3XS to 7XL.
-           Padding scales to ensure the content never touches the edges on small or massive screens.
-        */
-        <Section className="px-4 py-12 @xs:py-16 @lg:py-24 @container overflow-hidden">
-            <div className="max-w-7xl mx-auto space-y-10 @3xl:space-y-16">
-                <div className="text-center px-2">
-                    <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
-                </div>
-                
-                {/* Responsive grid for data protection measures */}
-                <Grid measures={measures} />
-            </div>
+        <Section >
+            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+            <Grid measures={measures} />
         </Section>
     );
 }
@@ -26,17 +17,7 @@ export default function DataProtection({ eyebrow, title, subtitle, measures }: I
 // ============= CHILD COMPONENTS =============
 
 const Grid = ({ measures }: { measures: IMeasureItem[] }) => (
-    /* Grid Logic for extreme responsiveness:
-       - @3xs to @xs: 1 column
-       - @sm to @4xl: 2 columns (better readability for detailed descriptions)
-       - @5xl to @7xl: 3 columns (standard & large desktops)
-    */
-    <div className={cn(
-        "grid gap-4 @sm:gap-6 @3xl:gap-8 @7xl:gap-10",
-        "grid-cols-1",
-        "@sm:grid-cols-1",
-        "@5xl:grid-cols-3"
-    )}>
+    <div className="grid grid-cols-1 @2xl:grid-cols-2 @6xl:grid-cols-3 gap-6 @sm:gap-8">
         {measures.map((measure, i) => (
             <MeasureCard key={i} {...measure} />
         ))}
@@ -44,8 +25,7 @@ const Grid = ({ measures }: { measures: IMeasureItem[] }) => (
 );
 
 const MeasureCard = ({ icon: Icon, title, description, features }: IMeasureItem) => (
-    /* 100% original effect preserved with responsive font and spacing scaling */
-    <Card className="group h-full flex flex-col hover:border-primary/50 hover:shadow-md transition-all duration-300 border-border/60 bg-card">
+    <Card className="group  py-0 h-full hover:border-primary/50 hover:shadow-md transition-all duration-300 border-border/60 bg-card">
         <CardHeader className="pb-4 pt-6 @3xl:pt-8">
             <div className="flex items-center gap-4">
                 <IconBox icon={Icon} />
@@ -64,14 +44,12 @@ const MeasureCard = ({ icon: Icon, title, description, features }: IMeasureItem)
 );
 
 const IconBox = ({ icon: Icon }: { icon: LucideIcon }) => (
-    /* Icon container scales across all breakpoints from 3XS to 7XL */
     <div className="size-11 @3xl:size-14 @7xl:size-16 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors duration-300">
         <Icon className="size-5 @3xl:size-7 @7xl:size-8 text-primary" />
     </div>
 );
 
 const FeatureList = ({ features }: { features: string[] }) => (
-    /* Bullet points with responsive typography and spacing */
     <ul className="space-y-2.5 pt-2 border-t border-border/40">
         {features.map((feature, i) => (
             <li key={i} className="flex items-start gap-3 text-xs @sm:text-sm @3xl:text-base @7xl:text-lg text-muted-foreground/90">
