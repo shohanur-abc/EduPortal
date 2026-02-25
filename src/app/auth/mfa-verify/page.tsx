@@ -1,10 +1,28 @@
+import type { Metadata } from "next";
+import MfaVerify from "@/features/auth/sections/mfa-verify";
+import { ROUTES } from "@/lib/routes";
+
+export const metadata: Metadata = {
+    title: "MFA Verification | EduPortal",
+    description: "Enter your two-factor authentication code",
+};
+
 export default function Page() {
-  return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Coming Soon</h1>
-        <p className="text-muted-foreground">This page is coming soon</p>
-      </div>
-    </div>
-  );
+    return (
+        <MfaVerify
+            header={{
+                title: "Two-factor authentication",
+                description: "Enter the 6-digit code from your authenticator app",
+            }}
+            submitLabel="Verify"
+            footer={{
+                href: ROUTES.auth.login,
+                label: "← Back to sign in",
+            }}
+            backup={{
+                prompt: "Having trouble?",
+                label: "Use a backup code",
+            }}
+        />
+    );
 }
