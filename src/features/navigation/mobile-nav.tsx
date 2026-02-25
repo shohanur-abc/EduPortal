@@ -4,14 +4,15 @@ import Link from 'next/link';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { Menu } from 'lucide-react';
+import UserMenu from './user-menu';
 
 // ============= MAIN COMPONENT =============
-export default function MobileNav({ routes, isAuthenticated, userRole }: IMobileNav) {
+export default function MobileNav({ routes, user }: IMobileNav) {
   return (
     <nav className="md:hidden fixed top-0 left-0 right-0 z-40 bg-background border-b">
       <div className="flex items-center justify-between px-4 py-2">
         <BrandLogo />
-        <MobileMenuSheet routes={routes} isAuthenticated={isAuthenticated} userRole={userRole} />
+        <MobileMenuSheet routes={routes} user={user} />
       </div>
     </nav>
   );
@@ -27,7 +28,7 @@ const BrandLogo = () => (
   </Link>
 );
 
-const MobileMenuSheet = ({ routes, isAuthenticated, userRole }: IMobileNav) => (
+const MobileMenuSheet = ({ routes, user }: IMobileNav) => (
   <Sheet>
     <SheetTrigger asChild>
       <Button variant="ghost" size="icon" className="md:hidden">
@@ -68,16 +69,8 @@ const MobileMenuSheet = ({ routes, isAuthenticated, userRole }: IMobileNav) => (
           ))}
         </div>
         <div className="border-t p-4 space-y-3">
-          {isAuthenticated ? (
-            <>
-              <div className="text-xs text-muted-foreground capitalize px-2">{userRole}</div>
-              <Button variant="outline" size="sm" className="w-full" asChild>
-                <Link href="/dashboard">Dashboard</Link>
-              </Button>
-              <Button variant="ghost" size="sm" className="w-full" asChild>
-                <Link href="/api/auth/logout">Logout</Link>
-              </Button>
-            </>
+          {user ? (
+            <UserMenu user={user} />
           ) : (
             <>
               <Button variant="outline" size="sm" className="w-full" asChild>
@@ -106,6 +99,10 @@ interface IMobileNav {
       description?: string;
     }[];
   }[];
-  isAuthenticated: boolean;
-  userRole?: string;
+  user?: {
+    name: string;
+    email: string;
+    role: string;
+    avatar?: string;
+  };
 }
