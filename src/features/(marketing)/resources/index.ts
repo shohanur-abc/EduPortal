@@ -1,0 +1,10 @@
+export { default as Hero } from './sections/hero';
+export { default as Guides } from './sections/guides';
+export { default as Webinars } from './sections/webinars';
+export { default as Templates } from './sections/templates';
+export { default as Videos } from './sections/videos';
+export { default as HelpCenter } from './sections/help-center';
+export { default as Community } from './sections/community';
+export { default as Newsletter } from './sections/newsletter';
+export { default as CaseStudiesPreview } from './sections/case-studies-preview';
+export { default as CTA } from './sections/cta';
