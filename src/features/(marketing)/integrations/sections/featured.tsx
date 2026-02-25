@@ -19,7 +19,7 @@ export default function Featured({ eyebrow, title, subtitle, integrations }: IFe
 
 // ============= CHILD COMPONENTS =============
 const FeaturedGrid = ({ integrations }: { integrations: IFeaturedItem[] }) => (
-    <div className="grid grid-cols-1 @lg:grid-cols-2 @3xl:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1  @2xl:grid-cols-2 @5xl:grid-cols-3 gap-8">
         {integrations.map((integration, i) => (
             <FeaturedCard key={i} {...integration} />
         ))}

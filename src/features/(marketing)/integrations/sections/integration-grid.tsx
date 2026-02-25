@@ -17,7 +17,7 @@ export default function IntegrationGrid({ eyebrow, title, subtitle, integrations
 
 // ============= CHILD COMPONENTS =============
 const Grid = ({ integrations }: { integrations: IIntegrationItem[] }) => (
-    <div className="grid grid-cols-1 @sm:grid-cols-2 @xl:grid-cols-3 @4xl:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 @xl:grid-cols-2 @5xl:grid-cols-4 gap-6">
         {integrations.map((integration, i) => (
             <IntegrationCard key={i} {...integration} />
         ))}
@@ -27,7 +27,7 @@ const Grid = ({ integrations }: { integrations: IIntegrationItem[] }) => (
 const IntegrationCard = ({ logo, name, category, description, connectLabel }: IIntegrationItem) => (
     <Card className="group hover:border-primary/50 hover:shadow-md transition-all">
         <CardHeader className="flex-row items-center gap-4 space-y-0">
-            <LogoBox  logo={logo} name={name} />
+            <LogoBox logo={logo} name={name} />
             <div className="flex-1 min-w-0">
                 <CardTitle className="text-base">{name}</CardTitle>
                 <Badge variant="outline" className="mt-1 text-xs">{category}</Badge>

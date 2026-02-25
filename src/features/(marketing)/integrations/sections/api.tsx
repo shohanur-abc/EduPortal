@@ -56,7 +56,7 @@ const FeatureItem = ({ icon: Icon, text }: IApiFeature) => (
 );
 
 const CodePreviewCard = ({ title, language, code }: ICodePreview) => (
-    <Card className="overflow-hidden border-2">
+    <Card className="overflow-hidden border-2 py-0">
         <CardHeader className="bg-muted/50 border-b py-3 px-4 flex-row items-center justify-between space-y-0">
             <CardTitle className="text-sm font-mono">{title}</CardTitle>
             <Badge variant="outline" className="text-xs font-mono">{language}</Badge>

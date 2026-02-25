@@ -14,7 +14,7 @@ export default function HowItWorks({ eyebrow, title, subtitle, steps }: IHowItWo
 
 // ============= CHILD COMPONENTS =============
 const StepList = ({ steps }: { steps: IStep[] }) => (
-    <div className="grid grid-cols-1 @sm:grid-cols-2 @xl:grid-cols-4 gap-8 @xl:gap-6">
+    <div className="grid grid-cols-1 @sm:grid-cols-2 @2xl:grid-cols-4 gap-8 @xl:gap-6">
         {steps.map((step, i) => (
             <StepItem key={i} index={i} total={steps.length} {...step} />
         ))}
@@ -42,7 +42,7 @@ const StepNumber = ({ number, icon: Icon }: { number: number; icon: LucideIcon }
 );
 
 const Connector = () => (
-    <div className="hidden @xl:block absolute top-8 left-[calc(50%+40px)] w-[calc(100%-80px)] h-px border-t-2 border-dashed border-primary/20" />
+    <div className="hidden @2xl:block absolute top-8 left-[calc(50%+40px)] w-[calc(100%-80px)] h-px border-t-2 border-dashed border-primary/20" />
 );
 
 // ============= TYPES =============
