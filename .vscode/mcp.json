@@ -6,6 +6,33 @@
         "shadcn@latest",
         "mcp"
       ]
+    },
+    "next-devtools": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "next-devtools-mcp@latest"
+      ]
+    },
+    "vercel": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "vercel-mcp@latest"
+      ],
+      "type": "http",
+      "url": "https://mcp.vercel.com"
+    },
+    "mongodb": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mongodb-mcp-server@latest",
+      ],
+      "env": {
+        "MDB_MCP_CONNECTION_STRING": "${env:MONGODB_URI}"
+      }
     }
   }
 }
