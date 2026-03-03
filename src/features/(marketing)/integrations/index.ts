@@ -1,0 +1,10 @@
+export { default as Hero } from './sections/hero';
+export { default as IntegrationGrid } from './sections/integration-grid';
+export { default as Categories } from './sections/categories';
+export { default as Featured } from './sections/featured';
+export { default as Api } from './sections/api';
+export { default as Benefits } from './sections/benefits';
+export { default as HowItWorks } from './sections/how-it-works';
+export { default as Testimonial } from './sections/testimonial';
+export { default as Partners } from './sections/partners';
+export { default as CTA } from './sections/cta';

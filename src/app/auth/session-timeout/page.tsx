@@ -1,10 +1,23 @@
+import type { Metadata } from "next";
+import SessionTimeoutSection from "@/features/auth/sections/session-timeout";
+
+export const metadata: Metadata = {
+    title: "Session Expired | EduPortal",
+    description: "Your session has expired",
+};
+
 export default function Page() {
-  return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Coming Soon</h1>
-        <p className="text-muted-foreground">This page is coming soon</p>
-      </div>
-    </div>
-  );
+    return (
+        <SessionTimeoutSection
+            header={{
+                title: "Session Expired",
+                description: "Your session has timed out due to inactivity",
+            }}
+            countdownText="Redirecting to sign in page in"
+            actions={{
+                signIn: "Sign in again",
+                signOut: "Sign out",
+            }}
+        />
+    );
 }

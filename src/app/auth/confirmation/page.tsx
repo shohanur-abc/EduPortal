@@ -1,10 +1,29 @@
-export default function Page() {
-  return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Coming Soon</h1>
-        <p className="text-muted-foreground">This page is coming soon</p>
-      </div>
-    </div>
-  );
+import type { Metadata } from "next";
+import Confirmation from "@/features/auth/sections/confirmation";
+
+export const metadata: Metadata = {
+    title: "Account Created | EduPortal",
+    description: "Your EduPortal account has been created",
+};
+
+export default async function Page({ searchParams }: { searchParams: Promise<{ email?: string }> }) {
+    const { email } = await searchParams;
+    return (
+        <Confirmation
+            email={email}
+            header={{
+                title: "Account created!",
+                description: "Your account has been created successfully",
+            }}
+            notice={{
+                title: "Verify your email",
+                description: "We've sent a verification code to {email}. Please check your inbox.",
+            }}
+            actions={{
+                verify: "Verify email",
+                signIn: "Go to sign in",
+            }}
+            footer="Didn't receive an email? Check your spam folder."
+        />
+    );
 }

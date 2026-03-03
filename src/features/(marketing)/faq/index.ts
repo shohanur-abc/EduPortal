@@ -1,0 +1,10 @@
+export { default as FAQHero } from './sections/hero';
+export { default as GeneralFAQ } from './sections/general';
+export { default as PricingFAQ } from './sections/pricing-faq';
+export { default as TechnicalFAQ } from './sections/technical';
+export { default as SecurityFAQ } from './sections/security-faq';
+export { default as FAQCategories } from './sections/categories';
+export { default as StillHaveQuestions } from './sections/still-have-questions';
+export { default as PopularFAQ } from './sections/popular';
+export { default as VideoGuides } from './sections/video-guides';
+export { default as FAQCTA } from './sections/cta';
