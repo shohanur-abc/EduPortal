@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -34,6 +35,7 @@ const VerifyEmailForm = ({ submitLabel, resend }: {
     const router = useRouter();
     const searchParams = useSearchParams();
     const email = searchParams.get("email") ?? "";
+    const [isRedirecting, setIsRedirecting] = useState(false);
 
     const form = useForm<VerifyEmailInput>({
         resolver: zodResolver(verifyEmailSchema),
@@ -44,7 +46,13 @@ const VerifyEmailForm = ({ submitLabel, resend }: {
         const result = await verifyEmail(data);
         if (result.success) {
             toast.success(result.message);
-            router.push(ROUTES.auth.login);
+            toast.info("Please login with your email and password");
+            setIsRedirecting(true);
+
+            // Redirect to login page with pre-filled email
+            setTimeout(() => {
+                router.push(`${ROUTES.auth.login}?email=${encodeURIComponent(data.email)}&verified=true`);
+            }, 1500);
         } else {
             toast.error(result.message);
         }
@@ -54,9 +62,13 @@ const VerifyEmailForm = ({ submitLabel, resend }: {
         <Form form={form} onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <>
                 <OtpField name="code" control={form.control} />
-                <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
-                    {form.formState.isSubmitting && <Spinner className="mr-2" />}
-                    {submitLabel}
+                <Button
+                    type="submit"
+                    className="w-full"
+                    disabled={form.formState.isSubmitting || isRedirecting}
+                >
+                    {(form.formState.isSubmitting || isRedirecting) && <Spinner className="mr-2" />}
+                    {isRedirecting ? "Redirecting to login..." : submitLabel}
                 </Button>
                 <ResendPrompt {...resend} />
             </>

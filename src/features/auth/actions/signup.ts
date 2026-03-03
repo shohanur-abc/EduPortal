@@ -1,7 +1,7 @@
 "use server"
 
 import { connectDB } from "@/lib/db"
-import { User } from "@/models/user"
+import { UserModel } from "@/models/user"
 import { signupSchema } from "../validators/auth"
 import { sendVerificationEmail } from "@/lib/email"
 import crypto from "crypto"
@@ -27,7 +27,7 @@ export async function signup(data: {
     try {
         await connectDB()
 
-        const existingUser = await User.findOne({
+        const existingUser = await UserModel.findOne({
             email: data.email.toLowerCase(),
         })
         if (existingUser) {
@@ -36,7 +36,7 @@ export async function signup(data: {
 
         const verificationToken = crypto.randomBytes(3).toString("hex")
 
-        await User.create({
+        await UserModel.create({
             name: data.name,
             email: data.email,
             password: data.password,
@@ -51,7 +51,8 @@ export async function signup(data: {
         await sendVerificationEmail(data.email, verificationToken, data.name)
 
         return { success: true, message: "Account created successfully. Check your email to verify your account." }
-    } catch {
+    } catch (error) {
+        console.error("Signup error:", error)
         return { success: false, message: "Something went wrong" }
     }
 }

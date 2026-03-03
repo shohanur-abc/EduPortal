@@ -18,7 +18,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
 
     return (
         <html lang="en">
-            <body className={`${geistSans.variable} ${geistMono.variable} antialiased dark`} >
+            <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} >
                 <Provider>
                     <LayoutClient user={user}>{children}</LayoutClient>
                 </Provider>

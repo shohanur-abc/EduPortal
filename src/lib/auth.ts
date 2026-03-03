@@ -3,11 +3,15 @@ import Credentials from "next-auth/providers/credentials"
 import Google from "next-auth/providers/google"
 import Nodemailer from "next-auth/providers/nodemailer"
 import { connectDB } from "@/lib/db"
-import { User } from "@/models/user"
+import { UserModel } from "@/models/user"
 import { ROUTES } from "@/lib/routes"
 import { MongoDBAdapter } from "@/lib/auth-adapter"
 
+const trustHost = process.env.NODE_ENV === "production" || !!process.env.NEXTAUTH_URL
+
 export const { handlers, signIn, signOut, auth } = NextAuth({
+    trustHost,
+    secret: process.env.AUTH_SECRET || process.env.NEXTAUTH_SECRET,
     adapter: MongoDBAdapter(),
     providers: [
         Google,
@@ -25,7 +29,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
                 await connectDB()
 
-                const user = await User.findOne({
+                const user = await UserModel.findOne({
                     email: (credentials.email as string).toLowerCase(),
                 }).select("+password")
 
@@ -41,7 +45,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                     email: user.email,
                     name: user.name,
                     role: user.role,
-                    image: user.image,
+                    image: user.image ?? null,
                 }
             },
         }),
@@ -51,12 +55,20 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         error: ROUTES.auth.login,
     },
     callbacks: {
-        jwt({ token, user }) {
+        async jwt({ token, user }) {
             if (user) {
-                console.log("User logged in:", user)
                 token.id = user.id
-                token.role = user.role
-                token.image = user.image
+                // Credentials login returns role directly; OAuth users need DB lookup
+                const extUser = user as { role?: string; image?: string | null }
+                if (extUser.role) {
+                    token.role = extUser.role
+                    token.image = extUser.image ?? null
+                } else {
+                    await connectDB()
+                    const dbUser = await UserModel.findById(user.id)
+                    token.role = dbUser?.role ?? "student"
+                    token.image = user.image ?? dbUser?.image ?? null
+                }
             }
             return token
         },

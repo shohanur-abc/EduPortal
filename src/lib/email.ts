@@ -35,8 +35,9 @@ export async function sendVerificationEmail(
                 Verify Email
                 </a>
             </p>
-            <p>Or copy and paste this link in your browser:</p>
-            <p><code>${verificationUrl}</code></p>
+            <p style="margin-top: 20px; padding: 15px; background-color: #f3f4f6; border-radius: 5px;">
+                <code style="font-size: 28px; letter-spacing: 4px; font-weight: bold; text-align: center; display: block;">${token}</code>
+            </p>
             <p>This link will expire in 24 hours.</p>
             <p>If you didn't sign up for this account, please ignore this email.</p>
             <hr />
@@ -72,8 +73,9 @@ export async function sendResetPasswordEmail(
                             Reset Password
                         </a>
                     </p>
-                    <p>Or copy and paste this link in your browser:</p>
-                    <p><code>${resetUrl}</code></p>
+                    <p style="margin-top: 20px; padding: 15px; background-color: #f3f4f6; border-radius: 5px;">
+                        <code style="font-size: 28px; letter-spacing: 4px; font-weight: bold; text-align: center; display: block;">${token}</code>
+                    </p>
                     <p>This link will expire in 1 hour.</p>
                     <p>If you didn't request this, please ignore this email.</p>
                     <hr />

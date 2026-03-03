@@ -41,14 +41,14 @@ const VerificationNotice = ({ email, title, description }: { email?: string; tit
 );
 
 const Actions = ({ email, verify, signIn }: { email?: string; verify: string; signIn: string }) => (
-    <div className="flex flex-col gap-2">
+    <div className="flex *:flex-1 gap-2">
+        <Button asChild variant="outline" className="w-full">
+            <Link href={ROUTES.dashboard.home}>{signIn}</Link>
+        </Button>
         <Button asChild className="w-full">
             <Link href={email ? `${ROUTES.auth.verifyEmail}?email=${encodeURIComponent(email)}` : ROUTES.auth.verifyEmail}>
                 {verify}
             </Link>
-        </Button>
-        <Button asChild variant="outline" className="w-full">
-            <Link href={ROUTES.auth.login}>{signIn}</Link>
         </Button>
     </div>
 );

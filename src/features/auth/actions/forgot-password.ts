@@ -1,7 +1,7 @@
 "use server"
 
 import { connectDB } from "@/lib/db"
-import { User } from "@/models/user"
+import { UserModel } from "@/models/user"
 import { forgotPasswordSchema } from "../validators/auth"
 import { sendResetPasswordEmail } from "@/lib/email"
 import crypto from "crypto"
@@ -22,7 +22,7 @@ export async function forgotPassword(data: {
     try {
         await connectDB()
 
-        const user = await User.findOne({
+        const user = await UserModel.findOne({
             email: data.email.toLowerCase(),
         })
 

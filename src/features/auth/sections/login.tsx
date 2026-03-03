@@ -17,11 +17,23 @@ import { FormCard } from "../components/form";
 export default function Login({ header, footer, email, password, rememberMe, forgotPassword, socialLogin }: LoginProps) {
     const searchParams = useSearchParams();
     const callbackUrl = searchParams.get("callbackUrl");
+    const emailFromVerification = searchParams.get("email") ?? "";
+    const isVerified = searchParams.get("verified") === "true";
 
     const form = useForm<LoginInput>({
         resolver: zodResolver(loginSchema),
-        defaultValues: { email: "", password: "", rememberMe: true },
+        defaultValues: {
+            email: emailFromVerification,
+            password: "",
+            rememberMe: true
+        },
     });
+
+    React.useEffect(() => {
+        if (isVerified) {
+            toast.success("Email verified! Please login with your password.");
+        }
+    }, [isVerified]);
 
     const onSubmit = async (data: LoginInput) => {
         const result = await login({

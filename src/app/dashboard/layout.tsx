@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { auth } from '@/lib/auth';
 import { Separator } from '@/components/ui/separator';
 import { SidebarTrigger } from '@/components/ui/sidebar';
@@ -5,7 +6,15 @@ import DashboardSidebar from '@/features/navigation/dashboard-sidebar';
 import NotificationMenu from '@/features/navigation/notification-menu';
 import UserMenu from '@/features/navigation/user-menu';
 import { ROUTES } from '@/lib/routes';
-import { LayoutDashboard, CheckCircle2, BarChart3, FileText, DollarSign, Settings, Bell, Users, Shield, Lock } from 'lucide-react';
+import { LayoutDashboard, CheckCircle2, BarChart3, FileText, DollarSign, Settings, Bell, Users, Shield, Lock, GraduationCap, UserCog, School } from 'lucide-react';
+
+export const metadata: Metadata = {
+    title: {
+        default: "Dashboard | EduPortal",
+        template: "%s | EduPortal",
+    },
+    description: "EduPortal dashboard for managing your institution",
+}
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
     const session = await auth()
@@ -33,14 +42,14 @@ export default async function DashboardLayout({ children }: { children: React.Re
                 <div className="flex h-14 w-full items-center gap-2 px-4">
                     <SidebarTrigger className="-ml-1" />
                     <Separator orientation="vertical" className="mr-2 h-6" />
-                    <h1 className="font-semibold text-sm">Dashboard</h1>
+                    <h1 className="font-semibold text-sm">EduPortal</h1>
                     <div className="ml-auto flex items-center gap-4">
                         <NotificationMenu notifications={notifications} unreadCount={1} />
                         <UserMenu user={user} />
                     </div>
                 </div>
             </header>
-            <main className='p-4'>{children}</main>
+            <main className="@container/main p-4 md:p-6">{children}</main>
         </DashboardSidebar>
     );
 }
@@ -52,7 +61,7 @@ export const DASHBOARD_MENU = [
         items: [
             {
                 label: "Overview",
-                href: ROUTES.dashboard.home,
+                href: ROUTES.dashboard.overview,
                 icon: <LayoutDashboard />,
             },
         ],
@@ -62,17 +71,17 @@ export const DASHBOARD_MENU = [
         items: [
             {
                 label: "Attendance",
-                href: ROUTES.dashboard.attendance.root,
+                href: ROUTES.dashboard.attendance.overview,
                 icon: <CheckCircle2 />,
             },
             {
                 label: "Results",
-                href: ROUTES.dashboard.results.root,
+                href: ROUTES.dashboard.results.overview,
                 icon: <BarChart3 />,
             },
             {
                 label: "Reports",
-                href: ROUTES.dashboard.reports.root,
+                href: ROUTES.dashboard.reports.overview,
                 icon: <FileText />,
             },
         ],
@@ -82,7 +91,7 @@ export const DASHBOARD_MENU = [
         items: [
             {
                 label: "Fees",
-                href: ROUTES.dashboard.fees.root,
+                href: ROUTES.dashboard.fees.overview,
                 icon: <DollarSign />,
             },
         ],
@@ -92,12 +101,12 @@ export const DASHBOARD_MENU = [
         items: [
             {
                 label: "Operations",
-                href: ROUTES.dashboard.operations.root,
+                href: ROUTES.dashboard.operations.overview,
                 icon: <Settings />,
             },
             {
                 label: "Notices",
-                href: ROUTES.dashboard.notices.root,
+                href: ROUTES.dashboard.notices.overview,
                 icon: <Bell />,
             },
         ],
@@ -107,18 +116,43 @@ export const DASHBOARD_MENU = [
         items: [
             {
                 label: "Users",
-                href: ROUTES.dashboard.users.root,
+                href: ROUTES.dashboard.users.overview,
                 icon: <Users />,
             },
             {
                 label: "Roles",
-                href: ROUTES.dashboard.roles.root,
+                href: ROUTES.dashboard.roles.overview,
                 icon: <Shield />,
             },
+        ],
+    },
+    {
+        label: "Portals",
+        items: [
             {
                 label: "Admin",
                 href: ROUTES.dashboard.admin,
                 icon: <Lock />,
+            },
+            {
+                label: "Teacher",
+                href: ROUTES.dashboard.teacher,
+                icon: <School />,
+            },
+            {
+                label: "Student",
+                href: ROUTES.dashboard.student,
+                icon: <GraduationCap />,
+            },
+            {
+                label: "Parent",
+                href: ROUTES.dashboard.parent,
+                icon: <Users />,
+            },
+            {
+                label: "Principal",
+                href: ROUTES.dashboard.principal,
+                icon: <UserCog />,
             },
         ],
     },

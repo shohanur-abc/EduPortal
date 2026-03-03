@@ -12,7 +12,7 @@ export default function LayoutClient({ children, user }: { children: React.React
     const isMobile = useIsMobile();
 
     if (pathname.startsWith('/dashboard')) return <>{children}</>;
-    if (pathname.startsWith('/auth')) return <>{children}</>;
+    // if (pathname.startsWith('/auth')) return <>{children}</>;
 
     const Nav = isMobile ? MobileNav : DesktopNav;
     return (

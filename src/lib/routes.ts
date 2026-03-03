@@ -36,6 +36,7 @@ export const ROUTES = {
 
     dashboard: {
         home: "/dashboard",
+        overview: "/dashboard/overview",
         admin: "/dashboard/admin",
         parent: "/dashboard/parent",
         principal: "/dashboard/principal",
@@ -44,6 +45,7 @@ export const ROUTES = {
 
         attendance: {
             root: "/dashboard/attendance",
+            overview: "/dashboard/attendance/overview",
             mark: "/dashboard/attendance/mark",
             corrections: "/dashboard/attendance/corrections",
             reports: "/dashboard/attendance/reports",
@@ -51,6 +53,7 @@ export const ROUTES = {
 
         fees: {
             root: "/dashboard/fees",
+            overview: "/dashboard/fees/overview",
             collection: "/dashboard/fees/collection",
             tracking: "/dashboard/fees/tracking",
             statements: "/dashboard/fees/statements",
@@ -59,6 +62,7 @@ export const ROUTES = {
 
         notices: {
             root: "/dashboard/notices",
+            overview: "/dashboard/notices/overview",
             manage: "/dashboard/notices/manage",
             publish: "/dashboard/notices/publish",
             analytics: "/dashboard/notices/analytics",
@@ -66,6 +70,7 @@ export const ROUTES = {
 
         operations: {
             root: "/dashboard/operations",
+            overview: "/dashboard/operations/overview",
             calendar: "/dashboard/operations/calendar",
             classes: "/dashboard/operations/classes",
             staff: "/dashboard/operations/staff",
@@ -75,6 +80,7 @@ export const ROUTES = {
 
         results: {
             root: "/dashboard/results",
+            overview: "/dashboard/results/overview",
             enter: "/dashboard/results/enter",
             view: "/dashboard/results/view",
             reportCards: "/dashboard/results/report-cards",
@@ -83,6 +89,7 @@ export const ROUTES = {
 
         reports: {
             root: "/dashboard/reports",
+            overview: "/dashboard/reports/overview",
             standard: "/dashboard/reports/standard",
             custom: "/dashboard/reports/custom",
             analytics: "/dashboard/reports/analytics",
@@ -90,6 +97,7 @@ export const ROUTES = {
 
         roles: {
             root: "/dashboard/roles",
+            overview: "/dashboard/roles/overview",
             manage: "/dashboard/roles/manage",
             permissions: "/dashboard/roles/permissions",
             users: "/dashboard/roles/users",
@@ -97,6 +105,7 @@ export const ROUTES = {
 
         users: {
             root: "/dashboard/users",
+            overview: "/dashboard/users/overview",
             credentials: "/dashboard/users/credentials",
             activity: "/dashboard/users/activity",
         },
