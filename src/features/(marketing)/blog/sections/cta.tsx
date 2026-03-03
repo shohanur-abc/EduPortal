@@ -7,7 +7,7 @@ import { Section } from '@/components/section';
 export default function BlogCTA({ title, description, perks, primaryCta, secondaryCta }: IBlogCTA) {
     return (
         <Section>
-            <div className="rounded-2xl bg-gray-300 px-8 py-16 @lg:px-16 @lg:py-20 space-y-8">
+            <div className="rounded-2xl bg-gray-800 dark:bg-gray-300 px-8 py-16 @lg:px-16 @lg:py-20 space-y-8">
                 <ContentArea title={title} description={description} />
                 <PerksList perks={perks} />
                 <Actions primary={primaryCta} secondary={secondaryCta} />
@@ -56,7 +56,7 @@ const Actions = ({ primary, secondary }: { primary: IBlogCTA['primaryCta']; seco
         </Button>
         <Button
             size="lg"
-            className="rounded-full px-8 border- text-primary-foreground hover:bg-gray-100"
+            className="rounded-full px-8 border- text-primary-foreground hover:bg-gray-700 dark:hover:bg-gray-100"
             asChild
         >
             <Link href={secondary.href}>{secondary.text}</Link>
