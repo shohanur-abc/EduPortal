@@ -1,9 +1,9 @@
-import mongoose, { Schema, type Document, type Model } from "mongoose"
+import mongoose, { Schema } from "mongoose"
 import bcrypt from "bcryptjs"
 
 // ============= SCHEMA DEFINITION =============
 
-const accountSchema = new Schema<IAccount>(
+const accountSchema = new Schema(
     {
         type: { type: String, required: true },
         provider: { type: String, required: true },
@@ -12,7 +12,7 @@ const accountSchema = new Schema<IAccount>(
     { _id: false }
 )
 
-const userSchema = new Schema<IUser>(
+const userSchema = new Schema(
     {
         name: {
             type: String,
@@ -65,62 +65,66 @@ const userSchema = new Schema<IUser>(
             type: Date,
             select: false,
         },
+        createdAt: {
+            type: Date,
+        },
+        updatedAt: {
+            type: Date,
+        },
     },
-    { timestamps: true }
+    {
+        timestamps: true,
+        statics: {
+            findByEmail: function (email: string) {
+                return this.findOne({ email: email.toLowerCase() })
+            },
+            getRecent: function (limit: number = 20) {
+                return this.find().sort({ createdAt: -1 }).limit(limit)
+            },
+            roleCounts: function () {
+                return this.aggregate([
+                    { $group: { _id: "$role", count: { $sum: 1 } } },
+                ])
+            },
+            getAll: function () {
+                return this.find().sort({ role: 1, name: 1 })
+            },
+            registrationTrend: function (months: number = 6) {
+                const startDate = new Date()
+                startDate.setMonth(startDate.getMonth() - months)
+                return this.aggregate([
+                    { $match: { createdAt: { $gte: startDate } } },
+                    {
+                        $group: {
+                            _id: { month: { $month: "$createdAt" }, year: { $year: "$createdAt" } },
+                            count: { $sum: 1 },
+                        }
+                    },
+                    { $sort: { "_id.year": 1, "_id.month": 1 } },
+                ])
+            },
+            verificationStats: function () {
+                return this.aggregate([
+                    {
+                        $group: {
+                            _id: null,
+                            total: { $sum: 1 },
+                            verified: { $sum: { $cond: [{ $ne: ["$emailVerified", null] }, 1, 0] } },
+                            unverified: { $sum: { $cond: [{ $eq: ["$emailVerified", null] }, 1, 0] } },
+                        }
+                    },
+                ])
+            },
+        },
+        methods: {
+            comparePassword: async function (candidatePassword: string) {
+                if (!this.password) return false
+                return bcrypt.compare(candidatePassword, this.password)
+            },
+        },
+    }
 )
 
-// ============= STATIC METHODS =============
-userSchema.statics.findByEmail = function (email: string) {
-    return this.findOne({ email: email.toLowerCase() })
-}
-
-userSchema.statics.getRecent = function (limit: number = 20) {
-    return this.find().sort({ createdAt: -1 }).limit(limit)
-}
-
-userSchema.statics.roleCounts = function () {
-    return this.aggregate([
-        { $group: { _id: "$role", count: { $sum: 1 } } },
-    ])
-}
-
-userSchema.statics.getAll = function () {
-    return this.find().sort({ role: 1, name: 1 })
-}
-
-userSchema.statics.registrationTrend = function (months: number = 6) {
-    const startDate = new Date()
-    startDate.setMonth(startDate.getMonth() - months)
-    return this.aggregate([
-        { $match: { createdAt: { $gte: startDate } } },
-        {
-            $group: {
-                _id: { month: { $month: "$createdAt" }, year: { $year: "$createdAt" } },
-                count: { $sum: 1 },
-            }
-        },
-        { $sort: { "_id.year": 1, "_id.month": 1 } },
-    ])
-}
-
-userSchema.statics.verificationStats = function () {
-    return this.aggregate([
-        {
-            $group: {
-                _id: null,
-                total: { $sum: 1 },
-                verified: { $sum: { $cond: [{ $ne: ["$emailVerified", null] }, 1, 0] } },
-                unverified: { $sum: { $cond: [{ $eq: ["$emailVerified", null] }, 1, 0] } },
-            }
-        },
-    ])
-}
-
-// ============= INSTANCE METHODS =============
-userSchema.methods.comparePassword = async function (candidatePassword: string) {
-    if (!this.password) return false
-    return bcrypt.compare(candidatePassword, this.password)
-}
 
 // ============= MIDDLEWARE =============
 userSchema.pre("save", async function () {
@@ -134,38 +138,6 @@ userSchema.index({ resetPasswordToken: 1 })
 userSchema.index({ emailVerificationToken: 1 })
 userSchema.index({ "accounts.provider": 1, "accounts.providerAccountId": 1 })
 
-// ============= TYPES =============
-interface IAccount {
-    type: string
-    provider: string
-    providerAccountId: string
-}
 
-interface IUser extends Document {
-    name: string
-    email: string
-    password?: string
-    role: "admin" | "principal" | "teacher" | "student" | "parent"
-    image?: string | null
-    emailVerified: Date | null
-    accounts: IAccount[]
-    emailVerificationToken?: string
-    emailVerificationExpires?: Date
-    resetPasswordToken?: string
-    resetPasswordExpires?: Date
-    createdAt: Date
-    updatedAt: Date
-    comparePassword(candidatePassword: string): Promise<boolean>
-}
-
-interface IUserModel extends Model<IUser> {
-    findByEmail(email: string): Promise<IUser | null>
-    getRecent(limit?: number): ReturnType<Model<IUser>["find"]>
-    roleCounts(): Promise<{ _id: string; count: number }[]>
-    getAll(): ReturnType<Model<IUser>["find"]>
-}
-
-export const UserModel =
-    (mongoose.models.User as IUserModel) ||
-    mongoose.model<IUser, IUserModel>("User", userSchema)
-export type { IUser, IUserModel }
+const y = () => mongoose.model("User", userSchema)
+export const UserModel = mongoose.models.User as ReturnType<typeof y> || y()
