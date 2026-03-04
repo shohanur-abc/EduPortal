@@ -2,11 +2,11 @@
 
 import { signIn } from "@/lib/auth"
 import { connectDB } from "@/lib/db"
-import { IUser, UserModel } from "@/models/user"
 import { ROUTES } from "@/lib/routes"
 import { loginSchema } from "../validators/auth"
 import { AuthError } from "next-auth"
 import { ActionResult } from "./types"
+import { UserModel } from "@/models/user"
 
 export async function login(data: {
     email: string
@@ -35,7 +35,7 @@ export async function login(data: {
         } else {
             // Otherwise, get user info to redirect based on role
             await connectDB()
-            const user: IUser | null = await UserModel.findOne({
+            const user = await UserModel .findOne({
                 email: data.email.toLowerCase(),
             }).select("role")
             console.log("User role for redirect:", user)
