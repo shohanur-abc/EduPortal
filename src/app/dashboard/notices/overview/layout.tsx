@@ -1,24 +1,3 @@
-import { Metadata } from "next"
-import { ReactNode } from "react"
-
-export const metadata: Metadata = {
-    title: "Notices Overview",
-    description: "Comprehensive notice management overview with analytics",
-}
-
-interface NoticesOverviewLayoutProps {
-    stats: ReactNode
-    kpi: ReactNode
-    table: ReactNode
-    "table-expiring": ReactNode
-    "chart-priority": ReactNode
-    "chart-audience": ReactNode
-    "chart-trend": ReactNode
-    comparison: ReactNode
-    "progress-status": ReactNode
-    summary: ReactNode
-}
-
 export default function NoticesOverviewLayout({
     stats,
     kpi,
@@ -30,34 +9,30 @@ export default function NoticesOverviewLayout({
     comparison,
     "progress-status": progressStatus,
     summary,
-}: NoticesOverviewLayoutProps) {
+}: {
+    stats: React.ReactNode
+    kpi: React.ReactNode
+    table: React.ReactNode
+    "table-expiring": React.ReactNode
+    "chart-priority": React.ReactNode
+    "chart-audience": React.ReactNode
+    "chart-trend": React.ReactNode
+    comparison: React.ReactNode
+    "progress-status": React.ReactNode
+    summary: React.ReactNode
+}) {
     return (
-        <div className="space-y-6">
-            <div className="grid grid-cols-1 gap-4 @xl:grid-cols-2 @5xl:grid-cols-4">
-                {stats}
-            </div>
-
-            <div className="grid grid-cols-1 gap-4 @xl:grid-cols-2 @5xl:grid-cols-4">
-                {kpi}
-            </div>
-
-            {summary}
-
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-                {chartPriority}
-                {chartAudience}
-            </div>
-
-            {chartTrend}
-
+        <>
+            {stats}
+            {kpi}
             {table}
-
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-                <div className="lg:col-span-2">{tableExpiring}</div>
-                <div className="lg:col-span-1">{progressStatus}</div>
-            </div>
-
+            {tableExpiring}
+            {chartPriority}
+            {chartAudience}
+            {chartTrend}
             {comparison}
-        </div>
+            {progressStatus}
+            {summary}
+        </>
     )
 }
