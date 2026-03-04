@@ -48,7 +48,7 @@ const Description = ({ text }: { text: string }) => (
 );
 
 const CTAButtons = ({ primary, secondary }: IHeroCTA) => (
-    <div className="flex flex-col @sm:flex-row items-center justify-center gap-4 pt-2">
+    <div className="flex flex-col @xl:flex-row items-center justify-center gap-4 pt-2">
         <Button size="lg" className="rounded-full px-8 text-base" asChild>
             <Link href={primary.href}>
                 {primary.text}
