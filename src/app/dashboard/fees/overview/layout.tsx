@@ -6,6 +6,19 @@ export const metadata: Metadata = {
     description: "Comprehensive fee management overview with collection analytics",
 }
 
+interface LayoutProps {
+    stats: ReactNode
+    kpi: ReactNode
+    chart: ReactNode
+    "chart-collection": ReactNode
+    "chart-methods": ReactNode
+    "table-payments": ReactNode
+    "table-overdue": ReactNode
+    "table-defaulters": ReactNode
+    "progress-classwise": ReactNode
+    summary: ReactNode
+}
+
 export default function FeesOverviewLayout({
     stats,
     kpi,
@@ -17,7 +30,7 @@ export default function FeesOverviewLayout({
     "table-defaulters": tableDefaulters,
     "progress-classwise": progressClasswise,
     summary,
-}: Record<string, ReactNode>) {
+}: LayoutProps) {
     return (
         <div className="space-y-6">
             <div className="grid grid-cols-1 gap-4 @xl:grid-cols-2 @5xl:grid-cols-4">

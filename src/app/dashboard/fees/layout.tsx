@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const TABS = [
     { label: "Overview", value: "overview", href: ROUTES.dashboard.fees.overview },
     { label: "Collection", value: "collection", href: ROUTES.dashboard.fees.collection },
-    { label: "Tracking", value: "tracking", href: ROUTES.dashboard.fees.tracking },
+    // { label: "Tracking", value: "tracking", href: ROUTES.dashboard.fees.tracking },
     { label: "Statements", value: "statements", href: ROUTES.dashboard.fees.statements },
     { label: "Structure", value: "structure", href: ROUTES.dashboard.fees.structure },
 ]

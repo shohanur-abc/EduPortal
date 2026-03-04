@@ -17,7 +17,7 @@ export function FeeDefaultersTable({ data, loading }: { data: DefaulterRow[]; lo
     )
 }
 
-interface DefaulterRow {
+interface DefaulterRow extends Record<string, unknown> {
     studentName: string
     rollNumber: string
     totalDue: number
