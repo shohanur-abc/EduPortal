@@ -1,6 +1,7 @@
 export { default as Hero } from './sections/hero';
 export { default as Certifications } from './sections/certifications';
 export { default as DataProtection } from './sections/data-protection';
+export { default as Infrastructure } from './sections/infrastructure';
 export { default as AccessControl } from './sections/access-control';
 export { default as PrivacyPolicy } from './sections/privacy-policy';
 export { default as Audit } from './sections/audit';
