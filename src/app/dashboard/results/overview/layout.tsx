@@ -6,6 +6,19 @@ export const metadata: Metadata = {
     description: "Comprehensive exam results overview with performance analytics",
 }
 
+export interface ResultsOverviewLayoutProps {
+    stats?: ReactNode
+    kpi?: ReactNode
+    "chart-grade"?: ReactNode
+    "chart-subject"?: ReactNode
+    "chart-exam"?: ReactNode
+    table?: ReactNode
+    "table-performers"?: ReactNode
+    "table-classperf"?: ReactNode
+    "progress-subjects"?: ReactNode
+    summary?: ReactNode
+}
+
 export default function ResultsOverviewLayout({
     stats,
     kpi,
@@ -17,7 +30,7 @@ export default function ResultsOverviewLayout({
     "table-classperf": tableClassperf,
     "progress-subjects": progressSubjects,
     summary,
-}: Record<string, ReactNode>) {
+}: ResultsOverviewLayoutProps) {
     return (
         <div className="space-y-6">
             <div className="grid grid-cols-1 gap-4 @xl:grid-cols-2 @5xl:grid-cols-4">

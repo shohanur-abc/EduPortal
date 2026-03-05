@@ -2,6 +2,10 @@
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts"
 import { ChartCard, ChartTooltip, ChartTooltipContent, type ChartConfig } from "@/components/molecules/chart-card"
 
+interface GradeDistribution {
+    grade: string
+    count: number
+}
 
 // ============= GRADE DISTRIBUTION CHART =============
 export function ResultOverviewCharts({ gradeDistribution }: { gradeDistribution: GradeDistribution[] }) {

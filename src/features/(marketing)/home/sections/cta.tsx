@@ -7,7 +7,7 @@ import { Section } from '@/components/section';
 export default function CTA({ title, description, primaryCta, secondaryCta }: ICTA) {
     return (
         <Section>
-            <div className="rounded-2xl bg-gradient-to-br from-blue-600 via-blue-600 to-indigo-700 dark:from-blue-950 dark:via-indigo-950 dark:to-slate-900 px-8 py-16 @lg:px-16 @lg:py-20 text-center space-y-6">
+            <div className="rounded-2xl bg-linear-to-br from-blue-50 via-blue-100 to-blue-50 dark:from-blue-950 dark:via-indigo-950 dark:to-slate-900 px-8 py-16 @lg:px-16 @lg:py-20 text-center space-y-6">
                 <Title text={title} />
                 <Description text={description} />
                 <Actions primary={primaryCta} secondary={secondaryCta} />

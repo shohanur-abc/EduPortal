@@ -3,6 +3,20 @@ import { EmptyState } from "@/components/molecules/empty-state"
 import { Badge } from "@/components/ui/badge"
 import { BookOpen, LineChart } from "lucide-react"
 
+interface ExamAnalytics extends Record<string, unknown> {
+    exam: string
+    count: number
+    avgMarks: number
+    passRate: number
+}
+
+interface SubjectAnalytics extends Record<string, unknown> {
+    subject: string
+    count: number
+    avgMarks: number
+    maxMarks: number
+    minMarks: number
+}
 
 export function AnalyticsTables({ byExam, bySubject, loading }: { byExam: ExamAnalytics[]; bySubject: SubjectAnalytics[]; loading?: boolean }) {
     if (byExam.length === 0 && bySubject.length === 0) {

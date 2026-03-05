@@ -1,0 +1,10 @@
+export { default as Hero } from './sections/hero';
+export { default as Plans } from './sections/plans';
+export { default as ComparisonTable } from './sections/comparison-table';
+export { default as Calculator } from './sections/calculator';
+export { default as Guarantees } from './sections/guarantees';
+export { default as Testimonial } from './sections/testimonial';
+export { default as FAQ } from './sections/faq';
+export { default as Enterprise } from './sections/enterprise';
+export { default as AddOns } from './sections/add-ons';
+export { default as CTA } from './sections/cta';

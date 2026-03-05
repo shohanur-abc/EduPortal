@@ -3,7 +3,7 @@ import { Users, GraduationCap, ClipboardCheck, BarChart3, CreditCard, Bell, Cale
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'EduManager — Modern School Management System',
+    title: 'EduPortal — Modern School Management System',
     description: 'Streamline your school operations with our all-in-one school management platform. Attendance, grades, fees, communication — everything in one place.',
 };
 
@@ -73,7 +73,7 @@ export default function Page() {
             <HowItWorks
                 eyebrow="How It Works"
                 title="Get Started in Minutes"
-                subtitle="Setting up EduManager is quick and easy. Our team guides you through every step."
+                subtitle="Setting up EduPortal is quick and easy. Our team guides you through every step."
                 steps={[
                     {
                         number: '01',
@@ -102,7 +102,7 @@ export default function Page() {
             <Benefits
                 eyebrow="Benefits"
                 title="Built for Everyone at Your School"
-                subtitle="Whether you're an administrator, teacher, parent, or student — EduManager makes your life easier."
+                subtitle="Whether you're an administrator, teacher, parent, or student — EduPortal makes your life easier."
                 roles={[
                     {
                         icon: Shield,
@@ -154,7 +154,7 @@ export default function Page() {
                 title="Loved by Schools Worldwide"
                 subtitle="Hear from educators and administrators who transformed their schools with EduManager."
                 featured={{
-                    quote: 'EduManager transformed how we run our school. Attendance tracking that used to take hours now happens in seconds. Parents are more engaged than ever.',
+                    quote: 'EduPortal transformed how we run our school. Attendance tracking that used to take hours now happens in seconds. Parents are more engaged than ever.',
                     author: 'Dr. Sarah Mitchell',
                     role: 'Principal',
                     school: 'Springfield International Academy',
@@ -207,7 +207,7 @@ export default function Page() {
                 faqs={[
                     { question: 'How long does it take to set up EduManager?', answer: 'Most schools are up and running within 1-2 weeks. Our onboarding team handles data migration, configuration, and staff training to ensure a smooth launch.' },
                     { question: 'Can I migrate data from my current system?', answer: 'Yes! We support data imports from all major school management systems including PowerSchool, Infinite Campus, and spreadsheets. Our team handles the entire migration process.' },
-                    { question: 'Is EduManager FERPA compliant?', answer: 'Absolutely. EduManager is fully FERPA compliant with end-to-end encryption, SOC2 certification, and regular third-party security audits to protect student data.' },
+                    { question: 'Is EduPortal FERPA compliant?', answer: 'Absolutely. EduPortal is fully FERPA compliant with end-to-end encryption, SOC2 certification, and regular third-party security audits to protect student data.' },
                     { question: 'Do you offer a free trial?', answer: 'Yes, we offer a 30-day free trial with full access to all features. No credit card required. Our team will help you get set up and explore the platform.' },
                     { question: 'What kind of support do you provide?', answer: 'We provide 24/7 support via email, live chat, and phone. Professional and Enterprise plans include a dedicated customer success manager.' },
                 ]}

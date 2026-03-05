@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { toast } from 'sonner';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,6 +13,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { BadgeCheck, CreditCard, LogOut, Bell, Sparkles } from 'lucide-react';
+import { logout } from '@/features/auth/actions';
 
 // ============= MAIN COMPONENT =============
 export default function UserMenu({ user }: IUserMenu) {
@@ -29,37 +31,38 @@ export default function UserMenu({ user }: IUserMenu) {
           <DropdownMenuItem asChild>
             <Link href="/dashboard" className="cursor-pointer">
               <Sparkles className="size-4" />
-              <span>Upgrade to Pro</span>
+              <span>Dashboard</span>
             </Link>
           </DropdownMenuItem>
-        </DropdownMenuGroup>
-        <DropdownMenuSeparator />
-        <DropdownMenuGroup>
           <DropdownMenuItem asChild>
-            <Link href="/dashboard" className="cursor-pointer">
+            <Link href="/dashboard/profile" className="cursor-pointer">
               <BadgeCheck className="size-4" />
-              <span>Account</span>
+              <span>Profile</span>
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
-            <Link href="/dashboard/users/credentials" className="cursor-pointer">
+            <Link href="/dashboard/settings" className="cursor-pointer">
               <CreditCard className="size-4" />
-              <span>Billing</span>
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem asChild>
-            <Link href="/dashboard/notifications" className="cursor-pointer">
-              <Bell className="size-4" />
-              <span>Notifications</span>
+              <span>Settings</span>
             </Link>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <Link href="/api/auth/logout" className="cursor-pointer">
+          <button
+            onClick={async () => {
+              try {
+                await logout();
+              } catch (error) {
+                toast.error('Failed to logout');
+                console.error(error);
+              }
+            }}
+            className="w-full cursor-pointer flex items-center"
+          >
             <LogOut className="size-4" />
             <span>Log out</span>
-          </Link>
+          </button>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

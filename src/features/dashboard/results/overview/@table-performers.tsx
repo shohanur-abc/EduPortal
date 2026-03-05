@@ -1,5 +1,13 @@
 import { RankingTable } from "@/components/molecules/ranking-table"
 
+interface PerformerRow extends Record<string, unknown> {
+    studentName: string
+    rollNumber: string
+    className: string
+    avgMarks: number
+    totalExams: number
+}
+
 export function ResultTopPerformersTable({ data, loading }: { data: PerformerRow[]; loading?: boolean }) {
     return (
         <RankingTable<PerformerRow>
@@ -16,12 +24,4 @@ export function ResultTopPerformersTable({ data, loading }: { data: PerformerRow
             loading={loading}
         />
     )
-}
-
-interface PerformerRow {
-    studentName: string
-    rollNumber: string
-    className: string
-    avgMarks: number
-    totalExams: number
 }

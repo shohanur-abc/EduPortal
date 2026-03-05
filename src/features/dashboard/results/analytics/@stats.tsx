@@ -1,6 +1,14 @@
 import { StatCard } from "@/components/molecules/stat-card"
 import { Award, BarChart3, FileText, TrendingUp } from "lucide-react"
 
+interface AnalyticsStats {
+    totalExams: number
+    overallAvg: number
+    overallPassRate: number
+    topSubjectName: string
+    topSubjectAvg: number | null
+    loading?: boolean
+}
 
 export function AnalyticsStatCards({ totalExams, overallAvg, overallPassRate, topSubjectName, topSubjectAvg, loading }: AnalyticsStats) {
     return (
