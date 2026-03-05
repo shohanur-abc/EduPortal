@@ -10,9 +10,9 @@ export const metadata: Metadata = {
 const TABS = [
     { label: "Overview", value: "overview", href: ROUTES.dashboard.results.overview },
     { label: "Enter Results", value: "enter", href: ROUTES.dashboard.results.enter },
-    { label: "View Results", value: "view", href: ROUTES.dashboard.results.view },
+    // { label: "View Results", value: "view", href: ROUTES.dashboard.results.view },
     { label: "Report Cards", value: "report-cards", href: ROUTES.dashboard.results.reportCards },
-    { label: "Analytics", value: "analytics", href: ROUTES.dashboard.results.analytics },
+    // { label: "Analytics", value: "analytics", href: ROUTES.dashboard.results.analytics },
 ]
 
 export default function ResultsLayout({ children }: { children: React.ReactNode }) {
