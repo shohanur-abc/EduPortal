@@ -1,5 +1,12 @@
 import { RankingTable } from "@/components/molecules/ranking-table"
 
+interface AbsenteeRow extends Record<string, unknown> {
+    studentName: string
+    rollNumber: string
+    className: string
+    absences: number
+}
+
 export function AttendanceTopAbsenteesTable({ data, loading }: { data: AbsenteeRow[]; loading?: boolean }) {
     return (
         <RankingTable<AbsenteeRow>
@@ -15,11 +22,4 @@ export function AttendanceTopAbsenteesTable({ data, loading }: { data: AbsenteeR
             loading={loading}
         />
     )
-}
-
-interface AbsenteeRow {
-    studentName: string
-    rollNumber: string
-    className: string
-    absences: number
 }

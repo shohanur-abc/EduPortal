@@ -1,5 +1,15 @@
 import { RankingTable } from "@/components/molecules/ranking-table"
 
+interface ClassWiseRow extends Record<string, unknown> {
+    className: string
+    total: number
+    present: number
+    absent: number
+    late: number
+    excused: number
+    rate: number
+}
+
 export function AttendanceClassWiseTable({ data, loading }: { data: ClassWiseRow[]; loading?: boolean }) {
     return (
         <RankingTable<ClassWiseRow>
@@ -16,14 +26,4 @@ export function AttendanceClassWiseTable({ data, loading }: { data: ClassWiseRow
             loading={loading}
         />
     )
-}
-
-interface ClassWiseRow {
-    className: string
-    total: number
-    present: number
-    absent: number
-    late: number
-    excused: number
-    rate: number
 }

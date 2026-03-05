@@ -6,6 +6,20 @@ export const metadata: Metadata = {
     description: "Comprehensive attendance overview with charts, tables, and analytics",
 }
 
+export interface AttendanceOverviewLayoutProps {
+    stats?: ReactNode
+    kpi?: ReactNode
+    chart?: ReactNode
+    "chart-trend"?: ReactNode
+    "chart-monthly"?: ReactNode
+    table?: ReactNode
+    "table-classwise"?: ReactNode
+    "table-absentees"?: ReactNode
+    "progress-classwise"?: ReactNode
+    summary?: ReactNode
+    comparison?: ReactNode
+}
+
 export default function AttendanceOverview({
     stats,
     kpi,
@@ -18,7 +32,7 @@ export default function AttendanceOverview({
     "progress-classwise": progressClasswise,
     summary,
     comparison,
-}: Record<string, ReactNode>) {
+}: AttendanceOverviewLayoutProps) {
     return (
         <div className="space-y-6">
             <div className="grid grid-cols-1 gap-4 @xl:grid-cols-2 @5xl:grid-cols-4">
