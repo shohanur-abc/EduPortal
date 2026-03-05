@@ -16,7 +16,7 @@ export default function StillHaveQuestions({ eyebrow, title, subtitle, channels 
 
 // ============= CHILD COMPONENTS =============
 const ChannelsGrid = ({ channels }: { channels: IStillHaveQuestions['channels'] }) => (
-    <div className="grid grid-cols-1 @sm:grid-cols-2 @lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+    <div className="grid grid-cols-1 @lg:grid-cols-2 @3xl:grid-cols-3 gap-6 max-w-4xl mx-auto">
         {channels.map((channel, i) => (
             <ChannelCard key={i} {...channel} />
         ))}

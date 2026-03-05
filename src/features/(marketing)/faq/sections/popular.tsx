@@ -16,7 +16,7 @@ export default function PopularFAQ({ eyebrow, title, subtitle, questions }: IPop
 
 // ============= CHILD COMPONENTS =============
 const QuestionsGrid = ({ questions }: { questions: IPopularFAQ['questions'] }) => (
-    <div className="grid grid-cols-1 @sm:grid-cols-2 @lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 @md:grid-cols-2 @4xl:grid-cols-3 gap-6">
         {questions.map((q, i) => (
             <QuestionCard key={i} {...q} />
         ))}
