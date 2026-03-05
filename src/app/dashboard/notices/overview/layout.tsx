@@ -6,6 +6,19 @@ export const metadata: Metadata = {
     description: "Comprehensive notice management overview with analytics",
 }
 
+export interface NoticesOverviewLayoutProps {
+    stats?: ReactNode
+    kpi?: ReactNode
+    table?: ReactNode
+    "table-expiring"?: ReactNode
+    "chart-priority"?: ReactNode
+    "chart-audience"?: ReactNode
+    "chart-trend"?: ReactNode
+    comparison?: ReactNode
+    "progress-status"?: ReactNode
+    summary?: ReactNode
+}
+
 export default function NoticesOverviewLayout({
     stats,
     kpi,
@@ -17,7 +30,7 @@ export default function NoticesOverviewLayout({
     comparison,
     "progress-status": progressStatus,
     summary,
-}: Record<string, ReactNode>) {
+}: NoticesOverviewLayoutProps) {
     return (
         <div className="space-y-6">
             <div className="grid grid-cols-1 gap-4 @xl:grid-cols-2 @5xl:grid-cols-4">
