@@ -1,8 +1,8 @@
 import { ReportCardStatCards } from "@/features/dashboard/results/report-cards/@stats"
-import { Result } from "@/services/result.service"
+import * as resultsSvc from "@/services/results"
 
 export default async function ReportCardStatsPage() {
-    const results = await Result.getAll()
+    const results = await resultsSvc.getAll()
 
     const uniqueStudents = [...new Set(results.map((r) => r.rollNumber))].length
     const passGrades = ["A+", "A", "A-", "B+", "B", "B-", "C+", "C"]

@@ -1,7 +1,7 @@
 import { NoticePriorityComparison } from "@/features/dashboard/notices/overview/@comparison"
-import { Notice } from "@/services/notice.service"
+import * as notices from "@/services/notices"
 export default async function Page() {
-    const data = await Notice.priorityBreakdown()
+    const data = await notices.priorityBreakdown()
     return <NoticePriorityComparison data={data.map((d) => ({
         label: d.priority.charAt(0).toUpperCase() + d.priority.slice(1),
         value: d.count,

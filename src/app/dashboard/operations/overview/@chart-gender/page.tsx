@@ -1,6 +1,6 @@
 import { OperationsGenderChart } from "@/features/dashboard/operations/overview/@chart-gender"
-import { Student } from "@/services/student.service"
+import * as students from "@/services/students"
 export default async function Page() {
-    const data = await Student.genderDistribution()
+    const data = await students.genderDistribution()
     return <OperationsGenderChart data={data} />
 }

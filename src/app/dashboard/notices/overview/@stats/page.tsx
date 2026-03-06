@@ -1,8 +1,8 @@
 import { NoticeStatCards } from "@/features/dashboard/notices/overview/@stats"
-import { Notice } from "@/services/notice.service"
+import * as notices from "@/services/notices"
 
 export default async function NoticeStatsPage() {
-    const statusCounts = await Notice.statusCounts()
+    const statusCounts = await notices.statusCounts()
 
     const published = statusCounts.find((s) => s.status === "published")?.count ?? 0
     const drafts = statusCounts.find((s) => s.status === "draft")?.count ?? 0

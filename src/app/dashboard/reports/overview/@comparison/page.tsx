@@ -1,11 +1,11 @@
 import { ReportComparison } from "@/features/dashboard/reports/overview/@comparison"
-import { Report } from "@/services/report.service"
+import * as reports from "@/services/reports"
 
 export default async function ComparisonPage() {
     const [attendance, fees, results] = await Promise.all([
-        Report.attendanceReport(),
-        Report.feeReport(),
-        Report.resultReport(),
+        reports.attendanceReport(),
+        reports.feeReport(),
+        reports.resultReport(),
     ])
 
     return (

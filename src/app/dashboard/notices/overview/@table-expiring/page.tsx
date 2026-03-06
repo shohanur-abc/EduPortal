@@ -1,6 +1,6 @@
 import { NoticeExpiringTable } from "@/features/dashboard/notices/overview/@table-expiring"
-import { Notice } from "@/services/notice.service"
+import * as notices from "@/services/notices"
 export default async function Page() {
-    const data = await Notice.getExpiringSoon()
+    const data = await notices.getExpiringSoon()
     return <NoticeExpiringTable data={data} />
 }

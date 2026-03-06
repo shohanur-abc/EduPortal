@@ -1,7 +1,7 @@
 import { AttendanceReportTable } from "@/features/dashboard/attendance/reports/@table"
-import { Attendance } from "@/services/attendance.service"
+import * as attendance from "@/services/attendence"
 
 export default async function ReportTablePage() {
-    const records = await Attendance.getAll()
+    const records = await attendance.getAll()
     return <AttendanceReportTable records={records} />
 }

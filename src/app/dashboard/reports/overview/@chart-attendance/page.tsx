@@ -1,7 +1,7 @@
 import { AttendanceReportChart } from "@/features/dashboard/reports/overview/@chart-attendance"
-import { Report } from "@/services/report.service"
+import * as reports from "@/services/reports"
 
 export default async function ChartAttendancePage() {
-    const data = await Report.attendanceReport()
+    const data = await reports.attendanceReport()
     return <AttendanceReportChart data={data} />
 }

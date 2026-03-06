@@ -1,5 +1,5 @@
 import { FeeStatementsTable } from "@/features/dashboard/fees/statements/@table"
-import { Fee } from "@/services/fee.service"
+import { Fee } from "@/services"
 
 export default async function FeeStatementsTablePage() {
     const records = await Fee.getAll()

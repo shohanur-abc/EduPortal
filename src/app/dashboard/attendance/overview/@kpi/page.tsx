@@ -1,10 +1,10 @@
 import { AttendanceKpi } from "@/features/dashboard/attendance/overview/@kpi"
-import { Attendance } from "@/services/attendance.service"
+import * as attendance from "@/services/attendence"
 
 export default async function KpiPage() {
     const [rateData, todayData] = await Promise.all([
-        Attendance.attendanceRate(),
-        Attendance.todayStats(),
+        attendance.attendanceRate(),
+        attendance.todayStats(),
     ])
     return (
         <AttendanceKpi

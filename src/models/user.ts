@@ -104,16 +104,14 @@ const userSchema = new Schema(
                 ])
             },
             verificationStats: function () {
-                return this.aggregate([
-                    {
-                        $group: {
-                            _id: null,
-                            total: { $sum: 1 },
-                            verified: { $sum: { $cond: [{ $ne: ["$emailVerified", null] }, 1, 0] } },
-                            unverified: { $sum: { $cond: [{ $eq: ["$emailVerified", null] }, 1, 0] } },
-                        }
-                    },
-                ])
+                return this.aggregate([{
+                    $group: {
+                        _id: null,
+                        total: { $sum: 1 },
+                        verified: { $sum: { $cond: [{ $ne: ["$emailVerified", null] }, 1, 0] } },
+                        unverified: { $sum: { $cond: [{ $eq: ["$emailVerified", null] }, 1, 0] } },
+                    }
+                }])
             },
         },
         methods: {
@@ -141,3 +139,5 @@ userSchema.index({ "accounts.provider": 1, "accounts.providerAccountId": 1 })
 
 const y = () => mongoose.model("User", userSchema)
 export const UserModel = mongoose.models.User as ReturnType<typeof y> || y()
+
+

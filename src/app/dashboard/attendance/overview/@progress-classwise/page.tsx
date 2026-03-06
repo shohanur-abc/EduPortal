@@ -1,7 +1,7 @@
 import { AttendanceClassProgress } from "@/features/dashboard/attendance/overview/@progress-classwise"
-import { Attendance } from "@/services/attendance.service"
+import * as attendance from "@/services/attendence"
 
 export default async function ProgressClasswisePage() {
-    const data = await Attendance.classWiseStats()
+    const data = await attendance.classWiseStats()
     return <AttendanceClassProgress data={data.map((d) => ({ className: d.className, rate: d.rate }))} />
 }

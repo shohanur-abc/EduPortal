@@ -1,18 +1,18 @@
 import { StudentStatCards } from "@/features/dashboard/operations/students/@stats"
-import { Student } from "@/services/student.service"
+import { Student } from "@/services"
 
 export default async function StudentStatsPage() {
-    const students = await Student.getAll()
+    const studentsData = await Student.getAll()
 
-    const activeStudents = students.filter((s) => s.status === "active")
-    const activePercentage = students.length > 0 ? Math.round((activeStudents.length / students.length) * 100) : 0
-    const maleCount = students.filter((s) => s.gender === "male").length
-    const femaleCount = students.filter((s) => s.gender === "female").length
-    const otherCount = students.length - maleCount - femaleCount
+    const activeStudents = studentsData.filter((s) => s.status === "active")
+    const activePercentage = studentsData.length > 0 ? Math.round((activeStudents.length / studentsData.length) * 100) : 0
+    const maleCount = studentsData.filter((s) => s.gender === "male").length
+    const femaleCount = studentsData.filter((s) => s.gender === "female").length
+    const otherCount = studentsData.length - maleCount - femaleCount
 
     return (
         <StudentStatCards
-            totalStudents={students.length}
+            totalStudents={studentsData.length}
             activeStudents={activeStudents.length}
             activePercentage={activePercentage}
             maleCount={maleCount}

@@ -1,7 +1,7 @@
 import { ResultReportTable } from "@/features/dashboard/reports/overview/@table-results"
-import { Report } from "@/services/report.service"
+import * as reports from "@/services/reports"
 
 export default async function TableResultsPage() {
-    const data = await Report.resultReport()
+    const data = await reports.resultReport()
     return <ResultReportTable data={data} />
 }

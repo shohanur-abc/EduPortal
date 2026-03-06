@@ -8,7 +8,11 @@
         "PERF",
         "NOTE",
         "REVIEW",
-        "WARN"
+        "WARN",
+        "READ",
+        "CREATE",
+        "UPDATE",
+        "DELETE"
     ],
     "todo-tree.highlights.defaultHighlight": {
         "icon": "alert",
@@ -59,17 +63,41 @@
             "foreground": "#fff",
             "background": "#f39d1291",
             "iconColour": "#f39c12"
+        },
+        "READ": {
+            "icon": "book",
+            "foreground": "#fff",
+            "background": "#2980b9a6",
+            "iconColour": "#2980b9"
+        },
+        "CREATE": {
+            "icon": "plus",
+            "foreground": "#fff",
+            "background": "#27ae60a6",
+            "iconColour": "#27ae60"
+        },
+        "UPDATE": {
+            "icon": "versions",
+            "foreground": "#fff",
+            "background": "#f39c12a6",
+            "iconColour": "#f39c12"
+        },
+        "DELETE": {
+            "icon": "trash",
+            "foreground": "#fff",
+            "background": "#c0392ba6",
+            "iconColour": "#c0392b"
         }
     },
     "todo-tree.general.statusBar": "tags",
-        "tailwindCSS.experimental.classRegex": [
-            [
-                "cva\\(([^)]*)\\)",
-                "'([^']*)'"
-            ],
-            [
-                "cn\\(([^)]*)\\)",
-                "'([^']*)'"
-            ]
+    "tailwindCSS.experimental.classRegex": [
+        [
+            "cva\\(([^)]*)\\)",
+            "'([^']*)'"
+        ],
+        [
+            "cn\\(([^)]*)\\)",
+            "'([^']*)'"
         ]
+    ]
 }

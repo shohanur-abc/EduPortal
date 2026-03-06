@@ -1,7 +1,7 @@
 import { RecentResultsTable } from "@/features/dashboard/results/overview/@table"
-import { Result } from "@/services/result.service"
+import * as results from "@/services/results"
 
 export default async function ResultTablePage() {
-    const recentResults = await Result.getRecent()
+    const recentResults = await results.getRecent()
     return <RecentResultsTable recentResults={recentResults} />
 }

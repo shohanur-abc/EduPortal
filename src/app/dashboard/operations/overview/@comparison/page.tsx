@@ -1,5 +1,5 @@
 import { OperationsStudentStatusComparison } from "@/features/dashboard/operations/overview/@comparison"
-import { Student } from "@/services/student.service"
+import { Student } from "@/services"
 export default async function Page() {
     const data = await Student.statusBreakdown()
     return <OperationsStudentStatusComparison data={data.map(d => ({

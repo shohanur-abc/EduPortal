@@ -1,7 +1,7 @@
 import { ResultExamComparisonChart } from "@/features/dashboard/results/overview/@chart-exam"
-import { Result } from "@/services/result.service"
+import * as results from "@/services/results"
 
 export default async function ChartExamPage() {
-    const data = await Result.examComparison()
+    const data = await results.examComparison()
     return <ResultExamComparisonChart data={data} />
 }

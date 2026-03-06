@@ -1,11 +1,11 @@
 import { FeeKpi } from "@/features/dashboard/fees/overview/@kpi"
-import { Fee } from "@/services/fee.service"
+import * as fees from "@/services/fees"
 
 export default async function KpiPage() {
     const [totals, methods, statusBreakdown] = await Promise.all([
-        Fee.feeTotals(),
-        Fee.paymentMethodBreakdown(),
-        Fee.statusBreakdown(),
+        fees.feeTotals(),
+        fees.paymentMethodBreakdown(),
+        fees.statusBreakdown(),
     ])
     const totalRecords = statusBreakdown.reduce((s, b) => s + b.count, 0)
     const collectionRate = totals.total > 0 ? Math.round((totals.collected / totals.total) * 100 * 10) / 10 : 0

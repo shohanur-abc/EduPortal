@@ -6,7 +6,7 @@ import LayoutClient from "./layout-client";
 import { auth } from "@/lib/auth";
 
 
-export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
+export default async function RootLayout({ children, auth: authModal }: Readonly<{ children: React.ReactNode; auth: React.ReactNode }>) {
     const session = await auth();
 
     const user = session?.user ? {
@@ -21,6 +21,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
             <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} >
                 <Provider>
                     <LayoutClient user={user}>{children}</LayoutClient>
+                    {authModal}
                 </Provider>
             </body>
         </html>

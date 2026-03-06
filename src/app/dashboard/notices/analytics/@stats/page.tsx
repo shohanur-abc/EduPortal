@@ -1,15 +1,15 @@
 import { NoticeAnalyticsStatCards } from "@/features/dashboard/notices/analytics/@stats"
-import { Notice } from "@/services/notice.service"
+import * as notices from "@/services/notices"
 
 export default async function NoticeAnalyticsStatsPage() {
-    const [notices, statusCounts] = await Promise.all([Notice.getAll(), Notice.statusCounts()])
+    const [noticesData, statusCounts] = await Promise.all([notices.getAll(), notices.statusCounts()])
 
-    const total = notices.length
+    const total = noticesData.length
     const published = statusCounts.find((s) => s.status === "published")?.count ?? 0
     const publishRate = total > 0 ? Math.round((published / total) * 100) : 0
-    const urgentCount = notices.filter((n) => n.priority === "urgent").length
-    const highCount = notices.filter((n) => n.priority === "high").length
-    const expiredPublished = notices.filter((n) => {
+    const urgentCount = noticesData.filter((n) => n.priority === "urgent").length
+    const highCount = noticesData.filter((n) => n.priority === "high").length
+    const expiredPublished = noticesData.filter((n) => {
         if (!n.expiryDate) return false
         return new Date(n.expiryDate) < new Date() && n.status === "published"
     }).length

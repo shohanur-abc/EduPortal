@@ -1,7 +1,7 @@
 import { ResultReportChart } from "@/features/dashboard/reports/overview/@chart-results"
-import { Report } from "@/services/report.service"
+import * as reports from "@/services/reports"
 
 export default async function ChartResultsPage() {
-    const data = await Report.resultReport()
+    const data = await reports.resultReport()
     return <ResultReportChart data={data} />
 }

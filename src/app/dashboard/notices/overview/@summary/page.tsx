@@ -1,9 +1,9 @@
 import { NoticeSummary } from "@/features/dashboard/notices/overview/@summary"
-import { Notice } from "@/services/notice.service"
+import * as notices from "@/services/notices"
 export default async function Page() {
     const [statusCounts, priorityBreakdown] = await Promise.all([
-        Notice.statusCounts(),
-        Notice.priorityBreakdown(),
+        notices.statusCounts(),
+        notices.priorityBreakdown(),
     ])
     const published = statusCounts.find((s) => s.status === "published")?.count ?? 0
     const drafts = statusCounts.find((s) => s.status === "draft")?.count ?? 0

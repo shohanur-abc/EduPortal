@@ -1,6 +1,5 @@
 import { OperationsKpi } from "@/features/dashboard/operations/overview/@kpi"
-import { Class } from "@/services/class.service"
-import { Teacher } from "@/services/teacher.service"
+import { Class } from "@/services"
 
 export default async function Page() {
     const [capacity, gradeDistribution] = await Promise.all([

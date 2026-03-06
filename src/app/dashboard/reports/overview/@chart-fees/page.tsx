@@ -1,7 +1,7 @@
 import { FeeReportChart } from "@/features/dashboard/reports/overview/@chart-fees"
-import { Report } from "@/services/report.service"
+import * as reports from "@/services/reports"
 
 export default async function ChartFeesPage() {
-    const data = await Report.feeReport()
+    const data = await reports.feeReport()
     return <FeeReportChart data={data} />
 }
