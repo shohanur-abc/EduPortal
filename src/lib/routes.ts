@@ -61,11 +61,7 @@ export const ROUTES = {
         },
 
         notices: {
-            root: "/dashboard/notices",
-            overview: "/dashboard/notices/overview",
-            manage: "/dashboard/notices/manage",
-            publish: "/dashboard/notices/publish",
-            analytics: "/dashboard/notices/analytics",
+
         },
 
         operations: {
