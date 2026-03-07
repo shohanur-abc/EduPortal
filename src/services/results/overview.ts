@@ -1,9 +1,7 @@
-import 'server-only'
-
 import { connectDB } from '@/lib/db'
-import { gradeDistribution } from './gradeDistribution'
-import { getRecent } from './getRecent'
-import { avgBySubject } from './avgBySubject'
+import { gradeDistribution } from './grade-distribution'
+import { getRecent } from './get-recent'
+import { avgBySubject } from './avg-by-subject'
 
 export async function overview() {
     await connectDB()

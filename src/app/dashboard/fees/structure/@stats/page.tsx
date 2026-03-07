@@ -1,8 +1,8 @@
 import { FeeStructureStatCards } from "@/features/dashboard/fees/structure/@stats"
-import * as fees from "@/services/fees"
+import { Fee } from "@/services"
 
 export default async function FeeStructureStatsPage() {
-    const structure = await fees.feeStructure()
+    const structure = await Fee.feeStructure()
 
     const totalTypes = structure.length
     const totalCollected = structure.reduce((s, item) => s + item.totalAmount, 0)

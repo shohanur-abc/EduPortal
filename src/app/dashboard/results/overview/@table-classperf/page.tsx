@@ -1,7 +1,7 @@
 import { ResultClassPerformanceTable } from "@/features/dashboard/results/overview/@table-classperf"
-import * as results from "@/services/results"
+import { Result } from "@/services"
 
 export default async function TableClassPerfPage() {
-    const data = await results.classPerformance()
+    const data = await Result.classPerformance()
     return <ResultClassPerformanceTable data={data} />
 }

@@ -1,13 +1,12 @@
 import { OperationsSummary } from "@/features/dashboard/operations/overview/@summary"
-import * as classes from "@/services/classes"
-import * as students from "@/services/students"
-import * as teachers from "@/services/teachers"
+import { Class, Student, Teacher } from "@/services"
+
 export default async function Page() {
     const [classCount, studentCount, teacherCount, capacity] = await Promise.all([
-        classes.countActive(),
-        students.countActive(),
-        teachers.countActive(),
-        classes.capacityUtilization(),
+        Class.countActive(),
+        Student.countActive(),
+        Teacher.countActive(),
+        Class.capacityUtilization(),
     ])
     const totalStudents = capacity.reduce((s, c) => s + c.studentCount, 0)
     const totalCapacity = capacity.reduce((s, c) => s + c.maxStudents, 0)

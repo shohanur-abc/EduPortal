@@ -1,5 +1,5 @@
 import { AttendancePieChart } from "@/features/dashboard/attendance/overview/@chart";
-import * as attendance from "@/services/attendence";
+import { Attendance as attendance } from "@/services";
 
 export default async function ChartPage() {
     const stats = await attendance.stats()

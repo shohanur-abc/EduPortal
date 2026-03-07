@@ -1,5 +1,3 @@
-import 'server-only'
-
 import { cache } from 'react'
 import { StudentModel } from "@/models/student"
 import { TeacherModel } from "@/models/teacher"

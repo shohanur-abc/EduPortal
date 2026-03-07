@@ -1,7 +1,7 @@
 import { RecentNoticesTable } from "@/features/dashboard/notices/overview/@table"
-import * as noticesSvc from "@/services/notices"
+import { Notice } from "@/services"
 
 export default async function NoticeTablePage() {
-    const notices = await noticesSvc.getAll()
+    const notices = await Notice.getAll()
     return <RecentNoticesTable notices={notices} />
 }

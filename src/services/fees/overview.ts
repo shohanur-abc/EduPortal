@@ -1,9 +1,7 @@
-import 'server-only'
-
 import { connectDB } from '@/lib/db'
-import { getRecentPayments } from './getRecentPayments'
-import { getOverdue } from './getOverdue'
-import { statusBreakdown } from './statusBreakdown'
+import { getRecentPayments } from './get-recent-payments'
+import { getOverdue } from './get-overdue'
+import { statusBreakdown } from './status-breakdown'
 
 export async function overview(academicYear: string = "2025-2026") {
     await connectDB()

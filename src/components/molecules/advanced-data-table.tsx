@@ -28,7 +28,7 @@ import { cn } from "@/lib/utils"
 /** Sortable column header button */
 export function SortableHeader<TData>({ column, title }: { column: { toggleSorting: (desc: boolean) => void; getIsSorted: () => false | "asc" | "desc" }; title: string }) {
     return (
-        <Button variant="ghost" className="-ml-4" onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+        <Button variant="ghost" className="" onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
             {title}
             {column.getIsSorted() === "asc" ? <ArrowUp className="ml-2 size-3.5" /> : <ArrowDown className="ml-2 size-3.5" />}
         </Button>

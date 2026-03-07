@@ -1,5 +1,5 @@
 import { AttendanceMark } from "@/features/dashboard/attendance/mark/@mark"
-import * as classes from "@/services/classes"
+import { Class as classes } from "@/services"
 
 export default async function MarkAttendancePage() {
     const classData = await classes.getActive()

@@ -1,5 +1,3 @@
-import 'server-only'
-
 import { cache } from 'react'
 import { ResultModel } from "@/models/result"
 import { connectDB } from '@/lib/db'

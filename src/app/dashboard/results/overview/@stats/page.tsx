@@ -1,10 +1,10 @@
 import { ResultStatCards } from "@/features/dashboard/results/overview/@stats"
-import * as results from "@/services/results"
+import { Result } from "@/services"
 
 export default async function ResultStatsPage() {
     const [gradeDistribution, avgBySubject] = await Promise.all([
-        results.gradeDistribution(),
-        results.avgBySubject(),
+        Result.gradeDistribution(),
+        Result.avgBySubject(),
     ])
 
     const totalResults = gradeDistribution.reduce((s, g) => s + g.count, 0)

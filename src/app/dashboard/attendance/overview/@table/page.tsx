@@ -1,5 +1,5 @@
 import { AttendanceRecordsTable } from "@/features/dashboard/attendance/overview/@table";
-import * as attendance from "@/services/attendence";
+import { Attendance as attendance } from "@/services";
 
 export default async function DataTablePage() {
     const data = await attendance.getRecent()

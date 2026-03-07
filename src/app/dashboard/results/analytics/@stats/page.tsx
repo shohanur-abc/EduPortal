@@ -1,8 +1,8 @@
 import { AnalyticsStatCards } from "@/features/dashboard/results/analytics/@stats"
-import * as results from "@/services/results"
+import { Result } from "@/services"
 
 export default async function AnalyticsStatsPage() {
-    const data = await results.analytics()
+    const data = await Result.analytics()
 
     const totalExams = data.byExam.length
     const overallAvg = data.byExam.length > 0

@@ -1,7 +1,7 @@
 "use server"
 
-import * as students from "@/services/students"
+import { Student } from "@/services"
 
 export async function getStudentsForClass(section: string) {
-    return students.getForClass(section)
+    return Student.getForClass(section)
 }

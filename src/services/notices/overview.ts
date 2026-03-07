@@ -1,8 +1,6 @@
-import 'server-only'
-
 import { connectDB } from '@/lib/db'
-import { getAll } from './getAll'
-import { statusCounts } from './statusCounts'
+import { getAll } from './get-all'
+import { statusCounts } from './status-counts'
 
 export async function overview() {
     await connectDB()

@@ -1,6 +1,6 @@
 import { NoticePublishTrendChart } from "@/features/dashboard/notices/overview/@chart-trend"
-import * as notices from "@/services/notices"
+import { Notice } from "@/services"
 export default async function Page() {
-    const data = await notices.publishTrend()
+    const data = await Notice.publishTrend()
     return <NoticePublishTrendChart data={data} />
 }

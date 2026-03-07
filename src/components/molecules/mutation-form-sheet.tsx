@@ -90,7 +90,7 @@ export function MutationFormSheet<T extends FieldValues>({
                             {children(form as UseFormReturn<T>)}
                         </div>
                     </ScrollArea>
-                    <SheetFooter className="pt-4">
+                    <SheetFooter className="pt-10 flex-row justify-between flex-1 *:flex-1">
                         <SheetClose asChild>
                             <Button type="button" variant="outline" disabled={isPending}>
                                 Cancel

@@ -1,11 +1,11 @@
 import { ReportSummary } from "@/features/dashboard/reports/overview/@summary"
-import * as reports from "@/services/reports"
+import { Report } from "@/services"
 
 export default async function SummaryPage() {
     const [attendance, fees, results] = await Promise.all([
-        reports.attendanceReport(),
-        reports.feeReport(),
-        reports.resultReport(),
+        Report.attendanceReport(),
+        Report.feeReport(),
+        Report.resultReport(),
     ])
 
     return (

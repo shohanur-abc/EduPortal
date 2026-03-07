@@ -1,7 +1,7 @@
 import { NoticesManageSection } from "@/features/dashboard/notices/manage/@table"
-import * as noticesSvc from "@/services/notices"
+import { Notice } from "@/services"
 
 export default async function NoticesManagePage() {
-  const notices = await noticesSvc.getAll()
+  const notices = await Notice.getAll()
   return <NoticesManageSection notices={notices} />
 }

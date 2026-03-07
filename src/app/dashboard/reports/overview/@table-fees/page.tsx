@@ -1,7 +1,7 @@
 import { FeeReportTable } from "@/features/dashboard/reports/overview/@table-fees"
-import * as reports from "@/services/reports"
+import { Report } from "@/services"
 
 export default async function TableFeesPage() {
-    const data = await reports.feeReport()
+    const data = await Report.feeReport()
     return <FeeReportTable data={data} />
 }

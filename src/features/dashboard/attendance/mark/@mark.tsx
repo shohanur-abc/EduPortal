@@ -5,11 +5,11 @@ import { Select as Select$, SelectContent, SelectItem, SelectTrigger, SelectValu
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { getStudentsForClass } from "@/features/dashboard/attendance/actions/get-students-for-class"
 import { CalendarDays, CheckCircle, XCircle, Clock, AlertCircle, Users } from "lucide-react"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
-import { markBulkAttendance } from "../../actions/mutations";
+import { markBulkAttendance } from "../actions/mark-bulk-attendance"
+import { getForClass } from "../actions";
 
 
 export function AttendanceMark({ classes }: { classes: ClassInfo[] }) {
@@ -46,7 +46,7 @@ export function AttendanceMarkForm({ classes }: { classes: ClassInfo[] }) {
 
         setLoading(true)
         try {
-            const result = await getStudentsForClass(cls.section)
+            const result = await getForClass(cls.section)
             setStudents(result)
             // Default all to present
             const defaultStatuses: Record<string, "present"> = {}

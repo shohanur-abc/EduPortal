@@ -1,12 +1,12 @@
 import { NoticeKpi } from "@/features/dashboard/notices/overview/@kpi"
-import * as notices from "@/services/notices"
+import { Notice } from "@/services"
 
 export default async function KpiPage() {
     const [statusCounts, priorityBreakdown, audienceReach, expiring] = await Promise.all([
-        notices.statusCounts(),
-        notices.priorityBreakdown(),
-        notices.audienceReach(),
-        notices.getExpiringSoon(),
+        Notice.statusCounts(),
+        Notice.priorityBreakdown(),
+        Notice.audienceReach(),
+        Notice.getExpiringSoon(),
     ])
     const activeCount = statusCounts.find((s) => s.status === "published")?.count ?? 0
     const urgentCount = priorityBreakdown.filter((p) => ["high", "urgent"].includes(p.priority)).reduce((s, p) => s + p.count, 0)

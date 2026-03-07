@@ -1,5 +1,5 @@
 import { AttendanceClassWiseTable } from "@/features/dashboard/attendance/overview/@table-classwise"
-import * as attendance from "@/services/attendence"
+import { Attendance as attendance } from "@/services"
 
 export default async function TableClasswisePage() {
     const data = await attendance.classWiseStats()

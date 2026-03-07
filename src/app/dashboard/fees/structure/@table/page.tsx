@@ -1,7 +1,7 @@
 import { FeeStructureTable } from "@/features/dashboard/fees/structure/@table"
-import * as fees from "@/services/fees"
+import { Fee } from "@/services"
 
 export default async function FeeStructureTablePage() {
-    const structure = await fees.feeStructure()
+    const structure = await Fee.feeStructure()
     return <FeeStructureTable structure={structure} />
 }

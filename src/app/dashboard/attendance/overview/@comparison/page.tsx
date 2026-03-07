@@ -1,5 +1,5 @@
 import { AttendanceDayComparison } from "@/features/dashboard/attendance/overview/@comparison"
-import * as attendance from "@/services/attendence"
+import { Attendance as attendance } from "@/services"
 
 export default async function ComparisonPage() {
     const today = await attendance.todayStats()

@@ -1,5 +1,5 @@
 import { AttendanceReportStatCards } from "@/features/dashboard/attendance/reports/@stats"
-import * as attendance from "@/services/attendence"
+import { Attendance as attendance } from "@/services"
 
 export default async function ReportStatsPage() {
     const records = await attendance.getAll()

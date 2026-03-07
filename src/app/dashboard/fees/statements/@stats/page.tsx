@@ -1,5 +1,5 @@
 import { FeeStatementStatCards } from "@/features/dashboard/fees/statements/@stats"
-import * as fees from "@/services/fees"
+import { Fee as fees } from "@/services"
 
 export default async function FeeStatementsStatsPage() {
     const records = await fees.getAll()

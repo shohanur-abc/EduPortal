@@ -1,5 +1,5 @@
 import { AttendanceWeeklyTrendChart } from "@/features/dashboard/attendance/overview/@chart-trend"
-import * as attendance from "@/services/attendence"
+import { Attendance as attendance } from "@/services"
 
 export default async function ChartTrendPage() {
     const data = await attendance.weeklyTrend()

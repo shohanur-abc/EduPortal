@@ -1,6 +1,6 @@
 import { NoticeAudienceChart } from "@/features/dashboard/notices/overview/@chart-audience"
-import * as notices from "@/services/notices"
+import { Notice } from "@/services"
 export default async function Page() {
-    const data = await notices.audienceReach()
+    const data = await Notice.audienceReach()
     return <NoticeAudienceChart data={data} />
 }

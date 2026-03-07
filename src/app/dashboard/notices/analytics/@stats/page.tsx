@@ -1,8 +1,8 @@
 import { NoticeAnalyticsStatCards } from "@/features/dashboard/notices/analytics/@stats"
-import * as notices from "@/services/notices"
+import { Notice } from "@/services"
 
 export default async function NoticeAnalyticsStatsPage() {
-    const [noticesData, statusCounts] = await Promise.all([notices.getAll(), notices.statusCounts()])
+    const [noticesData, statusCounts] = await Promise.all([Notice.getAll(), Notice.statusCounts()])
 
     const total = noticesData.length
     const published = statusCounts.find((s) => s.status === "published")?.count ?? 0

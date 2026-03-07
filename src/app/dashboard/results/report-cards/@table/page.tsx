@@ -1,8 +1,8 @@
 import { ReportCardsTable } from "@/features/dashboard/results/report-cards/@table"
-import * as resultsSvc from "@/services/results"
+import { Result } from "@/services"
 
 export default async function ReportCardTablePage() {
-    const results = await resultsSvc.getAll()
+    const results = await Result.getAll()
 
     const uniqueStudents = [...new Set(results.map((r) => r.rollNumber))].length
 
