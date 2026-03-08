@@ -1,3 +1,5 @@
+"use server"
+
 import { ClassModel } from "@/models/class"
 import { connectDB, sid } from '@/lib/db'
 

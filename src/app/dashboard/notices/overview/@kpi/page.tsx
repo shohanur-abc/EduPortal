@@ -3,8 +3,8 @@ import { Notice as notice } from "@/services"
 
 export default async function KpiPage() {
     const [counts, audienceReach, expiringSoon] = await Promise.all([
-        notice.statusCounts(),
-        notice.audienceReach(),
+        notice.getStatusCounts(),
+        notice.getAudienceReach(),
         notice.getExpiringSoon(),
     ])
 

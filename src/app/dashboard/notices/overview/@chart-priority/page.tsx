@@ -2,6 +2,6 @@ import { NoticePriorityChart } from "@/features/dashboard/notices/overview/@char
 import { Notice as notice } from "@/services"
 
 export default async function ChartPriorityPage() {
-    const data = await notice.priorityBreakdown()
+    const data = await notice.getPriorityBreakdown()
     return <NoticePriorityChart data={data} />
 }

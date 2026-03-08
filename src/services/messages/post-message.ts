@@ -1,8 +1,39 @@
-import { MessageModel } from "@/models/message"
+"use server"
+
+import { revalidatePath } from "next/cache"
+import { ChatModel } from "@/models/message"
 import { ConversationModel } from "@/models/conversation"
 import { connectDB, sid } from "@/lib/db"
+import { messageSchema } from "@/features/dashboard/validators"
+import { success, error } from "@/lib/utils"
+import { ActionResult } from "@/types/response"
+import { ROUTES } from "@/lib/routes"
 
-export async function postMessage(data: {
+
+export async function postMessage(raw: unknown): Promise<ActionResult> {
+    const parsed = messageSchema.safeParse(raw)
+    if (!parsed.success) return error(parsed.error.issues[0].message)
+
+    const { conversationId, senderId } = raw as { conversationId: string; senderId: string }
+    if (!conversationId || !senderId) return error("Conversation ID and Sender ID are required")
+
+    try {
+        const message = await post({
+            conversationId,
+            senderId,
+            content: parsed.data.content,
+            type: parsed.data.type,
+            replyTo: parsed.data.replyTo,
+        })
+        revalidatePath(ROUTES.dashboard.messages.root, "layout")
+        return success("Message sent", { data: message })
+    } catch (err) {
+        return error((err as Error).message || "Failed to send message")
+    }
+}
+
+
+async function post(data: {
     conversationId: string
     senderId: string
     content: string
@@ -21,7 +52,7 @@ export async function postMessage(data: {
     )
     if (!isParticipant) throw new Error("Not a participant in this conversation")
 
-    const message = await MessageModel.create({
+    const message = await ChatModel.create({
         conversation: data.conversationId,
         sender: data.senderId,
         content: data.content,

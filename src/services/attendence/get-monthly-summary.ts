@@ -1,3 +1,5 @@
+"use server"
+
 import { cache } from 'react'
 import { AttendanceModel } from '@/models/attendance'
 import { connectDB } from '@/lib/db'
@@ -12,9 +14,9 @@ import { connectDB } from '@/lib/db'
  *   - `late`: count of students marked as late that month
  *   - `excused`: count of students with excused absences that month
  */
-export const monthlySummary = cache(async (months: number = 6) => {
+export const getMonthlySummary = cache(async (months: number = 6) => {
     await connectDB()
-    const raw = await AttendanceModel.monthlySummary(months)
+    const raw = await AttendanceModel.getMonthlySummary(months)
     const MONTH_NAMES = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     const monthMap = new Map<string, { month: string; present: number; absent: number; late: number; excused: number }>()
 

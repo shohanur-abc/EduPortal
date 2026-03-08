@@ -3,8 +3,8 @@ import { Attendance as attendance } from "@/services"
 
 export default async function KpiPage() {
     const [rateData, todayData] = await Promise.all([
-        attendance.attendanceRate(),
-        attendance.todayStats(),
+        attendance.getAttendanceRate(),
+        attendance.getTodayStats(),
     ])
     return (
         <AttendanceKpi

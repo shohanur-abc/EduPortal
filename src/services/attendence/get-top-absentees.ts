@@ -1,3 +1,5 @@
+"use server"
+
 import { cache } from 'react'
 import { AttendanceModel } from '@/models/attendance'
 import { connectDB } from '@/lib/db'
@@ -11,9 +13,9 @@ import { connectDB } from '@/lib/db'
  *   - `className`: class name with section (e.g., "10A")
  *   - `absences`: total count of absence records for the student
  */
-export const topAbsentees = cache(async (limit: number = 10) => {
+export const getTopAbsentees = cache(async (limit: number = 10) => {
     await connectDB()
-    const raw = await AttendanceModel.topAbsentees(limit)
+    const raw = await AttendanceModel.getTopAbsentees(limit)
 
     return raw.map((r) => ({
         studentName: r.studentName as string,

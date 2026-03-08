@@ -1,3 +1,5 @@
+"use server"
+
 import { cache } from 'react'
 import { AttendanceModel } from '@/models/attendance'
 import { connectDB } from '@/lib/db'
@@ -14,9 +16,9 @@ import { connectDB } from '@/lib/db'
  * - `excused`: number of students excused (e.g., 1)
  * - `rate`: attendance rate as a percentage (rounded to 1 decimal)
  */
-export const classWiseStats = cache(async () => {
+export const getClassWiseStats = cache(async () => {
     await connectDB()
-    const raw = await AttendanceModel.classWiseStats()
+    const raw = await AttendanceModel.getClassWiseStats()
 
     return raw.map((r) => ({
         className: `${r._id.className} ${r._id.section}`,

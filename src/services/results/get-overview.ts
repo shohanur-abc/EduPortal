@@ -1,3 +1,5 @@
+"use server"
+
 import { connectDB } from '@/lib/db'
 import { getGradeDistribution } from './get-grade-distribution'
 import { getRecent } from './get-recent'

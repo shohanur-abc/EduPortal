@@ -2,7 +2,7 @@ import { AttendancePieChart } from "@/features/dashboard/attendance/overview/@ch
 import { Attendance as attendance } from "@/services";
 
 export default async function ChartPage() {
-    const stats = await attendance.stats()
+    const stats = await attendance.getStats()
 
     return <AttendancePieChart data={[
         { status: "present", count: stats.present },

@@ -1,7 +1,39 @@
+"use server"
+
+import { revalidatePath } from "next/cache"
 import { ConversationModel } from "@/models/conversation"
 import { connectDB, sid } from "@/lib/db"
+import { conversationSchema } from "@/features/dashboard/validators"
+import { success, error } from "@/lib/utils"
+import { ActionResult } from "@/types/response"
+import { ROUTES } from "@/lib/routes"
 
-export async function postConversation(data: {
+
+export async function postConversation(raw: unknown): Promise<ActionResult> {
+    const parsed = conversationSchema.safeParse(raw)
+    if (!parsed.success) return error(parsed.error.issues[0].message)
+
+    const { createdBy } = raw as { createdBy: string }
+    if (!createdBy) return error("Creator ID is required")
+
+    try {
+        const conversation = await post({
+            name: parsed.data.name,
+            type: parsed.data.type,
+            description: parsed.data.description,
+            participantIds: parsed.data.participantIds,
+            createdBy,
+        })
+        revalidatePath(ROUTES.dashboard.messages.root, "layout")
+        return success(conversation.existing ? "Conversation already exists" : "Conversation created", { data: conversation })
+    } catch (err) {
+        return error((err as Error).message || "Failed to create conversation")
+    }
+}
+
+
+
+async function post(data: {
     name?: string
     type: "direct" | "group"
     description?: string

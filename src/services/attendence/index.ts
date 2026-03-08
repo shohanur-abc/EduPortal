@@ -7,4 +7,7 @@ export * from './get-top-absentees'
 export * from './get-monthly-summary'
 export * from './get-attendance-rate'
 export * from './get-today-stats'
+export * from './post-attendance'
+export * from './patch-attendance'
+export * from './delete-attendance'
 

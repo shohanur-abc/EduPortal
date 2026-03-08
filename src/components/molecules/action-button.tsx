@@ -40,8 +40,10 @@ export function ActionButton({ action, label, icon: Icon, successMessage, classN
     )
 }
 
+// ============= IMPORTS =============
+import { ActionResult } from "@/types/response"
+
 // ============= TYPES =============
-type ActionResult = { success: true; message: string } | { success: false; error: string }
 
 interface ActionButtonProps extends Omit<ButtonProps, "onClick"> {
     action: () => Promise<ActionResult>

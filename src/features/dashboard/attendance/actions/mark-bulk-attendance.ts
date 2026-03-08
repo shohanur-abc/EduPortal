@@ -3,6 +3,7 @@
 import { AttendanceModel } from "@/models/attendance"
 import { ClassModel } from "@/models/class"
 import { connectDB } from "@/lib/db"
+import { error, success } from "@/lib/utils"
 import { auth } from "@/lib/auth"
 
 interface AttendanceEntry {
@@ -24,13 +25,13 @@ export async function markBulkAttendance({
         const session = await auth()
 
         if (!session?.user?.id) {
-            return { success: false, error: "Unauthorized" }
+            return error("Unauthorized")
         }
 
         // Verify user has permission to mark attendance for this class
         const cls = await ClassModel.findById(classId)
         if (!cls) {
-            return { success: false, error: "Class not found" }
+            return error("Class not found")
         }
 
         const dateObj = new Date(date)
@@ -56,12 +57,9 @@ export async function markBulkAttendance({
 
         await AttendanceModel.insertMany(records)
 
-        return {
-            success: true,
-            message: `Attendance marked for ${entries.length} students`,
-        }
-    } catch (error) {
-        console.error("Failed to mark attendance:", error)
-        return { success: false, error: "Failed to mark attendance" }
+        return success(`Attendance marked for ${entries.length} students`)
+    } catch (err) {
+        console.error("Failed to mark attendance:", err)
+        return error("Failed to mark attendance")
     }
 }

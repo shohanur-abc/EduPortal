@@ -1,3 +1,5 @@
+"use server"
+
 import { FeeModel } from "@/models/fee"
 import { fmtDate } from '@/lib/utils'
 import { connectDB, pop } from '@/lib/db'

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { ROUTES } from '@/lib/routes';
 import { toast } from 'sonner';
 import {
   DropdownMenu,
@@ -29,19 +30,19 @@ export default function UserMenu({ user }: IUserMenu) {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem asChild>
-            <Link href="/dashboard" className="cursor-pointer">
+            <Link href={ROUTES.dashboard.home} className="cursor-pointer">
               <Sparkles className="size-4" />
               <span>Dashboard</span>
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
-            <Link href="/dashboard/profile" className="cursor-pointer">
+            <Link href={ROUTES.dashboard.profile} className="cursor-pointer">
               <BadgeCheck className="size-4" />
               <span>Profile</span>
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
-            <Link href="/dashboard/settings" className="cursor-pointer">
+            <Link href={ROUTES.dashboard.settings} className="cursor-pointer">
               <CreditCard className="size-4" />
               <span>Settings</span>
             </Link>

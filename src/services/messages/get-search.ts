@@ -1,5 +1,7 @@
+"use server"
+
 import { ConversationModel } from "@/models/conversation"
-import { MessageModel } from "@/models/message"
+import { ChatModel } from "@/models/message"
 import { connectDB, pop, sid } from "@/lib/db"
 
 
@@ -22,7 +24,7 @@ export async function getSearchMessages(
     query: string
 ): Promise<SearchResult["messages"]> {
     await connectDB()
-    const results = await MessageModel.searchMessages(conversationId, query)
+    const results = await ChatModel.searchMessages(conversationId, query)
     return results.map((m) => ({
         _id: sid(m),
         content: m.content,

@@ -1,3 +1,5 @@
+"use server"
+
 import { ConversationModel } from "@/models/conversation"
 import { connectDB, pop, sid } from "@/lib/db"
 

@@ -1,3 +1,5 @@
+"use server"
+
 import { cache } from 'react'
 import { StudentModel } from "@/models/student"
 import { TeacherModel } from "@/models/teacher"
@@ -20,7 +22,7 @@ export const stats = cache(async () => {
     const feesTotal = feeTotals[0]?.total ?? 0
     const feesCollected = feeTotals[0]?.collected ?? 0
 
-    const todayAttendance = await AttendanceModel.todayStats()
+    const todayAttendance = await AttendanceModel.getTodayStats()
     const presentCount = todayAttendance.find((a: { _id: string; count: number }) => a._id === "present")?.count ?? 0
     const totalToday = todayAttendance.reduce((sum: number, a: { count: number }) => sum + a.count, 0)
     const attendanceRate = totalToday > 0 ? Math.round((presentCount / totalToday) * 100 * 10) / 10 : 0

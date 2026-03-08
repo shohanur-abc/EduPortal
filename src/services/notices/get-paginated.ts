@@ -1,24 +1,9 @@
+"use server"
+
 import { NoticeModel } from "@/models/notice"
 import { fmtDate } from "@/lib/utils"
 import { connectDB, pop } from "@/lib/db"
 
-export interface PaginatedNoticesResult {
-    items: {
-        _id: string
-        title: string
-        content: string
-        authorName: string
-        priority: string
-        targetAudience: string[]
-        publishDate: string
-        expiryDate: string
-        status: string
-    }[]
-    total: number
-    page: number
-    pageSize: number
-    hasMore: boolean
-}
 
 export async function getPaginated(
     page: number = 1,
@@ -68,4 +53,23 @@ export async function getPaginated(
         pageSize,
         hasMore: page * pageSize < total,
     }
+}
+
+
+export interface PaginatedNoticesResult {
+    items: {
+        _id: string
+        title: string
+        content: string
+        authorName: string
+        priority: string
+        targetAudience: string[]
+        publishDate: string
+        expiryDate: string
+        status: string
+    }[]
+    total: number
+    page: number
+    pageSize: number
+    hasMore: boolean
 }

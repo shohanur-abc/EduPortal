@@ -10,7 +10,7 @@ import { AvatarCell } from "@/components/molecules/avatar-cell"
 import { Select } from "@/components/molecules/select"
 import { FormInput } from "@/components/molecules/input"
 import { attendanceCorrectionSchema, type AttendanceCorrectionData } from "@/features/dashboard/validators"
-import { correctAttendance, deleteAttendance } from "@/features/dashboard/actions/mutations"
+import { patchAttendance, deleteAttendance } from "@/services/attendence"
 import { Edit, Trash2, AlertCircle } from "lucide-react"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
@@ -115,7 +115,7 @@ function AttendanceCorrectionsCrud({ records, loading }: { records: AttendanceRe
                 submitLabel="Save Correction"
                 onSubmit={async (data) => {
                     if (!editingId) return { success: false as const, error: "No record selected" }
-                    return correctAttendance(editingId, data)
+                    return patchAttendance(editingId, data)
                 }}
             >
                 {() => (

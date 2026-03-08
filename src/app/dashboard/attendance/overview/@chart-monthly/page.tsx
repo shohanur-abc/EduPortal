@@ -2,6 +2,6 @@ import { AttendanceMonthlyChart } from "@/features/dashboard/attendance/overview
 import { Attendance as attendance } from "@/services"
 
 export default async function ChartMonthlyPage() {
-    const data = await attendance.monthlySummary()
+    const data = await attendance.getMonthlySummary()
     return <AttendanceMonthlyChart data={data} />
 }

@@ -2,6 +2,6 @@ import { AttendanceClassWiseTable } from "@/features/dashboard/attendance/overvi
 import { Attendance as attendance } from "@/services"
 
 export default async function TableClasswisePage() {
-    const data = await attendance.classWiseStats()
+    const data = await attendance.getClassWiseStats()
     return <AttendanceClassWiseTable data={data} />
 }

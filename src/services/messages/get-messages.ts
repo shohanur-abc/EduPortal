@@ -1,4 +1,6 @@
-import { MessageModel } from "@/models/message"
+"use server"
+
+import { ChatModel } from "@/models/message"
 import { connectDB, pop, sid } from "@/lib/db"
 
 export async function getMessages(
@@ -8,8 +10,8 @@ export async function getMessages(
 ): Promise<PaginatedMessagesResult> {
     await connectDB()
     const [messages, total] = await Promise.all([
-        MessageModel.getByConversation(conversationId, page, limit),
-        MessageModel.countByConversation(conversationId),
+        ChatModel.getByConversation(conversationId, page, limit),
+        ChatModel.countByConversation(conversationId),
     ])
 
     const items: MessageItem[] = messages.map((m) => ({

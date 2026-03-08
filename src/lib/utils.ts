@@ -20,3 +20,7 @@ export const fmtDate = (d: unknown): string => {
   if (d instanceof Date) return d.toISOString().split("T")[0]
   return String(d).split("T")[0]
 }
+
+
+export const success = (message: string, obj?: Record<string, unknown>) => ({ success: true, message, ...obj } as const)
+export const error = (error: string, obj?: Record<string, unknown>) => ({ success: false, error, ...obj } as const)

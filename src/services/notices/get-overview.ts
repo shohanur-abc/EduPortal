@@ -1,12 +1,14 @@
+"use server"
+
 import { connectDB } from '@/lib/db'
 import { getAll } from './get-all'
-import { statusCounts } from './get-status-counts'
+import { getStatusCounts } from './get-status-counts'
 
-export async function overview() {
+export async function getOverview() {
     await connectDB()
     const [notices, statusCountsData] = await Promise.all([
         getAll(),
-        statusCounts(),
+        getStatusCounts(),
     ])
 
     return { notices, statusCounts: statusCountsData }

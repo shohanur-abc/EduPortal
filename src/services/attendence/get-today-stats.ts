@@ -1,3 +1,5 @@
+"use server"
+
 import { cache } from 'react'
 import { AttendanceModel } from '@/models/attendance'
 import { connectDB } from '@/lib/db'
@@ -13,10 +15,10 @@ import { connectDB } from '@/lib/db'
  * - `total`: total number of attendance records for today
  * - `rate`: today's attendance rate as a percentage (rounded to 1 decimal)
  */
-export const todayStats = cache(async () => {
+export const getTodayStats = cache(async () => {
     await connectDB()
 
-    const raw = await AttendanceModel.todayStats()
+    const raw = await AttendanceModel.getTodayStats()
     const present = raw.find((r: { _id: string }) => r._id === "present")?.count ?? 0
     const absent = raw.find((r: { _id: string }) => r._id === "absent")?.count ?? 0
     const late = raw.find((r: { _id: string }) => r._id === "late")?.count ?? 0

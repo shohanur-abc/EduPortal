@@ -1,3 +1,5 @@
+"use server"
+
 import { connectDB } from '@/lib/db'
 import { getRecentPayments } from './get-recent-payments'
 import { getOverdue } from './get-overdue'

@@ -1,3 +1,5 @@
+"use server"
+
 import { ResultModel } from "@/models/result"
 import { connectDB, pop } from '@/lib/db'
 

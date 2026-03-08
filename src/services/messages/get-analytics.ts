@@ -1,4 +1,6 @@
-import { MessageModel } from "@/models/message"
+"use server"
+
+import { ChatModel } from "@/models/message"
 import { ConversationModel } from "@/models/conversation"
 import { connectDB } from "@/lib/db"
 
@@ -8,9 +10,9 @@ export async function getAnalytics(): Promise<MessageAnalytics> {
 
     const [messageTrend, topSenders, dailyActivity, participantStats, conversationTrend] =
         await Promise.all([
-            MessageModel.messageTrend(6),
-            MessageModel.topSenders(10),
-            MessageModel.dailyActivity(30),
+            ChatModel.messageTrend(6),
+            ChatModel.topSenders(10),
+            ChatModel.dailyActivity(30),
             ConversationModel.participantStats(),
             ConversationModel.activityTrend(6),
         ])

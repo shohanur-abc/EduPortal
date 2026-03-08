@@ -2,7 +2,7 @@ import { AttendanceDayComparison } from "@/features/dashboard/attendance/overvie
 import { Attendance as attendance } from "@/services"
 
 export default async function ComparisonPage() {
-    const today = await attendance.todayStats()
+    const today = await attendance.getTodayStats()
     return (
         <AttendanceDayComparison data={[
             { label: "Present", value: today.present, color: "var(--chart-1)" },

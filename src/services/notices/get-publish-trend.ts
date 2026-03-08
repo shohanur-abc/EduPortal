@@ -1,8 +1,10 @@
+"use server"
+
 import { cache } from 'react'
 import { NoticeModel } from "@/models/notice"
 import { connectDB } from '@/lib/db'
 
-export const publishTrend = cache(async (months: number = 6) => {
+export const getPublishTrend = cache(async (months: number = 6) => {
     await connectDB()
     const MONTH_NAMES = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     const raw = await NoticeModel.publishTrend(months)

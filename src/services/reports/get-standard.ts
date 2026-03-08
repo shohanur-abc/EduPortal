@@ -1,3 +1,5 @@
+"use server"
+
 import { connectDB } from '@/lib/db'
 import { getReport } from './get-report'
 import { getFee } from './get-fee-report'

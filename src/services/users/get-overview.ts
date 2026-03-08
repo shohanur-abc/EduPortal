@@ -1,3 +1,5 @@
+"use server"
+
 import { connectDB } from '@/lib/db'
 import { getRecent } from './get-recent'
 import { getRoleCounts } from './get-role-counts'

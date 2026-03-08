@@ -1,3 +1,5 @@
+"use server"
+
 import { cache } from 'react'
 import { TeacherModel } from "@/models/teacher"
 import { connectDB } from '@/lib/db'

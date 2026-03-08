@@ -1,3 +1,5 @@
+"use server"
+
 import { StudentModel } from "@/models/student"
 import { fmtDate } from '@/lib/utils'
 import { connectDB, sid } from '@/lib/db'

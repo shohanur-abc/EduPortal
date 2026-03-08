@@ -42,6 +42,8 @@ export const ROUTES = {
         principal: "/dashboard/principal",
         student: "/dashboard/student",
         teacher: "/dashboard/teacher",
+        profile: "/dashboard/profile",
+        settings: "/dashboard/settings",
 
         attendance: {
             root: "/dashboard/attendance",

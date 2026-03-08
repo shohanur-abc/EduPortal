@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { ROUTES } from '@/lib/routes';
 import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarRail, SidebarProvider, SidebarInset, SidebarSeparator, } from '@/components/ui/sidebar';
 import React, { ReactNode } from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -27,7 +28,7 @@ const SidebarHeaderContent = ({ userRole }: { userRole: string }) => (
         <SidebarMenu>
             <SidebarMenuItem>
                 <SidebarMenuButton size="lg" asChild>
-                    <Link href="/">
+                    <Link href={ROUTES.marketing.home}>
                         <div className="bg-primary text-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg font-bold text-sm">
                             E
                         </div>

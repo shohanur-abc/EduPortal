@@ -1,5 +1,6 @@
 
 import Link from 'next/link';
+import { ROUTES } from '@/lib/routes';
 import {
     NavigationMenu,
     NavigationMenuContent,
@@ -30,7 +31,7 @@ export default function DesktopNav({ routes, user }: IDesktopNav) {
 
 // ============= CHILD COMPONENTS =============
 const BrandLogo = () => (
-    <Link href="/" className="flex items-center gap-2 font-bold text-xl text-primary hover:opacity-80 transition-opacity">
+    <Link href={ROUTES.marketing.home} className="flex items-center gap-2 font-bold text-xl text-primary hover:opacity-80 transition-opacity">
         <div className="bg-primary text-primary-foreground flex aspect-square size-7 items-center justify-center rounded-lg font-bold text-sm">
             E
         </div>
@@ -88,10 +89,10 @@ const NavActions = ({ user }: { user?: IDesktopNav['user'] }) => (
         ) : (
             <>
                 <Button variant="ghost" size="sm" asChild>
-                    <Link href="/auth/login">Login</Link>
+                    <Link href={ROUTES.auth.login}>Login</Link>
                 </Button>
                 <Button size="sm" asChild>
-                    <Link href="/auth/signup">Sign Up</Link>
+                    <Link href={ROUTES.auth.signup}>Sign Up</Link>
                 </Button>
             </>
         )}

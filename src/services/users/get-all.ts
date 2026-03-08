@@ -1,3 +1,5 @@
+"use server"
+
 import { UserModel } from "@/models/user"
 import { fmtDate } from '@/lib/utils'
 import { connectDB } from '@/lib/db'

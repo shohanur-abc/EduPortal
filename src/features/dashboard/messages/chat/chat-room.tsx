@@ -11,11 +11,12 @@ import { NewConversationDialog } from "./new-conversation-dialog"
 import { EmptyState } from "@/components/molecules/empty-state"
 import { Skeleton } from "@/components/ui/skeleton"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, } from "@/components/ui/dropdown-menu"
-import { sendMessageAction, deleteMessageAction, editMessageAction, archiveConversationAction, } from "@/features/dashboard/actions/mutations"
-import { fetchConversations, fetchConversation, fetchMessages, fetchSearchConversations, } from "@/features/dashboard/actions/queries"
+import { postMessage, patchRemoveMessage, patchMessage, patchArchiveConversation, } from "@/services/messages"
+import { fetchConversations, fetchMessages, fetchSearchConversations, } from "@/features/dashboard/actions/queries"
 import { MessageSquare, Video, Phone, Search, MoreVertical, Reply, Pencil, Trash2, Archive, Info, } from "lucide-react"
 import { toast } from "sonner"
 import type { ConversationItem, ConversationDetail, MessageItem, ChatUser } from "./types"
+import { Message } from "@/services"
 
 // ============= MAIN CHAT ROOM COMPONENT =============
 export function ChatRoom({
@@ -60,7 +61,7 @@ export function ChatRoom({
 
         try {
             const [detail, msgResult] = await Promise.all([
-                fetchConversation(conversationId),
+                Message.getConversation(conversationId),
                 fetchMessages(conversationId, 1, 50),
             ])
             setConversationDetail(detail)
@@ -102,7 +103,7 @@ export function ChatRoom({
         scrollToBottom()
 
         try {
-            const result = await sendMessageAction({
+            const result = await postMessage({
                 conversationId: activeConversationId,
                 senderId: currentUserId,
                 content,
@@ -126,7 +127,7 @@ export function ChatRoom({
     // Delete message
     const handleDeleteMessage = React.useCallback(async (messageId: string) => {
         try {
-            const result = await deleteMessageAction(messageId)
+            const result = await patchRemoveMessage(messageId)
             if (result.success) {
                 setMessages((prev) => prev.filter((m) => m._id !== messageId))
                 toast.success("Message deleted")
@@ -141,7 +142,7 @@ export function ChatRoom({
     // Edit message
     const handleEditMessage = React.useCallback(async (messageId: string, newContent: string) => {
         try {
-            const result = await editMessageAction(messageId, newContent)
+            const result = await patchMessage(messageId, newContent)
             if (result.success) {
                 setMessages((prev) =>
                     prev.map((m) => (m._id === messageId ? { ...m, content: newContent, isEdited: true } : m))
@@ -159,7 +160,7 @@ export function ChatRoom({
     const handleArchiveConversation = React.useCallback(async () => {
         if (!activeConversationId) return
         try {
-            const result = await archiveConversationAction(activeConversationId)
+            const result = await patchArchiveConversation(activeConversationId)
             if (result.success) {
                 setConversations((prev) => prev.filter((c) => c._id !== activeConversationId))
                 setActiveConversationId(null)

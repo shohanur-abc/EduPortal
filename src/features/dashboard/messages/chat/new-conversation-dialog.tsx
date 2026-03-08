@@ -20,7 +20,7 @@ import { Badge } from "@/components/ui/badge"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Plus, Search, Users, MessageSquare } from "lucide-react"
-import { createConversationAction } from "@/features/dashboard/actions/mutations"
+import { postConversation } from "@/services/messages"
 import { toast } from "sonner"
 import type { ChatUser } from "./types"
 
@@ -71,7 +71,7 @@ export function NewConversationDialog({
 
         setIsCreating(true)
         try {
-            const result = await createConversationAction({
+            const result = await postConversation({
                 type: tab,
                 name: tab === "group" ? groupName : undefined,
                 description: tab === "group" ? groupDescription : undefined,

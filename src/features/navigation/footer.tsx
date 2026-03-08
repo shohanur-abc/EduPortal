@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { ROUTES } from '@/lib/routes';
 import { Separator } from '@/components/ui/separator';
 
 // ============= MAIN COMPONENT =============
@@ -51,8 +52,8 @@ const FooterSection = ({ section }: { section: IFooter['sections'][number] }) =>
     <div className="space-y-4">
         <h4 className="font-semibold text-sm">{section.title}</h4>
         <ul className="space-y-2">
-            {section.links.map((link,i) => (
-                <li key={link.href+i}>
+            {section.links.map((link, i) => (
+                <li key={link.href + i}>
                     <Link
                         href={link.href}
                         className="text-sm text-muted-foreground hover:text-primary transition-colors"
@@ -69,10 +70,10 @@ const FooterBottom = () => (
     <div className="py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
         <p>&copy; 2026 EduPortal School Management System. All rights reserved.</p>
         <div className="flex gap-6">
-            <Link href="/security-privacy" className="hover:text-primary transition-colors">
+            <Link href={ROUTES.marketing.securityPrivacy} className="hover:text-primary transition-colors">
                 Privacy Policy
             </Link>
-            <Link href="/security-privacy" className="hover:text-primary transition-colors">
+            <Link href={ROUTES.marketing.securityPrivacy} className="hover:text-primary transition-colors">
                 Terms of Service
             </Link>
         </div>

@@ -2,6 +2,6 @@ import { AttendanceTopAbsenteesTable } from "@/features/dashboard/attendance/ove
 import { Attendance as attendance } from "@/services"
 
 export default async function TableAbsenteesPage() {
-    const data = await attendance.topAbsentees()
+    const data = await attendance.getTopAbsentees()
     return <AttendanceTopAbsenteesTable data={data} />
 }

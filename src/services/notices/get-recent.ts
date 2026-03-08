@@ -1,3 +1,5 @@
+"use server"
+
 import { NoticeModel } from "@/models/notice"
 import { fmtDate } from '@/lib/utils'
 import { connectDB, pop } from '@/lib/db'

@@ -27,11 +27,11 @@ import { Select } from "@/components/molecules/select"
 import { DatePicker } from "@/components/molecules/date-picker"
 import { Checkbox as CB } from "@/components/ui/checkbox"
 import { noticeSchema, type NoticeFormData } from "@/features/dashboard/validators"
-import { createNotice, updateNotice, deleteNotice, publishNotice, archiveNotice } from "@/features/dashboard/actions/mutations"
-import { fetchNoticesPaginated } from "@/features/dashboard/actions/queries"
+import { postOne, patchById, deleteById, patchMarkAsPublished, patchMarkAsArchived } from "@/services/notices"
 import { Plus, Send, Archive, Eye, Pencil, Trash2, FileText, Clock } from "lucide-react"
 import { toast } from "sonner"
 import type { NoticeItem } from "../overview/types"
+import { Notice } from "@/services"
 
 const PAGE_SIZE = 12
 
@@ -66,7 +66,7 @@ export function NoticeBoard({
     const fetchFiltered = React.useCallback(async (s: string, status: string, priority: string) => {
         setIsLoading(true)
         try {
-            const result = await fetchNoticesPaginated(1, PAGE_SIZE, {
+            const result = await Notice.getPaginated(1, PAGE_SIZE, {
                 search: s || undefined,
                 status: status !== "all" ? status : undefined,
                 priority: priority !== "all" ? priority : undefined,
@@ -86,7 +86,7 @@ export function NoticeBoard({
         setIsLoading(true)
         try {
             const nextPage = page + 1
-            const result = await fetchNoticesPaginated(nextPage, PAGE_SIZE, {
+            const result = await Notice.getPaginated(nextPage, PAGE_SIZE, {
                 search: search || undefined,
                 status: statusFilter !== "all" ? statusFilter : undefined,
                 priority: priorityFilter !== "all" ? priorityFilter : undefined,
@@ -248,9 +248,9 @@ export function NoticeBoard({
                                 if (!confirmAction) return
                                 const { type, notice: n } = confirmAction
                                 let result
-                                if (type === "publish") result = await publishNotice(n._id)
-                                else if (type === "archive") result = await archiveNotice(n._id)
-                                else result = await deleteNotice(n._id)
+                                if (type === "publish") result = await patchMarkAsPublished(n._id)
+                                else if (type === "archive") result = await patchMarkAsArchived(n._id)
+                                else result = await deleteById(n._id)
 
                                 if (result.success) {
                                     toast.success(result.message)
@@ -357,9 +357,9 @@ function NoticeFormSheet({ open, onOpenChange, notice }: { open: boolean; onOpen
             defaultValues={defaultValues}
             onSubmit={async (data) => {
                 if (isEdit && notice) {
-                    return updateNotice(notice._id, data)
+                    return patchById(notice._id, data)
                 }
-                return createNotice(data)
+                return postOne(data)
             }}
             submitLabel={isEdit ? "Update" : "Create"}
         >

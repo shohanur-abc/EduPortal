@@ -1,8 +1,10 @@
+"use server"
+
 import { cache } from 'react'
 import { NoticeModel } from "@/models/notice"
 import { connectDB } from '@/lib/db'
 
-export const priorityBreakdown = cache(async () => {
+export const getPriorityBreakdown = cache(async () => {
     await connectDB()
     const raw = await NoticeModel.priorityBreakdown()
     return raw.map((r) => ({

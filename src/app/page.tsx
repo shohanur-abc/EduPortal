@@ -1,5 +1,6 @@
 import { Hero, Features, HowItWorks, Testimonials, PricingPreview, TrustedBy, Benefits, FAQPreview, CTA, WhyChooseUs } from '@/features/(marketing)/home';
 import { Users, GraduationCap, ClipboardCheck, BarChart3, CreditCard, Bell, Calendar, Shield, BookOpen, FileText, MessageSquare, Settings, Smartphone, Zap, Clock, HeartHandshake } from 'lucide-react';
+import { ROUTES } from '@/lib/routes';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -17,7 +18,7 @@ export default function Page() {
             <Hero
                 announcement={{
                     text: 'Introducing AI-powered report cards',
-                    href: '/blog',
+                    href: ROUTES.marketing.blog,
                     badge: 'New',
                 }}
                 title={{
@@ -26,8 +27,8 @@ export default function Page() {
                 }}
                 description="Streamline attendance, grades, fees, and parent communication — all in one powerful, easy-to-use platform trusted by 2,000+ schools."
                 cta={{
-                    primary: { text: 'Start Free Trial', href: '/demo' },
-                    secondary: { text: 'Watch Demo', href: '/demo' },
+                    primary: { text: 'Start Free Trial', href: ROUTES.marketing.demo },
+                    secondary: { text: 'Watch Demo', href: ROUTES.marketing.demo },
                 }}
                 stats={[
                     { value: '2,000+', label: 'Schools' },
@@ -212,14 +213,14 @@ export default function Page() {
                     { question: 'What kind of support do you provide?', answer: 'We provide 24/7 support via email, live chat, and phone. Professional and Enterprise plans include a dedicated customer success manager.' },
                 ]}
                 ctaText="View All FAQs"
-                ctaHref="/faq"
+                ctaHref={ROUTES.marketing.faq}
             />
 
             <CTA
                 title="Ready to Transform Your School?"
                 description="Join 2,000+ schools that have modernized their operations with EduManager. Start your free trial today."
-                primaryCta={{ text: 'Start Free Trial', href: '/demo' }}
-                secondaryCta={{ text: 'Schedule a Demo', href: '/demo' }}
+                primaryCta={{ text: 'Start Free Trial', href: ROUTES.marketing.demo }}
+                secondaryCta={{ text: 'Schedule a Demo', href: ROUTES.marketing.demo }}
             />
         </>
     );

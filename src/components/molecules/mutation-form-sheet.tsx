@@ -10,6 +10,7 @@ import { Form } from "@/components/molecules/form"
 import { toast } from "sonner"
 import { Loader2 } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { ActionResult } from "@/types/response"
 
 /**
  * A reusable form sheet that integrates react-hook-form + zod validation
@@ -108,8 +109,6 @@ export function MutationFormSheet<T extends FieldValues>({
 }
 
 // ============= TYPES =============
-type ActionResult = { success: true; message: string } | { success: false; error: string }
-
 interface MutationFormSheetProps<T extends FieldValues> {
     open: boolean
     onOpenChange: (open: boolean) => void

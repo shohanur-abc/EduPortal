@@ -1,3 +1,5 @@
+"use server"
+
 import { connectDB, pop } from '@/lib/db'
 import { fmtDate } from '@/lib/utils'
 import { AttendanceModel } from '@/models/attendance'

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { ROUTES } from '@/lib/routes';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { Menu } from 'lucide-react';
@@ -20,7 +21,7 @@ export default function MobileNav({ routes, user }: IMobileNav) {
 
 // ============= CHILD COMPONENTS =============
 const BrandLogo = () => (
-  <Link href="/" className="flex items-center gap-2 font-bold text-lg text-primary hover:opacity-80 transition-opacity">
+  <Link href={ROUTES.marketing.home} className="flex items-center gap-2 font-bold text-lg text-primary hover:opacity-80 transition-opacity">
     <div className="bg-primary text-primary-foreground flex aspect-square size-6 items-center justify-center rounded font-bold text-xs">
       E
     </div>
