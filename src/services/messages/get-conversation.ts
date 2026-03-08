@@ -1,28 +1,6 @@
 import { ConversationModel } from "@/models/conversation"
 import { connectDB, pop, sid } from "@/lib/db"
 
-export interface ConversationDetail {
-    _id: string
-    name: string
-    type: "direct" | "group"
-    description: string
-    avatar: string | null
-    participants: {
-        _id: string
-        name: string
-        image: string | null
-        role: string
-        email: string
-        participantRole: "admin" | "member"
-    }[]
-    createdBy: { _id: string; name: string; image: string | null }
-    pinnedMessages: {
-        _id: string
-        content: string
-        senderName: string
-    }[]
-    participantCount: number
-}
 
 export async function getConversation(conversationId: string): Promise<ConversationDetail | null> {
     await connectDB()
@@ -59,4 +37,28 @@ export async function getConversation(conversationId: string): Promise<Conversat
         })),
         participantCount: participants.length,
     }
+}
+
+
+export interface ConversationDetail {
+    _id: string
+    name: string
+    type: "direct" | "group"
+    description: string
+    avatar: string | null
+    participants: {
+        _id: string
+        name: string
+        image: string | null
+        role: string
+        email: string
+        participantRole: "admin" | "member"
+    }[]
+    createdBy: { _id: string; name: string; image: string | null }
+    pinnedMessages: {
+        _id: string
+        content: string
+        senderName: string
+    }[]
+    participantCount: number
 }

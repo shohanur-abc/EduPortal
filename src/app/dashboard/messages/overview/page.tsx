@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 }
 
 export default async function MessagesOverviewPage() {
-    const data = await Message.overview()
+    const data = await Message.getOverview()
 
     return (
         <div className="space-y-6">

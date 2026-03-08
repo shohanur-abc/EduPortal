@@ -3,8 +3,8 @@ import { Result } from "@/services"
 
 export default async function SummaryPage() {
     const [gradeDistribution, avgBySubject] = await Promise.all([
-        Result.gradeDistribution(),
-        Result.avgBySubject(),
+        Result.getGradeDistribution(),
+        Result.getAvgBySubject(),
     ])
     const totalResults = gradeDistribution.reduce((s, g) => s + g.count, 0)
     const avgMarks = avgBySubject.length > 0 ? Math.round(avgBySubject.reduce((s, a) => s + a.avgMarks, 0) / avgBySubject.length) : 0

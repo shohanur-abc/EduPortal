@@ -1,4 +1,4 @@
-import type { MessageOverviewData } from "@/services/messages/overview"
-import type { MessageAnalytics } from "@/services/messages/analytics"
+import type { MessageOverviewData } from "@/services/messages/get-overview"
+import type { MessageAnalytics } from "@/services/messages/get-analytics"
 
 export type { MessageOverviewData, MessageAnalytics }

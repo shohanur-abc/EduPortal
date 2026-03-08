@@ -1,39 +1,6 @@
 import { MessageModel } from "@/models/message"
 import { connectDB, pop, sid } from "@/lib/db"
 
-export interface MessageItem {
-    _id: string
-    content: string
-    type: "text" | "image" | "file" | "system"
-    sender: {
-        _id: string
-        name: string
-        image: string | null
-        role: string
-    }
-    attachments: {
-        name: string
-        url: string
-        type: string
-        size?: number
-    }[]
-    replyTo: {
-        _id: string
-        content: string
-        senderName: string
-    } | null
-    isEdited: boolean
-    createdAt: string
-    updatedAt: string
-}
-
-export interface PaginatedMessagesResult {
-    items: MessageItem[]
-    total: number
-    hasMore: boolean
-    page: number
-}
-
 export async function getMessages(
     conversationId: string,
     page: number = 1,
@@ -80,4 +47,39 @@ export async function getMessages(
         hasMore: page * limit < total,
         page,
     }
+}
+
+
+
+export interface MessageItem {
+    _id: string
+    content: string
+    type: "text" | "image" | "file" | "system"
+    sender: {
+        _id: string
+        name: string
+        image: string | null
+        role: string
+    }
+    attachments: {
+        name: string
+        url: string
+        type: string
+        size?: number
+    }[]
+    replyTo: {
+        _id: string
+        content: string
+        senderName: string
+    } | null
+    isEdited: boolean
+    createdAt: string
+    updatedAt: string
+}
+
+export interface PaginatedMessagesResult {
+    items: MessageItem[]
+    total: number
+    hasMore: boolean
+    page: number
 }

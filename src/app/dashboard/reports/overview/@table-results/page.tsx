@@ -2,6 +2,6 @@ import { ResultReportTable } from "@/features/dashboard/reports/overview/@table-
 import { Report } from "@/services"
 
 export default async function TableResultsPage() {
-    const data = await Report.resultReport()
+    const data = await Report.getResult()
     return <ResultReportTable data={data} />
 }

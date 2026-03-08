@@ -89,7 +89,7 @@ const userSchema = new Schema(
             getAll: function () {
                 return this.find().sort({ role: 1, name: 1 })
             },
-            registrationTrend: function (months: number = 6) {
+            getRegistrationTrend: function (months: number = 6) {
                 const startDate = new Date()
                 startDate.setMonth(startDate.getMonth() - months)
                 return this.aggregate([
@@ -103,7 +103,7 @@ const userSchema = new Schema(
                     { $sort: { "_id.year": 1, "_id.month": 1 } },
                 ])
             },
-            verificationStats: function () {
+            getVerificationStats: function () {
                 return this.aggregate([{
                     $group: {
                         _id: null,

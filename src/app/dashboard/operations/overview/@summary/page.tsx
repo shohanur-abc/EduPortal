@@ -3,10 +3,10 @@ import { Class, Student, Teacher } from "@/services"
 
 export default async function Page() {
     const [classCount, studentCount, teacherCount, capacity] = await Promise.all([
-        Class.countActive(),
-        Student.countActive(),
-        Teacher.countActive(),
-        Class.capacityUtilization(),
+        Class.getCountActive(),
+        Student.getCountActive(),
+        Teacher.getCountActive(),
+        Class.getCapacityUtilization(),
     ])
     const totalStudents = capacity.reduce((s, c) => s + c.studentCount, 0)
     const totalCapacity = capacity.reduce((s, c) => s + c.maxStudents, 0)

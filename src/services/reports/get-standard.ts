@@ -1,17 +1,17 @@
 import { connectDB } from '@/lib/db'
-import { attendanceReport } from './attendance-report'
-import { feeReport } from './fee-report'
-import { resultReport } from './result-report'
+import { getReport } from './get-report'
+import { getFee } from './get-fee-report'
+import { getResult } from './get-result-report'
 
 export async function getStandard(reportType: string) {
     await connectDB()
     switch (reportType) {
         case "attendance":
-            return attendanceReport()
+            return getReport()
         case "fees":
-            return feeReport()
+            return getFee()
         case "results":
-            return resultReport()
+            return getResult()
         default:
             return []
     }

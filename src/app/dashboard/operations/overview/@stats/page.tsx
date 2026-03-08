@@ -3,9 +3,9 @@ import { Class, Student, Teacher } from "@/services"
 
 export default async function OperationStatsPage() {
     const [classCount, studentCount, teacherCount] = await Promise.all([
-        Class.countActive(),
-        Student.countActive(),
-        Teacher.countActive(),
+        Class.getCountActive(),
+        Student.getCountActive(),
+        Teacher.getCountActive(),
     ])
 
     return <OperationStatCards classCount={classCount} studentCount={studentCount} teacherCount={teacherCount} />

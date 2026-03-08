@@ -2,6 +2,6 @@ import { ResultClassPerformanceTable } from "@/features/dashboard/results/overvi
 import { Result } from "@/services"
 
 export default async function TableClassPerfPage() {
-    const data = await Result.classPerformance()
+    const data = await Result.getClassPerformance()
     return <ResultClassPerformanceTable data={data} />
 }

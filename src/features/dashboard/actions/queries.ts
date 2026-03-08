@@ -25,7 +25,7 @@ export async function fetchMessages(conversationId: string, page: number = 1, li
 }
 
 export async function fetchMessageOverview() {
-    return Message.overview()
+    return Message.getOverview()
 }
 
 export async function fetchMessageAnalytics() {
@@ -33,9 +33,9 @@ export async function fetchMessageAnalytics() {
 }
 
 export async function fetchSearchConversations(userId: string, query: string) {
-    return Message.searchConversations(userId, query)
+    return Message.getSearchConversations(userId, query)
 }
 
 export async function fetchSearchMessages(conversationId: string, query: string) {
-    return Message.searchMessages(conversationId, query)
+    return Message.getSearchMessages(conversationId, query)
 }

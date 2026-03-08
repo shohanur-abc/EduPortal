@@ -425,7 +425,7 @@ export async function sendMessageAction(raw: unknown): Promise<ActionResult> {
 
     try {
         await connectDB()
-        const { sendMessage: send } = await import("@/services/messages/send-message")
+        const { postMessage: send } = await import("@/services/messages/post-message")
         const message = await send({ conversationId, senderId, content: parsed.data.content, type: parsed.data.type, replyTo: parsed.data.replyTo })
         revalidatePath("/dashboard/messages", "layout")
         return { success: true, data: message, message: "Message sent" }
@@ -443,7 +443,7 @@ export async function createConversationAction(raw: unknown): Promise<ActionResu
 
     try {
         await connectDB()
-        const { createConversation: create } = await import("@/services/messages/create-conversation")
+        const { postConversation: create } = await import("@/services/messages/post-conversation")
         const conversation = await create({
             name: parsed.data.name,
             type: parsed.data.type,

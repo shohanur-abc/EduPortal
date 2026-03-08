@@ -2,6 +2,6 @@ import { ResultTopPerformersTable } from "@/features/dashboard/results/overview/
 import { Result } from "@/services"
 
 export default async function TablePerformersPage() {
-    const data = await Result.topPerformers()
+    const data = await Result.getTopPerformers()
     return <ResultTopPerformersTable data={data} />
 }
