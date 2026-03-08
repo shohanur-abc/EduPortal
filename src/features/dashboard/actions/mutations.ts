@@ -22,6 +22,8 @@ import {
     resultSchema,
     classSchema,
     userRoleSchema,
+    messageSchema,
+    conversationSchema,
 } from "@/features/dashboard/validators"
 
 // Generic response shape
@@ -401,4 +403,111 @@ export async function deleteUser(id: string): Promise<ActionResult> {
     revalidatePath("/dashboard/roles", "layout")
     revalidatePath("/dashboard/users", "layout")
     return { success: true, message: "User deleted successfully" }
+}
+
+// ============================================================
+//  MESSAGE MUTATIONS
+// ============================================================
+
+export async function sendMessageAction(raw: unknown): Promise<ActionResult> {
+    const parsed = messageSchema.safeParse(raw)
+    if (!parsed.success) return { success: false, error: parsed.error.issues[0].message }
+
+    const { conversationId, senderId, ...rest } = raw as {
+        conversationId: string
+        senderId: string
+        content: string
+        type?: string
+        replyTo?: string | null
+    }
+
+    if (!conversationId || !senderId) return { success: false, error: "Conversation ID and Sender ID are required" }
+
+    try {
+        await connectDB()
+        const { sendMessage: send } = await import("@/services/messages/send-message")
+        const message = await send({ conversationId, senderId, content: parsed.data.content, type: parsed.data.type, replyTo: parsed.data.replyTo })
+        revalidatePath("/dashboard/messages", "layout")
+        return { success: true, data: message, message: "Message sent" }
+    } catch (err) {
+        return { success: false, error: (err as Error).message || "Failed to send message" }
+    }
+}
+
+export async function createConversationAction(raw: unknown): Promise<ActionResult> {
+    const parsed = conversationSchema.safeParse(raw)
+    if (!parsed.success) return { success: false, error: parsed.error.issues[0].message }
+
+    const { createdBy } = raw as { createdBy: string }
+    if (!createdBy) return { success: false, error: "Creator ID is required" }
+
+    try {
+        await connectDB()
+        const { createConversation: create } = await import("@/services/messages/create-conversation")
+        const conversation = await create({
+            name: parsed.data.name,
+            type: parsed.data.type,
+            description: parsed.data.description,
+            participantIds: parsed.data.participantIds,
+            createdBy,
+        })
+        revalidatePath("/dashboard/messages", "layout")
+        return { success: true, data: conversation, message: conversation.existing ? "Conversation already exists" : "Conversation created" }
+    } catch (err) {
+        return { success: false, error: (err as Error).message || "Failed to create conversation" }
+    }
+}
+
+export async function deleteMessageAction(messageId: string): Promise<ActionResult> {
+    await connectDB()
+    const { MessageModel } = await import("@/models/message")
+    const message = await MessageModel.findByIdAndUpdate(messageId, { isDeleted: true, content: "This message was deleted" }, { new: true })
+    if (!message) return { success: false, error: "Message not found" }
+    revalidatePath("/dashboard/messages", "layout")
+    return { success: true, message: "Message deleted" }
+}
+
+export async function editMessageAction(messageId: string, content: string): Promise<ActionResult> {
+    if (!content.trim()) return { success: false, error: "Message content cannot be empty" }
+    await connectDB()
+    const { MessageModel } = await import("@/models/message")
+    const message = await MessageModel.findByIdAndUpdate(messageId, { content, isEdited: true }, { new: true })
+    if (!message) return { success: false, error: "Message not found" }
+    revalidatePath("/dashboard/messages", "layout")
+    return { success: true, message: "Message edited" }
+}
+
+export async function archiveConversationAction(conversationId: string): Promise<ActionResult> {
+    await connectDB()
+    const { ConversationModel } = await import("@/models/conversation")
+    const conversation = await ConversationModel.findByIdAndUpdate(conversationId, { isArchived: true }, { new: true })
+    if (!conversation) return { success: false, error: "Conversation not found" }
+    revalidatePath("/dashboard/messages", "layout")
+    return { success: true, message: "Conversation archived" }
+}
+
+export async function addParticipantAction(conversationId: string, userId: string): Promise<ActionResult> {
+    await connectDB()
+    const { ConversationModel } = await import("@/models/conversation")
+    const conversation = await ConversationModel.findByIdAndUpdate(
+        conversationId,
+        { $addToSet: { participants: { user: userId, role: "member" } } },
+        { new: true }
+    )
+    if (!conversation) return { success: false, error: "Conversation not found" }
+    revalidatePath("/dashboard/messages", "layout")
+    return { success: true, message: "Participant added" }
+}
+
+export async function removeParticipantAction(conversationId: string, userId: string): Promise<ActionResult> {
+    await connectDB()
+    const { ConversationModel } = await import("@/models/conversation")
+    const conversation = await ConversationModel.findByIdAndUpdate(
+        conversationId,
+        { $pull: { participants: { user: userId } } },
+        { new: true }
+    )
+    if (!conversation) return { success: false, error: "Conversation not found" }
+    revalidatePath("/dashboard/messages", "layout")
+    return { success: true, message: "Participant removed" }
 }

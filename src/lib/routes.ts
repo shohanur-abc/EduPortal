@@ -61,7 +61,10 @@ export const ROUTES = {
         },
 
         notices: {
-
+            root: "/dashboard/notices",
+            overview: "/dashboard/notices/overview",
+            create: "/dashboard/notices/create",
+            manage: "/dashboard/notices/manage",
         },
 
         operations: {
@@ -104,6 +107,13 @@ export const ROUTES = {
             overview: "/dashboard/users/overview",
             credentials: "/dashboard/users/credentials",
             activity: "/dashboard/users/activity",
+        },
+
+        messages: {
+            root: "/dashboard/messages",
+            chat: "/dashboard/messages/chat",
+            overview: "/dashboard/messages/overview",
+            analytics: "/dashboard/messages/analytics",
         },
 
     },

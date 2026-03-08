@@ -114,3 +114,20 @@ export const userRoleSchema = z.object({
     role: z.enum(["admin", "principal", "teacher", "student", "parent"]),
 })
 export type UserRoleFormData = z.infer<typeof userRoleSchema>
+
+// ============= MESSAGE =============
+export const messageSchema = z.object({
+    content: z.string().min(1, "Message cannot be empty").max(5000, "Message too long"),
+    type: z.enum(["text", "image", "file", "system"]).default("text"),
+    replyTo: z.string().optional().nullable(),
+})
+export type MessageFormData = z.infer<typeof messageSchema>
+
+// ============= CONVERSATION =============
+export const conversationSchema = z.object({
+    name: z.string().max(100).optional(),
+    type: z.enum(["direct", "group"]),
+    description: z.string().max(500).optional(),
+    participantIds: z.array(z.string()).min(1, "At least one participant is required"),
+})
+export type ConversationFormData = z.infer<typeof conversationSchema>

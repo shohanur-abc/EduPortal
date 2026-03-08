@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarRail, SidebarProvider, SidebarInset, SidebarSeparator, } from '@/components/ui/sidebar';
 import React, { ReactNode } from 'react';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 // ============= MAIN COMPONENT =============
 export default function DashboardSidebar({ sidebarItems, userRole, children }: IDashboardSidebar & { children: React.ReactNode }) {
@@ -10,7 +11,9 @@ export default function DashboardSidebar({ sidebarItems, userRole, children }: I
         <SidebarProvider>
             <Sidebar collapsible="icon" className='overflow-hidden'>
                 <SidebarHeaderContent userRole={userRole} />
-                <SidebarContentContent items={sidebarItems} />
+                <ScrollArea className='overflow-x-auto'>
+                    <SidebarContentContent items={sidebarItems} />
+                </ScrollArea>
                 <SidebarRail />
             </Sidebar>
             <SidebarInset>{children}</SidebarInset>

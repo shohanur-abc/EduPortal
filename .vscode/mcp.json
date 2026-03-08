@@ -7,6 +7,14 @@
         "mcp"
       ]
     },
+    "kibo-ui": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://www.kibo-ui.com/api/mcp/mcp"
+      ]
+    },
     "next-devtools": {
       "command": "npx",
       "args": [

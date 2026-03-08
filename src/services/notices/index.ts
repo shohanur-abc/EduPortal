@@ -1,5 +1,6 @@
 export * from './status-counts'
 export * from './get-all'
+export * from './get-paginated'
 export * from './get-recent'
 export * from './overview'
 export * from './priority-breakdown'

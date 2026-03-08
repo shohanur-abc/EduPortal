@@ -6,7 +6,7 @@ import DashboardSidebar from '@/features/navigation/dashboard-sidebar';
 import NotificationMenu from '@/features/navigation/notification-menu';
 import UserMenu from '@/features/navigation/user-menu';
 import { ROUTES } from '@/lib/routes';
-import { LayoutDashboard, CheckCircle2, BarChart3, FileText, DollarSign, Settings, Bell, Users, Shield, Lock, GraduationCap, UserCog, School } from 'lucide-react';
+import { LayoutDashboard, CheckCircle2, BarChart3, FileText, DollarSign, Settings, Bell, Users, Shield, Lock, GraduationCap, UserCog, School, MessageSquare } from 'lucide-react';
 
 export const metadata: Metadata = {
     title: {
@@ -108,6 +108,11 @@ export const DASHBOARD_MENU = [
                 label: "Notices",
                 href: ROUTES.dashboard.notices.overview,
                 icon: <Bell />,
+            },
+            {
+                label: "Messages",
+                href: ROUTES.dashboard.messages.chat,
+                icon: <MessageSquare />,
             },
         ],
     },
