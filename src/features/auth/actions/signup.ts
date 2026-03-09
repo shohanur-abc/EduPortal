@@ -2,7 +2,7 @@
 
 import { connectDB } from "@/lib/db"
 import { UserModel } from "@/models/user"
-import { signupSchema } from "../validators/auth"
+import { signupSchema } from "@/schemas/auth"
 import { sendVerificationEmail } from "@/lib/email"
 import crypto from "crypto"
 import { ActionResult } from "./types"

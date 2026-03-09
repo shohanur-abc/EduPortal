@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache"
 import { connectDB } from "@/lib/db"
 import { error, success } from "@/lib/utils"
 import { FeeModel } from "@/models/fee"
-import { feePaymentSchema } from "@/features/dashboard/validators"
+import { feePaymentSchema } from "@/schemas/dashboard"
 import { ActionResult } from "@/types/response"
 import { ROUTES } from "@/lib/routes"
 

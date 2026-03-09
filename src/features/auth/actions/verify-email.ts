@@ -2,7 +2,7 @@
 
 import { connectDB } from "@/lib/db"
 import { UserModel } from "@/models/user"
-import { verifyEmailSchema } from "../validators/auth"
+import { verifyEmailSchema } from "@/schemas/auth"
 import { ActionResult } from "./types"
 
 export async function verifyEmail(data: {

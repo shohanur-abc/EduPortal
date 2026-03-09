@@ -10,7 +10,7 @@ import { Email } from "@/components/molecules/input";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import AuthCard, { FooterLink } from "../components/auth-card";
-import { forgotPasswordSchema, type ForgotPasswordInput } from "../validators/auth";
+import { forgotPasswordSchema, type ForgotPasswordInput } from "@/schemas/auth";
 import { forgotPassword } from "../actions";
 
 // ============= MAIN COMPONENT =============

@@ -2,7 +2,7 @@
 
 import { connectDB } from "@/lib/db"
 import { UserModel } from "@/models/user"
-import { resetPasswordSchema } from "../validators/auth"
+import { resetPasswordSchema } from "@/schemas/auth"
 import { ActionResult } from "./types"
 
 export async function resetPassword(data: {

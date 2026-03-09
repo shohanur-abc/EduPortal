@@ -1,10 +1,10 @@
 "use server"
 
 import { revalidatePath } from "next/cache"
-import { ChatModel } from "@/models/message"
+import { MessageModel } from "@/models/message"
 import { ConversationModel } from "@/models/conversation"
 import { connectDB, sid } from "@/lib/db"
-import { messageSchema } from "@/features/dashboard/validators"
+import { messageSchema } from "@/schemas/dashboard"
 import { success, error } from "@/lib/utils"
 import { ActionResult } from "@/types/response"
 import { ROUTES } from "@/lib/routes"
@@ -52,7 +52,7 @@ async function post(data: {
     )
     if (!isParticipant) throw new Error("Not a participant in this conversation")
 
-    const message = await ChatModel.create({
+    const message = await MessageModel.create({
         conversation: data.conversationId,
         sender: data.senderId,
         content: data.content,

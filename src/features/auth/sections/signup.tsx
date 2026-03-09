@@ -9,7 +9,7 @@ import { FormInput, Email, Password } from "@/components/molecules/input";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { ROUTES } from "@/lib/routes";
-import { signupSchema, type SignupInput } from "../validators/auth";
+import { signupSchema, type SignupInput } from "@/schemas/auth";
 import { signup } from "../actions";
 import { Checkbox } from "@/components/molecules/checkbox";
 import { FormCard } from "../components/form";

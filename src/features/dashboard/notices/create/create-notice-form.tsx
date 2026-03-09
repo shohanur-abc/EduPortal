@@ -53,7 +53,7 @@ import {
     EditorCharacterCount,
     type JSONContent,
 } from "@/components/kibo-ui/editor"
-import { noticeSchema, type NoticeFormData } from "@/features/dashboard/validators"
+import { noticeSchema, type NoticeFormData } from "@/schemas/dashboard"
 import { postOne } from "@/services/notices"
 import { toast } from "sonner"
 import { Loader2, Send, FileText, Eye, PenLine } from "lucide-react"

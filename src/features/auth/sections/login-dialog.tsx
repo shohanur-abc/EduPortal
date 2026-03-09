@@ -9,7 +9,7 @@ import React from "react";
 import { Email, Password } from "@/components/molecules/input";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
-import { loginSchema, type LoginInput } from "../validators/auth";
+import { loginSchema, type LoginInput } from "@/schemas/auth";
 import { login } from "../actions";
 import { Checkbox } from "@/components/molecules/checkbox";
 import { LoginModal } from "../components/login-modal";

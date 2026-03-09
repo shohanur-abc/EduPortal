@@ -176,5 +176,5 @@ messageSchema.index({ sender: 1, createdAt: -1 })
 messageSchema.index({ "readBy.user": 1 })
 messageSchema.index({ content: "text" })
 
-const y = () => mongoose.model("Chat", messageSchema)
-export const ChatModel = (mongoose.models.Chat as ReturnType<typeof y>) || y()
+const y = () => mongoose.model("Message", messageSchema)
+export const MessageModel = (mongoose.models.Message as ReturnType<typeof y>) || y()

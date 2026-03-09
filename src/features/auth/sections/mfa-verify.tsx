@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import AuthCard, { FooterLink } from "../components/auth-card";
 import { OtpField } from "../components/otp-field";
-import { mfaVerifySchema, type MfaVerifyInput } from "../validators/auth";
+import { mfaVerifySchema, type MfaVerifyInput } from "@/schemas/auth";
 
 // ============= MAIN COMPONENT =============
 export default function MfaVerify({ header, submitLabel, footer, backup }: IMfaVerifySection) {

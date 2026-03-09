@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache"
 import { ConversationModel } from "@/models/conversation"
 import { connectDB, sid } from "@/lib/db"
-import { conversationSchema } from "@/features/dashboard/validators"
+import { conversationSchema } from "@/schemas/dashboard"
 import { success, error } from "@/lib/utils"
 import { ActionResult } from "@/types/response"
 import { ROUTES } from "@/lib/routes"

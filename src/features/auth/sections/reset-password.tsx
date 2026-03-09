@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import AuthCard, { FooterLink } from "../components/auth-card";
 import { ROUTES } from "@/lib/routes";
-import { resetPasswordSchema, type ResetPasswordInput } from "../validators/auth";
+import { resetPasswordSchema, type ResetPasswordInput } from "@/schemas/auth";
 import { resetPassword } from "../actions";
 
 // ============= MAIN COMPONENT =============

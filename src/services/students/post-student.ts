@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache"
 import { connectDB } from "@/lib/db"
 import { StudentModel } from "@/models/student"
-import { studentSchema } from "@/features/dashboard/validators"
+import { studentSchema } from "@/schemas/dashboard"
 import { success, error } from "@/lib/utils"
 import { ActionResult } from "@/types/response"
 import { ROUTES } from "@/lib/routes"

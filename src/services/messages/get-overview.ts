@@ -1,7 +1,7 @@
 "use server"
 
 import { ConversationModel } from "@/models/conversation"
-import { ChatModel } from "@/models/message"
+import { MessageModel } from "@/models/message"
 import { connectDB } from "@/lib/db"
 
 
@@ -15,9 +15,9 @@ export async function getOverview(): Promise<MessageOverviewData> {
         messageTypes,
     ] = await Promise.all([
         ConversationModel.countDocuments({ isArchived: false }),
-        ChatModel.countDocuments({ isDeleted: false }),
+        MessageModel.countDocuments({ isDeleted: false }),
         ConversationModel.typeCounts(),
-        ChatModel.typeCounts(),
+        MessageModel.typeCounts(),
     ])
 
     const directChats = conversationTypes.find((c: { _id: string }) => c._id === "direct")?.count ?? 0

@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { ROUTES } from '@/lib/routes';
 import { Separator } from '@/components/ui/separator';
+import { ROUTES } from '@/lib/routes';
 
 // ============= MAIN COMPONENT =============
 export default function Footer({ sections }: IFooter) {
