@@ -1,8 +1,7 @@
 "use server"
 
 import { cache } from 'react'
-import { AttendanceModel } from '@/models/attendance'
-import { connectDB } from '@/lib/db'
+import { db } from '@/fatman'
 
 /**
  * #READ: Gets the overall attendance rate statistics from the database.
@@ -14,8 +13,8 @@ import { connectDB } from '@/lib/db'
  * - `present`: total number of students marked as present
  */
 export const getAttendanceRate = cache(async () => {
-    await connectDB()
-    const raw = await AttendanceModel.getAttendanceRate()
+    await db.connect()
+    const raw = await db.attendance.getAttendanceRate()
     const data = raw[0]
     return {
         rate: data ? Math.round(data.rate * 10) / 10 : 0,

@@ -1,8 +1,7 @@
 "use server"
 
-import { connectDB, pop } from "@/lib/db"
-import { fmtDate } from "@/lib/utils"
-import { AttendanceModel } from "@/models/attendance"
+import { db } from "@/fatman"
+import { fmtDate, pop } from "@/fatman/utils"
 
 /**
  * #READ: Retrieves the most recent attendance records from the database.
@@ -17,8 +16,8 @@ import { AttendanceModel } from "@/models/attendance"
  *   - `remarks`: optional remarks about the attendance record
  */
 export const getRecent = (async (limit: number = 10) => {
-    await connectDB()
-    const recentRecords = await AttendanceModel.getRecent(limit)
+    await db.connect()
+    const recentRecords = await db.attendance.getRecent(limit)
 
     return recentRecords.map((r) => ({
         _id: String(r._id),

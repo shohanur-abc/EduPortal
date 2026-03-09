@@ -1,12 +1,11 @@
 "use server"
 
 import { cache } from 'react'
-import { ResultModel } from "@/models/result"
-import { connectDB } from '@/lib/db'
+import { db } from '@/fatman'
 
 export const getTopPerformers = cache(async (limit: number = 10) => {
-    await connectDB()
-    const raw = await ResultModel.topPerformers(limit)
+    await db.connect()
+    const raw = await db.result.topPerformers(limit)
     return raw.map((r) => ({
         studentName: r.studentName as string,
         rollNumber: r.rollNumber as string,

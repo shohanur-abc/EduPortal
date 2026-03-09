@@ -1,19 +1,16 @@
 "use server"
 
 import { revalidatePath } from "next/cache"
-import { connectDB } from "@/lib/db"
-import { error, success } from "@/lib/utils"
-import { UserModel } from "@/models/user"
-import { userRoleSchema } from "@/schemas/dashboard"
+import { db, ROUTES, schemas } from "@/fatman"
+import { error, success } from "@/fatman/utils"
 import { ActionResult } from "@/types/response"
-import { ROUTES } from "@/lib/routes"
 
 export async function updateUserRole(id: string, raw: unknown): Promise<ActionResult> {
-    const parsed = userRoleSchema.safeParse(raw)
+    const parsed = schemas.userRole.safeParse(raw)
     if (!parsed.success) return error(parsed.error.issues[0].message)
 
-    await connectDB()
-    const user = await UserModel.findByIdAndUpdate(id, { role: parsed.data.role }, { new: true })
+    await db.connect()
+    const user = await db.user.findByIdAndUpdate(id, { role: parsed.data.role }, { new: true })
     if (!user) return error("User not found")
 
     revalidatePath(ROUTES.dashboard.roles.root, "layout")

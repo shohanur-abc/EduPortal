@@ -1,8 +1,7 @@
 "use server"
 
-import { NoticeModel } from "@/models/notice"
-import { fmtDate } from "@/lib/utils"
-import { connectDB, pop } from "@/lib/db"
+import { db } from '@/fatman'
+import { fmtDate, pop } from '@/fatman/utils'
 
 
 export async function getPaginated(
@@ -10,7 +9,7 @@ export async function getPaginated(
     pageSize: number = 12,
     filters?: { status?: string; priority?: string; search?: string },
 ): Promise<PaginatedNoticesResult> {
-    await connectDB()
+    await db.connect()
 
     const query: Record<string, unknown> = {}
 
@@ -28,12 +27,12 @@ export async function getPaginated(
     }
 
     const [notices, total] = await Promise.all([
-        NoticeModel.find(query)
+        db.notice.find(query)
             .populate("author", "name")
             .sort({ publishDate: -1 })
             .skip((page - 1) * pageSize)
             .limit(pageSize),
-        NoticeModel.countDocuments(query),
+        db.notice.countDocuments(query),
     ])
 
     return {

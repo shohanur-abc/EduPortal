@@ -1,17 +1,13 @@
 "use server"
 
 import { revalidatePath } from "next/cache"
-import { MessageModel } from "@/models/message"
-import { ConversationModel } from "@/models/conversation"
-import { connectDB, sid } from "@/lib/db"
-import { messageSchema } from "@/schemas/dashboard"
-import { success, error } from "@/lib/utils"
+import { db, ROUTES, schemas } from "@/fatman"
+import { error, success, sid } from "@/fatman/utils"
 import { ActionResult } from "@/types/response"
-import { ROUTES } from "@/lib/routes"
 
 
 export async function postMessage(raw: unknown): Promise<ActionResult> {
-    const parsed = messageSchema.safeParse(raw)
+    const parsed = schemas.message.safeParse(raw)
     if (!parsed.success) return error(parsed.error.issues[0].message)
 
     const { conversationId, senderId } = raw as { conversationId: string; senderId: string }
@@ -41,9 +37,9 @@ async function post(data: {
     attachments?: { name: string; url: string; type: string; size?: number }[]
     replyTo?: string | null
 }) {
-    await connectDB()
+    await db.connect()
 
-    const conversation = await ConversationModel.findById(data.conversationId)
+    const conversation = await db.conversation.findById(data.conversationId)
     if (!conversation) throw new Error("Conversation not found")
 
     const isParticipant = conversation.participants.some(
@@ -52,7 +48,7 @@ async function post(data: {
     )
     if (!isParticipant) throw new Error("Not a participant in this conversation")
 
-    const message = await MessageModel.create({
+    const message = await db.message.create({
         conversation: data.conversationId,
         sender: data.senderId,
         content: data.content,
@@ -63,7 +59,7 @@ async function post(data: {
     })
 
     // Update conversation's lastMessage
-    await ConversationModel.findByIdAndUpdate(data.conversationId, {
+    await db.conversation.findByIdAndUpdate(data.conversationId, {
         lastMessage: message._id,
     })
 

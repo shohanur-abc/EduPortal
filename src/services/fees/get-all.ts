@@ -1,12 +1,11 @@
 "use server"
 
-import { FeeModel } from "@/models/fee"
-import { fmtDate } from '@/lib/utils'
-import { connectDB, pop } from '@/lib/db'
+import { db } from "@/fatman"
+import { fmtDate, pop } from '@/fatman/utils'
 
 export async function getAll(limit: number = 200) {
-    await connectDB()
-    const fees = await FeeModel.getAll(limit)
+    await db.connect()
+    const fees = await db.fee.getAll(limit)
 
     return fees.map((f) => ({
         _id: String(f._id),

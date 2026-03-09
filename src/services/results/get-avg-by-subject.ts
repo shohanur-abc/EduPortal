@@ -1,12 +1,11 @@
 "use server"
 
 import { cache } from 'react'
-import { ResultModel } from "@/models/result"
-import { connectDB } from '@/lib/db'
+import { db } from '@/fatman'
 
 export const getAvgBySubject = cache(async () => {
-    await connectDB()
-    const data = await ResultModel.avgBySubject()
+    await db.connect()
+    const data = await db.result.avgBySubject()
 
     return data.map((a) => ({
         subject: a._id as string,

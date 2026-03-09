@@ -1,12 +1,11 @@
 "use server"
 
 import { cache } from 'react'
-import { UserModel } from "@/models/user"
-import { connectDB } from '@/lib/db'
+import { db } from '@/fatman'
 
 export const getVerificationStats = cache(async () => {
-    await connectDB()
-    const raw = await UserModel.getVerificationStats()
+    await db.connect()
+    const raw = await db.user.getVerificationStats()
     const data = raw[0]
     return {
         total: (data?.total as number) ?? 0,

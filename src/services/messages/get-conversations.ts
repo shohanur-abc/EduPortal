@@ -1,12 +1,11 @@
 "use server"
 
-import { ConversationModel } from "@/models/conversation"
-import { connectDB, pop, sid } from "@/lib/db"
-import { fmtDate } from "@/lib/utils"
+import { db } from "@/fatman"
+import { fmtDate, pop, sid } from "@/fatman/utils"
 
 export async function getConversations(userId: string): Promise<ConversationItem[]> {
-    await connectDB()
-    const conversations = await ConversationModel.getByUser(userId)
+    await db.connect()
+    const conversations = await db.conversation.getByUser(userId)
 
     return conversations.map((c) => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any

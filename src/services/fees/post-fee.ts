@@ -1,19 +1,16 @@
 "use server"
 
 import { revalidatePath } from "next/cache"
-import { connectDB } from "@/lib/db"
-import { FeeModel } from "@/models/fee"
-import { feeSchema } from "@/schemas/dashboard"
-import { success, error } from "@/lib/utils"
+import { db, ROUTES, schemas } from "@/fatman"
+import { error, success } from "@/fatman/utils"
 import { ActionResult } from "@/types/response"
-import { ROUTES } from "@/lib/routes"
 
 export async function createFee(raw: unknown): Promise<ActionResult> {
-    const parsed = feeSchema.safeParse(raw)
+    const parsed = schemas.fee.safeParse(raw)
     if (!parsed.success) return error(parsed.error.issues[0].message)
 
-    await connectDB()
-    const fee = await FeeModel.create({
+    await db.connect()
+    const fee = await db.fee.create({
         ...parsed.data,
         dueDate: new Date(parsed.data.dueDate),
     })

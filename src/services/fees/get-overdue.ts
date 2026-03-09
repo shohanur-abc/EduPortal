@@ -1,12 +1,11 @@
 "use server"
 
-import { FeeModel } from "@/models/fee"
-import { fmtDate } from '@/lib/utils'
-import { connectDB, pop } from '@/lib/db'
+import { db } from "@/fatman"
+import { fmtDate, pop } from '@/fatman/utils'
 
 export async function getOverdue(limit: number = 10) {
-    await connectDB()
-    const overdue = await FeeModel.getOverdue(limit)
+    await db.connect()
+    const overdue = await db.fee.getOverdue(limit)
 
     return overdue.map((f) => ({
         _id: String(f._id),

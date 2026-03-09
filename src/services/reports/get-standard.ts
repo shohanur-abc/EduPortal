@@ -1,12 +1,12 @@
 "use server"
 
-import { connectDB } from '@/lib/db'
+import { db } from '@/fatman'
 import { getReport } from './get-report'
 import { getFee } from './get-fee-report'
 import { getResult } from './get-result-report'
 
 export async function getStandard(reportType: string) {
-    await connectDB()
+    await db.connect()
     switch (reportType) {
         case "attendance":
             return getReport()

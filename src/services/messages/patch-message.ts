@@ -1,15 +1,13 @@
 "use server"
 
 import { revalidatePath } from "next/cache"
-import { connectDB } from "@/lib/db"
-import { MessageModel } from "@/models/message"
-import { success, error } from "@/lib/utils"
+import { db, ROUTES } from "@/fatman"
+import { error, success } from "@/fatman/utils"
 import { ActionResult } from "@/types/response"
-import { ROUTES } from "@/lib/routes"
 
 export async function patchRemoveMessage(messageId: string): Promise<ActionResult> {
-    await connectDB()
-    const message = await MessageModel.findByIdAndUpdate(
+    await db.connect()
+    const message = await db.message.findByIdAndUpdate(
         messageId,
         { isDeleted: true, content: "This message was deleted" },
         { new: true }
@@ -21,8 +19,8 @@ export async function patchRemoveMessage(messageId: string): Promise<ActionResul
 
 export async function patchMessage(messageId: string, content: string): Promise<ActionResult> {
     if (!content.trim()) return error("Message content cannot be empty")
-    await connectDB()
-    const message = await MessageModel.findByIdAndUpdate(messageId, { content, isEdited: true }, { new: true })
+    await db.connect()
+    const message = await db.message.findByIdAndUpdate(messageId, { content, isEdited: true }, { new: true })
     if (!message) return error("Message not found")
     revalidatePath(ROUTES.dashboard.messages.root, "layout")
     return success("Message edited")

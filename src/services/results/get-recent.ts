@@ -1,11 +1,11 @@
 "use server"
 
-import { ResultModel } from "@/models/result"
-import { connectDB, pop } from '@/lib/db'
+import { db } from '@/fatman'
+import { pop } from '@/fatman/utils'
 
 export async function getRecent(limit: number = 10) {
-    await connectDB()
-    const results = await ResultModel.getRecent(limit)
+    await db.connect()
+    const results = await db.result.getRecent(limit)
 
     return results.map((r) => ({
         _id: String(r._id),

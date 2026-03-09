@@ -1,12 +1,11 @@
 "use server"
 
 import { cache } from 'react'
-import { ResultModel } from "@/models/result"
-import { connectDB } from '@/lib/db'
+import { db } from '@/fatman'
 
 export const getGradeDistribution = cache(async () => {
-    await connectDB()
-    const distribution = await ResultModel.gradeDistribution()
+    await db.connect()
+    const distribution = await db.result.gradeDistribution()
 
     return distribution.map((g) => ({
         grade: g._id as string,

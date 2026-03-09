@@ -1,10 +1,9 @@
 "use server"
 
 import { cache } from 'react'
-import { TeacherModel } from "@/models/teacher"
-import { connectDB } from '@/lib/db'
+import { db } from '@/fatman'
 
 export const getCountActive = cache(async () => {
-    await connectDB()
-    return TeacherModel.countActive()
+    await db.connect()
+    return db.teacher.countActive()
 })

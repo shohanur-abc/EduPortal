@@ -1,20 +1,18 @@
 "use server"
 
-import { MessageModel } from "@/models/message"
-import { ConversationModel } from "@/models/conversation"
-import { connectDB } from "@/lib/db"
+import { db } from "@/fatman"
 
 
 export async function getAnalytics(): Promise<MessageAnalytics> {
-    await connectDB()
+    await db.connect()
 
     const [messageTrend, topSenders, dailyActivity, participantStats, conversationTrend] =
         await Promise.all([
-            MessageModel.messageTrend(6),
-            MessageModel.topSenders(10),
-            MessageModel.dailyActivity(30),
-            ConversationModel.participantStats(),
-            ConversationModel.activityTrend(6),
+            db.message.messageTrend(6),
+            db.message.topSenders(10),
+            db.message.dailyActivity(30),
+            db.conversation.participantStats(),
+            db.conversation.activityTrend(6),
         ])
 
     return {

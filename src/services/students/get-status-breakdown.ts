@@ -1,12 +1,11 @@
 "use server"
 
 import { cache } from 'react'
-import { StudentModel } from "@/models/student"
-import { connectDB } from '@/lib/db'
+import { db } from '@/fatman'
 
 export const getStatusBreakdown = cache(async () => {
-    await connectDB()
-    const raw = await StudentModel.statusBreakdown()
+    await db.connect()
+    const raw = await db.student.statusBreakdown()
     return raw.map((r) => ({
         status: r._id as string,
         count: r.count as number,

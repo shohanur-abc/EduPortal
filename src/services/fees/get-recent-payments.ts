@@ -1,12 +1,11 @@
 "use server"
 
-import { FeeModel } from "@/models/fee"
-import { fmtDate } from '@/lib/utils'
-import { connectDB, pop } from '@/lib/db'
+import { db } from "@/fatman"
+import { fmtDate, pop } from '@/fatman/utils'
 
 export async function getRecentPayments(limit: number = 10) {
-    await connectDB()
-    const payments = await FeeModel.getRecentPayments(limit)
+    await db.connect()
+    const payments = await db.fee.getRecentPayments(limit)
 
     return payments.map((f) => ({
         _id: String(f._id),

@@ -1,12 +1,11 @@
 "use server"
 
 import { cache } from 'react'
-import { ClassModel } from "@/models/class"
-import { connectDB } from '@/lib/db'
+import { db } from '@/fatman'
 
 export const getGradeDistribution = cache(async () => {
-    await connectDB()
-    const raw = await ClassModel.gradeDistribution()
+    await db.connect()
+    const raw = await db.class.gradeDistribution()
     return raw.map((r) => ({
         grade: r._id as number,
         sections: r.sections as number,

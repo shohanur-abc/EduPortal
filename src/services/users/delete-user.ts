@@ -1,15 +1,13 @@
 "use server"
 
 import { revalidatePath } from "next/cache"
-import { connectDB } from "@/lib/db"
-import { error, success } from "@/lib/utils"
-import { UserModel } from "@/models/user"
+import { db, ROUTES } from "@/fatman"
+import { error, success } from "@/fatman/utils"
 import { ActionResult } from "@/types/response"
-import { ROUTES } from "@/lib/routes"
 
 export async function deleteUser(id: string): Promise<ActionResult> {
-    await connectDB()
-    const user = await UserModel.findByIdAndDelete(id)
+    await db.connect()
+    const user = await db.user.findByIdAndDelete(id)
     if (!user) return error("User not found")
 
     revalidatePath(ROUTES.dashboard.roles.root, "layout")

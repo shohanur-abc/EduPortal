@@ -1,17 +1,17 @@
 "use server"
 
-import { MessageModel } from "@/models/message"
-import { connectDB, pop, sid } from "@/lib/db"
+import { db } from "@/fatman"
+import { pop, sid } from "@/fatman/utils"
 
 export async function getMessages(
     conversationId: string,
     page: number = 1,
     limit: number = 50
 ): Promise<PaginatedMessagesResult> {
-    await connectDB()
+    await db.connect()
     const [messages, total] = await Promise.all([
-        MessageModel.getByConversation(conversationId, page, limit),
-        MessageModel.countByConversation(conversationId),
+        db.message.getByConversation(conversationId, page, limit),
+        db.message.countByConversation(conversationId),
     ])
 
     const items: MessageItem[] = messages.map((m) => ({

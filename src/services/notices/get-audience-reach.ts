@@ -1,12 +1,11 @@
 "use server"
 
 import { cache } from 'react'
-import { NoticeModel } from "@/models/notice"
-import { connectDB } from '@/lib/db'
+import { db } from '@/fatman'
 
 export const getAudienceReach = cache(async () => {
-    await connectDB()
-    const raw = await NoticeModel.audienceReach()
+    await db.connect()
+    const raw = await db.notice.audienceReach()
     return raw.map((r) => ({
         audience: r._id as string,
         count: r.count as number,

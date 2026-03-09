@@ -1,12 +1,11 @@
 "use server"
 
-import { NoticeModel } from "@/models/notice"
-import { fmtDate } from '@/lib/utils'
-import { connectDB, pop } from '@/lib/db'
+import { db } from '@/fatman'
+import { fmtDate, pop } from '@/fatman/utils'
 
 export async function getAll() {
-    await connectDB()
-    const notices = await NoticeModel.getAll()
+    await db.connect()
+    const notices = await db.notice.getAll()
 
     return notices.map((n) => ({
         _id: String(n._id),

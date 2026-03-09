@@ -1,8 +1,7 @@
 "use server"
 
 import { cache } from 'react'
-import { AttendanceModel } from '@/models/attendance'
-import { connectDB } from '@/lib/db'
+import { db } from '@/fatman'
 
 /**
  * #READ: Gets the attendance statistics for each class and section from the database.
@@ -17,8 +16,8 @@ import { connectDB } from '@/lib/db'
  * - `rate`: attendance rate as a percentage (rounded to 1 decimal)
  */
 export const getClassWiseStats = cache(async () => {
-    await connectDB()
-    const raw = await AttendanceModel.getClassWiseStats()
+    await db.connect()
+    const raw = await db.attendance.getClassWiseStats()
 
     return raw.map((r) => ({
         className: `${r._id.className} ${r._id.section}`,

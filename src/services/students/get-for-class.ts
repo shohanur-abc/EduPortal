@@ -1,10 +1,10 @@
 "use server"
-import { StudentModel } from "@/models/student"
-import { connectDB, sid } from '@/lib/db'
+import { db } from '@/fatman'
+import { sid } from '@/fatman/utils'
 
 export async function getForClass(classSection: string) {
-    await connectDB()
-    const students = await StudentModel
+    await db.connect()
+    const students = await db.student
         .find({ section: classSection, status: "active" })
         .sort({ rollNumber: 1 })
         .lean()

@@ -1,12 +1,11 @@
 "use server"
 
 import { cache } from 'react'
-import { ResultModel } from "@/models/result"
-import { connectDB } from '@/lib/db'
+import { db } from '@/fatman'
 
 export const getExamComparison = cache(async () => {
-    await connectDB()
-    const raw = await ResultModel.examComparison()
+    await db.connect()
+    const raw = await db.result.examComparison()
     return raw.map((r) => ({
         exam: r.exam as string,
         avgMarks: r.avgMarks as number,

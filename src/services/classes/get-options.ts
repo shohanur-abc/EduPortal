@@ -1,11 +1,11 @@
 "use server"
 
-import { ClassModel } from "@/models/class"
-import { connectDB, sid } from '@/lib/db'
+import { db } from '@/fatman'
+import { sid } from '@/fatman/utils'
 
 export async function getOptions() {
-    await connectDB()
-    const classes = await ClassModel
+    await db.connect()
+    const classes = await db.class
         .find({ status: "active" })
         .select("name section")
         .sort({ grade: 1, section: 1 })

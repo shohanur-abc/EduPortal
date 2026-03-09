@@ -1,11 +1,11 @@
 "use server"
 
-import { ResultModel } from "@/models/result"
-import { connectDB, pop } from '@/lib/db'
+import { db } from '@/fatman'
+import { pop } from '@/fatman/utils'
 
 export async function getAll(limit: number = 200) {
-    await connectDB()
-    const results = await ResultModel.getAll()
+    await db.connect()
+    const results = await db.result.getAll()
 
     return results.slice(0, limit).map((r) => ({
         _id: String(r._id),

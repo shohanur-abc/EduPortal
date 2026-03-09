@@ -1,16 +1,15 @@
 "use server"
 
-import { ConversationModel } from "@/models/conversation"
-import { MessageModel } from "@/models/message"
-import { connectDB, pop, sid } from "@/lib/db"
+import { db } from "@/fatman"
+import { pop, sid } from "@/fatman/utils"
 
 
 export async function getSearchConversations(
     userId: string,
     query: string
 ): Promise<SearchResult["conversations"]> {
-    await connectDB()
-    const results = await ConversationModel.searchConversations(userId, query)
+    await db.connect()
+    const results = await db.conversation.searchConversations(userId, query)
     return results.map((c) => ({
         _id: sid(c),
         name: c.name || "Direct Message",
@@ -23,8 +22,8 @@ export async function getSearchMessages(
     conversationId: string,
     query: string
 ): Promise<SearchResult["messages"]> {
-    await connectDB()
-    const results = await MessageModel.searchMessages(conversationId, query)
+    await db.connect()
+    const results = await db.message.searchMessages(conversationId, query)
     return results.map((m) => ({
         _id: sid(m),
         content: m.content,

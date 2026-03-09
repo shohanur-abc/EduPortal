@@ -1,15 +1,13 @@
 "use server"
 
 import { revalidatePath } from "next/cache"
-import { connectDB } from "@/lib/db"
-import { error, success } from "@/lib/utils"
-import { StudentModel } from "@/models/student"
+import { db, ROUTES } from "@/fatman"
+import { error, success } from "@/fatman/utils"
 import { ActionResult } from "@/types/response"
-import { ROUTES } from "@/lib/routes"
 
 export async function deleteStudent(id: string): Promise<ActionResult> {
-    await connectDB()
-    const student = await StudentModel.findByIdAndDelete(id)
+    await db.connect()
+    const student = await db.student.findByIdAndDelete(id)
     if (!student) return error("Student not found")
 
     revalidatePath(ROUTES.dashboard.operations.root, "layout")

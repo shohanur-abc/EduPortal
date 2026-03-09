@@ -1,11 +1,10 @@
 "use server"
 
-import { FeeModel } from "@/models/fee"
-import { connectDB } from '@/lib/db'
+import { db } from '@/fatman'
 
 export async function feeStructure(academicYear: string = "2025-2026") {
-    await connectDB()
-    const structure = await FeeModel.feeStructure(academicYear)
+    await db.connect()
+    const structure = await db.fee.feeStructure(academicYear)
 
     return structure.map((s) => ({
         type: s._id as string,

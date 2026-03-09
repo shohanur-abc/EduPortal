@@ -1,12 +1,11 @@
 "use server"
 
-import { UserModel } from "@/models/user"
-import { fmtDate } from '@/lib/utils'
-import { connectDB } from '@/lib/db'
+import { db } from '@/fatman'
+import { fmtDate } from '@/fatman/utils'
 
 export async function getAll() {
-    await connectDB()
-    const users = await UserModel.getAll()
+    await db.connect()
+    const users = await db.user.getAll()
 
     return users.map((u) => ({
         _id: String(u._id),

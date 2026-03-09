@@ -1,12 +1,11 @@
 "use server"
 
 import { cache } from 'react'
-import { NoticeModel } from "@/models/notice"
-import { connectDB } from '@/lib/db'
+import { db } from '@/fatman'
 
 export const getStatusCounts = cache(async () => {
-    await connectDB()
-    const counts = await NoticeModel.statusCounts()
+    await db.connect()
+    const counts = await db.notice.statusCounts()
 
     return counts.map((s) => ({
         status: s._id as string,

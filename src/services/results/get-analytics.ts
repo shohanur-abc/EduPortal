@@ -1,13 +1,12 @@
 "use server"
 
 import { cache } from 'react'
-import { ResultModel } from "@/models/result"
-import { connectDB } from '@/lib/db'
+import { db } from '@/fatman'
 
 export const getAnalytics = cache(async () => {
-    await connectDB()
+    await db.connect()
     const [byExam, bySubject, byGrade] = await Promise.all([
-        ResultModel.aggregate([
+        db.result.aggregate([
             {
                 $group: {
                     _id: "$exam",
@@ -18,7 +17,7 @@ export const getAnalytics = cache(async () => {
             },
             { $sort: { _id: 1 } },
         ]),
-        ResultModel.aggregate([
+        db.result.aggregate([
             {
                 $group: {
                     _id: "$subject",
@@ -30,7 +29,7 @@ export const getAnalytics = cache(async () => {
             },
             { $sort: { avgMarks: -1 } },
         ]),
-        ResultModel.aggregate([
+        db.result.aggregate([
             { $group: { _id: "$grade", count: { $sum: 1 } } },
             { $sort: { _id: 1 } },
         ]),

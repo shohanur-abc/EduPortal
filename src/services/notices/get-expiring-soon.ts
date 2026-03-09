@@ -1,12 +1,11 @@
 "use server"
 
-import { NoticeModel } from "@/models/notice"
-import { fmtDate } from '@/lib/utils'
-import { connectDB, pop } from '@/lib/db'
+import { db } from '@/fatman'
+import { fmtDate, pop } from '@/fatman/utils'
 
 export async function getExpiringSoon(days: number = 7) {
-    await connectDB()
-    const notices = await NoticeModel.getExpiringSoon(days)
+    await db.connect()
+    const notices = await db.notice.getExpiringSoon(days)
     return notices.map((n) => ({
         _id: String(n._id),
         title: n.title,

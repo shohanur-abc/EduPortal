@@ -1,8 +1,7 @@
 "use server"
 
-import { connectDB, pop } from '@/lib/db'
-import { fmtDate } from '@/lib/utils'
-import { AttendanceModel } from '@/models/attendance'
+import { db } from '@/fatman'
+import { fmtDate, pop } from '@/fatman/utils'
 
 /**
  * #READ: Retrieves all attendance records from the database with an optional limit.
@@ -17,8 +16,8 @@ import { AttendanceModel } from '@/models/attendance'
  *   - `remarks`: optional remarks about the attendance record
  */
 export const getAll = async (limit: number = 200) => {
-    await connectDB()
-    const records = await AttendanceModel.getAll(limit)
+    await db.connect()
+    const records = await db.attendance.getAll(limit)
 
     return records.map((r) => ({
         _id: String(r._id),

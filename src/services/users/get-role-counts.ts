@@ -1,12 +1,11 @@
 "use server"
 
 import { cache } from 'react'
-import { UserModel } from "@/models/user"
-import { connectDB } from '@/lib/db'
+import { db } from '@/fatman'
 
 export const getRoleCounts = cache(async () => {
-    await connectDB()
-    const counts = await UserModel.roleCounts()
+    await db.connect()
+    const counts = await db.user.roleCounts()
 
     return counts.map((r) => ({
         role: r._id as string,

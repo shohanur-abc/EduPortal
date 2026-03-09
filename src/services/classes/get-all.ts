@@ -1,11 +1,11 @@
 "use server"
 
-import { ClassModel } from "@/models/class"
-import { connectDB, pop, sid } from '@/lib/db'
+import { db } from '@/fatman'
+import { pop, sid } from '@/fatman/utils'
 
 export async function getAll() {
-    await connectDB()
-    const classes = await ClassModel.getAll()
+    await db.connect()
+    const classes = await db.class.getAll()
 
     return classes.map((c) => ({
         _id: sid(c),

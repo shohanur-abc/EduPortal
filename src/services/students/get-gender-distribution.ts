@@ -1,12 +1,11 @@
 "use server"
 
 import { cache } from 'react'
-import { StudentModel } from "@/models/student"
-import { connectDB } from '@/lib/db'
+import { db } from '@/fatman'
 
 export const getGenderDistribution = cache(async () => {
-    await connectDB()
-    const raw = await StudentModel.genderDistribution()
+    await db.connect()
+    const raw = await db.student.genderDistribution()
     return raw.map((r) => ({
         gender: (r._id as string) || "unspecified",
         count: r.count as number,

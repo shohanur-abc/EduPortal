@@ -1,12 +1,12 @@
 "use server"
 
-import { connectDB } from '@/lib/db'
+import { db } from '@/fatman'
 import { getGradeDistribution } from './get-grade-distribution'
 import { getRecent } from './get-recent'
 import { getAvgBySubject } from './get-avg-by-subject'
 
 export async function getOverview() {
-    await connectDB()
+    await db.connect()
     const [gradeDistributionData, recentResults, avgBySubjectData] = await Promise.all([
         getGradeDistribution(),
         getRecent(),

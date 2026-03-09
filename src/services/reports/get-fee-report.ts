@@ -1,12 +1,11 @@
 "use server"
 
 import { cache } from 'react'
-import { FeeModel } from "@/models/fee"
-import { connectDB } from '@/lib/db'
+import { db } from '@/fatman'
 
 export const getFee = cache(async () => {
-    await connectDB()
-    const data = await FeeModel.aggregate([
+    await db.connect()
+    const data = await db.fee.aggregate([
         { $group: { _id: "$status", total: { $sum: "$amount" }, collected: { $sum: "$paidAmount" }, count: { $sum: 1 } } },
     ])
 

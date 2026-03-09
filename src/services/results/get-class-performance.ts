@@ -1,12 +1,11 @@
 "use server"
 
 import { cache } from 'react'
-import { ResultModel } from "@/models/result"
-import { connectDB } from '@/lib/db'
+import { db } from '@/fatman'
 
 export const getClassPerformance = cache(async () => {
-    await connectDB()
-    const raw = await ResultModel.classPerformance()
+    await db.connect()
+    const raw = await db.result.classPerformance()
     return raw.map((r) => ({
         className: r.className as string,
         avgMarks: r.avgMarks as number,

@@ -1,11 +1,11 @@
 "use server"
 
-import { StudentModel } from "@/models/student"
-import { connectDB, sid } from '@/lib/db'
+import { db } from '@/fatman'
+import { sid } from '@/fatman/utils'
 
 export async function getOptions() {
-    await connectDB()
-    const students = await StudentModel.getOptions()
+    await db.connect()
+    const students = await db.student.getOptions()
 
     return students.map((s) => ({
         _id: sid(s),

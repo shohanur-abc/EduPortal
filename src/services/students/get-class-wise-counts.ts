@@ -1,12 +1,11 @@
 "use server"
 
 import { cache } from 'react'
-import { StudentModel } from "@/models/student"
-import { connectDB } from '@/lib/db'
+import { db } from '@/fatman'
 
 export const getClassWiseCounts = cache(async () => {
-    await connectDB()
-    const raw = await StudentModel.classWiseCounts()
+    await db.connect()
+    const raw = await db.student.classWiseCounts()
     return raw.map((r) => ({
         className: `${r._id.className} ${r._id.section}`,
         grade: r._id.grade as number,

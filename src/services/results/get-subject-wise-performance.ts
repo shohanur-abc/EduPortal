@@ -1,12 +1,11 @@
 "use server"
 
 import { cache } from 'react'
-import { ResultModel } from "@/models/result"
-import { connectDB } from '@/lib/db'
+import { db } from '@/fatman'
 
 export const getSubjectWisePerformance = cache(async () => {
-    await connectDB()
-    const raw = await ResultModel.subjectWisePerformance()
+    await db.connect()
+    const raw = await db.result.subjectWisePerformance()
     return raw.map((r) => ({
         subject: r.subject as string,
         avgMarks: r.avgMarks as number,

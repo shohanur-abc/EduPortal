@@ -1,11 +1,11 @@
 "use server"
 
-import { connectDB } from '@/lib/db'
+import { db } from '@/fatman'
 import { getRecent } from './get-recent'
 import { getRoleCounts } from './get-role-counts'
 
 export async function getOverview() {
-    await connectDB()
+    await db.connect()
     const [users, roleCountsData] = await Promise.all([
         getRecent(),
         getRoleCounts(),

@@ -1,12 +1,11 @@
 "use server"
 
-import { StudentModel } from "@/models/student"
-import { fmtDate } from '@/lib/utils'
-import { connectDB, sid } from '@/lib/db'
+import { db } from '@/fatman'
+import { fmtDate, sid } from '@/fatman/utils'
 
 export async function getActive(limit?: number) {
-    await connectDB()
-    const students = await StudentModel.getActive(limit)
+    await db.connect()
+    const students = await db.student.getActive(limit)
 
     return students.map((s) => ({
         _id: sid(s),

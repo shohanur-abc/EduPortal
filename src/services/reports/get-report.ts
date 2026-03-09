@@ -1,12 +1,11 @@
 "use server"
 
 import { cache } from 'react'
-import { AttendanceModel } from "@/models/attendance"
-import { connectDB } from '@/lib/db'
+import { db } from '@/fatman'
 
 export const getReport = cache(async (limit: number = 100) => {
-    await connectDB()
-    const data = await AttendanceModel.reportByDateStatus(limit)
+    await db.connect()
+    const data = await db.attendance.reportByDateStatus(limit)
 
     return data.map((d) => ({
         date: d._id.date as string,

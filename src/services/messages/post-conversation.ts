@@ -1,16 +1,13 @@
 "use server"
 
 import { revalidatePath } from "next/cache"
-import { ConversationModel } from "@/models/conversation"
-import { connectDB, sid } from "@/lib/db"
-import { conversationSchema } from "@/schemas/dashboard"
-import { success, error } from "@/lib/utils"
+import { db, ROUTES, schemas } from "@/fatman"
+import { error, success, sid } from "@/fatman/utils"
 import { ActionResult } from "@/types/response"
-import { ROUTES } from "@/lib/routes"
 
 
 export async function postConversation(raw: unknown): Promise<ActionResult> {
-    const parsed = conversationSchema.safeParse(raw)
+    const parsed = schemas.conversation.safeParse(raw)
     if (!parsed.success) return error(parsed.error.issues[0].message)
 
     const { createdBy } = raw as { createdBy: string }
@@ -41,11 +38,11 @@ async function post(data: {
     participantIds: string[]
     createdBy: string
 }) {
-    await connectDB()
+    await db.connect()
 
     // For direct conversations, check if one already exists
     if (data.type === "direct" && data.participantIds.length === 2) {
-        const existing = await ConversationModel.findDirect(
+        const existing = await db.conversation.findDirect(
             data.participantIds[0],
             data.participantIds[1]
         )
@@ -64,7 +61,7 @@ async function post(data: {
         participants.push({ user: data.createdBy, role: "admin" })
     }
 
-    const conversation = await ConversationModel.create({
+    const conversation = await db.conversation.create({
         name: data.name ?? "",
         type: data.type,
         description: data.description ?? "",

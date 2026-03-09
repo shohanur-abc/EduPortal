@@ -1,12 +1,10 @@
 "use server"
 
-import { ConversationModel } from "@/models/conversation"
-import { MessageModel } from "@/models/message"
-import { connectDB } from "@/lib/db"
+import { db } from "@/fatman"
 
 
 export async function getOverview(): Promise<MessageOverviewData> {
-    await connectDB()
+    await db.connect()
 
     const [
         totalConversations,
@@ -14,10 +12,10 @@ export async function getOverview(): Promise<MessageOverviewData> {
         conversationTypes,
         messageTypes,
     ] = await Promise.all([
-        ConversationModel.countDocuments({ isArchived: false }),
-        MessageModel.countDocuments({ isDeleted: false }),
-        ConversationModel.typeCounts(),
-        MessageModel.typeCounts(),
+        db.conversation.countDocuments({ isArchived: false }),
+        db.message.countDocuments({ isDeleted: false }),
+        db.conversation.typeCounts(),
+        db.message.typeCounts(),
     ])
 
     const directChats = conversationTypes.find((c: { _id: string }) => c._id === "direct")?.count ?? 0

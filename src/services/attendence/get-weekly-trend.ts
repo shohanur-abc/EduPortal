@@ -1,8 +1,7 @@
 "use server"
 
 import { cache } from 'react'
-import { AttendanceModel } from '@/models/attendance'
-import { connectDB } from '@/lib/db'
+import { db } from '@/fatman'
 
 /**
  * #READ: Gets the weekly attendance trend over a specified number of weeks.
@@ -16,8 +15,8 @@ import { connectDB } from '@/lib/db'
  *   - `excused`: count of students with excused absences that week
  */
 export const getWeeklyTrend = cache(async (weeks: number = 8) => {
-    await connectDB()
-    const raw = await AttendanceModel.weeklyTrend(weeks)
+    await db.connect()
+    const raw = await db.attendance.weeklyTrend(weeks)
     const weekMap = new Map<string, { week: number; year: number; present: number; absent: number; late: number; excused: number }>()
 
     for (const r of raw) {

@@ -1,7 +1,6 @@
 "use server"
 
-import { connectDB } from "@/lib/db"
-import { AttendanceModel } from "@/models/attendance"
+import { db } from "@/fatman"
 import { cache } from "react"
 
 /**
@@ -15,8 +14,8 @@ import { cache } from "react"
  * - `total`: sum of all attendance statuses
  */
 export const getStats = cache(async () => {
-    await connectDB()
-    const stats = await AttendanceModel.getStats()
+    await db.connect()
+    const stats = await db.attendance.getStats()
 
     const present = stats.find((s) => s._id === "present")?.count ?? 0
     const absent = stats.find((s) => s._id === "absent")?.count ?? 0

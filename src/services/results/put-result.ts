@@ -1,20 +1,17 @@
 "use server"
 
 import { revalidatePath } from "next/cache"
-import { connectDB } from "@/lib/db"
-import { error, success } from "@/lib/utils"
-import { ResultModel } from "@/models/result"
-import { resultSchema } from "@/schemas/dashboard"
+import { db, ROUTES, schemas } from "@/fatman"
+import { error, success } from "@/fatman/utils"
 import { ActionResult } from "@/types/response"
-import { ROUTES } from "@/lib/routes"
 
 export async function updateResult(id: string, raw: unknown): Promise<ActionResult> {
-    const parsed = resultSchema.safeParse(raw)
+    const parsed = schemas.result.safeParse(raw)
     if (!parsed.success) return error(parsed.error.issues[0].message)
 
-    await connectDB()
+    await db.connect()
     // Use save() to trigger pre-save middleware (grade calculation)
-    const result = await ResultModel.findById(id)
+    const result = await db.result.findById(id)
     if (!result) return error("Result not found")
 
     Object.assign(result, parsed.data)

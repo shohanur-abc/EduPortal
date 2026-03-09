@@ -1,12 +1,11 @@
 "use server"
 
 import { cache } from 'react'
-import { ClassModel } from "@/models/class"
-import { connectDB } from '@/lib/db'
+import { db } from '@/fatman'
 
 export const getCapacityUtilization = cache(async () => {
-    await connectDB()
-    const raw = await ClassModel.capacityUtilization()
+    await db.connect()
+    const raw = await db.class.capacityUtilization()
     return raw.map((r) => ({
         className: `${r.name} ${r.section}`,
         grade: r.grade as number,

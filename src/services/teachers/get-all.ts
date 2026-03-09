@@ -1,12 +1,11 @@
 "use server"
 
-import { TeacherModel } from "@/models/teacher"
-import { fmtDate } from '@/lib/utils'
-import { connectDB, sid } from '@/lib/db'
+import { db } from '@/fatman'
+import { fmtDate, sid } from '@/fatman/utils'
 
 export async function getAll() {
-    await connectDB()
-    const teachers = await TeacherModel.getAll()
+    await db.connect()
+    const teachers = await db.teacher.getAll()
 
     return teachers.map((t) => ({
         _id: sid(t),

@@ -1,12 +1,11 @@
 "use server"
 
 import { cache } from 'react'
-import { TeacherModel } from "@/models/teacher"
-import { connectDB } from '@/lib/db'
+import { db } from '@/fatman'
 
 export const getSubjectCoverage = cache(async () => {
-    await connectDB()
-    const raw = await TeacherModel.subjectCoverage()
+    await db.connect()
+    const raw = await db.teacher.subjectCoverage()
     return raw.map((r) => ({
         subject: r._id as string,
         count: r.count as number,
