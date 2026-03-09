@@ -1,13 +1,11 @@
 import { type LucideIcon } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function Categories({ eyebrow, title, subtitle, categories, activeCategory }: ICategories) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
             <CategoryList categories={categories} activeCategory={activeCategory} />
         </Section>
     );

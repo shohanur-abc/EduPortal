@@ -2,13 +2,11 @@ import { type LucideIcon } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Section } from '@/components/section';
-import Heading from '@/components/heading';
 
 // ============= MAIN COMPONENT =============
 export default function StillHaveQuestions({ eyebrow, title, subtitle, channels }: IStillHaveQuestions) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
             <ChannelsGrid channels={channels} />
         </Section>
     );

@@ -1,13 +1,11 @@
 import type { LucideIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function SocialMedia({ eyebrow, title, subtitle, platforms }: ISocialMedia) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
             <PlatformsRow platforms={platforms} />
         </Section>
     );

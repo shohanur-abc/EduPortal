@@ -6,14 +6,12 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from '@/components/ui/accordion';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function PrivacyPolicy({ eyebrow, title, subtitle, highlights, details }: IPrivacyPolicy) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
             <div className="grid grid-cols-1 @xl:grid-cols-2 gap-10">
                 <HighlightList highlights={highlights} />
                 <PolicyDetails details={details} />

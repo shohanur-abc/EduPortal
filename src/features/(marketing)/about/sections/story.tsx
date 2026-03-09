@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { Section } from '@/components/section';
-import Heading from '@/components/heading';
+import { Badge } from '@/components/ui/badge';
 
 // ============= MAIN COMPONENT =============
 export default function Story({ eyebrow, title, subtitle, paragraphs, image }: IStory) {
@@ -23,7 +23,11 @@ const ImageBlock = ({ src, alt }: { src: string; alt: string }) => (
 
 const ContentBlock = ({ eyebrow, title, subtitle, paragraphs }: Pick<IStory, 'eyebrow' | 'title' | 'subtitle' | 'paragraphs'>) => (
     <div className="space-y-6">
-        <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} align="left" className="mb-0" />
+        <div className="space-y-3">
+            <Badge variant='ghost' className="text-sm font-semibold tracking-widest text-primary border-input block mr-auto">{eyebrow}</Badge>
+            <h2 className="text-3xl @lg:text-4xl @4xl:text-5xl font-bold tracking-tight text-foreground text-left">{title}</h2>
+            <p className="text-base text-muted-foreground @lg:text-lg text-left mx-0">{subtitle}</p>
+        </div>
         {paragraphs.map((text, i) => (
             <p key={i} className="text-muted-foreground leading-relaxed">{text}</p>
         ))}

@@ -1,13 +1,11 @@
 import { ShieldCheck, type LucideIcon } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function DemoGuarantee({ eyebrow, title, subtitle, guarantees }: IDemoGuarantee) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
             <GuaranteesList guarantees={guarantees} />
         </Section>
     );

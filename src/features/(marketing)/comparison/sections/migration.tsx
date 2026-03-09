@@ -2,7 +2,7 @@ import { ArrowRight, type LucideIcon } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import Heading from '@/components/heading';
+import { Badge } from '@/components/ui/badge';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
@@ -10,11 +10,12 @@ export default function Migration({ eyebrow, title, subtitle, steps, cta }: IMig
     return (
         <Section className="px-4 py-12 md:py-20">
             <div className="max-w-7xl mx-auto space-y-12">
-                {/* হেডিং এবং সাবটাইটেল সব সময় সেন্টারে থাকবে */}
-                <div className="text-center">
-                    <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+                <div className="text-center space-y-3">
+                    <Badge variant='ghost' className="text-sm font-semibold tracking-widest text-primary border-input block mx-auto">{eyebrow}</Badge>
+                    <h2 className="text-3xl @lg:text-4xl @4xl:text-5xl font-bold tracking-tight text-foreground text-center">{title}</h2>
+                    <p className="mx-auto text-base text-muted-foreground @lg:text-lg text-center">{subtitle}</p>
                 </div>
-                
+
                 <StepsGrid steps={steps} />
                 <CtaButton cta={cta} />
             </div>

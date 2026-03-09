@@ -8,14 +8,12 @@ import {
     TableHead,
     TableCell,
 } from '@/components/ui/table';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function ComparisonTable({ eyebrow, title, subtitle, products, features }: IComparisonTable) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
             <FeatureTable products={products} features={features} />
         </Section>
     );

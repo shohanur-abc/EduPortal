@@ -2,14 +2,12 @@ import { Star } from 'lucide-react';
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function Testimonials({ eyebrow, title, subtitle, testimonials, featured }: ITestimonials) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
             <div className="space-y-8">
                 {featured && <FeaturedTestimonial {...featured} />}
                 <TestimonialsGrid testimonials={testimonials} />

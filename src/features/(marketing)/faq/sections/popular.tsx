@@ -2,13 +2,11 @@ import { type LucideIcon } from 'lucide-react';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Section } from '@/components/section';
-import Heading from '@/components/heading';
 
 // ============= MAIN COMPONENT =============
 export default function PopularFAQ({ eyebrow, title, subtitle, questions }: IPopularFAQ) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
             <QuestionsGrid questions={questions} />
         </Section>
     );

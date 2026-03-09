@@ -1,13 +1,11 @@
 import { type LucideIcon } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Section } from '@/components/section';
-import Heading from '@/components/heading';
 
 // ============= MAIN COMPONENT =============
 export default function FAQCategories({ eyebrow, title, subtitle, categories }: IFAQCategories) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
             <CategoriesGrid categories={categories} />
         </Section>
     );

@@ -1,14 +1,12 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function FAQ({ eyebrow, title, subtitle, faqs, ctaText, ctaHref }: IFAQ) {
     return (
-        <Section containerClass="bg-muted/50">
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+        <Section containerClass="bg-muted/50" eyebrow={eyebrow} title={title} subtitle={subtitle}>
             <div className="max-w-3xl mx-auto space-y-8">
                 <FAQList faqs={faqs} />
                 <CTALink text={ctaText} href={ctaHref} />

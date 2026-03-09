@@ -4,15 +4,13 @@ import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 import { ROUTES } from '@/lib/routes';
 
 // ============= MAIN COMPONENT =============
 export default function CaseStudiesPreview({ eyebrow, title, subtitle, studies, viewAllText }: ICaseStudiesPreview) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
             <Grid studies={studies} />
             {viewAllText && <ViewAllLink text={viewAllText} />}
         </Section>

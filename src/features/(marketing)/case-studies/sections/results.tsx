@@ -1,13 +1,11 @@
 import { ArrowRight, type LucideIcon } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function Results({ eyebrow, title, subtitle, comparisons }: IResults) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
             <ComparisonsGrid comparisons={comparisons} />
         </Section>
     );

@@ -1,12 +1,10 @@
 import { Card, CardContent } from '@/components/ui/card';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function Timeline({ eyebrow, title, subtitle, milestones }: ITimeline) {
     return (
-        <Section containerClass="bg-muted/50">
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+        <Section containerClass="bg-muted/50" eyebrow={eyebrow} title={title} subtitle={subtitle}>
             <MilestoneList milestones={milestones} />
         </Section>
     );

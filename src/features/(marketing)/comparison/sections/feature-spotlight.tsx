@@ -1,7 +1,7 @@
 import { CheckCircle2, X, type LucideIcon } from 'lucide-react';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import Heading from '@/components/heading';
+import { Badge } from '@/components/ui/badge';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
@@ -10,10 +10,12 @@ export default function FeatureSpotlight({ eyebrow, title, subtitle, spotlights 
         /* Section-এ @container যোগ করা হয়েছে */
         <Section className="px-4 py-12 @container overflow-hidden">
             <div className="max-w-7xl mx-auto space-y-10 @3xl:space-y-16">
-                <div className="text-center max-w-3xl mx-auto">
-                    <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+                <div className="text-center max-w-3xl mx-auto space-y-3">
+                    <Badge variant='ghost' className="text-sm font-semibold tracking-widest text-primary border-input block mx-auto">{eyebrow}</Badge>
+                    <h2 className="text-3xl @lg:text-4xl @4xl:text-5xl font-bold tracking-tight text-foreground text-center">{title}</h2>
+                    <p className="mx-auto text-base text-muted-foreground @lg:text-lg text-center">{subtitle}</p>
                 </div>
-                
+
                 <SpotlightTabs spotlights={spotlights} />
             </div>
         </Section>
@@ -26,9 +28,9 @@ const SpotlightTabs = ({ spotlights }: { spotlights: IFeatureSpotlight['spotligh
         <div className="flex justify-center w-full">
             <TabsList className="flex h-auto p-1 bg-muted/50 overflow-x-auto justify-start @3xl:justify-center no-scrollbar max-w-full border border-border/40">
                 {spotlights.map((spotlight) => (
-                    <TabsTrigger 
-                        key={spotlight.id} 
-                        value={spotlight.id} 
+                    <TabsTrigger
+                        key={spotlight.id}
+                        value={spotlight.id}
                         className="gap-2 px-4 py-2 text-sm @3xl:text-base whitespace-nowrap"
                     >
                         <spotlight.icon className="size-4 shrink-0" />
@@ -39,7 +41,7 @@ const SpotlightTabs = ({ spotlights }: { spotlights: IFeatureSpotlight['spotligh
                 ))}
             </TabsList>
         </div>
-        
+
         {spotlights.map((spotlight) => (
             <TabsContent key={spotlight.id} value={spotlight.id} className="outline-none focus-visible:ring-0">
                 <SpotlightContent spotlight={spotlight} />
@@ -74,7 +76,7 @@ const FeatureDetail = ({ title, description, highlights }: {
                 {description}
             </p>
         </div>
-        
+
         <div className="grid grid-cols-1 @xl:grid-cols-2 gap-3 pt-2">
             {highlights.map((highlight, i) => (
                 <div key={i} className="flex items-start gap-3 justify-start">
@@ -110,7 +112,7 @@ const ComparisonCard = ({ competitor, ourFeature, theirFeature, verdict }: IFeat
                     <p className="text-sm @3xl:text-base text-foreground font-medium leading-tight">{ourFeature}</p>
                 </div>
             </div>
-            
+
             {/* Their Solution */}
             <div className="flex items-start gap-3 opacity-75">
                 <X className="size-4 @3xl:size-5 text-muted-foreground/60 shrink-0 mt-0.5" />
@@ -119,7 +121,7 @@ const ComparisonCard = ({ competitor, ourFeature, theirFeature, verdict }: IFeat
                     <p className="text-sm @3xl:text-base text-muted-foreground leading-tight">{theirFeature}</p>
                 </div>
             </div>
-            
+
             {verdict && (
                 <div className="pt-2 border-t border-dashed border-border/60">
                     <p className="text-xs @3xl:text-sm font-semibold text-primary italic">

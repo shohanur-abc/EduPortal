@@ -42,7 +42,7 @@ const Description = ({ text }: { text: string }) => (
 );
 
 const CTAButtons = ({ primary, secondary }: IHero['cta']) => (
-    <div className="flex flex-col @sm:flex-row items-center justify-center gap-4">
+    <div className="flex flex-col @md:flex-row items-center justify-center gap-4">
         <Button size="lg" className="rounded-full px-8 text-base" asChild>
             <Link href={primary.href}>
                 {primary.text}

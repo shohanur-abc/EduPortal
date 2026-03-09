@@ -3,14 +3,12 @@ import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function FeaturedCase({ eyebrow, title, subtitle, caseStudy }: IFeaturedCase) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
             <div className="grid grid-cols-1 @3xl:grid-cols-2 gap-8 @3xl:gap-12 items-center">
                 <CaseImage src={caseStudy.image} alt={caseStudy.schoolName} />
                 <CaseContent {...caseStudy} />

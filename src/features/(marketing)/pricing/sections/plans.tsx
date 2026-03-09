@@ -3,15 +3,13 @@ import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 import { cn } from '@/lib/utils';
 
 // ============= MAIN COMPONENT =============
 export default function PricingPlans({ eyebrow, title, subtitle, plans }: IPricingPlans) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
             <PlansGrid plans={plans} />
         </Section>
     );

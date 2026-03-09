@@ -1,12 +1,10 @@
 import { type LucideIcon } from 'lucide-react';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function HowItWorks({ eyebrow, title, subtitle, steps }: IHowItWorks) {
     return (
-        <Section containerClass="bg-muted/50">
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+        <Section containerClass="bg-muted/50" eyebrow={eyebrow} title={title} subtitle={subtitle}>
             <StepList steps={steps} />
         </Section>
     );

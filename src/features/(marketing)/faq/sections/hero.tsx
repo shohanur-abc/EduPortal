@@ -2,13 +2,11 @@
 import { Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Section } from '@/components/section';
-import Heading from '@/components/heading';
 
 // ============= MAIN COMPONENT =============
 export default function FAQHero({ eyebrow, title, subtitle, searchPlaceholder, onSearch }: IFAQHero) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
             <SearchBar placeholder={searchPlaceholder} onSearch={onSearch} />
         </Section>
     );

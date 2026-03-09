@@ -1,13 +1,11 @@
 import { type LucideIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Section } from '@/components/section';
-import Heading from '@/components/heading';
 
 // ============= MAIN COMPONENT =============
 export default function FAQCTA({ eyebrow, title, subtitle, actions }: IFAQCTA) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
             <ActionsRow actions={actions} />
         </Section>
     );

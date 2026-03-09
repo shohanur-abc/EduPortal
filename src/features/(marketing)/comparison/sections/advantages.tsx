@@ -1,6 +1,6 @@
 import { type LucideIcon } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-import Heading from '@/components/heading';
+import { Badge } from '@/components/ui/badge';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
@@ -11,7 +11,11 @@ export default function Advantages({ eyebrow, title, subtitle, advantages }: IAd
         */
         <Section className="px-4 py-10 md:px-6 lg:px-8 @container">
             <div className="max-w-7xl mx-auto space-y-10">
-                <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+                <div className="space-y-3 text-center">
+                    <Badge variant='ghost' className="text-sm font-semibold tracking-widest text-primary border-input block mx-auto">{eyebrow}</Badge>
+                    <h2 className="text-3xl @lg:text-4xl @4xl:text-5xl font-bold tracking-tight text-foreground text-center">{title}</h2>
+                    <p className="mx-auto text-base text-muted-foreground @lg:text-lg text-center">{subtitle}</p>
+                </div>
                 <AdvantagesGrid advantages={advantages} />
             </div>
         </Section>

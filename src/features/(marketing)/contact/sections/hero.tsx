@@ -1,12 +1,10 @@
 import { Badge } from '@/components/ui/badge';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function ContactHero({ eyebrow, title, subtitle, badges }: IContactHero) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
             {badges && <BadgeRow badges={badges} />}
         </Section>
     );

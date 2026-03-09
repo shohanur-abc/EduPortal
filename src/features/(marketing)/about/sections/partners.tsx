@@ -1,13 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function Partners({ eyebrow, title, subtitle, partners }: IPartners) {
     return (
-        <Section containerClass="bg-muted/50">
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+        <Section containerClass="bg-muted/50" eyebrow={eyebrow} title={title} subtitle={subtitle}>
             <PartnersGrid partners={partners} />
         </Section>
     );
