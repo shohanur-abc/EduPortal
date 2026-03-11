@@ -8,8 +8,10 @@ import { Section } from '@/components/section';
 // ============= MAIN COMPONENT =============
 export default function Benefits({ eyebrow, title, subtitle, roles }: IBenefits) {
     return (
-        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
-            <RolesGrid roles={roles} />
+        <Section cols={4} eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {roles.map((role, i) => (
+                <RoleCard key={i} {...role} />
+            ))}
         </Section>
     );
 }

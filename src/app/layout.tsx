@@ -20,8 +20,8 @@ export default async function RootLayout({ children, auth: authModal }: Readonly
         <html lang="en">
             <body className={`${geistSans.variable} ${geistMono.variable} antialiased dark`} >
                 <Provider>
-                    <LayoutClient user={user}>{children}</LayoutClient>
                     {authModal}
+                    <LayoutClient user={user}>{children}</LayoutClient>
                 </Provider>
             </body>
         </html>

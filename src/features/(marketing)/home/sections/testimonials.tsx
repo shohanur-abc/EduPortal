@@ -7,11 +7,9 @@ import { Section } from '@/components/section';
 // ============= MAIN COMPONENT =============
 export default function Testimonials({ eyebrow, title, subtitle, testimonials, featured }: ITestimonials) {
     return (
-        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
-            <div className="space-y-8">
-                {featured && <FeaturedTestimonial {...featured} />}
-                <TestimonialsGrid testimonials={testimonials} />
-            </div>
+        <Section className="space-y-8" eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {featured && <FeaturedTestimonial {...featured} />}
+            <TestimonialsGrid testimonials={testimonials} />
         </Section>
     );
 }
@@ -51,8 +49,8 @@ const TestimonialsGrid = ({ testimonials }: { testimonials: ITestimonials['testi
 );
 
 const TestimonialCard = ({ quote, author, role, school, avatar, rating }: ITestimonials['testimonials'][number]) => (
-    <Card className="hover:shadow-md transition-shadow">
-        <CardContent className="p-6 space-y-4">
+    <Card className="hover:shadow-md transition-shadow h-full py-0">
+        <CardContent className="p-6 grid grid-rows-[auto_1fr_auto] gap-4 h-full">
             <StarRating rating={rating} />
             <blockquote className="text-sm leading-relaxed">
                 &ldquo;{quote}&rdquo;

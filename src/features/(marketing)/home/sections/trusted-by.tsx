@@ -6,11 +6,9 @@ import { Section } from '@/components/section';
 // ============= MAIN COMPONENT =============
 export default function TrustedBy({ eyebrow, title, subtitle, logos, metrics }: ITrustedBy) {
     return (
-        <Section containerClass="bg-muted/50" eyebrow={eyebrow} title={title} subtitle={subtitle}>
-            <div className="space-y-12">
-                <LogoGrid logos={logos} />
-                <MetricsRow metrics={metrics} />
-            </div>
+        <Section className="space-y-12" containerClass="bg-muted/50" eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            <LogoGrid logos={logos} />
+            <MetricsRow metrics={metrics} />
         </Section>
     );
 }
@@ -27,7 +25,7 @@ const LogoGrid = ({ logos }: { logos: ITrustedBy['logos'] }) => (
 );
 
 const MetricsRow = ({ metrics }: { metrics: ITrustedBy['metrics'] }) => (
-    <div className="grid grid-cols-2 @lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-2 @3xl:grid-cols-4 gap-6">
         {metrics.map(({ value, label, description }, i) => (
             <Card key={i} className="text-center">
                 <CardContent className="space-y-1">

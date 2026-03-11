@@ -2,10 +2,10 @@
 
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { FieldSeparator as Separator } from "@/components/ui/field";
 import { Form } from "@/components/molecules/form";
+import { DialogDrawer } from "@/components/molecules/dialog-drawer";
 import { socialLogin as socialLogin$ } from "../actions";
 import type { UseFormReturn, FieldValues } from "react-hook-form";
 
@@ -20,67 +20,65 @@ export const LoginModal = <T extends FieldValues = FieldValues>({
     const router = useRouter();
 
     return (
-        <Dialog
+        <DialogDrawer
+            trigger={<div className="hidden" />}
+            title={header.title}
+            description={header.description}
             open
+            closeOnOutsideClick={false}
             onOpenChange={(open) => {
                 if (!open) router.back();
             }}
+            className="space-y-6"
+            classNames={{
+                container: "sm:max-w-sm rounded-2xl p-8 gap-0",
+                header: "text-center items-center space-y-2 mb-6",
+                title: "text-2xl font-semibold",
+                description: "text-sm text-muted-foreground text-center max-w-xs",
+            }}
         >
-            <DialogContent className="sm:max-w-sm rounded-2xl p-8 gap-0">
-                {/* Close button is handled by DialogContent's built-in X */}
-                <DialogHeader className="text-center items-center space-y-2 mb-6">
-                    <DialogTitle className="text-2xl font-semibold">{header.title}</DialogTitle>
-                    {header.description && (
-                        <DialogDescription className="text-sm text-muted-foreground text-center max-w-xs">
-                            {header.description}
-                        </DialogDescription>
-                    )}
-                </DialogHeader>
 
-                <div className="space-y-6">
-                    {/* Social login buttons */}
-                    {socialLogin && (
-                        <div className="space-y-3">
-                            {socialLogin.map((provider) => (
-                                <form key={provider} action={socialLogin$.bind(null, provider)}>
-                                    <Button
-                                        type="submit"
-                                        variant="outline"
-                                        className="w-full gap-2 h-11 rounded-full border border-border/60 bg-secondary/40 hover:bg-secondary/80"
-                                    >
-                                        {ICONS[provider]}
-                                        Continue with{" "}
-                                        {provider.charAt(0).toUpperCase() + provider.slice(1)}
-                                    </Button>
-                                </form>
-                            ))}
-                        </div>
-                    )}
-
-                    {socialLogin && (
-                        <Separator className="my-0">or</Separator>
-                    )}
-
-                    {/* Email/password form */}
-                    <Form form={form} onSubmit={onSubmit} className="space-y-3">
-                        {children}
-                    </Form>
+            {/* Social login buttons */}
+            {socialLogin && (
+                <div className="space-y-3">
+                    {socialLogin.map((provider) => (
+                        <form key={provider} action={socialLogin$.bind(null, provider)}>
+                            <Button
+                                type="submit"
+                                variant="outline"
+                                className="w-full gap-2 h-11 rounded-full border border-border/60 bg-secondary/40 hover:bg-secondary/80"
+                            >
+                                {ICONS[provider]}
+                                Continue with{" "}
+                                {provider.charAt(0).toUpperCase() + provider.slice(1)}
+                            </Button>
+                        </form>
+                    ))}
                 </div>
+            )}
 
-                {/* Footer */}
-                <div className="mt-6 text-center">
-                    <p className="text-sm text-muted-foreground">
-                        {footer.description}{" "}
-                        <Link
-                            href={footer.cta?.href || "#"}
-                            className="text-primary hover:underline font-medium"
-                        >
-                            {footer.cta?.label || "Sign up"}
-                        </Link>
-                    </p>
-                </div>
-            </DialogContent>
-        </Dialog>
+            {socialLogin && (
+                <Separator className="my-0">or</Separator>
+            )}
+
+            {/* Email/password form */}
+            <Form form={form} onSubmit={onSubmit} className="space-y-3">
+                {children}
+            </Form>
+
+            {/* Footer */}
+            <div className="mt-6 text-center">
+                <p className="text-sm text-muted-foreground">
+                    {footer.description}{" "}
+                    <Link
+                        href={footer.cta?.href || "#"}
+                        className="text-primary hover:underline font-medium"
+                    >
+                        {footer.cta?.label || "Sign up"}
+                    </Link>
+                </p>
+            </div>
+        </DialogDrawer>
     );
 };
 
