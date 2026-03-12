@@ -15,7 +15,7 @@ export default function FeatureGrid({ eyebrow, title, subtitle, features }: IFea
 
 // ============= CHILD COMPONENTS =============
 const Grid = ({ features }: { features: IFeatureGridItem[] }) => (
-    <div className="grid grid-cols-1 @sm:grid-cols-2 @xl:grid-cols-3 @4xl:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 @md:grid-cols-2 @xl:grid-cols-2 @4xl:grid-cols-4 gap-6">
         {features.map((feature, i) => (
             <FeatureCard key={i} {...feature} />
         ))}
