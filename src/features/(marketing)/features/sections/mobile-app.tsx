@@ -3,25 +3,30 @@ import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Section } from '@/components/section';
-import { cn } from '@/lib/utils'; // Standard shadcn utility
+import { cn } from '@/lib/utils';
 
 // ============= MAIN COMPONENT =============
 export default function MobileApp({ eyebrow, title, description, features, cta }: IMobileApp) {
     return (
-        /* Using @container for responsive control and a subtle background for contrast */
-        <Section className="px-4 py-16 md:py-24 @container bg-muted/30 overflow-hidden">
+        /* Enhanced background with a subtle primary tint for better contrast */
+        <Section className="px-4 py-12 @xs:py-16 @lg:py-24 @container from-muted/50 to-background overflow-hidden">
             <div className="max-w-7xl mx-auto grid grid-cols-1 @4xl:grid-cols-2 gap-12 @4xl:gap-20 items-center">
-                {/* Visual Phone Representation */}
-                <PhoneMockup />
+                
+                {/* Visual Phone Representation - Centered on mobile, left on desktop */}
+                <div className="order-2 @4xl:order-1 flex justify-center">
+                    <PhoneMockup />
+                </div>
 
-                {/* Information Content Block */}
-                <ContentBlock 
-                    eyebrow={eyebrow} 
-                    title={title} 
-                    description={description} 
-                    features={features} 
-                    cta={cta} 
-                />
+                {/* Information Content Block - Centered text on mobile for better flow */}
+                <div className="order-1 @4xl:order-2">
+                    <ContentBlock 
+                        eyebrow={eyebrow} 
+                        title={title} 
+                        description={description} 
+                        features={features} 
+                        cta={cta} 
+                    />
+                </div>
             </div>
         </Section>
     );
@@ -30,15 +35,15 @@ export default function MobileApp({ eyebrow, title, description, features, cta }
 // ============= CHILD COMPONENTS =============
 
 const ContentBlock = ({ eyebrow, title, description, features, cta }: Omit<IMobileApp, never>) => (
-    <div className="flex flex-col justify-center space-y-6 @3xl:space-y-8">
+    <div className="flex flex-col items-center @4xl:items-start space-y-6 @3xl:space-y-8 text-center @4xl:text-left">
         <div className="space-y-4">
-            <Badge variant="outline" className="w-fit rounded-full px-4 py-1.5 text-[10px] @xs:text-xs font-bold uppercase tracking-widest bg-primary/5 border-primary/20 text-primary">
+            <Badge variant="outline" className="w-fit rounded-full px-4 py-1.5 text-[10px] @xs:text-xs font-bold uppercase tracking-widest bg-primary/10 border-primary/20 text-primary">
                 {eyebrow}
             </Badge>
-            <h2 className="text-3xl @2xl:text-4xl @5xl:text-5xl font-extrabold tracking-tight text-foreground leading-[1.1]">
+            <h2 className="text-3xl @xl:text-4xl @5xl:text-5xl font-extrabold tracking-tight text-foreground leading-[1.15]">
                 {title}
             </h2>
-            <p className="text-muted-foreground text-base @xl:text-lg leading-relaxed max-w-[55ch]">
+            <p className="text-muted-foreground text-sm @xs:text-base @xl:text-lg leading-relaxed max-w-[55ch]">
                 {description}
             </p>
         </div>
@@ -47,7 +52,7 @@ const ContentBlock = ({ eyebrow, title, description, features, cta }: Omit<IMobi
 
         {cta && (
             <div className="pt-4">
-                <Button size="lg" className="rounded-full px-8 shadow-lg transition-all" asChild>
+                <Button size="lg" className="rounded-full px-8 shadow-xl shadow-primary/20 hover:shadow-primary/30 transition-all duration-300 active:scale-95" asChild>
                     <Link href={cta.href}>{cta.text}</Link>
                 </Button>
             </div>
@@ -56,8 +61,8 @@ const ContentBlock = ({ eyebrow, title, description, features, cta }: Omit<IMobi
 );
 
 const FeatureList = ({ features }: { features: IMobileFeature[] }) => (
-    /* Changed to single column layout to maintain consistency across the site */
-    <div className="grid grid-cols-1 gap-y-6 pt-6 border-t border-border/40">
+    /* Maintained single column, but centered on small devices */
+    <div className="grid grid-cols-1 gap-y-6 pt-6 border-t border-border/60 w-full max-w-[500px] @4xl:max-w-full">
         {features.map((feature, i) => (
             <FeatureItem key={i} {...feature} />
         ))}
@@ -65,44 +70,50 @@ const FeatureList = ({ features }: { features: IMobileFeature[] }) => (
 );
 
 const FeatureItem = ({ icon: Icon, title, description }: IMobileFeature) => (
-    <div className="flex items-start gap-4 group">
-        <div className="size-12 rounded-xl bg-background border border-border/50 flex items-center justify-center shrink-0 shadow-sm group-hover:bg-secondary group-hover:text-accent-foreground transition-all duration-300">
-            <Icon className="size-6" />
+    <div className="flex flex-col @xs:flex-row items-center @4xl:items-start gap-4 group">
+        {/* Dynamic Icon Box with Primary/Accent Colors */}
+        <div className="size-12 @xl:size-14 rounded-2xl bg-primary/5 border border-primary/10 flex items-center justify-center shrink-0 shadow-sm group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110 transition-all duration-300">
+            <Icon className="size-6 @xl:size-7 text-primary group-hover:text-inherit" />
         </div>
         <div className="space-y-1">
-            <p className="text-base font-bold text-foreground leading-none">{title}</p>
-            <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+            <p className="text-base @xl:text-lg font-bold text-foreground leading-tight">{title}</p>
+            <p className="text-xs @xs:text-sm text-muted-foreground leading-relaxed italic-none">{description}</p>
         </div>
     </div>
 );
 
 const PhoneMockup = () => (
-    /* A more realistic phone frame with decorative elements */
-    <div className="flex items-center justify-center relative @container/phone">
-        {/* Glow effect behind the phone */}
-        <div className="absolute -inset-10 bg-primary/10 rounded-full blur-[100px] opacity-50" />
+    <div className="flex items-center justify-center relative w-full max-w-[350px] @container/phone">
+        {/* Animated Glow effect */}
+        <div className="absolute -inset-10 bg-primary/20 rounded-full blur-[80px] @7xl:blur-[120px] opacity-40 animate-pulse" />
         
-        <div className="relative w-[280px] @sm:w-[320px] aspect-[9/19] rounded-[3rem] border-[8px] border-foreground/10 bg-black shadow-2xl overflow-hidden ring-4 ring-foreground/5">
-            {/* Speaker/Camera Notch */}
-            <div className="absolute top-0 inset-x-0 h-6 flex items-center justify-center z-20">
-                <div className="w-20 h-4 bg-black rounded-b-xl" />
+        {/* Phone Frame with consistent Primary accents */}
+        <div className="relative w-full aspect-[9/18.5] rounded-[3rem] border-[10px] border-zinc-900 bg-zinc-950 shadow-[0_0_50px_-12px_rgba(0,0,0,0.5)] overflow-hidden ring-1 ring-white/10">
+            {/* Dynamic Island / Notch */}
+            <div className="absolute top-0 inset-x-0 h-7 flex items-center justify-center z-20">
+                <div className="w-24 h-5 bg-zinc-900 rounded-b-2xl shadow-inner" />
             </div>
             
-            {/* Placeholder for actual App UI Image or content */}
-            <div className="absolute inset-2 rounded-[2.2rem] bg-background flex items-center justify-center overflow-hidden">
-                <div className="text-center space-y-4 px-6">
-                    <div className="size-16 rounded-2xl bg-primary/10 mx-auto flex items-center justify-center animate-pulse">
-                        <div className="size-8 rounded-lg bg-primary/30" />
+            {/* Mock App Interface with better color depth */}
+            <div className="absolute inset-2 rounded-[2.2rem] bg-background flex flex-col items-center justify-center overflow-hidden">
+                <div className="text-center space-y-6 px-6 w-full">
+                    <div className="size-20 rounded-[2rem] bg-gradient-to-br from-primary/20 to-primary/5 mx-auto flex items-center justify-center shadow-inner">
+                        <div className="size-10 rounded-xl bg-primary/40 animate-bounce" />
                     </div>
+                    
                     <div className="space-y-3">
-                        <div className="h-3 bg-muted rounded-full w-32 mx-auto" />
-                        <div className="h-2 bg-muted/60 rounded-full w-24 mx-auto" />
+                        <div className="h-3 bg-muted rounded-full w-3/4 mx-auto" />
+                        <div className="h-2.5 bg-muted/60 rounded-full w-1/2 mx-auto" />
                     </div>
-                    <div className="grid grid-cols-2 gap-2 pt-4">
-                        <div className="h-20 bg-muted/40 rounded-xl" />
-                        <div className="h-20 bg-muted/40 rounded-xl" />
+                    
+                    <div className="space-y-3 pt-4 w-full">
+                        <div className="h-14 bg-primary/5 border border-primary/10 rounded-2xl w-full shadow-sm" />
+                        <div className="h-14 bg-muted/30 rounded-2xl w-full" />
                     </div>
                 </div>
+
+                {/* Bottom Indicator */}
+                <div className="absolute bottom-3 w-1/3 h-1 bg-zinc-300/20 rounded-full" />
             </div>
         </div>
     </div>

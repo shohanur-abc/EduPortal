@@ -16,7 +16,7 @@ export default function Audit({ eyebrow, title, subtitle, features }: IAudit) {
 
 // ============= CHILD COMPONENTS =============
 const FeatureGrid = ({ features }: { features: IAuditFeature[] }) => (
-    <div className="grid grid-cols-1 @md:grid-cols-2 @3xl:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 @lg:grid-cols-2 @3xl:grid-cols-3 gap-6">
         {features.map((feature, i) => (
             <AuditCard key={i} {...feature} />
         ))}

@@ -51,7 +51,7 @@ const ImageBlock = ({ src, alt }: { src: string; alt: string }) => (
 );
 
 const ContentBlock = ({ eyebrow, title, description, highlights }: Omit<IFeatureDetail, 'image' | 'direction'>) => (
-    <div className="flex flex-col justify-center space-y-6 @3xl:space-y-8">
+    <div className="flex flex-col justify-center">
         <div className="space-y-4">
             <Badge variant="outline" className="w-fit rounded-full px-4 py-1.5 text-[10px] @xs:text-xs font-bold uppercase tracking-widest bg-primary/5 border-primary/20 text-primary">
                 {eyebrow}
@@ -82,7 +82,7 @@ const HighlightItem = ({ icon: Icon = CheckCircle, text }: IHighlight) => (
         <div className="mt-1 bg-primary/10 p-2 rounded-xl group-hover:bg-secondary group-hover:text-accent-foreground transition-all duration-300">
             <Icon className="size-5 shrink-0" />
         </div>
-        <span className="text-sm @xl:text-base text-foreground/85 font-medium leading-relaxed pt-0.5">
+        <span className="text-sm @xl:text-base text-foreground/85 font-medium leading-relaxed pt-0.5 text-start">
             {text}
         </span>
     </li>
