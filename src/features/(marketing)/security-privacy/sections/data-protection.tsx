@@ -15,7 +15,7 @@ export default function DataProtection({ eyebrow, title, subtitle, measures }: I
 
 // ============= CHILD COMPONENTS =============
 const Grid = ({ measures }: { measures: IMeasureItem[] }) => (
-    <div className="grid grid-cols-1 @md:grid-cols-2 @3xl:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 @lg:grid-cols-2 @3xl:grid-cols-3 gap-6">
         {measures.map((measure, i) => (
             <MeasureCard key={i} {...measure} />
         ))}

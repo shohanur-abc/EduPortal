@@ -30,7 +30,7 @@ const Description = ({ text }: { text: string }) => (
 );
 
 const Actions = ({ primary, secondary }: { primary: ICTA['primaryCta']; secondary?: ICTA['secondaryCta'] }) => (
-    <div className="flex flex-col @sm:flex-row items-center justify-center gap-4 pt-2">
+    <div className="flex flex-col @xl:flex-row items-center justify-center gap-4 pt-2">
         <Button size="lg" variant="secondary" className="rounded-full px-8" asChild>
             <Link href={primary.href}>
                 {primary.text}
@@ -38,7 +38,7 @@ const Actions = ({ primary, secondary }: { primary: ICTA['primaryCta']; secondar
             </Link>
         </Button>
         {secondary && (
-            <Button size="lg" variant="outline" className="rounded-full px-8 border-primary-foreground/30 text-secondary hover:text-secondary hover:bg-destructive/10" asChild>
+            <Button size="lg" variant="outline" className="rounded-full px-8 border-primary-foreground/30 text-secondary hover:text-primary hover:bg-secondary bg-foreground" asChild>
                 <Link href={secondary.href}>{secondary.text}</Link>
             </Button>
         )}

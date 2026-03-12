@@ -16,7 +16,7 @@ export default function AccessControl({ eyebrow, title, subtitle, roles }: IAcce
 
 // ============= CHILD COMPONENTS =============
 const RoleGrid = ({ roles }: { roles: IRoleItem[] }) => (
-    <div className="grid grid-cols-1 @md:grid-cols-2 @3xl:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 @lg:grid-cols-2 @3xl:grid-cols-3 gap-6">
         {roles.map((role, i) => (
             <RoleCard key={i} {...role} />
         ))}
