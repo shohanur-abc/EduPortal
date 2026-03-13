@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     description:
         'Get in touch with the EduPortal team. Whether you need a demo, technical support, or have questions about our school management platform, we are here to help schools, administrators, and parents.',
     keywords: [
-        'contact EduPortal',
+        'contact EduPortal ',
         'school management support',
         'edtech customer service',
         'school ERP help',
@@ -457,25 +457,25 @@ export default function ContactPage() {
                         icon: Facebook,
                         name: 'Facebook',
                         href: 'https://facebook.com/edu-portal',
-                        handle: '@EduPortal',
+                        handle: '@EduPortal ',
                     },
                     {
                         icon: Twitter,
                         name: 'X (Twitter)',
                         href: 'https://twitter.com/edu-portal',
-                        handle: '@EduPortal',
+                        handle: '@EduPortal ',
                     },
                     {
                         icon: Linkedin,
                         name: 'LinkedIn',
                         href: 'https://linkedin.com/company/edu-portal',
-                        handle: 'EduPortal',
+                        handle: 'EduPortal ',
                     },
                     {
                         icon: Youtube,
                         name: 'YouTube',
                         href: 'https://youtube.com/@edu-portal',
-                        handle: '@EduPortal',
+                        handle: '@EduPortal ',
                     },
                 ]}
             />

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Confirmation from "@/features/auth/sections/confirmation";
 
 export const metadata: Metadata = {
-    title: "Account Created | EduPortal",
+    title: "Account Created | EduPortal ",
     description: "Your EduPortal account has been created",
 };
 

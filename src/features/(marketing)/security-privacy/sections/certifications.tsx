@@ -6,22 +6,16 @@ import { Section } from '@/components/section';
 // ============= MAIN COMPONENT =============
 export default function Certifications({ eyebrow, title, subtitle, certifications }: ICertifications) {
     return (
-        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
-            <Grid certifications={certifications} />
+        <Section cols={4} eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {certifications.map((cert, i) => (
+                <CertificationCard key={i} {...cert} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const Grid = ({ certifications }: { certifications: ICertificationItem[] }) => (
-    <div className="grid grid-cols-1 @lg:grid-cols-2 @3xl:grid-cols-4 gap-6">
-        {certifications.map((cert, i) => (
-            <CertificationCard key={i} {...cert} />
-        ))}
-    </div>
-);
-
-const CertificationCard = ({ icon: Icon, name, status, description }: ICertificationItem) => (
+const CertificationCard = ({ icon: Icon, name, status, description }: ICertifications['certifications'][0]) => (
     <Card className="group hover:border-primary/50 hover:shadow-md transition-all text-center">
         <CardHeader className="items-center">
             <IconBox icon={Icon} />
@@ -47,16 +41,15 @@ const StatusBadge = ({ status }: { status: string }) => (
 );
 
 // ============= TYPES =============
-interface ICertificationItem {
-    icon: LucideIcon;
-    name: string;
-    status: string;
-    description: string;
-}
 
 interface ICertifications {
     eyebrow: string;
     title: string;
     subtitle: string;
-    certifications: ICertificationItem[];
+    certifications: {
+        icon: LucideIcon;
+        name: string;
+        status: string;
+        description: string;
+    }[];
 }

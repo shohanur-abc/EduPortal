@@ -5,11 +5,9 @@ import { Badge } from '@/components/ui/badge';
 // ============= MAIN COMPONENT =============
 export default function Story({ eyebrow, title, subtitle, paragraphs, image }: IStory) {
     return (
-        <Section containerClass="bg-muted/50">
-            <div className="grid grid-cols-1 @4xl:grid-cols-2 gap-12 items-center">
-                <ImageBlock src={image.src} alt={image.alt} />
-                <ContentBlock eyebrow={eyebrow} title={title} subtitle={subtitle} paragraphs={paragraphs} />
-            </div>
+        <Section className="grid grid-cols-1 @4xl:grid-cols-2 gap-12 items-center" containerClass="bg-muted/50">
+            <ImageBlock src={image.src} alt={image.alt} />
+            <ContentBlock eyebrow={eyebrow} title={title} subtitle={subtitle} paragraphs={paragraphs} />
         </Section>
     );
 }

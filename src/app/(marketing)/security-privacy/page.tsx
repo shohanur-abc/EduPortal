@@ -8,9 +8,9 @@ import { ROUTES } from '@/lib/routes';
 // TODO: Connect metadata to CMS or config for centralized SEO management
 
 export const metadata: Metadata = {
-    title: 'Security & Privacy | EduSync — School Management System',
+    title: 'Security & Privacy | EduPortal — School Management System',
     description:
-        'Learn how EduSync protects student data, ensures FERPA & COPPA compliance, and safeguards your institution with enterprise-grade security infrastructure.',
+        'Learn how EduPortal protects student data, ensures FERPA & COPPA compliance, and safeguards your institution with enterprise-grade security infrastructure.',
     keywords: [
         'school data security',
         'student privacy',
@@ -22,17 +22,17 @@ export const metadata: Metadata = {
         'student information system security',
     ],
     openGraph: {
-        title: 'Security & Privacy | EduSync — School Management System',
+        title: 'Security & Privacy | EduPortal — School Management System',
         description:
-            'Enterprise-grade security and strict privacy controls to protect every student, teacher, and parent on EduSync.',
+            'Enterprise-grade security and strict privacy controls to protect every student, teacher, and parent on EduPortal .',
         url: ROUTES.marketing.securityPrivacy,
         type: 'website',
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Security & Privacy | EduSync',
+        title: 'Security & Privacy | EduPortal ',
         description:
-            'Discover how EduSync safeguards student records, attendance data, and institutional information with best-in-class security.',
+            'Discover how EduPortal safeguards student records, attendance data, and institutional information with best-in-class security.',
     },
 };
 
@@ -45,7 +45,7 @@ export default function SecurityPrivacyPage() {
                 badge="Security & Privacy"
                 title="Your School Data is"
                 highlight="Our Top Priority"
-                description="EduSync is built from the ground up with enterprise-grade security and strict privacy controls. We protect every student record, attendance log, grade report, and fee transaction with the highest industry standards."
+                description="EduPortal is built from the ground up with enterprise-grade security and strict privacy controls. We protect every student record, attendance log, grade report, and fee transaction with the highest industry standards."
                 icon={ShieldCheck}
                 cta={{
                     primary: {
@@ -62,7 +62,7 @@ export default function SecurityPrivacyPage() {
             <Certifications
                 eyebrow="Compliance & Certifications"
                 title="Trusted by Institutions Worldwide"
-                subtitle="EduSync meets and exceeds global education data protection standards, ensuring your institution stays compliant with every regulation."
+                subtitle="EduPortal meets and exceeds global education data protection standards, ensuring your institution stays compliant with every regulation."
                 certifications={[
                     {
                         icon: Award,
@@ -178,7 +178,7 @@ export default function SecurityPrivacyPage() {
             <AccessControl
                 eyebrow="Role-Based Access"
                 title="Granular Permission Controls"
-                subtitle="Every user in EduSync — from super-admins to parents — has precisely scoped access. No one sees more data than they need."
+                subtitle="Every user in EduPortal — from super-admins to parents — has precisely scoped access. No one sees more data than they need."
                 roles={[
                     {
                         icon: Settings,
@@ -276,7 +276,7 @@ export default function SecurityPrivacyPage() {
                         icon: Lock,
                         title: 'School Owns the Data',
                         description:
-                            'Your institution retains full ownership of all data entered into EduSync. Upon contract termination, we provide complete data export and certified deletion.',
+                            'Your institution retains full ownership of all data entered into EduPortal . Upon contract termination, we provide complete data export and certified deletion.',
                     },
                     {
                         icon: FileSearch,
@@ -328,7 +328,7 @@ export default function SecurityPrivacyPage() {
             <Audit
                 eyebrow="Audit & Monitoring"
                 title="Complete Audit Trail"
-                subtitle="Every action in EduSync is logged, timestamped, and attributable. From grade changes to login attempts, nothing goes unnoticed."
+                subtitle="Every action in EduPortal is logged, timestamped, and attributable. From grade changes to login attempts, nothing goes unnoticed."
                 features={[
                     {
                         icon: Activity,
@@ -504,32 +504,32 @@ export default function SecurityPrivacyPage() {
                         answer: 'Student data is stored in SOC 2 Type II and ISO 27001 certified data centers operated by AWS. US schools use us-east-1 (Virginia) and us-west-2 (Oregon) regions. International schools are routed to the nearest compliant regional data center. All data at rest is encrypted with AES-256.',
                     },
                     {
-                        question: 'Is EduSync FERPA compliant?',
-                        answer: 'Yes, EduSync is fully FERPA compliant. We act as a "school official" under FERPA, meaning we handle education records solely on behalf of the school and under the school\'s direct control. We sign FERPA-compliant Data Processing Agreements with every institution.',
+                        question: 'Is EduPortal FERPA compliant?',
+                        answer: 'Yes, EduPortal is fully FERPA compliant. We act as a "school official" under FERPA, meaning we handle education records solely on behalf of the school and under the school\'s direct control. We sign FERPA-compliant Data Processing Agreements with every institution.',
                     },
                     {
                         question: 'Can parents request deletion of their child\'s data?',
                         answer: 'Absolutely. Parents and guardians can submit a data deletion request through the parent portal or by contacting their school administrator. Once verified, we execute complete data erasure across all systems within 30 days and provide a certified deletion confirmation.',
                     },
                     {
-                        question: 'How does EduSync handle data breaches?',
+                        question: 'How does EduPortal handle data breaches?',
                         answer: 'We follow a structured 6-step incident response plan: Detection (within 15 min), Containment (within 1 hr), Investigation (within 24 hrs), Notification (within 72 hrs), Remediation (48-96 hrs), and Post-Incident Review (within 2 weeks). Affected schools and parents are notified within legally mandated timeframes.',
                     },
                     {
-                        question: 'Does EduSync sell or share student data with third parties?',
+                        question: 'Does EduPortal sell or share student data with third parties?',
                         answer: 'Never. We do not sell, rent, or share student data with advertisers, data brokers, or any commercial third party. The only third parties with limited data access are essential sub-processors (AWS for hosting, Stripe for payments, SendGrid for email) under strict Data Processing Agreements.',
                     },
                     {
-                        question: 'What happens to our data if we cancel our EduSync subscription?',
+                        question: 'What happens to our data if we cancel our EduPortal subscription?',
                         answer: 'Upon contract termination, we provide a 90-day window for complete data export in standard formats (CSV, JSON, PDF). After the export window, all data is permanently deleted from our systems within 30 days, including backups. We provide a certified deletion letter for your records.',
                     },
                     {
                         question: 'How is access controlled for different user roles?',
-                        answer: 'EduSync implements granular Role-Based Access Control (RBAC). Each user role — Super Admin, Principal, Teacher, Admin Staff, Parent, Student — has precisely scoped permissions. Teachers only see their assigned classes, parents only see their children, and all access is logged in the audit trail.',
+                        answer: 'EduPortal implements granular Role-Based Access Control (RBAC). Each user role — Super Admin, Principal, Teacher, Admin Staff, Parent, Student — has precisely scoped permissions. Teachers only see their assigned classes, parents only see their children, and all access is logged in the audit trail.',
                     },
                     {
-                        question: 'Does EduSync support Multi-Factor Authentication (MFA)?',
-                        answer: 'Yes, EduSync supports MFA via authenticator apps (TOTP), SMS codes, and email verification. MFA can be enforced institution-wide by administrators for all staff accounts. We strongly recommend enabling MFA for all users with administrative privileges.',
+                        question: 'Does EduPortal support Multi-Factor Authentication (MFA)?',
+                        answer: 'Yes, EduPortal supports MFA via authenticator apps (TOTP), SMS codes, and email verification. MFA can be enforced institution-wide by administrators for all staff accounts. We strongly recommend enabling MFA for all users with administrative privileges.',
                     },
                 ]}
             />
@@ -540,7 +540,7 @@ export default function SecurityPrivacyPage() {
             <CTA
                 icon={Headphones}
                 title="Ready to Protect Your School's Data?"
-                description="Schedule a security walkthrough with our team. We'll show you exactly how EduSync safeguards your institution's most sensitive information."
+                description="Schedule a security walkthrough with our team. We'll show you exactly how EduPortal safeguards your institution's most sensitive information."
                 primaryCta={{
                     text: 'Book a Security Demo',
                     href: ROUTES.marketing.demo,

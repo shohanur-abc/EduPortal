@@ -5,21 +5,15 @@ import { Section } from '@/components/section';
 // ============= MAIN COMPONENT =============
 export default function FAQCategories({ eyebrow, title, subtitle, categories }: IFAQCategories) {
     return (
-        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
-            <CategoriesGrid categories={categories} />
+        <Section cols={3} eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {categories.map((category, i) => (
+                <CategoryCard key={i} {...category} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const CategoriesGrid = ({ categories }: { categories: IFAQCategories['categories'] }) => (
-    <div className="grid grid-cols-1 @md:grid-cols-2 @3xl:grid-cols-3 @6xl:grid-cols-4 gap-6">
-        {categories.map((category, i) => (
-            <CategoryCard key={i} {...category} />
-        ))}
-    </div>
-);
-
 const CategoryCard = ({ icon: Icon, label, description, anchor, count }: IFAQCategory) => (
     <a href={anchor} className="group block">
         <Card className="h-full transition-colors hover:border-primary/50 hover:shadow-md">

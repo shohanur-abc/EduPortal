@@ -4,22 +4,16 @@ import { Section } from '@/components/section';
 // ============= MAIN COMPONENT =============
 export default function ContactHero({ eyebrow, title, subtitle, badges }: IContactHero) {
     return (
-        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
-            {badges && <BadgeRow badges={badges} />}
+        <Section eyebrow={eyebrow} title={title} subtitle={subtitle} className="flex flex-wrap items-center justify-center gap-3">
+            {badges && badges.map((badge, i) => (
+                <BadgeItem key={i} {...badge} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const BadgeRow = ({ badges }: { badges: IContactHero['badges'] }) => (
-    <div className="flex flex-wrap items-center justify-center gap-3">
-        {badges?.map((badge, i) => (
-            <BadgeItem key={i} {...badge} />
-        ))}
-    </div>
-);
-
-const BadgeItem = ({ label, variant = 'secondary' }: IContactHeroBadge) => (
+const BadgeItem = ({ label, variant = 'secondary' }: NonNullable<IContactHero["badges"]>[number]) => (
     <Badge variant={variant}>{label}</Badge>
 );
 
@@ -28,10 +22,8 @@ interface IContactHero {
     eyebrow: string;
     title: string;
     subtitle: string;
-    badges?: IContactHeroBadge[];
-}
-
-interface IContactHeroBadge {
-    label: string;
-    variant?: 'default' | 'secondary' | 'outline';
+    badges?: {
+        label: string;
+        variant?: 'default' | 'secondary' | 'outline';
+    }[];
 }

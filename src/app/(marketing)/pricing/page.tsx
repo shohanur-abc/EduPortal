@@ -37,9 +37,9 @@ import { ROUTES } from '@/lib/routes';
 // TODO: Add annual vs monthly toggle state management
 
 export const metadata: Metadata = {
-  title: 'Pricing — Affordable Plans for Every School | EduSync',
+  title: 'Pricing — Affordable Plans for Every School | EduPortal ',
   description:
-    'Transparent, per-student pricing for schools of all sizes. From small academies to large districts — choose the EduSync plan that fits your needs. Free trial included.',
+    'Transparent, per-student pricing for schools of all sizes. From small academies to large districts — choose the EduPortal plan that fits your needs. Free trial included.',
   keywords: [
     'school management system pricing',
     'edtech pricing plans',
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     'affordable school management',
   ],
   openGraph: {
-    title: 'Pricing — Affordable Plans for Every School | EduSync',
+    title: 'Pricing — Affordable Plans for Every School | EduPortal ',
     description:
       'Transparent, per-student pricing for schools of all sizes. Start free, scale as you grow.',
     url: '/pricing',
@@ -60,13 +60,13 @@ export const metadata: Metadata = {
         url: '/placeholder.svg',
         width: 1200,
         height: 630,
-        alt: 'EduSync Pricing Plans',
+        alt: 'EduPortal Pricing Plans',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Pricing — Affordable Plans for Every School | EduSync',
+    title: 'Pricing — Affordable Plans for Every School | EduPortal ',
     description:
       'Transparent, per-student pricing for schools of all sizes. Start free, scale as you grow.',
     images: ['/placeholder.svg'],
@@ -348,7 +348,7 @@ export default function PricingPage() {
       <Guarantees
         eyebrow="Our Promise"
         title="Risk-free guarantees"
-        subtitle="We're confident EduSync will transform your school operations. That's why we back every plan with these commitments."
+        subtitle="We're confident EduPortal will transform your school operations. That's why we back every plan with these commitments."
         guarantees={[
           {
             icon: RefreshCcw as LucideIcon,
@@ -391,7 +391,7 @@ export default function PricingPage() {
 
       {/* TODO: Rotate testimonials or fetch dynamically from CMS */}
       <Testimonial
-        quote="We evaluated five school management platforms before choosing EduSync. The transparent pricing and the fact that everything was included — no nickel-and-diming for basic features — made the decision easy. Within three months, our fee collection rate went from 72% to 95%."
+        quote="We evaluated five school management platforms before choosing EduPortal . The transparent pricing and the fact that everything was included — no nickel-and-diming for basic features — made the decision easy. Within three months, our fee collection rate went from 72% to 95%."
         author={{
           name: 'Priya Mehta',
           role: 'Principal',
@@ -407,7 +407,7 @@ export default function PricingPage() {
       <AddOns
         eyebrow="Optional Add-Ons"
         title="Extend your platform"
-        subtitle="Enhance EduSync with additional modules tailored to your school's unique needs. Add or remove anytime."
+        subtitle="Enhance EduPortal with additional modules tailored to your school's unique needs. Add or remove anytime."
         addOns={[
           {
             icon: Bus as LucideIcon,
@@ -459,7 +459,7 @@ export default function PricingPage() {
       <Enterprise
         icon={Building2 as LucideIcon}
         title="Running a school district or education group?"
-        description="EduSync Enterprise is built for large-scale deployments with dedicated infrastructure, custom SLAs, and white-glove support for districts managing 5,000+ students across multiple campuses."
+        description="EduPortal Enterprise is built for large-scale deployments with dedicated infrastructure, custom SLAs, and white-glove support for districts managing 5,000+ students across multiple campuses."
         features={[
           'Unlimited students & campuses',
           'Dedicated cloud infrastructure',
@@ -480,10 +480,10 @@ export default function PricingPage() {
       <FAQ
         eyebrow="Frequently Asked Questions"
         title="Got questions? We've got answers"
-        subtitle="Everything you need to know about EduSync pricing, billing, and plans."
+        subtitle="Everything you need to know about EduPortal pricing, billing, and plans."
         items={[
           {
-            question: 'Can I try EduSync before committing to a paid plan?',
+            question: 'Can I try EduPortal before committing to a paid plan?',
             answer:
               'Absolutely! Every plan comes with a 14-day free trial — no credit card required. You get full access to all features in your chosen plan so you can evaluate it with real data before making a decision.',
           },
@@ -528,7 +528,7 @@ export default function PricingPage() {
 
       <CTA
         title="Ready to modernize your school?"
-        description="Join 3,000+ schools already using EduSync to streamline admissions, automate fee collection, and improve academic outcomes. Start your free trial today."
+        description="Join 3,000+ schools already using EduPortal to streamline admissions, automate fee collection, and improve academic outcomes. Start your free trial today."
         primaryCta={{
           text: 'Start 14-Day Free Trial',
           href: ROUTES.auth.signup,

@@ -5,21 +5,15 @@ import { Section } from '@/components/section';
 // ============= MAIN COMPONENT =============
 export default function DataProtection({ eyebrow, title, subtitle, measures }: IDataProtection) {
     return (
-        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
-            <Grid measures={measures} />
+        <Section cols={3} eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {measures.map((measure, i) => (
+                <MeasureCard key={i} {...measure} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const Grid = ({ measures }: { measures: IMeasureItem[] }) => (
-    <div className="grid grid-cols-1 @md:grid-cols-2 @3xl:grid-cols-3 gap-6">
-        {measures.map((measure, i) => (
-            <MeasureCard key={i} {...measure} />
-        ))}
-    </div>
-);
-
 const MeasureCard = ({ icon: Icon, title, description, features }: IMeasureItem) => (
     <Card className="group hover:border-primary/50 hover:shadow-md transition-all">
         <CardHeader>

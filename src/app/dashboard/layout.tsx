@@ -4,8 +4,8 @@ import { DashboardLayoutClient } from "./layout-client"
 
 export const metadata: Metadata = {
     title: {
-        default: "Dashboard | EduPortal",
-        template: "%s | EduPortal",
+        default: "Dashboard | EduPortal ",
+        template: "%s | EduPortal ",
     },
     description: "EduPortal dashboard for managing your institution",
 }

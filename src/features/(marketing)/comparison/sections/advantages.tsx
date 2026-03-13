@@ -1,43 +1,21 @@
 import { type LucideIcon } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function Advantages({ eyebrow, title, subtitle, advantages }: IAdvantages) {
     return (
-        /* Section-এ @container ক্লাস যোগ করা হয়েছে যাতে চাইল্ড এলিমেন্টগুলো 
-           প্যারেন্ট সেকশনের উইথ (width) অনুযায়ী রেসপন্সিভ হয়। 
-        */
-        <Section className="px-4 py-10 md:px-6 lg:px-8 @container">
-            <div className="max-w-7xl mx-auto space-y-10">
-                <div className="space-y-3 text-center">
-                    <Badge variant='ghost' className="text-sm font-semibold tracking-widest text-primary border-input block mx-auto">{eyebrow}</Badge>
-                    <h2 className="text-3xl @lg:text-4xl @4xl:text-5xl font-bold tracking-tight text-foreground text-center">{title}</h2>
-                    <p className="mx-auto text-base text-muted-foreground @lg:text-lg text-center">{subtitle}</p>
-                </div>
-                <AdvantagesGrid advantages={advantages} />
-            </div>
+        <Section cols={3} eyebrow={eyebrow} title={title} subtitle={subtitle} >
+            {advantages.map((advantage, i) => (
+                <AdvantageCard key={i} {...advantage} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const AdvantagesGrid = ({ advantages }: { advantages: IAdvantages['advantages'] }) => (
-    /* পরিবর্তন: @ ব্রেকপয়েন্ট ব্যবহার করা হয়েছে। 
-       - grid-cols-1: কন্টেইনার ছোট থাকলে ১ কলাম।
-       - @2xl:grid-cols-2: কন্টেইনার 42rem পার হলে ২ কলাম।
-       - @5xl:grid-cols-3: কন্টেইনার আরও বড় হলে ৩ কলাম।
-    */
-    <div className="grid grid-cols-1 @2xl:grid-cols-2 @5xl:grid-cols-3 gap-5 @lg:gap-6 @4xl:gap-8">
-        {advantages.map((advantage, i) => (
-            <AdvantageCard key={i} {...advantage} />
-        ))}
-    </div>
-);
-
 const AdvantageCard = ({ icon: Icon, title, description }: IAdvantages['advantages'][number]) => (
-    <Card className="group h-full transition-all duration-300 hover:shadow-xl hover:border-primary/30 border-border/60">
+    <Card className="group h-full transition-all duration-300 hover:shadow-xl hover:border-primary/30 border-border/60 py-0">
         <CardContent className="p-6 @lg:p-8 flex flex-col items-start gap-4">
             <div className="size-12 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors shrink-0">
                 <Icon className="size-6 text-primary" />

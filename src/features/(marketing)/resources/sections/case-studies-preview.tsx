@@ -10,8 +10,10 @@ import { ROUTES } from '@/lib/routes';
 // ============= MAIN COMPONENT =============
 export default function CaseStudiesPreview({ eyebrow, title, subtitle, studies, viewAllText }: ICaseStudiesPreview) {
     return (
-        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
-            <Grid studies={studies} />
+        <Section cols={3} eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {studies.map((study, i) => (
+                <StudyCard key={i} {...study} />
+            ))}
             {viewAllText && <ViewAllLink text={viewAllText} />}
         </Section>
     );
@@ -68,7 +70,7 @@ const MetricHighlight = ({ value, label }: { value: string; label: string }) => 
 );
 
 const ViewAllLink = ({ text }: { text: string }) => (
-    <div className="flex justify-center mt-10">
+    <div className="flex justify-center mt-10 col-span-full">
         <Button variant="outline" size="lg" className="rounded-full px-8 gap-2" asChild>
             <Link href={ROUTES.marketing.caseStudies}>
                 {text}

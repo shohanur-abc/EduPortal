@@ -7,14 +7,14 @@ import { Section } from '@/components/section';
 export default function ComparisonTestimonial({ quote, rating, switchedFrom, author }: IComparisonTestimonial) {
     return (
         /* Section-এ @container ক্লাস যোগ করা হয়েছে */
-        <Section className="px-4 py-16 md:py-24 @container overflow-hidden">
+        <Section >
             <div className="max-w-4xl mx-auto space-y-10 relative">
                 {/* ব্যাকগ্রাউন্ডে হালকা গ্রেডিয়েন্ট গ্লো (ঐচ্ছিক) */}
                 <div className="absolute -z-10 inset-0 bg-primary/5 blur-3xl rounded-full" />
-                
+
                 <div className="flex flex-col items-center space-y-8 relative z-10">
                     <QuoteIcon />
-                    
+
                     <div className="space-y-6 flex flex-col items-center">
                         <SwitchedBadge from={switchedFrom} />
                         <QuoteText text={quote} />
@@ -40,8 +40,8 @@ const QuoteIcon = () => (
 );
 
 const SwitchedBadge = ({ from }: { from: string }) => (
-    <Badge 
-        variant="secondary" 
+    <Badge
+        variant="secondary"
         className="text-xs @3xl:text-sm gap-2 px-4 py-1.5 rounded-full bg-muted/50 border-primary/10 animate-in fade-in slide-in-from-bottom-2 duration-500"
     >
         <span className="relative flex h-2 w-2">
@@ -66,11 +66,10 @@ const StarRating = ({ rating }: { rating: number }) => (
         {Array.from({ length: 5 }).map((_, i) => (
             <Star
                 key={i}
-                className={`size-5 @3xl:size-6 ${
-                    i < rating 
-                    ? 'text-yellow-500 fill-yellow-500 drop-shadow-sm' 
+                className={`size-5 @3xl:size-6 ${i < rating
+                    ? 'text-yellow-500 fill-yellow-500 drop-shadow-sm'
                     : 'text-muted-foreground/20 fill-muted-foreground/10'
-                }`}
+                    }`}
             />
         ))}
     </div>

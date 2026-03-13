@@ -5,21 +5,15 @@ import { Section } from '@/components/section';
 // ============= MAIN COMPONENT =============
 export default function Categories({ eyebrow, title, subtitle, categories, activeCategory }: ICategories) {
     return (
-        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
-            <CategoryList categories={categories} activeCategory={activeCategory} />
+        <Section className="flex flex-wrap items-center justify-center gap-3" eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {categories.map((category, i) => (
+                <CategoryBadge key={i} {...category} isActive={category.label === activeCategory} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const CategoryList = ({ categories, activeCategory }: { categories: ICategories['categories']; activeCategory?: string }) => (
-    <div className="flex flex-wrap items-center justify-center gap-3">
-        {categories.map((category, i) => (
-            <CategoryBadge key={i} {...category} isActive={category.label === activeCategory} />
-        ))}
-    </div>
-);
-
 const CategoryBadge = ({ icon: Icon, label, count, isActive }: ICategories['categories'][number] & { isActive: boolean }) => (
     <button type="button" className="group">
         <Badge
@@ -34,6 +28,8 @@ const CategoryBadge = ({ icon: Icon, label, count, isActive }: ICategories['cate
         </Badge>
     </button>
 );
+
+
 
 // ============= TYPES =============
 interface ICategories {

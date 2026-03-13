@@ -6,21 +6,15 @@ import { Section } from '@/components/section';
 // ============= MAIN COMPONENT =============
 export default function Topics({ eyebrow, title, subtitle, topics }: ITopics) {
     return (
-        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
-            <TopicCloud topics={topics} />
+        <Section className="flex flex-wrap items-center justify-center gap-3 max-w-4xl mx-auto" eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {topics.map((topic, i) => (
+                <TopicTag key={i} {...topic} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const TopicCloud = ({ topics }: { topics: ITopics['topics'] }) => (
-    <div className="flex flex-wrap items-center justify-center gap-3 max-w-4xl mx-auto">
-        {topics.map((topic, i) => (
-            <TopicTag key={i} {...topic} />
-        ))}
-    </div>
-);
-
 const TopicTag = ({ label, count, href, size }: ITopics['topics'][number]) => (
     <Link href={href}>
         <Badge

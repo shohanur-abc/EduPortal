@@ -6,11 +6,9 @@ import { Section } from '@/components/section';
 // ============= MAIN COMPONENT =============
 export default function FAQ({ eyebrow, title, subtitle, faqs, ctaText, ctaHref }: IFAQ) {
     return (
-        <Section containerClass="bg-muted/50" eyebrow={eyebrow} title={title} subtitle={subtitle}>
-            <div className="max-w-3xl mx-auto space-y-8">
-                <FAQList faqs={faqs} />
-                <CTALink text={ctaText} href={ctaHref} />
-            </div>
+        <Section className="max-w-3xl mx-auto space-y-8" containerClass="bg-muted/50" eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            <FAQList faqs={faqs} />
+            <CTALink text={ctaText} href={ctaHref} />
         </Section>
     );
 }

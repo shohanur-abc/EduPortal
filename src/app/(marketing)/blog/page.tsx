@@ -7,7 +7,7 @@ import ROUTES from '@/lib/routes';
 // TODO: Replace static metadata with dynamic OG image generation
 // TODO: Add JSON-LD structured data for blog listing (CollectionPage schema)
 export const metadata: Metadata = {
-    title: 'Blog | EduSync — School Management Insights & EdTech Resources',
+    title: 'Blog | EduPortal — School Management Insights & EdTech Resources',
     description:
         'Explore expert articles on school administration, digital classrooms, student engagement, fee management, attendance automation, and the latest EdTech trends for K-12 institutions.',
     keywords: [
@@ -21,16 +21,16 @@ export const metadata: Metadata = {
         'fee management guides',
     ],
     openGraph: {
-        title: 'Blog | EduSync — School Management Insights & EdTech Resources',
+        title: 'Blog | EduPortal — School Management Insights & EdTech Resources',
         description:
             'Explore expert articles on school administration, digital classrooms, student engagement, fee management, attendance automation, and the latest EdTech trends for K-12 institutions.',
         url: '/blog',
         type: 'website',
-        images: [{ url: '/placeholder.svg', width: 1200, height: 630, alt: 'EduSync Blog' }],
+        images: [{ url: '/placeholder.svg', width: 1200, height: 630, alt: 'EduPortal Blog' }],
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Blog | EduSync — School Management Insights & EdTech Resources',
+        title: 'Blog | EduPortal — School Management Insights & EdTech Resources',
         description:
             'Explore expert articles on school administration, digital classrooms, student engagement, and the latest EdTech trends.',
         images: ['/placeholder.svg'],
@@ -48,7 +48,7 @@ export default function Page() {
         <>
             {/* TODO: Wire up search bar to filter posts via query params */}
             <BlogHero
-                eyebrow="EDUSYNC BLOG"
+                eyebrow="EduPortal BLOG"
                 title="Insights for Modern School Management"
                 description="Actionable guides, case studies, and thought leadership to help administrators, teachers, and parents navigate the evolving landscape of K-12 education technology."
                 searchPlaceholder="Search articles, guides, and resources..."
@@ -235,6 +235,7 @@ export default function Page() {
                         role: 'Chief Education Officer',
                         expertise: ['Data Privacy', 'Attendance', 'Policy'],
                         postCount: 24,
+                        readCount: 120_000,
                         href: `${ROUTES.marketing.blog}/authors/priya-sharma`,
                     },
                     {
@@ -243,6 +244,7 @@ export default function Page() {
                         role: 'Finance & Operations Lead',
                         expertise: ['Fee Management', 'Budgeting', 'Automation'],
                         postCount: 18,
+                        readCount: 95_000,
                         href: `${ROUTES.marketing.blog}/authors/arjun-mehta`,
                     },
                     {
@@ -251,6 +253,7 @@ export default function Page() {
                         role: 'Analytics Consultant',
                         expertise: ['Dashboards', 'Reporting', 'Student Outcomes'],
                         postCount: 15,
+                        readCount: 80_000,
                         href: `${ROUTES.marketing.blog}/authors/neha-gupta`,
                     },
                     {
@@ -259,6 +262,7 @@ export default function Page() {
                         role: 'Classroom Tech Specialist',
                         expertise: ['Digital Grading', 'LMS', 'Integrations'],
                         postCount: 21,
+                        readCount: 100_000,
                         href: `${ROUTES.marketing.blog}/authors/ravi-krishnan`,
                     },
                     {
@@ -267,6 +271,7 @@ export default function Page() {
                         role: 'Operations Manager',
                         expertise: ['Timetabling', 'Staff Management', 'Workflows'],
                         postCount: 12,
+                        readCount: 100_000,
                         href: `${ROUTES.marketing.blog}/authors/sana-patel`,
                     },
                     {
@@ -275,6 +280,7 @@ export default function Page() {
                         role: 'Parent Engagement Lead',
                         expertise: ['Communication', 'Community', 'Onboarding'],
                         postCount: 16,
+                        readCount: 85_000,
                         href: `${ROUTES.marketing.blog}/authors/meera-iyer`,
                     },
                     {
@@ -283,6 +289,7 @@ export default function Page() {
                         role: 'Security & Compliance Advisor',
                         expertise: ['FERPA', 'COPPA', 'Infrastructure'],
                         postCount: 10,
+                        readCount: 70_000,
                         href: `${ROUTES.marketing.blog}/authors/kabir-ansari`,
                     },
                     {
@@ -291,6 +298,7 @@ export default function Page() {
                         role: 'Curriculum Designer',
                         expertise: ['Assessment', 'Pedagogy', 'EdTech'],
                         postCount: 14,
+                        readCount: 90_000,
                         href: `${ROUTES.marketing.blog}/authors/anjali-deshmukh`,
                     },
                 ]}
@@ -404,7 +412,7 @@ export default function Page() {
             {/* TODO: Track CTA click conversions for blog page */}
             <BlogCTA
                 title="Ready to Transform Your School?"
-                description="See how EduSync helps 2,000+ schools automate attendance, streamline fee collection, and empower teachers with real-time analytics — all from one unified platform."
+                description="See how EduPortal helps 2,000+ schools automate attendance, streamline fee collection, and empower teachers with real-time analytics — all from one unified platform."
                 perks={[
                     'Free 30-day trial',
                     'No credit card required',

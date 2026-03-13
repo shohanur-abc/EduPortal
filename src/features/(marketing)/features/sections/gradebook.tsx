@@ -5,28 +5,17 @@ import { Section } from '@/components/section';
 import { cn } from '@/lib/utils'; // Standard shadcn utility for class merging
 
 // ============= MAIN COMPONENT =============
-export default function Gradebook({ eyebrow, title, description, image, highlights, direction = 'rtl' }: IFeatureDetail) {
+export default function Gradebook({ eyebrow, title, description, image, highlights, direction = 'rtl', }: IFeatureDetail) {
     return (
-        /* Using @container to make the section responsive relative to its own width.
-           Ideal for large screens (up to @7xl) and mobile.
-        */
-        <Section className="px-4 py-16 md:py-24 @container overflow-hidden">
-            <div className={cn(
-                "max-w-7xl mx-auto grid grid-cols-1 gap-12 @3xl:gap-20 items-center",
-                "@4xl:grid-cols-2", // Switches to 2 columns on larger container widths
-                direction === 'rtl' ? "@4xl:[&>*:first-child]:order-last" : ""
-            )}>
-                {/* Visual Content Block */}
-                <ImageBlock src={image.src} alt={image.alt} />
-                
-                {/* Textual Content Block */}
-                <ContentBlock 
-                    eyebrow={eyebrow} 
-                    title={title} 
-                    description={description} 
-                    highlights={highlights} 
-                />
-            </div>
+        <Section className={`grid grid-cols-1 gap-12 @3xl:gap-20 items-center @4xl:grid-cols-2 ${direction === 'rtl' ? "@4xl:[&>*:first-child]:order-last" : ""}`} containerClass="bg-muted/50">
+            <ImageBlock src={image.src} alt={image.alt} />
+
+            <ContentBlock
+                eyebrow={eyebrow}
+                title={title}
+                description={description}
+                highlights={highlights}
+            />
         </Section>
     );
 }
@@ -37,13 +26,13 @@ const ImageBlock = ({ src, alt }: { src: string; alt: string }) => (
     <div className="relative group @container/img">
         {/* Aesthetic background glow for depth */}
         <div className="absolute -inset-6 bg-primary/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-        
+
         <div className="relative aspect-[4/3] @3xl:aspect-[16/10] w-full rounded-[2rem] overflow-hidden border border-border/60 bg-muted shadow-2xl">
-            <Image 
-                src={src || "https://images.unsplash.com/photo-1551288049-bbbda536639a?q=80&w=1200"} 
-                alt={alt} 
-                fill 
-                className="object-cover transition-transform duration-1000 group-hover:scale-110" 
+            <Image
+                src={src || "https://images.unsplash.com/photo-1551288049-bbbda536639a?q=80&w=1200"}
+                alt={alt}
+                fill
+                className="object-cover transition-transform duration-1000 group-hover:scale-110"
                 sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 700px"
                 priority
             />

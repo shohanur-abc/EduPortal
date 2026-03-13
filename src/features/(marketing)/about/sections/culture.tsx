@@ -5,24 +5,19 @@ import { Section } from '@/components/section';
 // ============= MAIN COMPONENT =============
 export default function Culture({ eyebrow, title, subtitle, pillars }: ICulture) {
     return (
-        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
-            <PillarsGrid pillars={pillars} />
+        <Section cols={4} eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {pillars.map((pillar, i) => (
+                <PillarCard key={i} {...pillar} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const PillarsGrid = ({ pillars }: { pillars: ICulture['pillars'] }) => (
-    <div className="grid grid-cols-1 @sm:grid-cols-2 @5xl:grid-cols-4 gap-6">
-        {pillars.map((pillar, i) => (
-            <PillarCard key={i} {...pillar} />
-        ))}
-    </div>
-);
 
 const PillarCard = ({ icon: Icon, title, description }: ICulture['pillars'][number]) => (
-    <Card className="group text-center border-0 bg-gradient-to-b from-muted/50 to-transparent hover:from-primary/5 transition-colors">
-        <CardContent className="pt-8 pb-8 space-y-4">
+    <Card className="group text-center border-0 bg-linear-to-b from-muted/50 to-transparent hover:from-primary/5 transition-colors">
+        <CardContent className="space-y-4 mt-2">
             <div className="size-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
                 <Icon className="size-6 text-primary" />
             </div>

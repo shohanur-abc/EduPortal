@@ -13,35 +13,29 @@ import { Section } from '@/components/section';
 // ============= MAIN COMPONENT =============
 export default function ComparisonTable({ eyebrow, title, subtitle, products, features }: IComparisonTable) {
     return (
-        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
-            <FeatureTable products={products} features={features} />
+        <Section className='rounded-xl border overflow-hidden' eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            <Table>
+                <TableHeader>
+                    <TableRow className="bg-muted/50">
+                        <TableHead className="min-w-[200px] font-semibold">Features</TableHead>
+                        {products.map((product, i) => (
+                            <ProductHeader key={i} {...product} />
+                        ))}
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
+                    {features.map((feature, i) => (
+                        <FeatureRow key={i} feature={feature} productCount={products.length} />
+                    ))}
+                </TableBody>
+            </Table>
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const FeatureTable = ({ products, features }: Pick<IComparisonTable, 'products' | 'features'>) => (
-    <div className="rounded-xl border overflow-hidden">
-        <Table>
-            <TableHeader>
-                <TableRow className="bg-muted/50">
-                    <TableHead className="min-w-[200px] font-semibold">Features</TableHead>
-                    {products.map((product, i) => (
-                        <ProductHeader key={i} {...product} />
-                    ))}
-                </TableRow>
-            </TableHeader>
-            <TableBody>
-                {features.map((feature, i) => (
-                    <FeatureRow key={i} feature={feature} productCount={products.length} />
-                ))}
-            </TableBody>
-        </Table>
-    </div>
-);
-
 const ProductHeader = ({ name, highlighted }: IComparisonTable['products'][number]) => (
-    <TableHead className="text-center min-w-[140px]">
+    <TableHead className="text-center min-w-40">
         <div className="flex flex-col items-center gap-1">
             <span className="font-semibold">{name}</span>
             {highlighted && (

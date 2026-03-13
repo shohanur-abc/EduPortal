@@ -7,21 +7,15 @@ import { Section } from '@/components/section';
 // ============= MAIN COMPONENT =============
 export default function Templates({ eyebrow, title, subtitle, templates }: ITemplates) {
     return (
-        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
-            <Grid templates={templates} />
+        <Section cols={4} eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {templates.map((template, i) => (
+                <TemplateCard key={i} {...template} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const Grid = ({ templates }: { templates: ITemplateItem[] }) => (
-    <div className="grid grid-cols-1 @sm:grid-cols-2 @xl:grid-cols-3 @3xl:grid-cols-4 gap-6">
-        {templates.map((template, i) => (
-            <TemplateCard key={i} {...template} />
-        ))}
-    </div>
-);
-
 const TemplateCard = ({ icon: Icon, title, description, format, category, downloadUrl }: ITemplateItem) => (
     <Card className="group hover:border-primary/50 hover:shadow-md transition-all flex flex-col">
         <CardHeader className="space-y-3">

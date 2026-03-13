@@ -17,14 +17,6 @@ export default function Benefits({ eyebrow, title, subtitle, roles }: IBenefits)
 }
 
 // ============= CHILD COMPONENTS =============
-const RolesGrid = ({ roles }: { roles: IBenefits['roles'] }) => (
-    <div className="grid grid-cols-1 @md:grid-cols-2 @3xl:grid-cols-4 gap-6">
-        {roles.map((role, i) => (
-            <RoleCard key={i} {...role} />
-        ))}
-    </div>
-);
-
 const RoleCard = ({ icon: Icon, role, tagline, benefits, href }: IBenefits['roles'][number]) => (
     <Card className="group flex flex-col hover:shadow-lg transition-shadow">
         <CardHeader>

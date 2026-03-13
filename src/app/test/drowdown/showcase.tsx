@@ -188,7 +188,7 @@ const customItems: DropdownItem[] = [
                 </Avatar>
                 <div className="flex flex-col leading-tight">
                     <span className="text-sm font-medium">John Doe</span>
-                    <span className="text-xs text-muted-foreground">john@eduportal.dev</span>
+                    <span className="text-xs text-muted-foreground">john@EduPortal .dev</span>
                 </div>
                 <Badge variant="secondary" className="ml-auto">Admin</Badge>
             </div>

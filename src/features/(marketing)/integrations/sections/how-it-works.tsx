@@ -4,21 +4,15 @@ import { Section } from '@/components/section';
 // ============= MAIN COMPONENT =============
 export default function HowItWorks({ eyebrow, title, subtitle, steps }: IHowItWorks) {
     return (
-        <Section containerClass="bg-muted/50" eyebrow={eyebrow} title={title} subtitle={subtitle}>
-            <StepList steps={steps} />
+        <Section cols={4} containerClass="bg-muted/50" eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {steps.map((step, i) => (
+                <StepItem key={i} index={i} total={steps.length} {...step} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const StepList = ({ steps }: { steps: IStep[] }) => (
-    <div className="grid grid-cols-1 @sm:grid-cols-2 @2xl:grid-cols-4 gap-8 @xl:gap-6">
-        {steps.map((step, i) => (
-            <StepItem key={i} index={i} total={steps.length} {...step} />
-        ))}
-    </div>
-);
-
 const StepItem = ({ icon: Icon, title, description, index, total }: IStep & { index: number; total: number }) => (
     <div className="relative flex flex-col items-center text-center space-y-4">
         {index < total - 1 && <Connector />}

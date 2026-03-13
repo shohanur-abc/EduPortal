@@ -5,12 +5,10 @@ import { Section } from '@/components/section';
 // ============= MAIN COMPONENT =============
 export default function Testimonial({ quote, author }: ITestimonial) {
     return (
-        <Section>
-            <div className="max-w-4xl mx-auto space-y-8">
-                <QuoteIcon />
-                <QuoteText text={quote} />
-                <AuthorInfo {...author} />
-            </div>
+        <Section className="max-w-4xl mx-auto space-y-8">
+            <QuoteIcon />
+            <QuoteText text={quote} />
+            <AuthorInfo {...author} />
         </Section>
     );
 }

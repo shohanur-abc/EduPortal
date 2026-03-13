@@ -33,7 +33,7 @@ const SidebarHeaderContent = ({ userRole }: { userRole: string }) => (
                             E
                         </div>
                         <div className="flex flex-col gap-0.5 leading-none">
-                            <span className="font-semibold">EduPortal</span>
+                            <span className="font-semibold">EduPortal </span>
                         </div>
                     </Link>
                 </SidebarMenuButton>

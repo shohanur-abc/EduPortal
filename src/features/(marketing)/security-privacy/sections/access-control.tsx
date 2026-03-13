@@ -6,21 +6,15 @@ import { Section } from '@/components/section';
 // ============= MAIN COMPONENT =============
 export default function AccessControl({ eyebrow, title, subtitle, roles }: IAccessControl) {
     return (
-        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
-            <RoleGrid roles={roles} />
+        <Section cols={3} eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {roles.map((role, i) => (
+                <RoleCard key={i} {...role} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const RoleGrid = ({ roles }: { roles: IRoleItem[] }) => (
-    <div className="grid grid-cols-1 @md:grid-cols-2 @3xl:grid-cols-3 gap-6">
-        {roles.map((role, i) => (
-            <RoleCard key={i} {...role} />
-        ))}
-    </div>
-);
-
 const RoleCard = ({ icon: Icon, role, description, permissions }: IRoleItem) => (
     <Card className="group hover:border-primary/50 hover:shadow-md transition-all">
         <CardHeader>

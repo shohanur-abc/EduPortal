@@ -4,23 +4,17 @@ import { Section } from '@/components/section';
 // ============= MAIN COMPONENT =============
 export default function Stats({ eyebrow, title, subtitle, stats }: IStats) {
     return (
-        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
-            <StatsGrid stats={stats} />
+        <Section cols={4} eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {stats.map((stat, i) => (
+                <StatCard key={i} {...stat} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const StatsGrid = ({ stats }: { stats: IStats['stats'] }) => (
-    <div className="grid grid-cols-1 @lg:grid-cols-2 @2xl:grid-cols-3 @4xl:grid-cols-4 gap-6">
-        {stats.map((stat, i) => (
-            <StatCard key={i} {...stat} />
-        ))}
-    </div>
-);
-
 const StatCard = ({ value, label, description }: IStats['stats'][number]) => (
-    <Card className="text-center hover:shadow-md transition-shadow">
+    <Card className="text-center hover:shadow-md transition-shadow py-0">
         <CardContent className="pt-8 pb-6 space-y-2">
             <div className="text-3xl @sm:text-4xl font-bold text-primary">{value}</div>
             <div className="font-semibold text-sm">{label}</div>

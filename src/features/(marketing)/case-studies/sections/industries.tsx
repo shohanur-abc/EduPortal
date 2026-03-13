@@ -6,24 +6,18 @@ import { Section } from '@/components/section';
 // ============= MAIN COMPONENT =============
 export default function Industries({ eyebrow, title, subtitle, industries }: IIndustries) {
     return (
-        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
-            <IndustriesGrid industries={industries} />
+        <Section cols={3} eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {industries.map((industry, i) => (
+                <IndustryCard key={i} {...industry} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const IndustriesGrid = ({ industries }: { industries: IIndustries['industries'] }) => (
-    <div className="grid grid-cols-1 @xl:grid-cols-2 @5xl:grid-cols-3 gap-6">
-        {industries.map((industry, i) => (
-            <IndustryCard key={i} {...industry} />
-        ))}
-    </div>
-);
-
 const IndustryCard = ({ icon: Icon, name, description, schoolCount }: IIndustries['industries'][number]) => (
     <Card className="group hover:shadow-lg hover:border-primary/30 transition-all">
-        <CardContent className="pt-6 space-y-4">
+        <CardContent className="space-y-4">
             <div className="flex items-start justify-between">
                 <div className="size-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
                     <Icon className="size-6 text-primary" />

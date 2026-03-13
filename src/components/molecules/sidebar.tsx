@@ -11,6 +11,7 @@ import { Dropdown, type DropdownItem } from "@/components/molecules/dropdown"
 import { cn } from "@/lib/utils"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { ScrollArea } from "@/components/ui/scroll-area"
+import { AnimatedThemeToggler } from "../ui/animated-theme-toggler"
 
 // ============= CVA =============
 
@@ -601,7 +602,7 @@ export function SidebarBrand({
 }: SidebarBrandProps) {
     return (
         <SidebarMenu>
-            <SidebarMenuItem>
+            <SidebarMenuItem className="flex justify-baseline ">
                 <SidebarMenuButton size="lg" asChild>
                     <Link href={href} className={cn("gap-3", className)}>
                         {logo && (
@@ -617,6 +618,8 @@ export function SidebarBrand({
                         </div>
                     </Link>
                 </SidebarMenuButton>
+                {/* <AnimatedThemeToggler className='mr-3 mb-2' /> */}
+
             </SidebarMenuItem>
         </SidebarMenu>
     )

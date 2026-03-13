@@ -25,7 +25,7 @@ export default function UserMenu({ user }: IUserMenu) {
           <UserAvatar user={user} />
         </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-56 rounded-lg" sideOffset={4}>
+      <DropdownMenuContent align="center" className="w-56 rounded-lg" sideOffset={4}>
         <UserInfo user={user} />
         <DropdownMenuSeparator />
         <DropdownMenuGroup>

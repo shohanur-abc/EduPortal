@@ -32,8 +32,8 @@ export const Section = (props: React.ComponentProps<typeof Comp>) =>
 const gridVariant = cva("", {
     variants: {
         cols: {
-            2: 'grid gap-6 @3xl:gap-10 grid-cols-1 @3xl:grid-cols-2',
-            3: 'grid gap-6 @3xl:gap-8 grid-cols-1 @2xl:grid-cols-2 @5xl:grid-cols-3',
+            2: 'grid gap-6 grid-cols-1 @lg:grid-cols-2',
+            3: 'grid gap-6 grid-cols-1 @lg:grid-cols-2 @3xl:grid-cols-3',
             4: 'grid gap-6 grid-cols-1 @lg:grid-cols-2 @5xl:grid-cols-4',
         },
     },

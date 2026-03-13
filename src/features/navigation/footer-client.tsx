@@ -29,7 +29,7 @@ const FooterBrand = () => (
             <div className="bg-primary text-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg font-bold text-sm">
                 E
             </div>
-            <h3 className="font-bold text-lg">EduPortal</h3>
+            <h3 className="font-bold text-lg">EduPortal </h3>
         </div>
         <p className="text-sm text-muted-foreground">
             School Management System - Comprehensive EdTech Unified Portal for modern education.

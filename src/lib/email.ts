@@ -22,12 +22,12 @@ export async function sendVerificationEmail(
 
     try {
         await transporter.sendMail({
-            from: process.env.EMAIL_FROM || "noreply@eduportal.com",
+            from: process.env.EMAIL_FROM || "noreply@EduPortal .com",
             to: email,
             subject: "Verify your email address",
             html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-            <h2>Welcome to EduPortal!</h2>
+            <h2>Welcome to EduPortal !</h2>
             <p>Hi ${name},</p>
             <p>Thank you for signing up. Please verify your email address by clicking the link below:</p>
             <p>
@@ -41,7 +41,7 @@ export async function sendVerificationEmail(
             <p>This link will expire in 24 hours.</p>
             <p>If you didn't sign up for this account, please ignore this email.</p>
             <hr />
-            <p style="color: #666; font-size: 12px;">© 2026 EduPortal. All rights reserved.</p>
+            <p style="color: #666; font-size: 12px;">© 2026 EduPortal . All rights reserved.</p>
         </div>`,
         })
         return { success: true }
@@ -60,7 +60,7 @@ export async function sendResetPasswordEmail(
 
     try {
         await transporter.sendMail({
-            from: process.env.EMAIL_FROM || "noreply@eduportal.com",
+            from: process.env.EMAIL_FROM || "noreply@EduPortal .com",
             to: email,
             subject: "Reset your password",
             html: `
@@ -79,7 +79,7 @@ export async function sendResetPasswordEmail(
                     <p>This link will expire in 1 hour.</p>
                     <p>If you didn't request this, please ignore this email.</p>
                     <hr />
-                    <p style="color: #666; font-size: 12px;">© 2026 EduPortal. All rights reserved.</p>
+                    <p style="color: #666; font-size: 12px;">© 2026 EduPortal . All rights reserved.</p>
                 </div>`,
         })
         return { success: true }

@@ -380,7 +380,7 @@ async function seed() {
     msg(3, "parent", "Will pay it today. Thank you for organizing this!", daysAgo(7, 11))
 
     // ── Conv 4: Admin ↔ Shakib (direct) ─────────────────────────────────────
-    msg(4, "admin", "Welcome to EduPortal! Let me know if you need any help getting started.", daysAgo(19, 9))
+    msg(4, "admin", "Welcome to EduPortal ! Let me know if you need any help getting started.", daysAgo(19, 9))
     msg(4, "shakib", "Thanks! The platform looks great. How do I access my attendance records?", daysAgo(19, 10))
     msg(4, "admin", "Go to Dashboard → Attendance → Overview. You can see daily and monthly records there.", daysAgo(19, 10))
     msg(4, "shakib", "Found it, thank you! The interface is very intuitive.", daysAgo(19, 11))

@@ -10,27 +10,22 @@ import { Section } from '@/components/section';
 // ============= MAIN COMPONENT =============
 export default function PostGrid({ eyebrow, title, subtitle, posts, showMoreHref }: IPostGrid) {
     return (
-        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
-            <Grid posts={posts} />
+        <Section cols={3} eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {posts.map((post, i) => (
+                <PostCard key={i} {...post} />
+            ))}
             {showMoreHref && <LoadMore href={showMoreHref} />}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const Grid = ({ posts }: { posts: IPostGrid['posts'] }) => (
-    <div className="grid grid-cols-1 @lg:grid-cols-2 @5xl:grid-cols-3 gap-6">
-        {posts.map((post, i) => (
-            <PostCard key={i} {...post} />
-        ))}
-    </div>
-);
 
 const PostCard = ({ title, excerpt, image, href, category, date, readTime, author }: IPostGrid['posts'][number]) => (
     <Link href={href} className="group block">
         <Card className="h-full overflow-hidden hover:shadow-lg transition-shadow py-0 gap-3">
             <CardHeader className="p-0">
-                <div className="relative aspect-[16/10] overflow-hidden">
+                <div className="relative aspect-16/10 overflow-hidden">
                     <Image
                         src={image}
                         alt={title}
@@ -76,7 +71,7 @@ const CardMeta = ({ author, date, readTime }: { author: IPostGrid['posts'][numbe
 );
 
 const LoadMore = ({ href }: { href: string }) => (
-    <div className="flex justify-center mt-10">
+    <div className="flex justify-center mt-10 col-span-full">
         <Button variant="outline" size="lg" className="rounded-full px-8" asChild>
             <Link href={href}>View All Posts</Link>
         </Button>

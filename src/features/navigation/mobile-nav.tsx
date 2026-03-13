@@ -25,7 +25,7 @@ const BrandLogo = () => (
     <div className="bg-primary text-primary-foreground flex aspect-square size-6 items-center justify-center rounded font-bold text-xs">
       E
     </div>
-    <span>EduPortal</span>
+    <span>EduPortal </span>
   </Link>
 );
 
@@ -42,7 +42,7 @@ const MobileMenuSheet = ({ routes, user }: IMobileNav) => (
           <div className="bg-primary text-primary-foreground flex aspect-square size-6 items-center justify-center rounded font-bold text-xs">
             E
           </div>
-          <span className="font-semibold">EduPortal</span>
+          <span className="font-semibold">EduPortal </span>
         </div>
         <div className="flex-1 overflow-auto p-4 space-y-4">
           {routes.map((route) => (

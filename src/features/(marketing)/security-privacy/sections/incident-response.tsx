@@ -5,21 +5,15 @@ import { Section } from '@/components/section';
 // ============= MAIN COMPONENT =============
 export default function IncidentResponse({ eyebrow, title, subtitle, steps }: IIncidentResponse) {
     return (
-        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
-            <StepTimeline steps={steps} />
+        <Section eyebrow={eyebrow} title={title} subtitle={subtitle} className="max-w-4xl mx-auto space-y-0">
+            {steps.map((step, i) => (
+                <StepCard key={i} index={i} isLast={i === steps.length - 1} {...step} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const StepTimeline = ({ steps }: { steps: IResponseStep[] }) => (
-    <div className="max-w-4xl mx-auto space-y-0">
-        {steps.map((step, i) => (
-            <StepCard key={i} index={i} isLast={i === steps.length - 1} {...step} />
-        ))}
-    </div>
-);
-
 const StepCard = ({ icon: Icon, title, description, timeline, details, index, isLast }: IResponseStep & { index: number; isLast: boolean }) => (
     <div className="flex gap-4 @sm:gap-6">
         <StepIndicator icon={Icon} index={index} isLast={isLast} />

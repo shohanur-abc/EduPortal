@@ -51,7 +51,7 @@ export function Demo1() {
     return (
         <SidebarLayout
             nav={nav}
-            header={<SidebarBrand logo={GalleryVerticalEnd} name="EduPortal" subtitle="School MIS" />}
+            header={<SidebarBrand logo={GalleryVerticalEnd} name="EduPortal " subtitle="School MIS" />}
             rail
             topbar={<SidebarInsetHeader />}
         >
@@ -91,7 +91,7 @@ export function Demo2() {
     return (
         <SidebarLayout
             nav={nav}
-            header={<SidebarBrand logo={Building2} name="EduPortal" />}
+            header={<SidebarBrand logo={Building2} name="EduPortal " />}
             footer={<SidebarUser name="John Doe" email="john@edu.dev" avatarFallback="JD" />}
             topbar={<SidebarInsetHeader />}
         >
@@ -151,7 +151,7 @@ export function Demo3() {
     return (
         <SidebarLayout
             nav={nav}
-            header={<SidebarBrand logo={GraduationCap} name="EduPortal" subtitle="v2.1.0" />}
+            header={<SidebarBrand logo={GraduationCap} name="EduPortal " subtitle="v2.1.0" />}
             footer={<SidebarUser name="Admin User" email="admin@edu.dev" avatarFallback="AU" />}
             rail
             topbar={<SidebarInsetHeader />}
@@ -235,7 +235,7 @@ export function Demo5() {
     return (
         <SidebarLayout
             nav={nav}
-            header={<SidebarBrand logo={Zap} name="EduPortal" />}
+            header={<SidebarBrand logo={Zap} name="EduPortal " />}
             footer={<SidebarUser name="Jane Smith" avatarFallback="JS" />}
             collapsible="icon"
             rail
@@ -276,7 +276,7 @@ export function Demo6() {
         <SidebarLayout
             nav={nav}
             search={{ placeholder: "Search pages…", value: query, onChange: setQuery, autoFilter: false }}
-            header={<SidebarBrand logo={GalleryVerticalEnd} name="EduPortal" subtitle="v2.0" />}
+            header={<SidebarBrand logo={GalleryVerticalEnd} name="EduPortal " subtitle="v2.0" />}
             rail
             topbar={<SidebarInsetHeader />}
         >
@@ -307,7 +307,7 @@ export function Demo7() {
     return (
         <SidebarLayout
             nav={nav}
-            header={<SidebarBrand logo={Building2} name="EduPortal" subtitle="Admin" />}
+            header={<SidebarBrand logo={Building2} name="EduPortal " subtitle="Admin" />}
             footer={
                 <SidebarUser
                     name="John Doe"
@@ -398,7 +398,7 @@ export function Demo9() {
     return (
         <SidebarLayout
             nav={nav}
-            header={<SidebarBrand logo={Sparkles} name="EduPortal" />}
+            header={<SidebarBrand logo={Sparkles} name="EduPortal " />}
             variant="floating"
             topbar={<SidebarInsetHeader />}
         >
@@ -424,7 +424,7 @@ export function Demo10() {
     return (
         <SidebarLayout
             nav={nav}
-            header={<SidebarBrand logo={LayoutDashboard} name="EduPortal" />}
+            header={<SidebarBrand logo={LayoutDashboard} name="EduPortal " />}
             variant="inset"
             classNames={{ provider: "bg-sidebar" }}
             topbar={<SidebarInsetHeader />}
@@ -599,11 +599,11 @@ export function Demo14() {
     return (
         <SidebarLayout
             nav={nav}
-            header={<SidebarBrand logo={GraduationCap} name="EduPortal" subtitle="School MIS" />}
+            header={<SidebarBrand logo={GraduationCap} name="EduPortal " subtitle="School MIS" />}
             footer={
                 <SidebarUser
                     name="Principal Ahmed"
-                    email="ahmed@eduportal.dev"
+                    email="ahmed@EduPortal .dev"
                     avatarFallback="PA"
                     actions={userActions}
                 />
@@ -804,9 +804,9 @@ export function Demo16() {
     return (
         <SidebarLayout
             nav={nav}
-            header={<SidebarBrand logo={GraduationCap} name="EduPortal" subtitle="School MIS v2" />}
+            header={<SidebarBrand logo={GraduationCap} name="EduPortal " subtitle="School MIS v2" />}
             footer={<SidebarUser name="Principal Ahmed" email="principal@edu.dev" avatarFallback="PA" actions={userActions} />}
-            search={{ placeholder: "Search EduPortal…", value: query, onChange: setQuery }}
+            search={{ placeholder: "Search EduPortal …", value: query, onChange: setQuery }}
             rail
             persistScrollKey="demo16-scroll"
             topbar={<SidebarInsetHeader><Badge variant="outline">School MIS</Badge></SidebarInsetHeader>}
@@ -958,7 +958,7 @@ export function Demo18() {
     return (
         <SidebarLayout
             nav={ROLES[role]}
-            header={<SidebarBrand logo={Shield} name="EduPortal" subtitle={`Role: ${role}`} />}
+            header={<SidebarBrand logo={Shield} name="EduPortal " subtitle={`Role: ${role}`} />}
             footer={<SidebarUser name="Demo User" email="user@edu.dev" avatarFallback="DU" actions={userActions} />}
             rail
             topbar={

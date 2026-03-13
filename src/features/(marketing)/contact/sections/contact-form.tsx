@@ -16,8 +16,8 @@ export default function ContactForm({ eyebrow, title, subtitle, card }: IContact
 }
 
 // ============= CHILD COMPONENTS =============
-const FormCard = ({ heading, description, fields, subjectOptions, submitLabel }: IContactFormCard) => (
-    <Card className="max-w-2xl mx-auto">
+const FormCard = ({ heading, description, fields, subjectOptions, submitLabel }: IContactForm['card']) => (
+    <Card className="max-w-xl mx-auto">
         <CardHeader>
             <CardTitle>{heading}</CardTitle>
             <CardDescription>{description}</CardDescription>
@@ -35,7 +35,7 @@ const FormCard = ({ heading, description, fields, subjectOptions, submitLabel }:
     </Card>
 );
 
-const FormField = ({ label, name, type, placeholder, required, colSpan, subjectOptions }: IContactFormField & { subjectOptions?: IContactFormCard['subjectOptions'] }) => (
+const FormField = ({ label, name, type, placeholder, required, colSpan, subjectOptions }: IContactForm['card']['fields'][0] & { subjectOptions?: IContactForm['card']['subjectOptions'] }) => (
     <div className={colSpan === 2 ? '@md:col-span-2' : ''}>
         <Label htmlFor={name} className="mb-2">
             {label}
@@ -67,22 +67,18 @@ interface IContactForm {
     eyebrow: string;
     title: string;
     subtitle: string;
-    card: IContactFormCard;
-}
-
-interface IContactFormCard {
-    heading: string;
-    description: string;
-    fields: IContactFormField[];
-    subjectOptions: { label: string; value: string }[];
-    submitLabel: string;
-}
-
-interface IContactFormField {
-    label: string;
-    name: string;
-    type: 'text' | 'email' | 'tel' | 'textarea' | 'select';
-    placeholder: string;
-    required?: boolean;
-    colSpan?: 1 | 2;
+    card: {
+        heading: string;
+        description: string;
+        fields: {
+            label: string;
+            name: string;
+            type: 'text' | 'email' | 'tel' | 'textarea' | 'select';
+            placeholder: string;
+            required?: boolean;
+            colSpan?: 1 | 2;
+        }[];
+        subjectOptions: { label: string; value: string }[];
+        submitLabel: string;
+    };
 }

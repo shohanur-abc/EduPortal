@@ -5,28 +5,22 @@ import { Section } from '@/components/section';
 // ============= MAIN COMPONENT =============
 export default function FeatureGrid({ eyebrow, title, subtitle, features }: IFeatureGrid) {
     return (
-        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
-            <Grid features={features} />
+        <Section cols={4} eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {features.map((feature, i) => (
+                <FeatureCard key={i} {...feature} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const Grid = ({ features }: { features: IFeatureGridItem[] }) => (
-    <div className="grid grid-cols-1 @sm:grid-cols-2 @xl:grid-cols-3 @4xl:grid-cols-4 gap-6">
-        {features.map((feature, i) => (
-            <FeatureCard key={i} {...feature} />
-        ))}
-    </div>
-);
-
 const FeatureCard = ({ icon: Icon, title, description }: IFeatureGridItem) => (
-    <Card className="group hover:border-primary/50 hover:shadow-md transition-all">
+    <Card className="group hover:border-primary/50 hover:shadow-md transition-all gap-4 ">
         <CardHeader>
             <IconBox icon={Icon} />
             <CardTitle className="text-lg">{title}</CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className='gap-'>
             <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
         </CardContent>
     </Card>

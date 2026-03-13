@@ -7,28 +7,17 @@ import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from '
 export default function Newsletter({ title, description, inputPlaceholder, buttonText, benefits, disclaimer }: INewsletter) {
     return (
         <Section>
-            <NewsletterCard
-                title={title}
-                description={description}
-                inputPlaceholder={inputPlaceholder}
-                buttonText={buttonText}
-                benefits={benefits}
-                disclaimer={disclaimer}
-            />
+            <Card className="max-w-xl mx-auto py-0 border-0 bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5">
+                <CardContent className="grid grid-cols-1 gap-10 px-4 py-8 @lg:p-12">
+                    <ContentSide title={title} description={description} benefits={benefits} />
+                    <FormSide inputPlaceholder={inputPlaceholder} buttonText={buttonText} disclaimer={disclaimer} />
+                </CardContent>
+            </Card>
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const NewsletterCard = ({ title, description, inputPlaceholder, buttonText, benefits, disclaimer }: INewsletter) => (
-    <Card className="max-w-xl mx-auto py-0 border-0 bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5">
-        <CardContent className="grid grid-cols-1 gap-10 px-4 py-8 @lg:p-12">
-            <ContentSide title={title} description={description} benefits={benefits} />
-            <FormSide inputPlaceholder={inputPlaceholder} buttonText={buttonText} disclaimer={disclaimer} />
-        </CardContent>
-    </Card>
-);
-
 const ContentSide = ({ title, description, benefits }: Pick<INewsletter, 'title' | 'description' | 'benefits'>) => (
     <div className="space-y-6 flex flex-col justify-center">
         <div className="size-14 rounded-2xl bg-primary/10 flex items-center justify-center">

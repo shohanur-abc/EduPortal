@@ -5,24 +5,19 @@ import { Section } from '@/components/section';
 // ============= MAIN COMPONENT =============
 export default function Team({ eyebrow, title, subtitle, members }: ITeam) {
     return (
-        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
-            <TeamGrid members={members} />
+        <Section cols={4} eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {members.map((member, i) => (
+                <MemberCard key={i} {...member} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const TeamGrid = ({ members }: { members: ITeam['members'] }) => (
-    <div className="grid grid-cols-1 @sm:grid-cols-1 @lg:grid-cols-2 @3xl:grid-cols-3 @6xl:grid-cols-4 gap-6">
-        {members.map((member, i) => (
-            <MemberCard key={i} {...member} />
-        ))}
-    </div>
-);
 
 const MemberCard = ({ name, role, avatar, bio }: ITeam['members'][number]) => (
     <Card className="group text-center hover:shadow-lg transition-shadow">
-        <CardContent className="pt-8 space-y-4">
+        <CardContent className="space-y-4">
             <Avatar className="size-24 mx-auto ring-4 ring-background">
                 <AvatarImage src={avatar} alt={name} />
                 <AvatarFallback className="text-2xl">{name.slice(0, 2)}</AvatarFallback>

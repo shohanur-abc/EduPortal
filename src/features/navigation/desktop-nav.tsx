@@ -13,6 +13,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import UserMenu from './user-menu';
+import { AnimatedThemeToggler } from '@/components/ui/animated-theme-toggler';
 
 // ============= MAIN COMPONENT =============
 export default function DesktopNav({ routes, user }: IDesktopNav) {
@@ -35,7 +36,7 @@ const BrandLogo = () => (
         <div className="bg-primary text-primary-foreground flex aspect-square size-7 items-center justify-center rounded-lg font-bold text-sm">
             E
         </div>
-        <span className="hidden sm:inline">EduPortal</span>
+        <span className="hidden sm:inline">EduPortal </span>
     </Link>
 );
 
@@ -84,6 +85,7 @@ const NavMenu = ({ routes }: { routes: IDesktopNav['routes'] }) => (
 
 const NavActions = ({ user }: { user?: IDesktopNav['user'] }) => (
     <div className="flex items-center gap-2">
+        <AnimatedThemeToggler className='mr-3' />
         {user ? (
             <UserMenu user={user} />
         ) : (

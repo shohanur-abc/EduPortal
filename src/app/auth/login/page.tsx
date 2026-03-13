@@ -3,7 +3,7 @@ import Login from "@/features/auth/sections/login";
 import ROUTES from "@/lib/routes";
 
 export const metadata: Metadata = {
-    title: "Sign In | EduPortal",
+    title: "Sign In | EduPortal ",
     description: "Sign in to your EduPortal account",
 };
 

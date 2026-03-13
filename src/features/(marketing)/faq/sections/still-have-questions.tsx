@@ -6,22 +6,16 @@ import { Section } from '@/components/section';
 // ============= MAIN COMPONENT =============
 export default function StillHaveQuestions({ eyebrow, title, subtitle, channels }: IStillHaveQuestions) {
     return (
-        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
-            <ChannelsGrid channels={channels} />
+        <Section cols={3} eyebrow={eyebrow} title={title} subtitle={subtitle} className=' max-w-4xl mx-auto'>
+            {channels.map((channel, i) => (
+                <ChannelCard key={i} {...channel} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const ChannelsGrid = ({ channels }: { channels: IStillHaveQuestions['channels'] }) => (
-    <div className="grid grid-cols-1 @lg:grid-cols-2 @3xl:grid-cols-3 gap-6 max-w-4xl mx-auto">
-        {channels.map((channel, i) => (
-            <ChannelCard key={i} {...channel} />
-        ))}
-    </div>
-);
-
-const ChannelCard = ({ icon: Icon, label, description, buttonLabel, href }: ISupportChannel) => (
+const ChannelCard = ({ icon: Icon, label, description, buttonLabel, href }: IStillHaveQuestions['channels'][0]) => (
     <Card className="text-center">
         <CardContent className="flex flex-col items-center gap-4">
             <div className="size-14 rounded-full bg-primary/10 flex items-center justify-center">
@@ -39,17 +33,16 @@ const ChannelCard = ({ icon: Icon, label, description, buttonLabel, href }: ISup
 );
 
 // ============= TYPES =============
-interface ISupportChannel {
-    icon: LucideIcon;
-    label: string;
-    description: string;
-    buttonLabel: string;
-    href: string;
-}
 
 interface IStillHaveQuestions {
     eyebrow: string;
     title: string;
     subtitle: string;
-    channels: ISupportChannel[];
+    channels: {
+        icon: LucideIcon;
+        label: string;
+        description: string;
+        buttonLabel: string;
+        href: string;
+    }[];
 }

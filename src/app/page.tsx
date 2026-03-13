@@ -41,7 +41,7 @@ export default function Page() {
             <TrustedBy
                 eyebrow="Trusted By"
                 title="Powering Schools Worldwide"
-                subtitle="From small private schools to large school districts, leading institutions trust EduManager."
+                subtitle="From small private schools to large school districts, leading institutions trust EduPortal ."
                 logos={[
                     { name: 'Springfield Academy', logo: 'https://images.unsplash.com/photo-1481114070102-72f9d11057dc?q=80&w=1240&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', href: '#' },
                     { name: 'Oakridge International', logo: 'https://plus.unsplash.com/premium_vector-1724653697938-cc4868490f8f?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', href: '#' },
@@ -137,8 +137,8 @@ export default function Page() {
             />
 
             <WhyChooseUs
-                eyebrow="Why EduManager"
-                title="Why Schools Choose EduManager"
+                eyebrow="Why EduPortal "
+                title="Why Schools Choose EduPortal "
                 subtitle="We're not just another software — we're your partner in building a better school."
                 reasons={[
                     { icon: Zap, title: 'Lightning Fast', description: 'Built on modern cloud infrastructure for blazing-fast performance, even with millions of records.' },
@@ -153,7 +153,7 @@ export default function Page() {
             <Testimonials
                 eyebrow="Testimonials"
                 title="Loved by Schools Worldwide"
-                subtitle="Hear from educators and administrators who transformed their schools with EduManager."
+                subtitle="Hear from educators and administrators who transformed their schools with EduPortal ."
                 featured={{
                     quote: 'EduPortal transformed how we run our school. Attendance tracking that used to take hours now happens in seconds. Parents are more engaged than ever.',
                     author: 'Dr. Sarah Mitchell',
@@ -204,9 +204,9 @@ export default function Page() {
             <FAQPreview
                 eyebrow="FAQ"
                 title="Frequently Asked Questions"
-                subtitle="Find quick answers to common questions about EduManager."
+                subtitle="Find quick answers to common questions about EduPortal ."
                 faqs={[
-                    { question: 'How long does it take to set up EduManager?', answer: 'Most schools are up and running within 1-2 weeks. Our onboarding team handles data migration, configuration, and staff training to ensure a smooth launch.' },
+                    { question: 'How long does it take to set up EduPortal ?', answer: 'Most schools are up and running within 1-2 weeks. Our onboarding team handles data migration, configuration, and staff training to ensure a smooth launch.' },
                     { question: 'Can I migrate data from my current system?', answer: 'Yes! We support data imports from all major school management systems including PowerSchool, Infinite Campus, and spreadsheets. Our team handles the entire migration process.' },
                     { question: 'Is EduPortal FERPA compliant?', answer: 'Absolutely. EduPortal is fully FERPA compliant with end-to-end encryption, SOC2 certification, and regular third-party security audits to protect student data.' },
                     { question: 'Do you offer a free trial?', answer: 'Yes, we offer a 30-day free trial with full access to all features. No credit card required. Our team will help you get set up and explore the platform.' },
@@ -218,7 +218,7 @@ export default function Page() {
 
             <CTA
                 title="Ready to Transform Your School?"
-                description="Join 2,000+ schools that have modernized their operations with EduManager. Start your free trial today."
+                description="Join 2,000+ schools that have modernized their operations with EduPortal . Start your free trial today."
                 primaryCta={{ text: 'Start Free Trial', href: ROUTES.marketing.demo }}
                 secondaryCta={{ text: 'Schedule a Demo', href: ROUTES.marketing.demo }}
             />

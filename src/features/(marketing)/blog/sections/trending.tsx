@@ -10,29 +10,25 @@ import { Section } from '@/components/section';
 export default function Trending({ eyebrow, title, subtitle, posts }: ITrending) {
     return (
         <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
-            <TrendingList posts={posts} />
+            <Card className="max-w-3xl mx-auto">
+                <CardHeader className="flex-row items-center gap-2 pb-4">
+                    <TrendingUp className="size-5 text-primary" />
+                    <span className="font-semibold">Trending This Week</span>
+                </CardHeader>
+                <CardContent className="space-y-0">
+                    {posts.map((post, i) => (
+                        <div key={i}>
+                            <TrendingItem post={post} rank={i + 1} />
+                            {i < posts.length - 1 && <Separator className="my-4" />}
+                        </div>
+                    ))}
+                </CardContent>
+            </Card>
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const TrendingList = ({ posts }: { posts: ITrending['posts'] }) => (
-    <Card className="max-w-3xl mx-auto">
-        <CardHeader className="flex-row items-center gap-2 pb-4">
-            <TrendingUp className="size-5 text-primary" />
-            <span className="font-semibold">Trending This Week</span>
-        </CardHeader>
-        <CardContent className="space-y-0">
-            {posts.map((post, i) => (
-                <div key={i}>
-                    <TrendingItem post={post} rank={i + 1} />
-                    {i < posts.length - 1 && <Separator className="my-4" />}
-                </div>
-            ))}
-        </CardContent>
-    </Card>
-);
-
 const TrendingItem = ({ post, rank }: { post: ITrending['posts'][number]; rank: number }) => (
     <Link href={post.href} className="group flex items-start gap-4">
         <RankNumber rank={rank} />
