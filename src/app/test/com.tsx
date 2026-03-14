@@ -18,7 +18,7 @@ import {
     ChartTooltip, ChartTooltipContent,
     type ChartConfig,
 } from "@/components/ui/chart"
-import { Select } from "@/components/molecules/select"
+import { Select } from "@/components/molecules"
 
 // ==================== Types ====================
 

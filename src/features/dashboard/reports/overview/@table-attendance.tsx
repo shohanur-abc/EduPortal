@@ -1,4 +1,4 @@
-import { DataTable } from "@/components/molecules/data-table"
+import { SimpleTable } from "@/components/molecules/simple-table"
 import { StatusBadge } from "@/components/molecules/status-badge"
 import { Badge } from "@/components/ui/badge"
 
@@ -11,7 +11,7 @@ interface AttendanceReportRow {
 
 export function AttendanceReportTable({ data, loading }: { data: AttendanceReportRow[]; loading?: boolean }) {
     return (
-        <DataTable<AttendanceReportRow>
+        <SimpleTable<AttendanceReportRow>
             title="Attendance Data"
             description="Attendance status breakdown by date"
             columns={[

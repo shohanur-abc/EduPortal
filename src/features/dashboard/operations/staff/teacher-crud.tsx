@@ -2,14 +2,14 @@
 
 import * as React from "react"
 import { type ColumnDef } from "@tanstack/react-table"
-import { AdvancedDataTable, SortableHeader } from "@/components/molecules/advanced-data-table"
+import { DataTable, SortableHeader } from "@/components/molecules/table"
 import { DropdownActions } from "@/components/molecules/dropdown-actions"
 import { ConfirmDialog } from "@/components/molecules/confirm-dialog"
 import { MutationFormSheet } from "@/components/molecules/mutation-form-sheet"
 import { StatusBadge } from "@/components/molecules/status-badge"
 import { AvatarCell } from "@/components/molecules/avatar-cell"
 import { FormInput } from "@/components/molecules/input"
-import { Select } from "@/components/molecules/select"
+import { Select } from "@/components/molecules"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { teacherSchema, type TeacherFormData } from "@/schemas/dashboard"
@@ -133,7 +133,7 @@ export function StaffTable({ teachers, loading }: { teachers: TeacherRow[], load
 
     return (
         <>
-            <AdvancedDataTable
+            <DataTable
                 title="Teaching Staff"
                 description="Manage teacher records"
                 columns={columns}

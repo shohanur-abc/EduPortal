@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { Checkbox as CB } from "@/components/ui/checkbox"
 import { FormInput } from "@/components/molecules/input"
-import { Select } from "@/components/molecules/select"
+import { Select } from "@/components/molecules"
 import { DatePicker } from "@/components/molecules/date-picker"
 import { Form } from "@/components/molecules/form"
 import {

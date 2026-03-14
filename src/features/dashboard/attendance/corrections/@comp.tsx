@@ -1,13 +1,12 @@
 "use client"
 import * as React from "react"
 import { type ColumnDef } from "@tanstack/react-table"
-import { AdvancedDataTable, SortableHeader } from "@/components/molecules/advanced-data-table"
-import { DropdownActions } from "@/components/molecules/dropdown-actions"
+import { DataTable, SortableHeader } from "@/components/molecules/table"
 import { MutationFormSheet } from "@/components/molecules/mutation-form-sheet"
 import { ConfirmDialog } from "@/components/molecules/confirm-dialog"
 import { StatusBadge } from "@/components/molecules/status-badge"
 import { AvatarCell } from "@/components/molecules/avatar-cell"
-import { Select } from "@/components/molecules/select"
+import { Button, Dropdown, Select } from "@/components/molecules/"
 import { FormInput } from "@/components/molecules/input"
 import { attendanceCorrectionSchema, type AttendanceCorrectionData } from "@/schemas/dashboard"
 import { patchAttendance, deleteAttendance } from "@/services/attendence"
@@ -84,18 +83,20 @@ function AttendanceCorrectionsCrud({ records, loading }: { records: AttendanceRe
         {
             id: "actions",
             cell: ({ row }) => (
-                <DropdownActions items={[
-                    { label: "Correct Status", icon: Edit, onClick: () => handleCorrect(row.original) },
-                    { separator: true },
-                    { label: "Delete", icon: Trash2, destructive: true, onClick: () => setDeleteId(row.original._id) },
-                ]} />
+                <Dropdown
+                    trigger={<Button variant="ghost" size="icon"><Edit className="h-4 w-4" /></Button>}
+                    items={[
+                        { label: "Correct Status", icon: Edit, onClick: () => handleCorrect(row.original) },
+                        { type: "divider" },
+                        { label: "Delete", icon: Trash2, destructive: true, onClick: () => setDeleteId(row.original._id) },
+                    ]} />
             ),
         },
     ], [])
 
     return (
         <>
-            <AdvancedDataTable
+            <DataTable
                 title="Attendance Records"
                 description="Review and correct attendance entries"
                 columns={columns}

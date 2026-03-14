@@ -38,11 +38,11 @@ export default function Page() {
             label: "I am a",
             placeholder: "Select your role",
             options: [
-                { label: "Student" },
-                { label: "Teacher" },
-                { label: "Parent" },
-                { label: "Principal" },
-                { label: "Admin" },
+                { label: "Student", value: "student" },
+                { label: "Teacher", value: "teacher" },
+                { label: "Parent", value: "parent" },
+                { label: "Principal", value: "principal" },
+                { label: "Admin", value: "admin" },
             ],
         }}
         acceptTermsLinks={{

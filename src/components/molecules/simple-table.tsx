@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle, } from "@/co
 import { cn } from "@/lib/utils"
 
 // ============= COMPONENT =============
-export function DataTable<T extends Record<string, unknown>>({
+export function SimpleTable<T extends Record<string, unknown>>({
     title,
     description,
     columns,

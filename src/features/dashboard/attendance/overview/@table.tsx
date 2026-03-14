@@ -1,10 +1,10 @@
-import { DataTable } from "@/components/molecules/data-table"
+import { SimpleTable } from "@/components/molecules/simple-table"
 import { StatusBadge } from "@/components/molecules/status-badge"
 import { AvatarCell } from "@/components/molecules/avatar-cell"
 
 
 export const AttendanceRecordsTable = ({ recentRecords, loading }: { recentRecords: AttendanceRecord[], loading?: boolean }) => (
-    <DataTable<AttendanceRecord>
+    <SimpleTable<AttendanceRecord>
         title="Recent Records"
         description="Latest attendance entries"
         columns={[

@@ -18,7 +18,6 @@ export interface AttendanceOverviewLayoutProps {
     "progress-classwise"?: ReactNode
     summary?: ReactNode
     comparison?: ReactNode
-    new: ReactNode
 }
 
 export default function AttendanceOverview({
@@ -33,11 +32,9 @@ export default function AttendanceOverview({
     "progress-classwise": progressClasswise,
     summary,
     comparison,
-    new: New
 }: AttendanceOverviewLayoutProps) {
     return (
         <div className="space-y-6">
-            <div>{New}</div>
             <div className="grid grid-cols-1 gap-4 @xl:grid-cols-2 @5xl:grid-cols-4">
                 {stats}
             </div>

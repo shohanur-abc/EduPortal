@@ -1,4 +1,4 @@
-import { DataTable } from "@/components/molecules/data-table"
+import { SimpleTable } from "@/components/molecules/simple-table"
 import { AvatarCell } from "@/components/molecules/avatar-cell"
 import { Badge } from "@/components/ui/badge"
 import type { MessageAnalytics } from "./types"
@@ -7,7 +7,7 @@ type TopSender = MessageAnalytics["topSenders"][number]
 
 export function TopSendersTable({ data, loading }: { data: TopSender[]; loading?: boolean }) {
     return (
-        <DataTable<TopSender>
+        <SimpleTable<TopSender>
             title="Top Senders"
             description="Most active message senders"
             columns={[

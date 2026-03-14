@@ -1,4 +1,4 @@
-import { DataTable } from "@/components/molecules/data-table"
+import { SimpleTable } from "@/components/molecules/simple-table"
 import { StatusBadge } from "@/components/molecules/status-badge"
 import { AvatarCell } from "@/components/molecules/avatar-cell"
 import { EmptyState } from "@/components/molecules/empty-state"
@@ -16,7 +16,7 @@ export function FeeStatementsTable({ records, loading }: { records: FeeRecord[],
     }
 
     return (
-        <DataTable<FeeRecord>
+        <SimpleTable<FeeRecord>
             title="Student Fee Details"
             description={`Fee statements for ${records.length} records`}
             columns={[

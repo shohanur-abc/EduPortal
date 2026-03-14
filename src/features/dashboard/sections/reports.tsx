@@ -1,5 +1,5 @@
 import { StatCard } from "@/components/molecules/stat-card"
-import { DataTable } from "@/components/molecules/data-table"
+import { SimpleTable } from "@/components/molecules/simple-table"
 import { StatusBadge } from "@/components/molecules/status-badge"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card"
@@ -142,7 +142,7 @@ export function ReportsStandardSection({
 }) {
     if (reportType === "attendance" && data) {
         return (
-            <DataTable<AttendanceReportRow>
+            <SimpleTable<AttendanceReportRow>
                 title="Attendance Report"
                 description="Attendance status breakdown by date"
                 columns={[
@@ -168,7 +168,7 @@ export function ReportsStandardSection({
 
     if (reportType === "fees" && data) {
         return (
-            <DataTable<FeeReportRow>
+            <SimpleTable<FeeReportRow>
                 title="Fee Collection Report"
                 description="Fee collection status and amounts"
                 columns={[
@@ -203,7 +203,7 @@ export function ReportsStandardSection({
 
     if (reportType === "results" && data) {
         return (
-            <DataTable<ResultReportRow>
+            <SimpleTable<ResultReportRow>
                 title="Result Report"
                 description="Exam performance summary by subject"
                 columns={[

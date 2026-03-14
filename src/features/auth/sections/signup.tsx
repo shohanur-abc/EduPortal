@@ -13,7 +13,7 @@ import { signupSchema, type SignupInput } from "@/schemas/auth";
 import { signup } from "../actions";
 import { Checkbox } from "@/components/molecules/checkbox";
 import { FormCard } from "../components/form";
-import { Select } from "@/components/molecules/select";
+import { Select } from "@/components/molecules";
 
 // ============= MAIN COMPONENT =============
 export default function Signup({ header, footer, name, email, password, confirmPassword, roles, acceptTermsLinks: atl, socialLogin }: SignupProps) {

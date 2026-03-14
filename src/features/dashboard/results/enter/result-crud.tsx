@@ -2,12 +2,12 @@
 
 import * as React from "react"
 import { type ColumnDef } from "@tanstack/react-table"
-import { AdvancedDataTable, SortableHeader } from "@/components/molecules/advanced-data-table"
+import { DataTable, SortableHeader } from "@/components/molecules/table"
 import { DropdownActions } from "@/components/molecules/dropdown-actions"
 import { ConfirmDialog } from "@/components/molecules/confirm-dialog"
 import { MutationFormSheet } from "@/components/molecules/mutation-form-sheet"
 import { FormInput } from "@/components/molecules/input"
-import { Select } from "@/components/molecules/select"
+import { Select } from "@/components/molecules"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { resultSchema, type ResultFormData } from "@/schemas/dashboard"
@@ -117,7 +117,7 @@ export function ResultsCrudTable({ results, students, classes, loading }: { resu
 
     return (
         <>
-            <AdvancedDataTable
+            <DataTable
                 title="Results"
                 description="Enter, edit, or delete student results"
                 columns={columns}

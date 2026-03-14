@@ -1,4 +1,4 @@
-import AttendanceChart from "@/features/dashboard/attendance/overview/@new";
+import AttendanceChart from "@/features/dashboard/attendance/mark/@new";
 
 export default function Page() {
     return (

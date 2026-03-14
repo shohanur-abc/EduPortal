@@ -1,11 +1,11 @@
-import { DataTable } from "@/components/molecules/data-table"
+import { SimpleTable } from "@/components/molecules/simple-table"
 import { StatusBadge } from "@/components/molecules/status-badge"
 import { AvatarCell } from "@/components/molecules/avatar-cell"
 
 
 export function FeeOverdueTable({ overdueList, loading }: { overdueList: FeeOverdue[]; loading?: boolean }) {
     return (
-        <DataTable<FeeOverdue>
+        <SimpleTable<FeeOverdue>
             title="Overdue Fees"
             description="Students with overdue payments"
             columns={[

@@ -36,7 +36,7 @@ export function SortableHeader<TData>({ column, title }: { column: { toggleSorti
 }
 
 // ============= MAIN COMPONENT =============
-export function AdvancedDataTable<TData, TValue>({
+export function DataTable<TData, TValue>({
     title,
     description,
     columns,

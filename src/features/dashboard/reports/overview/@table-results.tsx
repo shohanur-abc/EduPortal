@@ -1,4 +1,4 @@
-import { DataTable } from "@/components/molecules/data-table"
+import { SimpleTable } from "@/components/molecules/simple-table"
 import { Badge } from "@/components/ui/badge"
 
 interface ResultReportRow {
@@ -11,7 +11,7 @@ interface ResultReportRow {
 
 export function ResultReportTable({ data, loading }: { data: ResultReportRow[]; loading?: boolean }) {
     return (
-        <DataTable<ResultReportRow>
+        <SimpleTable<ResultReportRow>
             title="Result Data"
             description="Exam performance by subject"
             columns={[

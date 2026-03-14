@@ -1,4 +1,4 @@
-import { DataTable } from "@/components/molecules/data-table";
+import { SimpleTable } from "@/components/molecules/simple-table";
 import { NoticeRow } from "./types";
 import { AvatarCell } from "@/components/molecules/avatar-cell";
 import { StatusBadge } from "@/components/molecules/status-badge";
@@ -7,7 +7,7 @@ import { StatusBadge } from "@/components/molecules/status-badge";
 // ============= RECENT ACTIVITY (reusable as generic notice list) =============
 export function RecentNotices({ notices, loading = false }: { notices: NoticeRow[]; loading?: boolean }) {
     return (
-        <DataTable
+        <SimpleTable
             title="Recent Notices"
             description="Latest announcements and updates"
             columns={[

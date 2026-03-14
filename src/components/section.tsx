@@ -40,7 +40,7 @@ const gridVariant = cva("", {
     },
 });
 
-const eyebrowVariants = cva("text-sm font-semibold tracking-widest text-primary border-primary/20 block bg-primary/5 ", {
+const eyebrowVariants = cva("text-sm font-semibold tracking-widest text-primary border-primary/20 block bg-primary/5 uppercase", {
     variants: {
         align: {
             left: "mr-auto",

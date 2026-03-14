@@ -233,7 +233,7 @@
 
 @layer utilities {
   [data-loading=true] {
-    @apply animate-pulse! w-fit! rounded-full! bg-accent! **:bg-transparent! border-transparent! **:border-transparent! text-transparent! **:text-transparent!;
+    @apply animate-pulse! w-fit! rounded-full! bg-accent/50! **:bg-transparent! border-transparent! **:border-transparent! text-transparent! **:text-transparent!;
   }
 
   [data-loading=false] {

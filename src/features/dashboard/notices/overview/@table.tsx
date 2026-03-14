@@ -1,10 +1,10 @@
-import { DataTable } from "@/components/molecules/data-table"
+import { SimpleTable } from "@/components/molecules/simple-table"
 import { StatusBadge } from "@/components/molecules/status-badge"
 import type { NoticeItem } from "./types"
 
 export function NoticeTable({ notices, loading }: { notices: NoticeItem[]; loading?: boolean }) {
     return (
-        <DataTable<NoticeItem>
+        <SimpleTable<NoticeItem>
             title="Recent Notices"
             description="Latest notice board entries"
             columns={[
