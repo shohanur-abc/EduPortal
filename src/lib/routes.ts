@@ -5,7 +5,7 @@
 
 export const ROUTES = {
     marketing: {
-        home: "/",
+        home: "/home",
         about: "/about",
         blog: "/blog",
         caseStudies: "/case-studies",

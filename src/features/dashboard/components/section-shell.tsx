@@ -13,7 +13,7 @@ export function SectionShell({ title, description, tabs, children, actions }: Se
 
 // ============= TYPES =============
 interface SectionShellProps {
-    title: string
+    title?: string
     description?: string
     tabs?: { label: string; value: string; href: string }[]
     children: React.ReactNode

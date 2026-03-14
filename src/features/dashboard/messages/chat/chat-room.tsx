@@ -235,7 +235,7 @@ export function ChatRoom({
     const activeConversation = conversations.find((c) => c._id === activeConversationId)
 
     return (
-        <div className="flex h-[calc(100vh-6rem)] rounded-lg border bg-background overflow-hidden">
+        <div className="flex h-[calc(100vh-8rem)] rounded-lg border bg-background overflow-hidden">
             {/* Sidebar: Conversation List */}
             <div className="w-80 shrink-0 border-r flex flex-col">
                 <ConversationList

@@ -4,6 +4,7 @@ import { Playground } from "./playground";
 import { ReactNode } from "react";
 import { cva } from "class-variance-authority";
 import { Badge } from "./ui/badge";
+import { AnimatedGradientText } from "./ui/animated-gradient-text";
 
 const Comp = ({ title, eyebrow, subtitle, align = "center", className, classNames: cns, containerClass, decorative, children, cols }: CompProps) => (
     <section className={cn("@container relative overflow-hidden", containerClass, cns?.outerContainer)}>
@@ -12,7 +13,7 @@ const Comp = ({ title, eyebrow, subtitle, align = "center", className, className
         <div className={cn("max-w-7xl mx-auto px-4 @2xl:px-8 py-10 @md:py-20", cns?.innerContainer)}>
             {(eyebrow || title || subtitle) && (
                 <div className={cn("mb-12 space-y-3", cns?.headingContainer)}>
-                    {eyebrow && <Badge variant='ghost' className={cn(eyebrowVariants({ align }), cns?.eyebrow)}>{eyebrow}</Badge>}
+                    {eyebrow && <Badge variant='ghost' className={cn(eyebrowVariants({ align }), cns?.eyebrow)} ><AnimatedGradientText colorFrom="var(--primary)" colorTo="var(--destructive)">{eyebrow}</AnimatedGradientText></Badge>}
                     {title && <h2 className={cn(titleVariants({ align }), cns?.title)}>{title}</h2>}
                     {subtitle && <p className={cn(subtitleVariants({ align }), cns?.subtitle)}>{subtitle}</p>}
                 </div>
@@ -39,7 +40,7 @@ const gridVariant = cva("", {
     },
 });
 
-const eyebrowVariants = cva("text-sm font-semibold tracking-widest text-primary border-input block", {
+const eyebrowVariants = cva("text-sm font-semibold tracking-widest text-primary border-primary/20 block bg-primary/5 ", {
     variants: {
         align: {
             left: "mr-auto",

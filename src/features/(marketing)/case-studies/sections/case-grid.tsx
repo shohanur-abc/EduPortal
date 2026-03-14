@@ -5,6 +5,7 @@ import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Section } from '@/components/section';
+import { NumberTicker } from '@/components/ui/number-ticker';
 
 // ============= MAIN COMPONENT =============
 export default function CaseGrid({ eyebrow, title, subtitle, cases }: ICaseGrid) {
@@ -66,7 +67,9 @@ const MetricsRow = ({ metrics }: { metrics: ICaseGrid['cases'][number]['metrics'
     <div className="flex flex-wrap justify-around gap-3 ">
         {metrics.map((metric, i) => (
             <div key={i} className=" text-center">
-                <span className="block text-lg font-bold text-primary">{metric.value}</span>
+                <span className="block text-lg font-bold text-primary">
+                    <NumberTicker value={typeof metric.value === 'number' ? metric.value : parseInt(metric.value) || 0} className="text-lg" />
+                </span>
                 <span className="text-xs text-muted-foreground">{metric.label}</span>
             </div>
         ))}

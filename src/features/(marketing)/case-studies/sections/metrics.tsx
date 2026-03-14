@@ -1,6 +1,7 @@
 import { type LucideIcon } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Section } from '@/components/section';
+import { NumberTicker } from '@/components/ui/number-ticker';
 
 // ============= MAIN COMPONENT =============
 export default function Metrics({ eyebrow, title, subtitle, metrics }: IMetrics) {
@@ -20,7 +21,9 @@ const MetricCard = ({ icon: Icon, value, label, description }: IMetrics['metrics
             <div className="size-12 mb-4 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto">
                 <Icon className="size-6 text-primary" />
             </div>
-            <span className="block text-4xl @sm:text-5xl font-bold tracking-tight text-primary">{value}</span>
+            <span className="block text-4xl @sm:text-5xl font-bold tracking-tight text-primary">
+                <NumberTicker value={typeof value === 'number' ? value : parseInt(value) || 0} className="text-4xl @sm:text-5xl" />
+            </span>
             <span className="block text-sm font-semibold text-foreground uppercase tracking-wider">{label}</span>
             <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
         </CardContent>
@@ -34,7 +37,7 @@ interface IMetrics {
     subtitle: string;
     metrics: {
         icon: LucideIcon;
-        value: string;
+        value: string | number;
         label: string;
         description: string;
     }[];

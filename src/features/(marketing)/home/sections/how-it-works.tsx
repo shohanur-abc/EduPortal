@@ -6,7 +6,7 @@ import { Section } from '@/components/section';
 // ============= MAIN COMPONENT =============
 export default function HowItWorks({ eyebrow, title, subtitle, steps }: IHowItWorks) {
     return (
-        <Section className='space-y-20' containerClass="bg-muted/50" title={title} subtitle={subtitle} eyebrow={eyebrow}>
+        <Section className='space-y-20' title={title} subtitle={subtitle} eyebrow={eyebrow}>
             {steps.map((step, i) => (
                 <StepItem key={i} {...step} index={i} reversed={i % 2 !== 0} />
             ))}

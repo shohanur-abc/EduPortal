@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/card';
 import { Section } from '@/components/section';
+import { NumberTicker } from '@/components/ui/number-ticker';
 
 // ============= MAIN COMPONENT =============
 export default function TrustedBy({ eyebrow, title, subtitle, logos, metrics }: ITrustedBy) {
@@ -29,7 +30,9 @@ const MetricsRow = ({ metrics }: { metrics: ITrustedBy['metrics'] }) => (
         {metrics.map(({ value, label, description }, i) => (
             <Card key={i} className="text-center">
                 <CardContent className="space-y-1">
-                    <div className="text-3xl @sm:text-4xl font-bold text-primary">{value}</div>
+                    <div className="text-3xl @sm:text-4xl font-bold text-primary">
+                        <NumberTicker value={typeof value === 'number' ? value : parseInt(value) || 0} className="text-3xl @sm:text-4xl" />
+                    </div>
                     <div className="font-semibold text-sm">{label}</div>
                     <div className="text-xs text-muted-foreground">{description}</div>
                 </CardContent>
@@ -49,7 +52,7 @@ interface ITrustedBy {
         href: string;
     }[];
     metrics: {
-        value: string;
+        value: string | number;
         label: string;
         description: string;
     }[];

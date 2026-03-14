@@ -16,8 +16,8 @@ export default function WhyChooseUs({ eyebrow, title, subtitle, reasons }: IWhyC
 // ============= CHILD COMPONENTS =============
 const ReasonCard = ({ icon: Icon, title, description }: IWhyChooseUs['reasons'][number]) => (
     <Card className="group border-0 shadow-none bg-transparent">
-        <CardContent className="p-0 space-y-4">
-            <div className="size-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+        <CardContent className="space-y-4">
+            <div className="size-14 rounded-2xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                 <Icon className="size-7 text-primary" />
             </div>
             <h3 className="text-lg font-semibold">{title}</h3>

@@ -1,8 +1,9 @@
+"use client";
+
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Section } from '@/components/section';
 import { Separator } from '@/components/ui/separator';
@@ -66,14 +67,20 @@ const ExpertiseTags = ({ expertise }: { expertise: string[] }) => (
     </div>
 );
 
+import { NumberTicker } from '@/components/ui/number-ticker';
+
 const AuthorStats = ({ postCount, readCount }: { postCount: number; readCount: number }) => (
     <div className="flex gap-4">
         <div className="text-center">
-            <p className="text-lg font-medium leading-none">{postCount}</p>
+            <p className="text-lg font-medium leading-none">
+                <NumberTicker value={postCount} className="text-lg" />
+            </p>
             <p className="text-[11px] text-muted-foreground mt-1">articles</p>
         </div>
         <div className="text-center">
-            <p className="text-lg font-medium leading-none">{readCount}</p>
+            <p className="text-lg font-medium leading-none">
+                <NumberTicker value={readCount} className="text-lg" />
+            </p>
             <p className="text-[11px] text-muted-foreground mt-1">reads</p>
         </div>
     </div>

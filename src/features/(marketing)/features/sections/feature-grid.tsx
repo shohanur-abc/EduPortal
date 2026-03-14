@@ -1,6 +1,7 @@
 import { type LucideIcon } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Section } from '@/components/section';
+import { ShineBorder } from '@/components/ui/shine-border';
 
 // ============= MAIN COMPONENT =============
 export default function FeatureGrid({ eyebrow, title, subtitle, features }: IFeatureGrid) {
@@ -16,6 +17,7 @@ export default function FeatureGrid({ eyebrow, title, subtitle, features }: IFea
 // ============= CHILD COMPONENTS =============
 const FeatureCard = ({ icon: Icon, title, description }: IFeatureGridItem) => (
     <Card className="group hover:border-primary/50 hover:shadow-md transition-all gap-4 ">
+        <ShineBorder shineColor={['var(--primary)', 'var(--chart-2)']} className='blur-3xl' />
         <CardHeader>
             <IconBox icon={Icon} />
             <CardTitle className="text-lg">{title}</CardTitle>
