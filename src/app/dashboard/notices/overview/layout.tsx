@@ -15,7 +15,6 @@ export interface NoticeOverviewLayoutProps {
     "chart-audience"?: ReactNode
     "table-expiring"?: ReactNode
     summary?: ReactNode
-    feed?: ReactNode
 }
 
 export default function NoticeOverviewLayout({
@@ -27,7 +26,6 @@ export default function NoticeOverviewLayout({
     "chart-audience": chartAudience,
     "table-expiring": tableExpiring,
     summary,
-    feed,
 }: NoticeOverviewLayoutProps) {
     return (
         <div className="space-y-6">
@@ -59,7 +57,6 @@ export default function NoticeOverviewLayout({
             {/* Expiring Table + Activity Feed */}
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
                 {tableExpiring}
-                {feed}
             </div>
         </div>
     )
