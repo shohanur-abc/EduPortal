@@ -1,4 +1,4 @@
-import { Mail, CheckCircle } from 'lucide-react';
+import { Mail, CheckCircle } from '@/lib/icon';
 import { Card, CardContent } from '@/components/ui/card';
 import { Section } from '@/components/section';
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from '@/components/ui/input-group';

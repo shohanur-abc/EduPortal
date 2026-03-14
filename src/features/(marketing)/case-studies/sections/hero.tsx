@@ -1,4 +1,4 @@
-import { Award, type LucideIcon } from 'lucide-react';
+import { Award, type LucideIcon } from '@/lib/icon';
 import { Badge } from '@/components/ui/badge';
 import { Section } from '@/components/section';
 

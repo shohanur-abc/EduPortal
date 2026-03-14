@@ -1,5 +1,5 @@
 import { MetricCard } from "@/components/molecules/metric-card"
-import { Target, TrendingUp, Clock, CalendarCheck } from "lucide-react"
+import { Target, TrendingUp, Clock, CalendarCheck } from "@/lib/icon"
 
 export function AttendanceKpi({ rate, todayPresent, todayTotal, avgLate, loading }: AttendanceKpiProps & { loading?: boolean }) {
     return (

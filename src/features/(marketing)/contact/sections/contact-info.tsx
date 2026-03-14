@@ -1,4 +1,4 @@
-import type { LucideIcon } from 'lucide-react';
+import type { LucideIcon } from '@/lib/icon';
 import { Card, CardContent } from '@/components/ui/card';
 import { Section } from '@/components/section';
 import Link from 'next/link';

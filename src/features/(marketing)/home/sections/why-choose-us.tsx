@@ -1,4 +1,4 @@
-import { LucideIcon } from 'lucide-react';
+import { LucideIcon } from '@/lib/icon';
 import { Card, CardContent } from '@/components/ui/card';
 import { Section } from '@/components/section';
 

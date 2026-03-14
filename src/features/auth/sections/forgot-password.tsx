@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
-import { CheckCircle2Icon } from "lucide-react";
+import { CheckCircle2Icon } from "@/lib/icon";
 import { Form } from "@/components/molecules/form";
 import { Email } from "@/components/molecules";
 import { Button } from "@/components/ui/button";

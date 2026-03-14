@@ -1,5 +1,5 @@
 import { StatCard } from "@/components/molecules/stat-card"
-import { Award, BarChart3, FileText, TrendingUp } from "lucide-react"
+import { Award, BarChart3, FileText, TrendingUp } from "@/lib/icon"
 
 interface AnalyticsStats {
     totalExams: number

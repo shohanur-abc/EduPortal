@@ -1,5 +1,5 @@
 import { Hero, Features, HowItWorks, Testimonials, PricingPreview, TrustedBy, Benefits, FAQPreview, CTA, WhyChooseUs } from '@/features/(marketing)/home';
-import { Users, GraduationCap, ClipboardCheck, BarChart3, CreditCard, Bell, Calendar, Shield, BookOpen, FileText, MessageSquare, Settings, Smartphone, Zap, Clock, HeartHandshake } from 'lucide-react';
+import { Users, GraduationCap, ClipboardCheck, BarChart3, CreditCard, Bell, Calendar, Shield, BookOpen, FileText, MessageSquare, Settings, Smartphone, Zap, Clock, HeartHandshake } from '@/lib/icon';
 import { ROUTES } from '@/lib/routes';
 import type { Metadata } from 'next';
 

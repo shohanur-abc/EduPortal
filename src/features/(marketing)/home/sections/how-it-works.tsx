@@ -1,4 +1,4 @@
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2 } from '@/lib/icon';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Section } from '@/components/section';

@@ -1,6 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
-import { FileX, type LucideIcon } from "lucide-react"
+import { File, type LucideIcon } from "@/lib/icon"
 
 // ============= CVA VARIANTS =============
 const emptyStateVariants = cva(
@@ -20,7 +20,7 @@ const emptyStateVariants = cva(
 )
 
 // ============= COMPONENT =============
-export function EmptyState({ icon: Icon = FileX, title, description, size, className }: EmptyStateProps) {
+export function EmptyState({ icon: Icon = File, title, description, size, className }: EmptyStateProps) {
     return (
         <div className={cn(emptyStateVariants({ size }), className)}>
             <div className="bg-muted rounded-full p-3">

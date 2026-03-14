@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight } from '@/lib/icon';
 import Link from 'next/link';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';

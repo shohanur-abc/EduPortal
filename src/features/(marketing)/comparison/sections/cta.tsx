@@ -1,4 +1,4 @@
-import { ArrowRight, Sparkles, CheckCircle } from 'lucide-react';
+import { ArrowRight, Sparkles, CheckCircle } from '@/lib/icon';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Section } from '@/components/section';

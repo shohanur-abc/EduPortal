@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
-import type { LucideIcon } from "lucide-react"
+import type { LucideIcon } from "@/lib/icon"
 
 // ============= COMPONENT =============
 export function InfoList({ title, description, items, className, classNames, loading }: InfoListProps) {

@@ -24,7 +24,7 @@ export type {
 
 // ─── Pre-built molecule shortcuts ────────────────────────────────────────────
 
-import { EyeIcon, EyeOffIcon, LockIcon, MailIcon } from 'lucide-react';
+import { Eye, EyeOff, Lock, Mail } from '@/lib/icon';
 import { FormInput } from './input';
 import { useState } from 'react';
 import { FieldValues, FormProvider, useForm, UseFormReturn } from 'react-hook-form';
@@ -52,7 +52,7 @@ export const Email = (props: FormInputProps) => (
     <FormInput
         type="email"
         placeholder="Enter your email"
-        leftAddon={<MailIcon className="text-muted-foreground" />}
+        leftAddon={<Mail className="text-muted-foreground" />}
         {...props}
     />
 );
@@ -64,7 +64,7 @@ export const Password = ({ name, label = "Password", ...props }: React.Component
             name={name}
             label={label}
             type={showPassword ? "text" : "password"}
-            leftAddon={<LockIcon className="text-muted-foreground" />}
+            leftAddon={<Lock className="text-muted-foreground" />}
             rightAddon={
                 <Button
                     type='button'
@@ -73,7 +73,7 @@ export const Password = ({ name, label = "Password", ...props }: React.Component
                     variant="ghost"
                     size="icon"
                 >
-                    {showPassword ? <EyeOffIcon /> : <EyeIcon />}
+                    {showPassword ? <EyeOff /> : <Eye />}
                 </Button>
             }
             placeholder="Enter your password"

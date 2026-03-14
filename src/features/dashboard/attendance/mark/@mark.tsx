@@ -5,7 +5,7 @@ import { Select as Select$, SelectContent, SelectItem, SelectTrigger, SelectValu
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { CalendarDays, CheckCircle, XCircle, Clock, AlertCircle, Users } from "lucide-react"
+import { CalendarDays, CheckCircle, XCircle, Clock, AlertCircle, Users } from "@/lib/icon"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
 import { markBulkAttendance } from "../actions/mark-bulk-attendance"

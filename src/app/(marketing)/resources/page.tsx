@@ -1,5 +1,5 @@
 import { type Metadata } from 'next';
-import { BookOpen, CalendarCheck, ClipboardList, CreditCard, FileSpreadsheet, GraduationCap, MessageSquare, Rocket, School, Settings, ShieldCheck, Users, } from 'lucide-react';
+import { BookOpen, CalendarCheck, ClipboardList, CreditCard, FileSpreadsheet, GraduationCap, MessageSquare, Rocket, School, Settings, ShieldCheck, Users, } from '@/lib/icon';
 import { Hero, Guides, Webinars, Templates, Videos, HelpCenter, Community, Newsletter, CaseStudiesPreview, CTA, } from '@/features/(marketing)/resources';
 
 import { ROUTES } from '@/lib/routes';

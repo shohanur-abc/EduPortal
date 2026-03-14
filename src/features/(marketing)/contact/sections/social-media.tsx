@@ -1,4 +1,4 @@
-import type { LucideIcon } from 'lucide-react';
+import type { LucideIcon } from '@/lib/icon';
 import { Button } from '@/components/ui/button';
 import { Section } from '@/components/section';
 

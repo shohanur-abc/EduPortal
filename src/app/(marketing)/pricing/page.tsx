@@ -7,16 +7,16 @@ import {
   Users,
   ShieldCheck,
   Clock,
-  HeadphonesIcon,
+  Headphones,
   RefreshCcw,
   CreditCard,
   MessageSquare,
   Bus,
   UtensilsCrossed,
   Library,
-  Waypoints,
+  MapPin,
   type LucideIcon,
-} from 'lucide-react';
+} from '@/lib/icon';
 import {
   Hero,
   Plans,
@@ -369,7 +369,7 @@ export default function PricingPage() {
               'Switching from another system? Our team will migrate all your student, fee, and academic data at no extra cost.',
           },
           {
-            icon: HeadphonesIcon as LucideIcon,
+            icon: Headphones as LucideIcon,
             title: 'Dedicated Onboarding',
             description:
               'Every paid plan includes guided onboarding sessions, staff training, and documentation to get you up and running fast.',
@@ -440,7 +440,7 @@ export default function PricingPage() {
             tag: 'New',
           },
           {
-            icon: Waypoints as LucideIcon,
+            icon: MapPin as LucideIcon,
             name: 'API & Integrations',
             description:
               'RESTful API access, webhook support, and pre-built connectors for Tally, QuickBooks, and Google Workspace.',

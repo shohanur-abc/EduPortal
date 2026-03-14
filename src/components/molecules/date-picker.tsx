@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { format, parse } from "date-fns"
-import { CalendarIcon } from "lucide-react"
+import { CalendarIcon } from "@/lib/icon"
 import { Controller, useFormContext } from "react-hook-form"
 
 import { cn } from "@/lib/utils"

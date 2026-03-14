@@ -1,5 +1,5 @@
 import { MetricCard } from "@/components/molecules/metric-card"
-import { School, Users, GraduationCap, BookOpen } from "lucide-react"
+import { School, Users, GraduationCap, BookOpen } from "@/lib/icon"
 
 export function OperationsKpi({ totalCapacity, utilization, totalSubjects, avgClassSize, loading }: OperationsKpiProps & { loading?: boolean }) {
     return (

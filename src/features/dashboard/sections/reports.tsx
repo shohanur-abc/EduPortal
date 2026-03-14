@@ -14,13 +14,12 @@ import {
     Settings,
     Database,
     ListFilter,
-    SlidersHorizontal,
     Play,
     TrendingUp,
     BarChart3,
     PieChart,
     GitCompareArrows,
-} from "lucide-react"
+} from "@/lib/icon"
 
 // ============= TYPES =============
 interface AttendanceReportRow {
@@ -292,7 +291,7 @@ const CUSTOM_REPORT_STEPS = [
         step: 3,
         title: "Apply Filters",
         description: "Narrow down results with date ranges, class filters, status conditions, and value thresholds. Save filter presets for reuse.",
-        icon: SlidersHorizontal,
+        icon: Settings,
     },
     {
         step: 4,

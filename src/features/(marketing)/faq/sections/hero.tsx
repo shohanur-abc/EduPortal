@@ -1,5 +1,5 @@
 "use client"
-import { Search } from 'lucide-react';
+import { Search } from '@/lib/icon';
 import { Input } from '@/components/ui/input';
 import { Section } from '@/components/section';
 

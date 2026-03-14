@@ -2,7 +2,7 @@ import { SimpleTable } from "@/components/molecules/simple-table"
 import { StatusBadge } from "@/components/molecules/status-badge"
 import { AvatarCell } from "@/components/molecules/avatar-cell"
 import { EmptyState } from "@/components/molecules/empty-state"
-import { Receipt } from "lucide-react"
+import { Receipt } from "@/lib/icon"
 
 export function FeeStatementsTable({ records, loading }: { records: FeeRecord[], loading?: boolean }) {
     if (records.length === 0) {

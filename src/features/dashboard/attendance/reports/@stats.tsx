@@ -1,5 +1,5 @@
 import { StatCard } from "@/components/molecules/stat-card"
-import { BarChart3, CheckCircle, Clock, Percent, XCircle } from "lucide-react"
+import { BarChart3, CheckCircle, Clock, Percent, XCircle } from "@/lib/icon"
 
 export function AttendanceReportStatCards({ total, presentCount, absentCount, lateCount, attendanceRate, loading }: AttendanceReportStats) {
     const pct = (count: number) => Math.round((count / total) * 100) || 0

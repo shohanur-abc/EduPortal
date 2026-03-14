@@ -1,5 +1,5 @@
 import type * as React from "react";
-import type { LucideIcon } from "lucide-react";
+import type { LucideIcon } from "@/lib/icon";
 
 // ============= TYPES =============
 
@@ -142,6 +142,7 @@ export interface DropdownProps {
     open?: boolean;
     onOpenChange?: (open: boolean) => void;
     modal?: boolean;
+    contentWidth?: string;
     className?: string;
     classNames?: DropdownClassNames;
 }

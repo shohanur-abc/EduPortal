@@ -1,7 +1,7 @@
 "use client"
 
 import { useCallback, useRef } from "react"
-import { Moon, Sun } from "lucide-react"
+import { Moon, Sun } from "@/lib/icon"
 import { flushSync } from "react-dom"
 import { useTheme } from "next-themes"
 

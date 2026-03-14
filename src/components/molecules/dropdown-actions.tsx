@@ -2,7 +2,7 @@
 
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Button } from "@/components/ui/button"
-import { MoreHorizontal, type LucideIcon } from "lucide-react"
+import { MoreHorizontal, type LucideIcon } from "@/lib/icon"
 
 // ============= COMPONENT =============
 export function DropdownActions({ label = "Actions", items }: DropdownActionsProps) {

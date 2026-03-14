@@ -1,6 +1,6 @@
 import { type Metadata } from 'next';
 
-import { Award, BarChart3, CheckCircle, Clock, Cloud, CreditCard, Database, DollarSign, Globe, GraduationCap, Headphones, Lock, MessageSquare, Rocket, School, Settings, Smartphone, TrendingUp, Upload, Users, Zap, } from 'lucide-react';
+import { Award, BarChart3, CheckCircle, Clock, Cloud, CreditCard, Database, DollarSign, Globe, GraduationCap, Headphones, Lock, MessageSquare, Rocket, School, Settings, Smartphone, TrendingUp, Upload, Users, Zap, } from '@/lib/icon';
 import { ComparisonHero, ComparisonTable, Advantages, Migration, ComparisonTestimonial, SupportComparison, ComparisonFAQ, ComparisonCTA, } from '@/features/(marketing)/comparison';
 import ROUTES from '@/lib/routes';
 

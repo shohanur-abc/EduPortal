@@ -1,4 +1,4 @@
-import { TrendingUp, ArrowRight } from 'lucide-react';
+import { TrendingUp, ArrowRight } from '@/lib/icon';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';

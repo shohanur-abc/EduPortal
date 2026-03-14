@@ -2,7 +2,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { Card, CardAction, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
-import { TrendingUp, TrendingDown, Minus, type LucideIcon } from "lucide-react"
+import { TrendingUp, TrendingDown, Minus, type LucideIcon } from "@/lib/icon"
 import { ReactNode } from "react"
 import { ShineBorder } from "../ui/shine-border"
 

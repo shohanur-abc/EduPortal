@@ -1,5 +1,5 @@
 import { MetricCard } from "@/components/molecules/metric-card"
-import { BellRing, Eye, Users, AlertTriangle } from "lucide-react"
+import { BellRing, Eye, Users, AlertTriangle } from "@/lib/icon"
 import type { NoticeStatusCount, NoticeAudienceCount, NoticeExpiringItem } from "./types"
 
 export function NoticeKpi({ counts, audienceReach, expiringSoon, loading }: NoticeKpiProps & { loading?: boolean }) {

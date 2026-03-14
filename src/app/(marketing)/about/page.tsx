@@ -1,5 +1,5 @@
 import { AboutHero, Mission, Values, Timeline, Team, Story, Stats, Partners, AboutCTA, Culture } from '@/features/(marketing)/about';
-import { Heart, Target, Users, Lightbulb, Shield, Globe, Award, Rocket, Handshake, BookOpen } from 'lucide-react';
+import { Heart, Target, Users, Lightbulb, Shield, Globe, Award, Rocket, Handshake, BookOpen } from '@/lib/icon';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {

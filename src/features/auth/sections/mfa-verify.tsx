@@ -3,7 +3,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
-import { ShieldCheckIcon } from "lucide-react";
+import { ShieldCheck } from "@/lib/icon";
 import { Form } from "@/components/molecules/form";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
@@ -30,7 +30,7 @@ export default function MfaVerify({ header, submitLabel, footer, backup }: IMfaV
 // ============= CHILD COMPONENTS =============
 const SecurityIcon = () => (
     <div className="mx-auto flex size-12 items-center justify-center rounded-full bg-primary/10">
-        <ShieldCheckIcon className="size-6 text-primary" />
+        <ShieldCheck className="size-6 text-primary" />
     </div>
 );
 

@@ -23,6 +23,7 @@ export function Dropdown({
     open,
     onOpenChange,
     modal,
+    contentWidth,
     className,
     classNames: cns,
 }: DropdownProps) {
@@ -34,6 +35,7 @@ export function Dropdown({
                 side={side}
                 sideOffset={sideOffset}
                 alignOffset={alignOffset}
+                style={contentWidth ? { width: contentWidth } : undefined}
                 className={cn("w-fit scrollbar-thin", cns?.content, className)}
             >
                 {label && (

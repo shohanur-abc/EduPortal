@@ -1,4 +1,4 @@
-import { Calculator, type LucideIcon } from 'lucide-react';
+import { Calculator, type LucideIcon } from '@/lib/icon';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Section } from '@/components/section';

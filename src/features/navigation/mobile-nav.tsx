@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { ROUTES } from '@/lib/routes';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
-import { Menu } from 'lucide-react';
+import { Menu } from '@/lib/icon';
 import UserMenu from './user-menu';
 
 // ============= MAIN COMPONENT =============

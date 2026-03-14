@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { teacherSchema, type TeacherFormData } from "@/schemas/dashboard"
 import { createTeacher, updateTeacher, deleteTeacher } from "@/services/teachers"
-import { Plus, Edit, Trash2 } from "lucide-react"
+import { Plus, Edit, Trash2 } from "@/lib/icon"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
 

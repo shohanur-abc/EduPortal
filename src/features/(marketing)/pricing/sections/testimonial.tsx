@@ -1,4 +1,4 @@
-import { Quote } from 'lucide-react';
+import { Quote } from '@/lib/icon';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Card, CardContent } from '@/components/ui/card';
 import { Section } from '@/components/section';

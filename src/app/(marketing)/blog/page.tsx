@@ -1,6 +1,6 @@
 import { type Metadata } from 'next';
 
-import { BookOpen, GraduationCap, BarChart3, Users, Calendar, Shield, Lightbulb, FileText, Video, Headphones, type LucideIcon, } from 'lucide-react';
+import { BookOpen, GraduationCap, BarChart3, Users, Calendar, Shield, Lightbulb, FileText, Video, Headphones, type LucideIcon, } from '@/lib/icon';
 import { BlogHero, FeaturedPost, PostGrid, Categories, Newsletter, Trending, Authors, Topics, Resources, BlogCTA, } from '@/features/(marketing)/blog';
 import ROUTES from '@/lib/routes';
 

@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { X } from "lucide-react";
+import { X } from "@/lib/icon";
 
 import { Badge as BaseBadge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";

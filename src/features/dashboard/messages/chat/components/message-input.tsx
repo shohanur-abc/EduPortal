@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { cn } from "@/lib/utils"
-import { Send, Paperclip, X } from "lucide-react"
+import { Send, Paperclip, X } from "@/lib/icon"
 
 // ============= COMPONENT =============
 export function MessageInput({

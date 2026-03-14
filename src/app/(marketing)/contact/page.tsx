@@ -1,5 +1,5 @@
 import { type Metadata } from 'next';
-import { Mail, Phone, MapPin, MessageSquare, Headphones, BookOpen, Video, Building2, Globe, GraduationCap, CreditCard, Settings, ShieldCheck, Users, Facebook, Twitter, Linkedin, Youtube, MessageSquareCode, } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageSquare, Headphones, BookOpen, Video, Building2, Globe, GraduationCap, CreditCard, Settings, ShieldCheck, Users, Facebook, Twitter, Linkedin, Youtube, MessageSquareCode, } from '@/lib/icon';
 import { ContactHero, ContactForm, ContactInfo, Offices, Departments, ContactFAQ, SupportOptions, SocialMedia, ResponseTime, ContactCTA, } from '@/features/(marketing)/contact';
 import { ROUTES } from '@/lib/routes';
 

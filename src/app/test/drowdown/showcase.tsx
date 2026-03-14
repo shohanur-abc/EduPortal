@@ -7,7 +7,7 @@ import {
     ChevronDown,
     CreditCard,
     FileText,
-    Github,
+    GitCompareArrows,
     Globe,
     HelpCircle,
     KeyRound,
@@ -17,10 +17,8 @@ import {
     Mail,
     MessageSquare,
     MoreHorizontal,
-    Palette,
-    Plus,
     Settings,
-    Share2,
+    Plus,
     Shield,
     ShieldAlert,
     Star,
@@ -29,7 +27,8 @@ import {
     UserPlus,
     Users,
     Zap,
-} from "lucide-react"
+    Link,
+} from "@/lib/icon"
 
 import { Dropdown, type DropdownItem } from "@/components/molecules/dropdown"
 import { Button } from "@/components/ui/button"
@@ -76,7 +75,7 @@ const accountItems: DropdownItem[] = [
                         type: "submenu",
                         label: "More options",
                         items: [
-                            { type: "item", label: "Copy invite link", icon: Share2 },
+                            { type: "item", label: "Copy invite link", icon: Link },
                             { type: "item", label: "Send via Slack" },
                             { type: "item", label: "Send via Teams" },
                         ],
@@ -87,7 +86,7 @@ const accountItems: DropdownItem[] = [
         ],
     },
     { type: "divider" },
-    { type: "link", label: "GitHub", href: "https://github.com", icon: Github, external: true },
+    { type: "link", label: "GitHub", href: "https://github.com", icon: GitCompareArrows, external: true },
     { type: "link", label: "Support", href: "/support", icon: LifeBuoy },
     { type: "item", label: "API", disabled: true, icon: Zap },
     { type: "divider" },
@@ -153,7 +152,7 @@ const contextItems: DropdownItem[] = [
     {
         type: "submenu",
         label: "Share",
-        icon: Share2,
+        icon: Link,
         items: [
             { type: "item", label: "Email link", icon: Mail },
             { type: "item", label: "Copy link", icon: Globe },
@@ -243,7 +242,7 @@ function ThemeDropdown() {
         <Dropdown
             trigger={
                 <Button variant="outline" size="sm">
-                    <Palette className="mr-2 size-4" />
+                    <Settings className="mr-2 size-4" />
                     {theme.charAt(0).toUpperCase() + theme.slice(1)}
                 </Button>
             }
@@ -396,7 +395,7 @@ export function DropdownShowcase() {
                             { type: "link", label: "API Reference", href: "/api-ref", icon: FileText },
                             { type: "divider" },
                             { type: "item", label: "Send feedback", icon: MessageSquare },
-                            { type: "link", label: "Community", href: "https://github.com", icon: Github, external: true },
+                            { type: "link", label: "Community", href: "https://github.com", icon: GitCompareArrows, external: true },
                         ]}
                         contentWidth="14rem"
                         align="end"

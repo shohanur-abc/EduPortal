@@ -1,5 +1,5 @@
 import { SummaryGrid } from "@/components/molecules/summary-grid"
-import { CalendarDays, DollarSign, GraduationCap, Settings } from "lucide-react"
+import { CalendarDays, DollarSign, GraduationCap, Settings } from "@/lib/icon"
 
 export function ReportSummary({ attendanceCount, feeCount, resultCount, totalTemplates }: {
     attendanceCount: number

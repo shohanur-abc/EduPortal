@@ -1,5 +1,5 @@
 import { StatCard } from "@/components/molecules/stat-card"
-import { Layers, TrendingUp, Calculator } from "lucide-react"
+import { Layers, TrendingUp, Calculator } from "@/lib/icon"
 
 
 export function FeeStructureStatCards({ totalTypes, totalCollected, totalStudents, loading }: FeeStructureStats) {

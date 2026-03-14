@@ -1,7 +1,7 @@
 import { SimpleTable } from "@/components/molecules/simple-table"
 import { EmptyState } from "@/components/molecules/empty-state"
 import { Badge } from "@/components/ui/badge"
-import { BookOpen, LineChart } from "lucide-react"
+import { BookOpen, LineChart } from "@/lib/icon"
 
 interface ExamAnalytics extends Record<string, unknown> {
     exam: string

@@ -1,4 +1,4 @@
-import { CheckCircle2, X, type LucideIcon } from 'lucide-react';
+import { CheckCircle2, X, type LucideIcon } from '@/lib/icon';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Section } from '@/components/section';

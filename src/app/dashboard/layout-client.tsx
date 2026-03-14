@@ -1,6 +1,6 @@
 "use client"
 
-import { LayoutDashboard, CheckCircle2, BarChart3, FileText, DollarSign, Settings, Bell, Users, Shield, Lock, GraduationCap, UserCog, School, MessageSquare, Link, } from "lucide-react"
+import { LayoutDashboard, CheckCircle2, BarChart3, FileText, DollarSign, Settings, Bell, Users, Shield, Lock, GraduationCap, UserCog, School, MessageSquare, Link, } from "@/lib/icon"
 import { Separator } from "@/components/ui/separator"
 import { SidebarLayout, SidebarBrand, SidebarUser, SidebarTrigger, type SidebarNavItem, } from "@/components/molecules/sidebar"
 import { ROUTES } from "@/lib/routes"

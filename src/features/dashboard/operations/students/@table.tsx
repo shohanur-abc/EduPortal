@@ -13,7 +13,7 @@ import { Select } from "@/components/molecules"
 import { Button } from "@/components/ui/button"
 import { studentSchema, type StudentFormData } from "@/schemas/dashboard"
 import { createStudent, updateStudent, deleteStudent } from "@/services/students"
-import { Plus, Edit, Trash2 } from "lucide-react"
+import { Plus, Edit, Trash2 } from "@/lib/icon"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
 

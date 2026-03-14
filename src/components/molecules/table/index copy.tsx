@@ -15,10 +15,10 @@ import {
     useReactTable,
 } from "@tanstack/react-table"
 import {
-    ArrowUpDown, ChevronDown, SlidersHorizontal,
+    BarChart3, ChevronDown, Settings,
     ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight,
     ArrowUp, ArrowDown, MoreHorizontal,
-} from "lucide-react"
+} from "@/lib/icon"
 
 import { Table as Table$, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Button, Dropdown, Select, Input } from "@/components/molecules"
@@ -55,7 +55,7 @@ export function SortableHeader({
             ) : sorted === "desc" ? (
                 <ArrowDown className="size-3" />
             ) : (
-                <ArrowUpDown className="size-3 opacity-50" />
+                <BarChart3 className="size-3 opacity-50" />
             )}
         </button>
     )
@@ -321,7 +321,7 @@ export function DataTable<TData, TValue = unknown>({
                             <Dropdown
                                 trigger={
                                     <Button variant="outline" size="sm" className={cns?.columnsButton}>
-                                        <SlidersHorizontal className="mr-2 size-3.5" />
+                                        <Settings className="mr-2 size-3.5" />
                                         Columns
                                         <ChevronDown className="ml-2 size-3.5" />
                                     </Button>

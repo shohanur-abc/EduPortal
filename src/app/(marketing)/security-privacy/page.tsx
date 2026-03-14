@@ -1,5 +1,5 @@
 import { type Metadata } from 'next';
-import { ShieldCheck, Award, Lock, UserCheck, Eye, FileSearch, AlertTriangle, Headphones, Database, KeyRound, Globe, Fingerprint, FileText, Users, GraduationCap, BookOpen, Settings, ClipboardList, Clock, Shield, Search, Bell, CheckCircle, Wrench, RefreshCcw, Activity, BarChart3, ScrollText, Network, HardDrive, CloudCog, } from 'lucide-react';
+import { ShieldCheck, Award, Lock, UserCheck, Eye, FileSearch, AlertTriangle, Headphones, Database, KeyRound, Globe, Fingerprint, FileText, Users, GraduationCap, BookOpen, Settings, ClipboardList, Clock, Shield, Search, Bell, CheckCircle, Wrench, RefreshCcw, Activity, BarChart3, ScrollText, Network, HardDrive, CloudCog, } from '@/lib/icon';
 import { Hero, Certifications, DataProtection, AccessControl, PrivacyPolicy, Audit, IncidentResponse, FAQ, CTA, } from '@/features/(marketing)/security-privacy';
 import { ROUTES } from '@/lib/routes';
 

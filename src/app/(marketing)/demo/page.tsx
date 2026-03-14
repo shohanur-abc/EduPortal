@@ -5,7 +5,7 @@
 // TODO: Connect demo form to CRM (HubSpot/Salesforce) webhook
 
 import { type Metadata } from 'next';
-import { CalendarCheck, ClipboardList, Clock, CreditCard, FileText, GraduationCap, Headphones, LayoutDashboard, Lock, MessageSquare, Monitor, Phone, PlayCircle, RefreshCw, School, Shield, ShieldCheck, UserCheck, Users, Video, type LucideIcon } from 'lucide-react';
+import { CalendarCheck, ClipboardList, Clock, CreditCard, FileText, GraduationCap, Headphones, LayoutDashboard, Lock, MessageSquare, Monitor, Phone, PlayCircle, RefreshCw, School, Shield, ShieldCheck, UserCheck, Users, Video, type LucideIcon } from '@/lib/icon';
 import { DemoCTA, DemoFAQ, DemoForm, DemoFormats, DemoGuarantee, DemoHero, DemoProcess, DemoStats, DemoTestimonial, WhatYoullSee, } from '@/features/(marketing)/demo';
 import { ROUTES } from '@/lib/routes';
 

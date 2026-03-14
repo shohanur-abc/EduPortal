@@ -1,5 +1,5 @@
 import { StatCard } from "@/components/molecules/stat-card"
-import { CalendarDays, DollarSign, GraduationCap, Settings } from "lucide-react"
+import { CalendarDays, DollarSign, GraduationCap, Settings } from "@/lib/icon"
 
 interface ReportStatsProps {
     attendanceCount: number

@@ -1,4 +1,4 @@
-import { CheckCircle2, Minus } from 'lucide-react';
+import { CheckCircle2, Minus } from '@/lib/icon';
 import {
     Table,
     TableBody,

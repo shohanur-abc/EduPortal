@@ -7,7 +7,7 @@ import { MiniTable } from "@/components/molecules/mini-table"
 import { StatusBadge } from "@/components/molecules/status-badge"
 import { Bar, BarChart, XAxis, YAxis, CartesianGrid, Pie, PieChart, Cell } from "recharts"
 import { ChartCard, ChartTooltip, ChartTooltipContent, type ChartConfig } from "@/components/molecules/chart-card"
-import { FileText, Send, Archive, FilePen, TrendingUp, Users, AlertTriangle, Eye } from "lucide-react"
+import { FileText, Send, Archive, FilePen, TrendingUp, Users, AlertTriangle, Eye } from "@/lib/icon"
 import type { NoticeStatusCount, NoticePriorityCount, NoticeAudienceCount, NoticePublishTrend, NoticeExpiringItem } from "../overview/types"
 
 // ============= ANALYTICS DASHBOARD =============

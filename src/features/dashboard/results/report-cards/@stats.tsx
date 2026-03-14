@@ -1,5 +1,5 @@
 import { StatCard } from "@/components/molecules/stat-card"
-import { Award, BarChart3, TrendingUp } from "lucide-react"
+import { Award, BarChart3, TrendingUp } from "@/lib/icon"
 
 export function ReportCardStatCards({ uniqueStudents, passRate, avgMarks, loading }: ReportCardStats & { loading?: boolean }) {
     return (

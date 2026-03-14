@@ -1,5 +1,5 @@
 import { MetricCard } from "@/components/molecules/metric-card"
-import { TrendingUp, Percent, FileBarChart, BarChart3 } from "lucide-react"
+import { TrendingUp, Percent, FileBarChart, BarChart3 } from "@/lib/icon"
 
 interface ReportKpiProps {
     avgAttendanceRate: number

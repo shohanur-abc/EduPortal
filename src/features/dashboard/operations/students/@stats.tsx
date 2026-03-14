@@ -1,5 +1,5 @@
 import { StatCard } from "@/components/molecules/stat-card"
-import { GraduationCap, User, Users } from "lucide-react"
+import { GraduationCap, User, Users } from "@/lib/icon"
 
 
 export function StudentStatCards({ totalStudents, activeStudents, activePercentage, maleCount, femaleCount, otherCount, loading }: StudentStats & { loading?: boolean }) {

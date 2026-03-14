@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle2, LucideIcon } from 'lucide-react';
+import { ArrowRight, CheckCircle2, LucideIcon } from '@/lib/icon';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';

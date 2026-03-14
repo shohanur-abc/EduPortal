@@ -3,7 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 import { cva } from "class-variance-authority"
-import { ChevronRight, type LucideIcon } from "lucide-react"
+import { ChevronRight, type LucideIcon } from "@/lib/icon"
 
 import {
     DropdownMenu,

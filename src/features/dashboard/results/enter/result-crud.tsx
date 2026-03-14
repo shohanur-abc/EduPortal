@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { resultSchema, type ResultFormData } from "@/schemas/dashboard"
 import { createResult, updateResult, deleteResult } from "@/services/results"
-import { Plus, Edit, Trash2 } from "lucide-react"
+import { Plus, Edit, Trash2 } from "@/lib/icon"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
 

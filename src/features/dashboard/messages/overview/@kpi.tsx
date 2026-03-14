@@ -1,5 +1,5 @@
 import { MetricCard } from "@/components/molecules/metric-card"
-import { MessageSquare, Users, MessagesSquare, UserCheck } from "lucide-react"
+import { MessageSquare, Users, MessagesSquare, UserCheck } from "@/lib/icon"
 import type { MessageOverviewData } from "./types"
 
 export function MessageKpi({ data, loading }: { data: MessageOverviewData; loading?: boolean }) {

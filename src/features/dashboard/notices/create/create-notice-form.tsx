@@ -56,7 +56,7 @@ import {
 import { noticeSchema, type NoticeFormData } from "@/schemas/dashboard"
 import { postOne } from "@/services/notices"
 import { toast } from "sonner"
-import { Loader2, Send, FileText, Eye, PenLine } from "lucide-react"
+import { Loader2, Send, FileText, Eye, PenLine } from "@/lib/icon"
 import { useRouter } from "next/navigation"
 import { ROUTES } from "@/lib/routes"
 

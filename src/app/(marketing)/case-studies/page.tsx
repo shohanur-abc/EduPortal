@@ -1,5 +1,5 @@
 import { type Metadata } from 'next';
-import { School, Users, TrendingUp, Award, GraduationCap, BookOpen, Building2, Globe, Landmark, Church, ClipboardCheck, Clock, DollarSign, FileText, MessageSquare, Settings, Zap, } from 'lucide-react';
+import { School, Users, TrendingUp, Award, GraduationCap, BookOpen, Building2, Globe, Landmark, Church, ClipboardCheck, Clock, DollarSign, FileText, MessageSquare, Settings, Zap, } from '@/lib/icon';
 import { CaseStudiesHero, FeaturedCase, CaseGrid, Metrics, Testimonial, Industries, Process, Results, DownloadCaseStudy, CaseStudiesCTA, } from '@/features/(marketing)/case-studies';
 import { ROUTES } from '@/lib/routes';
 

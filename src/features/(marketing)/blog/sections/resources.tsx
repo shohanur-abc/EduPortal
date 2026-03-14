@@ -1,4 +1,4 @@
-import { ArrowRight, Download, type LucideIcon } from 'lucide-react';
+import { ArrowRight, Download, type LucideIcon } from '@/lib/icon';
 import Link from 'next/link';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';

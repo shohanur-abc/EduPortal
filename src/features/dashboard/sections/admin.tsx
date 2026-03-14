@@ -1,7 +1,7 @@
 import { StatCard } from "@/components/molecules/stat-card"
 import { PageHeader } from "@/components/molecules/page-header"
 import { EmptyState } from "@/components/molecules/empty-state"
-import { Shield, Users, BookOpen } from "lucide-react"
+import { Shield, Users, BookOpen } from "@/lib/icon"
 
 // ============= ADMIN DASHBOARD =============
 export function AdminDashboard() {

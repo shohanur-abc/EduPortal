@@ -69,7 +69,7 @@ import {
   ArrowUpIcon,
   BoldIcon,
   BoltIcon,
-  CheckIcon,
+  Check,
   CheckSquareIcon,
   ChevronDownIcon,
   CodeIcon,
@@ -97,7 +97,7 @@ import {
   TextQuoteIcon,
   TrashIcon,
   UnderlineIcon,
-} from "lucide-react";
+} from "@/lib/icon";
 import type { FormEventHandler, HTMLAttributes, ReactNode } from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import tippy, { type Instance as TippyInstance } from "tippy.js";
@@ -770,15 +770,15 @@ export const EditorBubbleMenu = ({
     >
       {children && Array.isArray(children)
         ? children.reduce((acc: ReactNode[], child, index) => {
-            if (index === 0) {
-              return [child];
-            }
+          if (index === 0) {
+            return [child];
+          }
 
-            // biome-ignore lint/suspicious/noArrayIndexKey: "only iterator we have"
-            acc.push(<Separator key={index} orientation="vertical" />);
-            acc.push(child);
-            return acc;
-          }, [])
+          // biome-ignore lint/suspicious/noArrayIndexKey: "only iterator we have"
+          acc.push(<Separator key={index} orientation="vertical" />);
+          acc.push(child);
+          return acc;
+        }, [])
         : children}
     </BubbleMenu>
   );
@@ -808,7 +808,7 @@ const BubbleMenuButton = ({
     <Icon className="shrink-0 text-muted-foreground" size={12} />
     {!hideName && <span className="flex-1 text-left">{name}</span>}
     {isActive() ? (
-      <CheckIcon className="shrink-0 text-muted-foreground" size={12} />
+      <Check className="shrink-0 text-muted-foreground" size={12} />
     ) : null}
   </Button>
 );
@@ -1383,7 +1383,7 @@ export const EditorLinkSelector = ({
             </Button>
           ) : (
             <Button className="h-8" size="icon" variant="secondary">
-              <CheckIcon size={12} />
+              <Check size={12} />
             </Button>
           )}
         </form>

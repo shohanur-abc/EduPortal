@@ -1,4 +1,4 @@
-import { Hash } from 'lucide-react';
+import { Hash } from '@/lib/icon';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Section } from '@/components/section';

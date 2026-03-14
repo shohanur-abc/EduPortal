@@ -1,5 +1,5 @@
 import { StatCard } from "@/components/molecules/stat-card"
-import { GraduationCap, Bell, DollarSign, CheckCircle } from "lucide-react"
+import { GraduationCap, Bell, DollarSign, CheckCircle } from "@/lib/icon"
 import { DashboardStatsData } from "./types"
 
 // ============= STAT CARDS =============

@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Input } from "@/components/ui/input"
 import { cn } from "@/lib/utils"
-import { MessageSquare, Phone, Search, Settings, Users, Wifi } from "lucide-react"
+import { MessageSquare, Phone, Search, Settings, Users, Wifi } from "@/lib/icon"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 // ============= CVA VARIANTS =============

@@ -11,15 +11,14 @@ import {
 	MessageSquare,
 	Bell,
 	BellRing,
-	Bus,
+	Building2,
 	ClipboardCheck,
 	Fingerprint,
 	Globe,
-	Library,
 	LineChart,
 	Lock,
 	PieChart,
-	QrCode,
+	Code,
 	Receipt,
 	School,
 	Settings,
@@ -29,7 +28,7 @@ import {
 	Users,
 	Video,
 	Wifi,
-} from "lucide-react";
+} from "@/lib/icon";
 import {
 	Hero,
 	FeatureGrid,
@@ -174,7 +173,7 @@ export default function Page() {
 				}}
 				highlights={[
 					{
-						icon: QrCode,
+						icon: Code,
 						text: "QR code and biometric-based check-in with anti-spoofing verification for secure attendance logging",
 					},
 					{
@@ -316,11 +315,11 @@ export default function Page() {
 						text: "Staff HR module with leave management, payroll integration, substitution scheduling, and appraisals",
 					},
 					{
-						icon: Bus,
+						icon: Building2,
 						text: "Transport management with GPS-tracked routes, stop assignments, and driver-parent live tracking",
 					},
 					{
-						icon: Library,
+						icon: BookOpen,
 						text: "Library module with barcode scanning, book cataloging, issue/return tracking, and overdue fine management",
 					},
 					{

@@ -1,4 +1,4 @@
-import { Download, type LucideIcon } from 'lucide-react';
+import { Download, type LucideIcon } from '@/lib/icon';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';

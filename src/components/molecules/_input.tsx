@@ -2,7 +2,7 @@
 import { InputGroup, InputGroupAddon, InputGroupInput, } from '@/components/ui/input-group';
 import { Controller, useFormContext } from 'react-hook-form';
 import { Field, FieldLabel, FieldDescription, FieldError, } from '@/components/ui/field';
-import { EyeIcon, EyeOffIcon, LockIcon, MailIcon } from 'lucide-react';
+import { Eye, EyeOff, Lock, Mail } from '@/lib/icon';
 import { Button } from '../ui/button';
 import { useState } from 'react';
 
@@ -49,7 +49,7 @@ export const Email = (props: React.ComponentProps<typeof FormInput>) => (
     <FormInput
         type="email"
         placeholder="Enter your email"
-        leftAddon={<MailIcon className="text-muted-foreground" />}
+        leftAddon={<Mail className="text-muted-foreground" />}
         {...props}
     />
 );
@@ -62,7 +62,7 @@ export const Password = ({ name, label = "Password", ...props }: React.Component
             name={name}
             label={label}
             type={showPassword ? "text" : "password"}
-            leftAddon={<LockIcon className="text-muted-foreground" />}
+            leftAddon={<Lock className="text-muted-foreground" />}
             rightAddon={
                 <Button
                     type='button'
@@ -71,7 +71,7 @@ export const Password = ({ name, label = "Password", ...props }: React.Component
                     variant="ghost"
                     size="icon"
                 >
-                    {showPassword ? <EyeOffIcon /> : <EyeIcon />}
+                    {showPassword ? <EyeOff /> : <Eye />}
                 </Button>
             }
             placeholder="Enter your password"

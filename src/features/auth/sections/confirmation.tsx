@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CheckCircle2Icon, MailIcon } from "lucide-react";
+import { CheckCircle2Icon, MailIcon } from "@/lib/icon";
 import AuthCard from "../components/auth-card";
 import { Button } from "@/components/ui/button";
 import { ROUTES } from "@/lib/routes";

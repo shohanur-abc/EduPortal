@@ -1,12 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { BarChart3, Bell, BookOpen, Bot, Building2, Calendar, CheckSquare, CreditCard, FileText, FolderKanban, GalleryVerticalEnd, GraduationCap, Home, Inbox, LayoutDashboard, LifeBuoy, LogOut, MessageSquare, Newspaper, PieChart, Plus, Settings, Shield, Sparkles, Star, Trash2, TrendingUp, User, UserPlus, Users, Zap, } from "lucide-react"
+import { BarChart3, Bell, BookOpen, Bot, Building2, Calendar, CheckSquare, CreditCard, FileText, FolderKanban, GalleryVerticalEnd, GraduationCap, Home, Inbox, LayoutDashboard, LifeBuoy, LogOut, MessageSquare, Newspaper, PieChart, Plus, Settings, Shield, Sparkles, Star, Trash2, TrendingUp, User, UserPlus, Users, Zap, } from "@/lib/icon"
 import { SidebarLayout, SidebarBrand, SidebarUser, SidebarInsetHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, type SidebarNavItem, } from "@/components/molecules/sidebar"
 import { Dropdown } from "@/components/molecules/dropdown"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
-import { ChevronRight } from "lucide-react"
+import { ChevronRight } from "@/lib/icon"
 
 // ─── SHARED ───────────────────────────────────────────────────────────────────
 

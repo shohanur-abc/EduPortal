@@ -1,4 +1,4 @@
-import { Star } from 'lucide-react';
+import { Star } from '@/lib/icon';
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';

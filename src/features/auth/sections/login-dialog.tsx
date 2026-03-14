@@ -16,6 +16,7 @@ import { LoginModal } from "../components/login-modal";
 import { Form } from "@/components/molecules/form";
 import { FieldSeparator } from "@/components/ui/field";
 import { socialLogin2 } from "../actions/social-login";
+import { Google } from "@/lib/icon";
 
 export default function LoginDialog({ header, footer, email, password, rememberMe, forgotPassword, socialLogin }: LoginDialogProps) {
     const searchParams = useSearchParams();
@@ -69,6 +70,7 @@ export default function LoginDialog({ header, footer, email, password, rememberM
         >
             <form action={socialLogin2}>
                 <input type="hidden" name="provider" value="google" />
+                <Button type="submit" variant="outline" className="w-full gap-2 mb-3"><Google className="size-4" /> Continue with Google</Button>
             </form>
             <FieldSeparator className="my-3">Continue with</FieldSeparator>
             <Form form={form} className="space-y-3" onSubmit={form.handleSubmit(onSubmit)}>

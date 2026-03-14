@@ -3,7 +3,7 @@
 import * as React from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import { format } from "date-fns";
-import { CalendarIcon, XIcon } from "lucide-react";
+import { CalendarIcon, XIcon } from "@/lib/icon";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";

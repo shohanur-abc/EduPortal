@@ -1,4 +1,4 @@
-import { ArrowRight, PenLine, CheckCircle } from 'lucide-react';
+import { ArrowRight, PenLine, CheckCircle } from '@/lib/icon';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Section } from '@/components/section';

@@ -1,5 +1,5 @@
 import { type Metadata } from 'next';
-import { BookOpen, CreditCard, GraduationCap, Headphones, HelpCircle, LifeBuoy, Lock, Mail, MessageCircle, Monitor, Phone, Rocket, School, Settings, Shield, Users, Zap, } from 'lucide-react';
+import { BookOpen, CreditCard, GraduationCap, Headphones, HelpCircle, LifeBuoy, Lock, Mail, MessageCircle, Monitor, Phone, Rocket, School, Settings, Shield, Users, Zap, } from '@/lib/icon';
 import { FAQHero, GeneralFAQ, PricingFAQ, TechnicalFAQ, SecurityFAQ, FAQCategories, StillHaveQuestions, PopularFAQ, VideoGuides, FAQCTA, } from '@/features/(marketing)/faq';
 import ROUTES from '@/lib/routes';
 

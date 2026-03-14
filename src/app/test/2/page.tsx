@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, 
 import { ChartContainer, ChartLegend, ChartLegendContent, ChartTooltip, ChartTooltipContent, type ChartConfig, } from "@/components/ui/chart"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, } from "@/components/ui/select"
 import { chartData, chartData2 } from "../data"
-import { TrendingUp } from "lucide-react"
+import { TrendingUp } from "@/lib/icon"
 import { percentColor } from "@/lib/utils"
 
 

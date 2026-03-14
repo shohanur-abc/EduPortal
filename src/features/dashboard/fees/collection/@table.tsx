@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { feeSchema, feePaymentSchema, type FeeFormData, type FeePaymentData } from "@/schemas/dashboard"
 import { createFee, recordFeePayment, waiveFee, deleteFee } from "@/services/fees"
-import { Plus, Trash2, CreditCard, Ban, DollarSign } from "lucide-react"
+import { Plus, Trash2, CreditCard, Ban, DollarSign } from "@/lib/icon"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
 

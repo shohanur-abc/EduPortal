@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
+import React, { useMemo } from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -23,22 +23,29 @@ export const Meteors = ({
   angle = 215,
   className,
 }: MeteorsProps) => {
-  const [meteorStyles, setMeteorStyles] = useState<Array<React.CSSProperties>>(
-    []
-  )
+  const pseudo = (seed: number) => {
+    const value = Math.sin(seed * 12.9898) * 43758.5453
+    return value - Math.floor(value)
+  }
 
-  useEffect(() => {
-    const styles = [...new Array(number)].map((v, i) => ({
-      "--angle": -angle + Math.random() * 10 + "deg",
-      top: "-5%",
-      left: `calc(0% + ${Math.floor(Math.random() * window.innerWidth)}px)`,
-      animationDelay: Math.random() * (maxDelay - minDelay) + minDelay + "s",
-      animationDuration:
-        Math.floor(Math.random() * (maxDuration - minDuration) + minDuration) +
-        "s",
-    }))
-    setMeteorStyles(styles)
-  }, [number, minDelay, maxDelay, minDuration, maxDuration, angle])
+  const meteorStyles = useMemo<Array<React.CSSProperties>>(
+    () =>
+      [...new Array(number)].map((_, idx) => {
+        const angleJitter = pseudo(idx + angle) * 10
+        const leftOffset = Math.floor(pseudo(idx * 2 + number) * window.innerWidth)
+        const delay = pseudo(idx * 3 + minDelay) * (maxDelay - minDelay) + minDelay
+        const duration = Math.floor(pseudo(idx * 4 + maxDuration) * (maxDuration - minDuration) + minDuration)
+
+        return {
+          "--angle": -angle + angleJitter + "deg",
+          top: "-5%",
+          left: `calc(0% + ${leftOffset}px)`,
+          animationDelay: delay + "s",
+          animationDuration: duration + "s",
+        }
+      }),
+    [number, minDelay, maxDelay, minDuration, maxDuration, angle]
+  )
 
   return (
     <>

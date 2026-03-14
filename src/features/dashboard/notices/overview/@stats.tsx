@@ -1,5 +1,5 @@
 import { StatCard } from "@/components/molecules/stat-card"
-import { FileText, Send, Archive, FilePen } from "lucide-react"
+import { FileText, Send, Archive, FilePen } from "@/lib/icon"
 import type { NoticeStatusCount } from "./types"
 
 export function NoticeStatCards({ counts, loading }: { counts: NoticeStatusCount[]; loading?: boolean }) {

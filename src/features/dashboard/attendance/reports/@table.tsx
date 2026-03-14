@@ -2,7 +2,7 @@ import { SimpleTable } from "@/components/molecules/simple-table"
 import { StatusBadge } from "@/components/molecules/status-badge"
 import { AvatarCell } from "@/components/molecules/avatar-cell"
 import { EmptyState } from "@/components/molecules/empty-state"
-import { FileBarChart } from "lucide-react"
+import { FileBarChart } from "@/lib/icon"
 
 
 export function AttendanceReportTable({ records, loading }: { records: AttendanceRecord[], loading?: boolean }) {

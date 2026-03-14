@@ -1,6 +1,6 @@
 "use client"
 
-import { AlertCircle } from "lucide-react"
+import { AlertCircle } from "@/lib/icon"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
 interface ErrorAlertProps {

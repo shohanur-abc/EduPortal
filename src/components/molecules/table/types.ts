@@ -1,6 +1,6 @@
 import type * as React from "react"
 import type { ColumnDef, Table, VisibilityState } from "@tanstack/react-table"
-import type { LucideIcon } from "lucide-react"
+import type { LucideIcon } from "@/lib/icon"
 
 // ============= CLASS NAMES =============
 

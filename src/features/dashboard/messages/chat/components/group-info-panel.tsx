@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import { cn } from "@/lib/utils"
-import { X, Pencil, Users } from "lucide-react"
+import { X, Pencil, Users } from "@/lib/icon"
 
 // ============= COMPONENT =============
 export function GroupInfoPanel({

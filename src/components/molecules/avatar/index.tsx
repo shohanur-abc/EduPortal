@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { User } from "lucide-react";
+import { User } from "@/lib/icon";
 
 import {
     Avatar as BaseAvatar,
