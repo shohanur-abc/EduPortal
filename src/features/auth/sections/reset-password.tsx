@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { Form } from "@/components/molecules/form";
-import { Password } from "@/components/molecules/input";
+import { Password } from "@/components/molecules";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import AuthCard, { FooterLink } from "../components/auth-card";

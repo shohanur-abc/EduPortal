@@ -146,7 +146,7 @@ function Button({
     // Spread user props first so our handlers always win when there's a conflict
     const btnProps = {
         ...props,
-        "data-slot": "button-molecule",
+        "data-slot": "button",
         variant,
         size: resolvedSize,
         disabled: isActuallyDisabled,

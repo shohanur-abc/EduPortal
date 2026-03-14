@@ -76,7 +76,7 @@ export const Checkbox = ({
     };
 
     return (
-        <div className={cn("flex items-start gap-2", className, cns?.root)}>
+        <div className={cn("flex items-start gap-2", cns?.root)}>
             <Checkbox$
                 id={id ?? field?.name ?? name}
                 name={name ?? field?.name}
@@ -88,7 +88,7 @@ export const Checkbox = ({
                 required={required}
                 value={value}
                 aria-invalid={isInvalid}
-                className={cns?.checkbox}
+                className={cn(className, cns?.checkbox)}
             />
             {(label || description) && (
                 // <div className="flex flex-col gap-0.5 leading-snug">

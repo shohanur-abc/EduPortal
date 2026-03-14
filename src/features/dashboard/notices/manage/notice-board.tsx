@@ -17,18 +17,17 @@ import {
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { StatusBadge } from "@/components/molecules/status-badge"
-import { FilterToolbar, type FilterConfig } from "@/components/molecules/filter-toolbar"
 import { DropdownActions, type ActionItem } from "@/components/molecules/dropdown-actions"
 import { EmptyState } from "@/components/molecules/empty-state"
 import { InfiniteScroll } from "@/components/molecules/infinite-scroll"
 import { MutationFormSheet } from "@/components/molecules/mutation-form-sheet"
-import { FormInput } from "@/components/molecules/input"
-import { Select } from "@/components/molecules"
+import { FormInput } from "@/components/molecules"
+import { Input, Select } from "@/components/molecules"
 import { DatePicker } from "@/components/molecules/date-picker"
 import { Checkbox as CB } from "@/components/ui/checkbox"
 import { noticeSchema, type NoticeFormData } from "@/schemas/dashboard"
 import { postOne, patchById, deleteById, patchMarkAsPublished, patchMarkAsArchived } from "@/services/notices"
-import { Plus, Send, Archive, Eye, Pencil, Trash2, FileText, Clock } from "lucide-react"
+import { Plus, Send, Archive, Eye, Pencil, Trash2, FileText, Clock, Search, X } from "lucide-react"
 import { toast } from "sonner"
 import type { NoticeItem } from "../overview/types"
 import { Notice } from "@/services"
@@ -119,31 +118,6 @@ export function NoticeBoard({
         fetchFiltered(search, statusFilter, value)
     }
 
-    const filters: FilterConfig[] = [
-        {
-            key: "status",
-            placeholder: "Status",
-            value: statusFilter,
-            options: [
-                { value: "draft", label: "Draft" },
-                { value: "published", label: "Published" },
-                { value: "archived", label: "Archived" },
-            ],
-            onChange: handleStatusChange,
-        },
-        {
-            key: "priority",
-            placeholder: "Priority",
-            value: priorityFilter,
-            options: [
-                { value: "low", label: "Low" },
-                { value: "medium", label: "Medium" },
-                { value: "high", label: "High" },
-                { value: "urgent", label: "Urgent" },
-            ],
-            onChange: handlePriorityChange,
-        },
-    ]
 
     const openCreate = () => {
         setEditNotice(null)
@@ -170,13 +144,44 @@ export function NoticeBoard({
     ]
 
     return (
-        <div className="space-y-4">
-            <FilterToolbar
-                searchValue={search}
-                onSearchChange={handleSearchChange}
-                searchPlaceholder="Search by title or author..."
-                filters={filters}
-            >
+        <div className="space-y-4 ">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:flex-wrap">
+                <Input
+                    placeholder="Search by title or author..."
+                    value={search}
+                    onChange={(e) => handleSearchChange(e.target.value)}
+                    leftAddon={<Search />}
+                    rightAddon={search && (
+                        <Button variant="ghost" size="icon-xs" className="rounded-full hover:text-destructive" onClick={() => handleSearchChange("")}>
+                            <X className="size-4" />
+                        </Button>)}
+                    classNames={{ group: "flex-1 max-w-xs" }}
+                />
+                <Select
+                    placeholder="Status"
+                    value={statusFilter}
+                    onValueChange={(value) => handleStatusChange(value)}
+                    options={[
+                        { value: "all", label: "All Statuses" },
+                        { value: "draft", label: "Draft" },
+                        { value: "published", label: "Published" },
+                        { value: "archived", label: "Archived" },
+                    ]}
+                    className="w-40"
+                />
+                <Select
+                    placeholder="Priority"
+                    value={priorityFilter}
+                    onValueChange={(value) => handlePriorityChange(value)}
+                    options={[
+                        { value: "all", label: "All Priorities" },
+                        { value: "low", label: "Low" },
+                        { value: "medium", label: "Medium" },
+                        { value: "high", label: "High" },
+                        { value: "urgent", label: "Urgent" },
+                    ]}
+                    className="w-40"
+                />
                 <div className="flex items-center gap-3 ml-auto">
                     <span className="text-xs text-muted-foreground whitespace-nowrap">
                         {total} notice{total !== 1 ? "s" : ""}
@@ -186,7 +191,7 @@ export function NoticeBoard({
                         Create Notice
                     </Button>
                 </div>
-            </FilterToolbar>
+            </div>
 
             {notices.length === 0 && !isLoading ? (
                 <EmptyState

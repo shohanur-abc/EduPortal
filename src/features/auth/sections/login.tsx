@@ -6,12 +6,12 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import React from "react";
-import { Email, Password } from "@/components/molecules/input";
+import { Email, Password } from "@/components/molecules";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { loginSchema, type LoginInput } from "@/schemas/auth";
 import { login } from "../actions";
-import { Checkbox } from "@/components/molecules/checkbox";
+import { Checkbox } from "@/components/molecules";
 import { FormCard } from "../components/form";
 
 export default function Login({ header, footer, email, password, rememberMe, forgotPassword, socialLogin }: LoginProps) {

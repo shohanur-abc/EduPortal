@@ -27,12 +27,12 @@ export type {
 import { EyeIcon, EyeOffIcon, LockIcon, MailIcon } from 'lucide-react';
 import { FormInput } from './input';
 import { useState } from 'react';
-import { Button } from '../button';
 import { FieldValues, FormProvider, useForm, UseFormReturn } from 'react-hook-form';
+import { FormInputProps } from './types';
+import { Button } from '@/components/ui/button';
 
 
-interface FormProps<T extends FieldValues = FieldValues>
-    extends React.FormHTMLAttributes<HTMLFormElement> {
+interface FormProps<T extends FieldValues = FieldValues> extends React.FormHTMLAttributes<HTMLFormElement> {
     form: UseFormReturn<T>;
 }
 
@@ -48,7 +48,7 @@ export const Form = <T extends FieldValues = FieldValues>({
     );
 }
 
-export const Email = (props: React.ComponentProps<typeof FormInput>) => (
+export const Email = (props: FormInputProps) => (
     <FormInput
         type="email"
         placeholder="Enter your email"

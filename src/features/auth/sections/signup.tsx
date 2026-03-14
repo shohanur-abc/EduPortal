@@ -5,13 +5,13 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
-import { FormInput, Email, Password } from "@/components/molecules/input";
+import { FormInput, Email, Password } from "@/components/molecules";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { ROUTES } from "@/lib/routes";
 import { signupSchema, type SignupInput } from "@/schemas/auth";
 import { signup } from "../actions";
-import { Checkbox } from "@/components/molecules/checkbox";
+import { Checkbox } from "@/components/molecules";
 import { FormCard } from "../components/form";
 import { Select } from "@/components/molecules";
 

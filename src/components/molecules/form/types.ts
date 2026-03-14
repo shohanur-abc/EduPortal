@@ -4,32 +4,30 @@ import { ControllerFieldState, ControllerRenderProps, FieldValues, RegisterOptio
 // ============= Input Types =============
 
 export interface InputProps extends React.ComponentPropsWithoutRef<typeof InputGroupInput> {
+    name?: string;
+    label?: string;
+    placeholder?: string;
+    description?: string;
     field?: ControllerRenderProps<FieldValues, string>
     fieldState?: ControllerFieldState;
     leftAddon?: React.ReactNode;
     rightAddon?: React.ReactNode;
     className?: string;
     classNames?: {
+        field?: string;
         group?: string;
+        label?: string;
         input?: string;
+        description?: string;
+        error?: string;
         leftAddon?: string;
         rightAddon?: string;
     }
 }
 
-export interface FormInputProps extends Omit<InputProps, "classNames"> {
+export interface FormInputProps extends Omit<InputProps, "field" | "fieldState"> {
     name: string;
-    label?: string;
-    placeholder?: string;
-    description?: string;
-    className?: string;
     rules?: RegisterOptions;
-    classNames?: {
-        field?: string;
-        label?: string;
-        description?: string;
-        error?: string;
-    };
 }
 
 // ─── Shared aliases ───────────────────────────────────────────────────────────

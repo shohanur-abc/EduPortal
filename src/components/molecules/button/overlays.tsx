@@ -10,7 +10,7 @@ export function RippleLayer({ ripples }: { ripples: RippleItem[] }) {
                 <span
                     key={r.id}
                     aria-hidden="true"
-                    className="pointer-events-none absolute rounded-full bg-current"
+                    className="pointer-events-none absolute rounded-full bg-current opacity-10"
                     style={{
                         left: r.x - r.size / 2,
                         top: r.y - r.size / 2,

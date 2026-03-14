@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { FieldSeparator as Separator } from "@/components/ui/field";
 import { Form } from "@/components/molecules/form";
-import { DialogDrawer } from "@/components/molecules/dialog-drawer";
+import { DialogDrawer } from "@/components/molecules";
 import { socialLogin as socialLogin$ } from "../actions";
 import type { UseFormReturn, FieldValues } from "react-hook-form";
 
@@ -31,7 +31,7 @@ export const LoginModal = <T extends FieldValues = FieldValues>({
             }}
             className="space-y-6"
             classNames={{
-                container: "sm:max-w-sm rounded-2xl p-8 gap-0",
+                container: "sm:max-w-sm rounded-2xl p-0 gap-0",
                 header: "text-center items-center space-y-2 mb-6",
                 title: "text-2xl font-semibold",
                 description: "text-sm text-muted-foreground text-center max-w-xs",

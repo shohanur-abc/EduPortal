@@ -1,25 +1,28 @@
 "use client";
 
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import React from "react";
-import { Email, Password } from "@/components/molecules/input";
+import { DialogDrawer, Email, Password } from "@/components/molecules";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { loginSchema, type LoginInput } from "@/schemas/auth";
 import { login } from "../actions";
-import { Checkbox } from "@/components/molecules/checkbox";
+import { Checkbox } from "@/components/molecules";
 import { LoginModal } from "../components/login-modal";
+import { Form } from "@/components/molecules/form";
+import { FieldSeparator } from "@/components/ui/field";
+import { socialLogin2 } from "../actions/social-login";
 
 export default function LoginDialog({ header, footer, email, password, rememberMe, forgotPassword, socialLogin }: LoginDialogProps) {
     const searchParams = useSearchParams();
     const callbackUrl = searchParams.get("callbackUrl");
     const emailFromVerification = searchParams.get("email") ?? "";
     const isVerified = searchParams.get("verified") === "true";
-
+    const router = useRouter();
     const form = useForm<LoginInput>({
         resolver: zodResolver(loginSchema),
         defaultValues: {
@@ -47,20 +50,56 @@ export default function LoginDialog({ header, footer, email, password, rememberM
     };
 
     return (
-        <LoginModal header={header} footer={footer} socialLogin={socialLogin} form={form} onSubmit={form.handleSubmit(onSubmit)}>
-            <Email {...email} />
-            <Password {...password} />
-            <div className="flex items-center justify-between">
-                <Checkbox {...rememberMe} />
-                <Link href={forgotPassword.href} className="text-sm text-primary hover:underline">
-                    {forgotPassword.label}
-                </Link>
-            </div>
-            <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
-                {form.formState.isSubmitting && <Spinner className="mr-2" />}
-                Continue
-            </Button>
-        </LoginModal>
+        <DialogDrawer
+            trigger={<div className="hidden" />}
+            title={header.title}
+            description={header.description}
+            open
+            closeOnOutsideClick={false}
+            onOpenChange={(open) => {
+                if (!open) router.back();
+            }}
+            className="space-y-6"
+            classNames={{
+                container: "sm:max-w-sm rounded-2xl p-8 gap-0",
+                header: "text-center items-center space-y-2 mb-6",
+                title: "text-2xl font-semibold",
+                description: "text-sm text-muted-foreground text-center max-w-xs",
+            }}
+        >
+            <form action={socialLogin2}>
+                <input type="hidden" name="provider" value="google" />
+            </form>
+            <FieldSeparator className="my-3">Continue with</FieldSeparator>
+            <Form form={form} className="space-y-3" onSubmit={form.handleSubmit(onSubmit)}>
+                <Email {...email} classNames={{ label: 'sr-only' }} />
+                <Password {...password} classNames={{ label: 'sr-only' }} />
+                <div className="flex items-center justify-between mb-5 text-muted-foreground has-checked:text-secondary-foreground">
+                    <Checkbox {...rememberMe} className="" />
+                    <Link href={forgotPassword.href} className="text-sm text-primary hover:underline">
+                        {forgotPassword.label}
+                    </Link>
+                </div>
+                <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
+                    {form.formState.isSubmitting && <Spinner className="mr-2" />}
+                    Continue
+                </Button>
+            </Form>
+        </DialogDrawer>
+        // <LoginModal header={header} footer={footer} socialLogin={socialLogin} form={form} onSubmit={form.handleSubmit(onSubmit)}>
+        //     <Email {...email} classNames={{ label: 'sr-only' }} />
+        //     <Password {...password} classNames={{ label: 'sr-only' }} />
+        //     <div className="flex items-center justify-between">
+        //         <Checkbox {...rememberMe} />
+        //         <Link href={forgotPassword.href} className="text-sm text-primary hover:underline">
+        //             {forgotPassword.label}
+        //         </Link>
+        //     </div>
+        //     <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
+        //         {form.formState.isSubmitting && <Spinner className="mr-2" />}
+        //         Continue
+        //     </Button>
+        // </LoginModal>
     );
 }
 

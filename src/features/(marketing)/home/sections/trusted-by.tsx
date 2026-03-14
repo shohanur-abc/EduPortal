@@ -7,7 +7,7 @@ import { NumberTicker } from '@/components/ui/number-ticker';
 // ============= MAIN COMPONENT =============
 export default function TrustedBy({ eyebrow, title, subtitle, logos, metrics }: ITrustedBy) {
     return (
-        <Section className="space-y-12" containerClass="bg-muted/50" eyebrow={eyebrow} title={title} subtitle={subtitle}>
+        <Section className="space-y-12" eyebrow={eyebrow} title={title} subtitle={subtitle}>
             <LogoGrid logos={logos} />
             <MetricsRow metrics={metrics} />
         </Section>

@@ -1,5 +1,6 @@
 export { Accordion } from './accordion';
 export { Dropdown } from './dropdown';
+export { DialogDrawer } from './dialog-drawer';
 export { AvatarMolecule, AvatarGroupMolecule } from './avatar';
 export { BadgeMolecule, BadgeGroup } from './badge';
 export { BreadcrumbMolecule } from './breadcrumb';
