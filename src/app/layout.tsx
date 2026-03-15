@@ -18,7 +18,7 @@ export default async function RootLayout({ children, auth: authModal }: Readonly
 
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} >
+            <body className={` @container ${geistSans.variable} ${geistMono.variable} antialiased`} >
                 <Provider>
                     {authModal}
                     {children}

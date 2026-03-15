@@ -7,6 +7,7 @@ import { ROUTES } from "@/lib/routes"
 import NotificationMenu from "@/features/navigation/notification-menu"
 import UserMenu from "@/features/navigation/user-menu"
 import { usePathname } from "next/navigation"
+import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler"
 
 // ─── NAV DEFINITION ───────────────────────────────────────────────────────────
 
@@ -160,6 +161,7 @@ export function DashboardLayoutClient({ user, children }: DashboardLayoutClientP
                         <Separator orientation="vertical" className="mr-2 h-12!" />
                         <h1 className="font-semibold text-sm capitalize">{activeNavItem}</h1>
                         <div className="ml-auto flex items-center gap-4">
+                            <AnimatedThemeToggler />
                             <NotificationMenu notifications={NOTIFICATIONS} unreadCount={1} />
                             <UserMenu user={user} />
                         </div>

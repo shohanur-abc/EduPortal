@@ -6,11 +6,12 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { Menu } from '@/lib/icon';
 import UserMenu from './user-menu';
+import { AnimatedThemeToggler } from '@/components/ui/animated-theme-toggler';
 
 // ============= MAIN COMPONENT =============
 export default function MobileNav({ routes, user }: IMobileNav) {
   return (
-    <nav className="md:hidden fixed top-0 left-0 right-0 z-40 bg-background border-b">
+    <nav className="md:hidden sticky top-0 left-0 right-0 z-40 bg-background border-b">
       <div className="flex items-center justify-between px-4 py-2">
         <BrandLogo />
         <MobileMenuSheet routes={routes} user={user} />
@@ -43,6 +44,7 @@ const MobileMenuSheet = ({ routes, user }: IMobileNav) => (
             E
           </div>
           <span className="font-semibold">EduPortal </span>
+          <AnimatedThemeToggler />
         </div>
         <div className="flex-1 overflow-auto p-4 space-y-4">
           {routes.map((route) => (

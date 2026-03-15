@@ -22,7 +22,7 @@ import { cn } from "@/lib";
 
 export const LoginPage = ({ eyebrow, title, description, features, socialProof, ...props }: LoginPageProps) => {
     return (
-        <main className="grid grid-cols-2 h-screen">
+        <main className="grid grid-cols-1 @3xl:grid-cols-2 h-screen">
             <div className="flex flex-col justify-center items-start gap-6 px-12 border-r-2 mb-10">
                 <div className="flex flex-col gap-5 max-w-lg mx-auto ">
                     <div className="space-y-4">
@@ -102,7 +102,7 @@ export const LoginCard = ({ header, footer, email, password, rememberMe, forgotP
     };
 
     return (
-        <Card className="backdrop-blur-md max-w-sm w-full pt-8 mx-auto">
+        <Card className="backdrop-blur-md @3xl:max-w-sm w-full pt-8 mx-auto">
             <CardHeader className="text-center">
                 <h2 className="text-2xl font-semibold">{header.title}</h2>
                 <p className="text-sm text-muted-foreground">{header.description}</p>
