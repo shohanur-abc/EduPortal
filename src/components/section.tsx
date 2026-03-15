@@ -26,7 +26,7 @@ const Comp = ({ title, eyebrow, subtitle, align = "center", className, className
 );
 
 export const Section = (props: React.ComponentProps<typeof Comp>) =>
-    (process.env.NODE_ENV === 'production' ? <Playground Preview={<Comp {...props} />} /> : <Comp {...props} />);
+    (process.env.NODE_ENV === 'development' ? <Playground Preview={<Comp {...props} />} /> : <Comp {...props} />);
 
 
 // ============= VARIANTS =============
