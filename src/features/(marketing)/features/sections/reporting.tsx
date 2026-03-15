@@ -16,13 +16,13 @@ export default function Reporting({ eyebrow, title, description, image, highligh
             )}>
                 {/* Visual Image Block */}
                 <ImageBlock src={image.src} alt={image.alt} />
-                
+
                 {/* Text Content Block */}
-                <ContentBlock 
-                    eyebrow={eyebrow} 
-                    title={title} 
-                    description={description} 
-                    highlights={highlights} 
+                <ContentBlock
+                    eyebrow={eyebrow}
+                    title={title}
+                    description={description}
+                    highlights={highlights}
                 />
             </div>
         </Section>
@@ -35,14 +35,14 @@ const ImageBlock = ({ src, alt }: { src: string; alt: string }) => (
     <div className="relative group @container/img">
         {/* Soft glow background for a modern analytics feel */}
         <div className="absolute -inset-6 bg-primary/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-        
+
         <div className="relative aspect-[4/3] @3xl:aspect-[16/10] w-full rounded-[2rem] overflow-hidden border border-border/50 bg-muted shadow-2xl">
-            <Image 
-                src={src || "https://images.unsplash.com/photo-1551288049-bbbda536639a?q=80&w=1200"} 
-                alt={alt} 
-                fill 
-                className="object-cover transition-transform duration-1000 group-hover:scale-105" 
-                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 700px" 
+            <Image
+                src={src || "https://images.unsplash.com/photo-1551288049-bbbda536639a?q=80&w=1200"}
+                alt={alt}
+                fill
+                className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 700px"
             />
             {/* Subtle inner shadow overlay */}
             <div className="absolute inset-0 ring-1 ring-inset ring-black/5 rounded-[2rem]" />

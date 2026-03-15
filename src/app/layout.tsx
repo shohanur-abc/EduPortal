@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Provider from "./provider";
-import LayoutClient from "./layout-client";
 import { auth } from "@/lib/auth";
 import { Meteors } from "@/components/ui/meteors";
 
@@ -22,7 +21,7 @@ export default async function RootLayout({ children, auth: authModal }: Readonly
             <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} >
                 <Provider>
                     {authModal}
-                    <LayoutClient user={user}>{children}</LayoutClient>
+                    {children}
                 </Provider>
             </body>
         </html>

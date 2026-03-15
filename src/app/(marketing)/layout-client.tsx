@@ -6,12 +6,10 @@ import Footer from '@/features/navigation/footer-client';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { usePathname } from 'next/navigation';
 import { ROUTES } from '@/lib/routes';
-import { pick } from '@/utils/object';
 
 export default function LayoutClient({ children, user }: { children: React.ReactNode; user?: { name: string; email: string; role: string; avatar?: string } }) {
     const pathname = usePathname();
     const isMobile = useIsMobile();
-    pick({ a: 1, b: 2 }, ['a']) // to avoid tree shaking of pick
 
     if (pathname.startsWith(ROUTES.dashboard.home)) return <>{children}</>;
     // if (pathname.startsWith('/auth')) return <>{children}</>;

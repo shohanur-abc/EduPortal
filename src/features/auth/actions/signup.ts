@@ -8,12 +8,17 @@ import crypto from "crypto"
 import { ActionResult } from "./types"
 
 export async function signup(data: {
-    name: string
     email: string
     password: string
     confirmPassword: string
     role: string
     acceptTerms: true
+    firstName: string
+    lastName: string
+    username: string
+    gender: "male" | "female" | "other"
+    dateOfBirth?: string
+    avatar?: string
 }): Promise<ActionResult> {
     const validated = signupSchema.safeParse(data)
     if (!validated.success) {
@@ -28,18 +33,28 @@ export async function signup(data: {
         await connectDB()
 
         const existingUser = await UserModel.findOne({
-            email: data.email.toLowerCase(),
+            $or: [
+                { email: data.email.toLowerCase() },
+                { username: data.username.toLowerCase() }
+            ],
         })
         if (existingUser) {
-            return { success: false, message: "Email already in use" }
+            return { success: false, message: "Email or username already in use" }
         }
 
         const verificationToken = crypto.randomBytes(3).toString("hex")
+        const fullName = `${data.firstName} ${data.lastName}`
 
         await UserModel.create({
-            name: data.name,
+            name: fullName,
+            firstName: data.firstName,
+            lastName: data.lastName,
+            username: data.username,
             email: data.email,
             password: data.password,
+            gender: data.gender,
+            dateOfBirth: data.dateOfBirth,
+            avatar: data.avatar,
             role: data.role,
             emailVerificationToken: verificationToken,
             emailVerificationExpires: new Date(
@@ -48,7 +63,7 @@ export async function signup(data: {
         })
 
         // Send verification email with token
-        await sendVerificationEmail(data.email, verificationToken, data.name)
+        await sendVerificationEmail(data.email, verificationToken, fullName)
 
         return { success: true, message: "Account created successfully. Check your email to verify your account." }
     } catch (error) {

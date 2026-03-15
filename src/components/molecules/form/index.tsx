@@ -69,9 +69,9 @@ export const Password = ({ name, label = "Password", ...props }: React.Component
                 <Button
                     type='button'
                     onClick={() => setShowPassword((prev) => !prev)}
-                    className="text-muted-foreground"
+                    className="text-muted-foreground rounded-full"
                     variant="ghost"
-                    size="icon"
+                    size="icon-sm"
                 >
                     {showPassword ? <EyeOff /> : <Eye />}
                 </Button>

@@ -19,6 +19,23 @@ const userSchema = new Schema(
             trim: true,
             default: "",
         },
+        firstName: {
+            type: String,
+            trim: true,
+            default: "",
+        },
+        lastName: {
+            type: String,
+            trim: true,
+            default: "",
+        },
+        username: {
+            type: String,
+            unique: true,
+            sparse: true,
+            trim: true,
+            lowercase: true,
+        },
         email: {
             type: String,
             required: true,
@@ -36,7 +53,20 @@ const userSchema = new Schema(
             enum: ["admin", "principal", "teacher", "student", "parent"],
             default: "student",
         },
+        gender: {
+            type: String,
+            enum: ["male", "female", "other"],
+            default: null,
+        },
+        dateOfBirth: {
+            type: Date,
+            default: null,
+        },
         image: {
+            type: String,
+            default: null,
+        },
+        avatar: {
             type: String,
             default: null,
         },

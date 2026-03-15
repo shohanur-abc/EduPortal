@@ -246,6 +246,14 @@
       opacity: 1;
     }
   }
+  .glass {
+  @apply relative;
+}
+
+.glass::before {
+  content: "";
+  @apply absolute inset-0 bg-card blur-3xl opacity-80 -z-99;
+}
 }
 
 ::view-transition-old(root),

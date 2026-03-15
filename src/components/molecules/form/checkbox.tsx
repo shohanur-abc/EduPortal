@@ -76,7 +76,7 @@ export const Checkbox = ({
     };
 
     return (
-        <div className={cn("flex items-start gap-2", cns?.root)}>
+        <div className={cn("flex items-center gap-2", cns?.root)}>
             <Checkbox$
                 id={id ?? field?.name ?? name}
                 name={name ?? field?.name}

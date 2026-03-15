@@ -26,7 +26,7 @@ export const FormInput = ({ name = "", rules, ...props }: FormInputProps) => {
 export const Input = ({ field, fieldState, name, label, description, leftAddon, rightAddon, className, classNames: cns, ...props }: InputProps) => {
     const Comp = label || description ? Field : Fragment;
     return (
-        (leftAddon || rightAddon) ? (
+        (label || leftAddon || rightAddon) ? (
             <Comp {...(label || description ? { label, description, className: cn(cns?.field) } : {})} >
                 {label && <FieldLabel htmlFor={name} className={cns?.label}>{label}</FieldLabel>}
                 <InputGroup data-invalid={fieldState?.invalid} className={cn(cns?.group)}>
