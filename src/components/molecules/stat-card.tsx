@@ -12,7 +12,7 @@ export function StatCard({ title, value, description, trend, trendValue, icon: I
     const TrendIcon = trend ? TREND_ICONS[trend] : null
 
     return (
-        <Card className={cn("relative", statCardVariants({ variant }), className)}>
+        <Card className={cn("relative bg-muted/40", statCardVariants({ variant }), className)}>
             <ShineBorder shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
             <CardHeader className="flex-1">
                 <CardDescription className="flex items-center gap-2">

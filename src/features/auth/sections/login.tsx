@@ -12,10 +12,9 @@ import { Spinner } from "@/components/ui/spinner";
 import { loginSchema, type LoginInput } from "@/schemas/auth";
 import { login } from "../actions";
 import { socialLogin as socialLogin$ } from "../actions";
-import { Checkbox } from "@/components/molecules";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { FieldSeparator } from "@/components/ui/field";
-import { Form } from "@/components/molecules/form";
+import { Form, FormCheckbox } from "@/components/molecules/form";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { cn } from "@/lib";
 
@@ -102,7 +101,7 @@ export const LoginCard = ({ header, footer, email, password, rememberMe, forgotP
     };
 
     return (
-        <Card className="backdrop-blur-md @3xl:max-w-sm w-full pt-8 mx-auto">
+        <Card className="backdrop-blur-md bg-muted/40 @3xl:max-w-sm w-full pt-8 mx-auto">
             <CardHeader className="text-center">
                 <h2 className="text-2xl font-semibold">{header.title}</h2>
                 <p className="text-sm text-muted-foreground">{header.description}</p>
@@ -120,7 +119,7 @@ export const LoginCard = ({ header, footer, email, password, rememberMe, forgotP
                     <Email {...email} classNames={{ label: 'sr-only' }} />
                     <Password {...password} classNames={{ label: 'sr-only' }} />
                     <div className="flex items-center justify-between mb-5 text-muted-foreground has-checked:text-secondary-foreground">
-                        <Checkbox {...rememberMe} className="" />
+                        <FormCheckbox {...rememberMe} className="flex-0 whitespace-nowrap" />
                         <Link href={forgotPassword.href} className="text-sm text-primary hover:underline">
                             {forgotPassword.label}
                         </Link>
@@ -147,15 +146,13 @@ export default function LoginDialog(props: LoginProps) {
     return (
         <DialogDrawer
             trigger={<div className="hidden" />}
-            title={props.header.title}
-            description={props.header.description}
             open
             closeOnOutsideClick={false}
             onOpenChange={(open) => {
                 if (!open) router.back();
             }}
             classNames={{
-                container: "sm:max-w-sm rounded-2xl p-0 bg-transparent ",
+                container: "sm:max-w-sm rounded-2xl p-0 bg-background/40 dark:bg-transparent  border border-muted/50",
             }}
         >
             <LoginCard {...props} />
