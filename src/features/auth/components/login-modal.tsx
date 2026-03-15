@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { FieldSeparator as Separator } from "@/components/ui/field";
 import { Form } from "@/components/molecules/form";
 import { DialogDrawer } from "@/components/molecules";
-import { socialLogin as socialLogin$ } from "../actions";
+import { socialLogin as socialLogin$ } from "@/services/auth";
 import type { UseFormReturn, FieldValues } from "react-hook-form";
 
 export const LoginModal = <T extends FieldValues = FieldValues>({

@@ -16,7 +16,7 @@ export default function LayoutClient({ children, user }: { children: React.React
 
     const Nav = isMobile ? MobileNav : DesktopNav;
     return (
-        <div>
+        <div className='content'>
             <Nav routes={NAVIGATION_MENU} user={user} />
             <main className="min-h-[40vh]">{children}</main>
             <Footer sections={FOOTER_SECTIONS} />

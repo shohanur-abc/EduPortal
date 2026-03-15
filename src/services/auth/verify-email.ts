@@ -1,15 +1,13 @@
 "use server"
 
-import { connectDB } from "@/lib/db"
-import { UserModel } from "@/models/user"
-import { verifyEmailSchema } from "@/schemas/auth"
+import { db, schemas } from "@/fatman"
 import { ActionResult } from "./types"
 
 export async function verifyEmail(data: {
     code: string
     email: string
 }): Promise<ActionResult> {
-    const validated = verifyEmailSchema.safeParse(data)
+    const validated = schemas.verifyEmail.safeParse(data)
     if (!validated.success) {
         return {
             success: false,
@@ -19,9 +17,9 @@ export async function verifyEmail(data: {
     }
 
     try {
-        await connectDB()
+        await db.connect()
 
-        const user = await UserModel.findOne({
+        const user = await db.user.findOne({
             email: data.email.toLowerCase(),
             emailVerificationToken: data.code,
             emailVerificationExpires: { $gt: new Date() },

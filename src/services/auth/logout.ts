@@ -1,7 +1,6 @@
 "use server"
 
-import { signOut } from "@/lib/auth"
-import { ROUTES } from "@/lib/routes"
+import { ROUTES, signOut } from "@/fatman"
 
 export async function logout() {
     await signOut({ redirectTo: ROUTES.auth.login })

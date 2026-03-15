@@ -10,19 +10,19 @@ import { DialogDrawer, Email, Password } from "@/components/molecules";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { loginSchema, type LoginInput } from "@/schemas/auth";
-import { login } from "../actions";
-import { socialLogin as socialLogin$ } from "../actions";
+import { login, socialLogin as socialLogin$ } from "@/services/auth";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { FieldSeparator } from "@/components/ui/field";
 import { Form, FormCheckbox } from "@/components/molecules/form";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { cn } from "@/lib";
+import { BorderBeam } from "@/components/ui/border-beam";
 
 
 export const LoginPage = ({ eyebrow, title, description, features, socialProof, ...props }: LoginPageProps) => {
     return (
         <main className="grid grid-cols-1 @3xl:grid-cols-2 h-screen">
-            <div className="flex flex-col justify-center items-start gap-6 px-12 border-r-2 mb-10">
+            <div className="flex flex-col justify-center items-start gap-6 px-12 border-r-2 pb-10 bg-secondary/20 ">
                 <div className="flex flex-col gap-5 max-w-lg mx-auto ">
                     <div className="space-y-4">
                         <p className="text-sm font-medium text-primary uppercase tracking-widest">{eyebrow}</p>
@@ -62,7 +62,8 @@ export const LoginPage = ({ eyebrow, title, description, features, socialProof, 
             </div>
 
             {/* Right Section */}
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center relative">
+                <div className="absolute inset-50 bg-primary/10 blur-2xl animate-pulse" />
                 <LoginCard {...props} />
             </div>
 

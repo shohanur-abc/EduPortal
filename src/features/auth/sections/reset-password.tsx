@@ -11,7 +11,7 @@ import { Spinner } from "@/components/ui/spinner";
 import AuthCard, { FooterLink } from "../components/auth-card";
 import { ROUTES } from "@/lib/routes";
 import { resetPasswordSchema, type ResetPasswordInput } from "@/schemas/auth";
-import { resetPassword } from "../actions";
+import { resetPassword } from "@/services/auth";
 
 // ============= MAIN COMPONENT =============
 export default function ResetPassword({ header, password, confirmPassword, requirements, submitLabel, footer, invalidToken }: IResetPasswordSection) {

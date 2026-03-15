@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { Avatar, AvatarFallback, } from "@/components/ui/avatar";
 import { ROUTES } from "@/lib/routes";
-import { signup } from "../../actions";
+import { signup } from "@/services/auth";
 import { cn } from "@/lib/utils";
 import { ProfilePanel } from "./profile";
 import { WelcomePanel } from "./welcome";

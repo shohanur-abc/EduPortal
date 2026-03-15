@@ -1,16 +1,13 @@
 "use server"
 
-import { connectDB } from "@/lib/db"
-import { UserModel } from "@/models/user"
-import { forgotPasswordSchema } from "@/schemas/auth"
-import { sendResetPasswordEmail } from "@/lib/email"
+import { db, schemas, sendResetPasswordEmail } from "@/fatman"
 import crypto from "crypto"
 import { ActionResult } from "./types"
 
 export async function forgotPassword(data: {
     email: string
 }): Promise<ActionResult> {
-    const validated = forgotPasswordSchema.safeParse(data)
+    const validated = schemas.forgotPassword.safeParse(data)
     if (!validated.success) {
         return {
             success: false,
@@ -20,14 +17,13 @@ export async function forgotPassword(data: {
     }
 
     try {
-        await connectDB()
+        await db.connect()
 
-        const user = await UserModel.findOne({
+        const user = await db.user.findOne({
             email: data.email.toLowerCase(),
         })
 
         if (!user) {
-            // Don't reveal if email exists
             return {
                 success: true,
                 message: "If an account with that email exists, a reset link has been sent",
@@ -39,7 +35,6 @@ export async function forgotPassword(data: {
         user.resetPasswordExpires = new Date(Date.now() + 60 * 60 * 1000)
         await user.save()
 
-        // Send reset email with link
         await sendResetPasswordEmail(user.email, resetToken, user.name)
 
         return {

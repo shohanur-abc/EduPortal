@@ -1,6 +1,7 @@
 import { Meteors } from "@/components/ui/meteors";
 import { auth } from "@/lib/auth";
 import LayoutClient from "./layout-client";
+import { Particles } from "@/components/ui/particles";
 
 export default async function MarketingLayout({ children }: { children: React.ReactNode }) {
     const session = await auth();
@@ -13,8 +14,9 @@ export default async function MarketingLayout({ children }: { children: React.Re
     } : undefined;
 
     return <>
-        <main>
+        <main className="h-full">
             <div className="fixed inset-0 pointer-events-none">
+                <Particles staticity={10000} />
                 <Meteors number={10} maxDelay={.5} minDuration={5} maxDuration={10} />
             </div>
             <LayoutClient user={user}>{children}</LayoutClient>

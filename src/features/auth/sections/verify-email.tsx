@@ -12,7 +12,7 @@ import AuthCard, { FooterLink } from "../components/auth-card";
 import { OtpField } from "../components/otp-field";
 import { ROUTES } from "@/lib/routes";
 import { verifyEmailSchema, type VerifyEmailInput } from "@/schemas/auth";
-import { verifyEmail } from "../actions";
+import { verifyEmail } from "@/services/auth";
 
 // ============= MAIN COMPONENT =============
 export default function VerifyEmail({ header, submitLabel, footer, resend }: IVerifyEmailSection) {

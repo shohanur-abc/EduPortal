@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import AuthCard, { FooterLink } from "../components/auth-card";
 import { forgotPasswordSchema, type ForgotPasswordInput } from "@/schemas/auth";
-import { forgotPassword } from "../actions";
+import { forgotPassword } from "@/services/auth";
 
 // ============= MAIN COMPONENT =============
 export default function ForgotPassword({ header, email, submitLabel, sentMessage, footer }: IForgotPasswordSection) {

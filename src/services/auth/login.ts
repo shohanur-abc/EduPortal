@@ -1,19 +1,15 @@
 "use server"
 
-import { signIn } from "@/lib/auth"
-import { connectDB } from "@/lib/db"
-import { ROUTES } from "@/lib/routes"
-import { loginSchema } from "@/schemas/auth"
+import { db, ROUTES, schemas, signIn } from "@/fatman"
 import { AuthError } from "next-auth"
 import { ActionResult } from "./types"
-import { UserModel } from "@/models/user"
 
 export async function login(data: {
     email: string
     password: string
     callbackUrl?: string
 }): Promise<ActionResult> {
-    const validated = loginSchema.safeParse({
+    const validated = schemas.login.safeParse({
         email: data.email,
         password: data.password,
     })
@@ -26,16 +22,13 @@ export async function login(data: {
     }
 
     try {
-        // Determine redirect destination
         let redirectTo = ROUTES.dashboard.home
 
-        // If callback URL provided (from protected route), use it
         if (data.callbackUrl) {
             redirectTo = data.callbackUrl
         } else {
-            // Otherwise, get user info to redirect based on role
-            await connectDB()
-            const user = await UserModel.findOne({
+            await db.connect()
+            const user = await db.user.findOne({
                 email: data.email.toLowerCase(),
             }).select("role")
             if (user?.role) {
@@ -46,22 +39,17 @@ export async function login(data: {
             }
         }
 
-        // signIn will redirect on success or throw on error
         await signIn("credentials", {
             email: data.email,
             password: data.password,
             redirectTo: redirectTo,
         })
-        // signIn will redirect on success, so this line is never reached.
-        // If we reach here, something unexpected happened
     } catch (error) {
         if (error instanceof AuthError) {
             return { success: false, message: "Invalid email or password" }
         }
-        // Re-throw redirect and other errors
         throw error
     }
 
-    // This should never be reached
     return { success: false, message: "Login failed" }
 }

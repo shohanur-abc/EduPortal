@@ -1,9 +1,6 @@
 "use server"
 
-import { connectDB } from "@/lib/db"
-import { UserModel } from "@/models/user"
-import { signupSchema } from "@/schemas/auth"
-import { sendVerificationEmail } from "@/lib/email"
+import { db, schemas, sendVerificationEmail } from "@/fatman"
 import crypto from "crypto"
 import { ActionResult } from "./types"
 
@@ -20,7 +17,7 @@ export async function signup(data: {
     dateOfBirth?: string
     avatar?: string
 }): Promise<ActionResult> {
-    const validated = signupSchema.safeParse(data)
+    const validated = schemas.signup.safeParse(data)
     if (!validated.success) {
         return {
             success: false,
@@ -30,9 +27,9 @@ export async function signup(data: {
     }
 
     try {
-        await connectDB()
+        await db.connect()
 
-        const existingUser = await UserModel.findOne({
+        const existingUser = await db.user.findOne({
             $or: [
                 { email: data.email.toLowerCase() },
                 { username: data.username.toLowerCase() }
@@ -45,7 +42,7 @@ export async function signup(data: {
         const verificationToken = crypto.randomBytes(3).toString("hex")
         const fullName = `${data.firstName} ${data.lastName}`
 
-        await UserModel.create({
+        await db.user.create({
             name: fullName,
             firstName: data.firstName,
             lastName: data.lastName,
@@ -62,7 +59,6 @@ export async function signup(data: {
             ),
         })
 
-        // Send verification email with token
         await sendVerificationEmail(data.email, verificationToken, fullName)
 
         return { success: true, message: "Account created successfully. Check your email to verify your account." }

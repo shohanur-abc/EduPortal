@@ -1,8 +1,6 @@
 "use server"
 
-import { connectDB } from "@/lib/db"
-import { UserModel } from "@/models/user"
-import { resetPasswordSchema } from "@/schemas/auth"
+import { db, schemas } from "@/fatman"
 import { ActionResult } from "./types"
 
 export async function resetPassword(data: {
@@ -10,7 +8,7 @@ export async function resetPassword(data: {
     confirmPassword: string
     token: string
 }): Promise<ActionResult> {
-    const validated = resetPasswordSchema.safeParse(data)
+    const validated = schemas.resetPassword.safeParse(data)
     if (!validated.success) {
         return {
             success: false,
@@ -20,9 +18,9 @@ export async function resetPassword(data: {
     }
 
     try {
-        await connectDB()
+        await db.connect()
 
-        const user = await UserModel.findOne({
+        const user = await db.user.findOne({
             resetPasswordToken: data.token,
             resetPasswordExpires: { $gt: new Date() },
         }).select("+resetPasswordToken +resetPasswordExpires")

@@ -13,8 +13,8 @@ import {
   DropdownMenuGroup,
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { BadgeCheck, CreditCard, LogOut, Bell, Sparkles } from '@/lib/icon';
-import { logout } from '@/features/auth/actions';
+import { BadgeCheck, CreditCard, LogOut, Sparkles } from '@/lib/icon';
+import { logout } from '@/services/auth';
 
 // ============= MAIN COMPONENT =============
 export default function UserMenu({ user }: IUserMenu) {

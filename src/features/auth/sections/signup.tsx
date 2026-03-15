@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { ROUTES } from "@/lib/routes";
 import { signupSchema, type SignupInput } from "@/schemas/auth";
-import { signup } from "../actions";
+import { signup } from "@/services/auth";
 import { Checkbox } from "@/components/molecules";
 import { FormCard } from "../components/form";
 import { Select } from "@/components/molecules";

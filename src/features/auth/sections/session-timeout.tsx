@@ -6,7 +6,7 @@ import { ClockIcon } from "@/lib/icon";
 import { Button } from "@/components/ui/button";
 import AuthCard from "../components/auth-card";
 import { ROUTES } from "@/lib/routes";
-import { logout } from "../actions";
+import { logout } from "@/services/auth";
 
 // ============= MAIN COMPONENT =============
 export default function SessionTimeoutSection({ header, countdownText, actions }: ISessionTimeoutSection) {
