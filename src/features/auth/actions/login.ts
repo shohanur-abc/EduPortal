@@ -38,21 +38,30 @@ export async function login(data: {
             const user = await UserModel.findOne({
                 email: data.email.toLowerCase(),
             }).select("role")
-            console.log("User role for redirect:", user)
-            redirectTo = ROUTES.dashboard[user?.role || "home"]
+            if (user?.role) {
+                const roleRoute = ROUTES.dashboard[user.role as keyof typeof ROUTES.dashboard]
+                if (typeof roleRoute === "string") {
+                    redirectTo = roleRoute
+                }
+            }
         }
 
+        // signIn will redirect on success or throw on error
         await signIn("credentials", {
             email: data.email,
             password: data.password,
             redirectTo: redirectTo,
         })
+        // signIn will redirect on success, so this line is never reached.
+        // If we reach here, something unexpected happened
     } catch (error) {
         if (error instanceof AuthError) {
             return { success: false, message: "Invalid email or password" }
         }
+        // Re-throw redirect and other errors
         throw error
     }
-
-    return { success: false, message: "Something went wrong" }
+    
+    // This should never be reached
+    return { success: false, message: "Login failed" }
 }

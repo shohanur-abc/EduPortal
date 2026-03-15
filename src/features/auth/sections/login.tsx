@@ -11,9 +11,9 @@ import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { loginSchema, type LoginInput } from "@/schemas/auth";
 import { login } from "../actions";
+import { socialLogin as socialLogin$ } from "../actions";
 import { Checkbox } from "@/components/molecules";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
-import { socialLogin2 } from "../actions/social-login";
 import { FieldSeparator } from "@/components/ui/field";
 import { Form } from "@/components/molecules/form";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -108,13 +108,13 @@ export const LoginCard = ({ header, footer, email, password, rememberMe, forgotP
                 <p className="text-sm text-muted-foreground">{header.description}</p>
             </CardHeader>
             <CardContent>
-                <form action={socialLogin2}>
-                    {socialLogin?.map(({ provider, icon }) => (
-                        <Button key={provider} type="submit" variant="outline" className="w-full gap-2 mb-3">
+                {socialLogin?.map(({ provider, icon }) => (
+                    <form key={provider} action={socialLogin$.bind(null, provider)}>
+                        <Button type="submit" variant="outline" className="w-full gap-2 mb-3">
                             {icon} Continue with {provider.charAt(0).toUpperCase() + provider.slice(1)}
                         </Button>
-                    ))}
-                </form>
+                    </form>
+                ))}
                 <FieldSeparator className="my-3">Or continue with email</FieldSeparator>
                 <Form form={form} className="space-y-3 mb-3" onSubmit={form.handleSubmit(onSubmit)}>
                     <Email {...email} classNames={{ label: 'sr-only' }} />
@@ -147,6 +147,8 @@ export default function LoginDialog(props: LoginProps) {
     return (
         <DialogDrawer
             trigger={<div className="hidden" />}
+            title={props.header.title}
+            description={props.header.description}
             open
             closeOnOutsideClick={false}
             onOpenChange={(open) => {

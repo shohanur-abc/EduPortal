@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallback, useRef } from "react"
+import { useCallback, useRef, useEffect, useState } from "react"
 import { Moon, Sun } from "@/lib/icon"
 import { flushSync } from "react-dom"
 import { useTheme } from "next-themes"
@@ -18,7 +18,12 @@ export const AnimatedThemeToggler = ({
 }: AnimatedThemeTogglerProps) => {
 	const { theme, setTheme } = useTheme()
 	const buttonRef = useRef<HTMLButtonElement>(null)
+	const [mounted, setMounted] = useState(false)
 	const isDark = theme === "dark"
+
+	useEffect(() => {
+		setMounted(true)
+	}, [])
 
 	const toggleTheme = useCallback(() => {
 		const button = buttonRef.current
@@ -74,9 +79,10 @@ export const AnimatedThemeToggler = ({
 			ref={buttonRef}
 			onClick={toggleTheme}
 			className={cn(className)}
+			suppressHydrationWarning
 			{...props}
 		>
-			{isDark ? <Sun /> : <Moon />}
+			{mounted ? isDark ? <Sun /> : <Moon /> : <Moon />}
 			<span className="sr-only">Toggle theme</span>
 		</button>
 	)

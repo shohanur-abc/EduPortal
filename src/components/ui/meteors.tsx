@@ -32,15 +32,14 @@ export const Meteors = ({
     () =>
       [...new Array(number)].map((_, idx) => {
         const angleJitter = pseudo(idx + angle) * 10
-        const windowWidth = typeof window !== 'undefined' ? window.innerWidth : 1024
-        const leftOffset = Math.floor(pseudo(idx * 2 + number) * windowWidth)
+        const leftPercent = pseudo(idx * 2 + number) * 100
         const delay = pseudo(idx * 3 + minDelay) * (maxDelay - minDelay) + minDelay
         const duration = Math.floor(pseudo(idx * 4 + maxDuration) * (maxDuration - minDuration) + minDuration)
 
         return {
           "--angle": -angle + angleJitter + "deg",
           top: "-5%",
-          left: `calc(0% + ${leftOffset}px)`,
+          left: `${leftPercent}%`,
           animationDelay: delay + "s",
           animationDuration: duration + "s",
         }
