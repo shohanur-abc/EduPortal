@@ -61,7 +61,7 @@ export async function login(data: {
         // Re-throw redirect and other errors
         throw error
     }
-    
+
     // This should never be reached
     return { success: false, message: "Login failed" }
 }
