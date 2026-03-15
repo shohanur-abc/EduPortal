@@ -11,7 +11,9 @@ const trustHost = process.env.NODE_ENV === "production" || !!process.env.NEXTAUT
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
     trustHost,
-    secret: process.env.AUTH_SECRET || process.env.NEXTAUTH_SECRET,
+    secret: process.env.NEXTAUTH_SECRET || process.env.AUTH_SECRET,
+    basePath: "/api/auth",
+    useSecureCookies: process.env.NODE_ENV === "production",
     adapter: MongoDBAdapter(),
     providers: [
         Google,
