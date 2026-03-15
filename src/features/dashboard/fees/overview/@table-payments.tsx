@@ -1,10 +1,10 @@
-import { DataTable } from "@/components/molecules/data-table"
+import { SimpleTable } from "@/components/molecules/simple-table"
 import { AvatarCell } from "@/components/molecules/avatar-cell"
 
 
 export function RecentPaymentsTable({ recentPayments, loading }: { recentPayments: FeePayment[], loading?: boolean }) {
     return (
-        <DataTable<FeePayment>
+        <SimpleTable<FeePayment>
             title="Recent Payments"
             description="Latest fee payments received"
             columns={[

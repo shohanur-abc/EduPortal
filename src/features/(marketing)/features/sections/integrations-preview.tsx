@@ -1,8 +1,8 @@
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight } from '@/lib/icon';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import Heading from '@/components/heading';
+import { Badge } from '@/components/ui/badge';
 import { Section } from '@/components/section';
 import { cn } from '@/lib/utils'; // Standard shadcn utility
 
@@ -13,8 +13,10 @@ export default function IntegrationsPreview({ eyebrow, title, subtitle, integrat
         <Section className="px-4 py-16 md:py-24 @container overflow-hidden">
             <div className="max-w-7xl mx-auto space-y-12 md:space-y-16">
                 {/* Header section with centralized alignment */}
-                <div className="text-center">
-                    <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+                <div className="text-center space-y-3">
+                    <Badge variant='ghost' className="text-sm font-semibold tracking-widest text-primary border-input block mx-auto">{eyebrow}</Badge>
+                    <h2 className="text-3xl @lg:text-4xl @4xl:text-5xl font-bold tracking-tight text-foreground text-center">{title}</h2>
+                    <p className="mx-auto text-base text-muted-foreground @lg:text-lg text-center">{subtitle}</p>
                 </div>
 
                 {/* Grid of integration logos and names */}
@@ -46,12 +48,12 @@ const LogoCard = ({ name, logo, description }: IIntegration) => (
     /* Interactive card with hover effects and glass-morphism hints */
     <div className="flex flex-col items-center gap-4 p-6 rounded-2xl border border-border/50 bg-card/50 hover:bg-background hover:border-primary/40 hover:shadow-xl transition-all duration-300 group text-center">
         <div className="size-14 relative shrink-0 p-1 group-hover:scale-110 transition-transform duration-500">
-            <Image 
-                src={logo || "/placeholder.svg"} 
-                alt={`${name} logo`} 
-                fill 
-                className="object-contain" 
-                sizes="56px" 
+            <Image
+                src={logo || "/placeholder.svg"}
+                alt={`${name} logo`}
+                fill
+                className="object-contain"
+                sizes="56px"
                 unoptimized // Useful if using direct SVG links from external CDNs
             />
         </div>

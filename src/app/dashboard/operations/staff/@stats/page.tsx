@@ -1,16 +1,16 @@
 import { StaffStatCards } from "@/features/dashboard/operations/staff/@stats"
-import { Teacher } from "@/services/teacher.service"
+import { Teacher } from "@/services"
 
 export default async function StaffStatsPage() {
-    const teachers = await Teacher.getAll()
+    const teachersList = await Teacher.getAll()
 
-    const activeTeachers = teachers.filter((t) => t.status === "active")
-    const departments = [...new Set(teachers.map((t) => t.department).filter(Boolean))]
-    const activePercentage = teachers.length > 0 ? Math.round((activeTeachers.length / teachers.length) * 100) : 0
+    const activeTeachers = teachersList.filter((t) => t.status === "active")
+    const departments = [...new Set(teachersList.map((t) => t.department).filter(Boolean))]
+    const activePercentage = teachersList.length > 0 ? Math.round((activeTeachers.length / teachersList.length) * 100) : 0
 
     return (
         <StaffStatCards
-            totalTeachers={teachers.length}
+            totalTeachers={teachersList.length}
             activeTeachers={activeTeachers.length}
             activePercentage={activePercentage}
             departments={departments}

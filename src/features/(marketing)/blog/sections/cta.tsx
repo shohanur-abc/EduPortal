@@ -1,4 +1,4 @@
-import { ArrowRight, PenLine, CheckCircle } from 'lucide-react';
+import { ArrowRight, PenLine, CheckCircle } from '@/lib/icon';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Section } from '@/components/section';
@@ -6,12 +6,10 @@ import { Section } from '@/components/section';
 // ============= MAIN COMPONENT =============
 export default function BlogCTA({ title, description, perks, primaryCta, secondaryCta }: IBlogCTA) {
     return (
-        <Section>
-            <div className="rounded-2xl bg-gray-800 dark:bg-gray-300 px-8 py-16 @lg:px-16 @lg:py-20 space-y-8">
-                <ContentArea title={title} description={description} />
-                <PerksList perks={perks} />
-                <Actions primary={primaryCta} secondary={secondaryCta} />
-            </div>
+        <Section className="rounded-2xl bg-gray-800 dark:bg-gray-300 px-8 py-16 @lg:px-16 @lg:py-20 space-y-8">
+            <ContentArea title={title} description={description} />
+            <PerksList perks={perks} />
+            <Actions primary={primaryCta} secondary={secondaryCta} />
         </Section>
     );
 }

@@ -1,6 +1,7 @@
-export default function MarkLayout({ mark }: { mark: React.ReactNode }) {
+export default function MarkLayout({ mark, new: New }: { mark: React.ReactNode, new: React.ReactNode }) {
     return (
         <div>
+            {New}
             {mark}
         </div>
     )

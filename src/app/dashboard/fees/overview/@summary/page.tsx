@@ -1,5 +1,5 @@
 import { FeeSummary } from "@/features/dashboard/fees/overview/@summary"
-import { Fee } from "@/services/fee.service"
+import { Fee } from "@/services"
 
 export default async function SummaryPage() {
     const totals = await Fee.feeTotals()

@@ -1,30 +1,23 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight } from '@/lib/icon';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function Featured({ eyebrow, title, subtitle, integrations }: IFeatured) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
-            <FeaturedGrid integrations={integrations} />
+        <Section cols={3} eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {integrations.map((integration, i) => (
+                <FeaturedCard key={i} {...integration} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const FeaturedGrid = ({ integrations }: { integrations: IFeaturedItem[] }) => (
-    <div className="grid grid-cols-1  @2xl:grid-cols-2 @5xl:grid-cols-3 gap-8">
-        {integrations.map((integration, i) => (
-            <FeaturedCard key={i} {...integration} />
-        ))}
-    </div>
-);
 
 const FeaturedCard = ({ logo, name, category, description, highlights, href, ctaLabel }: IFeaturedItem) => (
     <Card className="group hover:border-primary/50 hover:shadow-lg transition-all">

@@ -1,31 +1,23 @@
-import { type LucideIcon } from 'lucide-react';
+import { type LucideIcon } from '@/lib/icon';
 import { Card, CardContent } from '@/components/ui/card';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function Process({ eyebrow, title, subtitle, steps }: IProcess) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
-            <StepsGrid steps={steps} />
+        <Section cols={4} eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {steps.map((step, i) => (
+                <StepCard key={i} step={step} index={i} isLast={i === steps.length - 1} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const StepsGrid = ({ steps }: { steps: IProcess['steps'] }) => (
-    <div className="grid grid-cols-1 @xl:grid-cols-2 @5xl:grid-cols-4 gap-6 @3xl:gap-4">
-        {steps.map((step, i) => (
-            <StepCard key={i} step={step} index={i} isLast={i === steps.length - 1} />
-        ))}
-    </div>
-);
-
 const StepCard = ({ step, index, isLast }: { step: IProcess['steps'][number]; index: number; isLast: boolean }) => (
     <div className="relative">
         <Card className="h-full hover:shadow-lg transition-shadow">
-            <CardContent className="pt-6 space-y-4">
+            <CardContent className="space-y-4">
                 <div className="flex items-center gap-3">
                     <StepNumber number={index + 1} />
                     <StepIcon icon={step.icon} />

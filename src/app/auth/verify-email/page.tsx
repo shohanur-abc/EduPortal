@@ -3,7 +3,7 @@ import VerifyEmail from "@/features/auth/sections/verify-email";
 import { ROUTES } from "@/lib/routes";
 
 export const metadata: Metadata = {
-  title: "Verify Email | EduPortal",
+  title: "Verify Email | EduPortal ",
   description: "Verify your email address",
 };
 

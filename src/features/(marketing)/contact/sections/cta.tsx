@@ -1,13 +1,11 @@
 import { Button } from '@/components/ui/button';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 import { ROUTES } from '@/lib/routes';
 
 // ============= MAIN COMPONENT =============
 export default function ContactCTA({ eyebrow, title, subtitle, primaryCTA, secondaryCTA }: IContactCTA) {
     return (
-        <Section containerClass="bg-muted/50">
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+        <Section containerClass="bg-muted/50" eyebrow={eyebrow} title={title} subtitle={subtitle}>
             <CTAButtons primary={primaryCTA} secondary={secondaryCTA} />
         </Section>
     );

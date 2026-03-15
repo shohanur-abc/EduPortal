@@ -1,26 +1,19 @@
-import { LucideIcon } from 'lucide-react';
+import { LucideIcon } from '@/lib/icon';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function Features({ eyebrow, title, subtitle, features }: IFeatures) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
-            <FeaturesGrid features={features} />
+        <Section cols={3} eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {features.map((feature, i) => (
+                <FeatureCard key={i} {...feature} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const FeaturesGrid = ({ features }: { features: IFeatures['features'] }) => (
-    <div className="grid grid-cols-1 @md:grid-cols-2 @3xl:grid-cols-3 gap-6">
-        {features.map((feature, i) => (
-            <FeatureCard key={i} {...feature} />
-        ))}
-    </div>
-);
 
 const FeatureCard = ({ icon: Icon, title, description }: IFeatures['features'][number]) => (
     <Card className="group hover:border-primary/50 transition-colors">

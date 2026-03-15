@@ -1,28 +1,20 @@
-import { ArrowRight, type LucideIcon } from 'lucide-react';
+import { ArrowRight, type LucideIcon } from '@/lib/icon';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function HelpCenter({ eyebrow, title, subtitle, categories }: IHelpCenter) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
-            <Grid categories={categories} />
+        <Section cols={3} eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {categories.map((category, i) => (
+                <CategoryCard key={i} {...category} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const Grid = ({ categories }: { categories: IHelpCategory[] }) => (
-    <div className="grid grid-cols-1 @sm:grid-cols-2 @xl:grid-cols-3 gap-6">
-        {categories.map((category, i) => (
-            <CategoryCard key={i} {...category} />
-        ))}
-    </div>
-);
-
 const CategoryCard = ({ icon: Icon, title, description, articleCount, href }: IHelpCategory) => (
     <Link href={href} className="group block">
         <Card className="h-full hover:border-primary/50 hover:shadow-md transition-all">

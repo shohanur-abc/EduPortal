@@ -1,10 +1,10 @@
 import { AttendanceSummary } from "@/features/dashboard/attendance/overview/@summary"
-import { Attendance } from "@/services/attendance.service"
+import { Attendance as attendance } from "@/services"
 
 export default async function SummaryPage() {
     const [rateData, todayData] = await Promise.all([
-        Attendance.attendanceRate(),
-        Attendance.todayStats(),
+        attendance.getAttendanceRate(),
+        attendance.getTodayStats(),
     ])
     return (
         <AttendanceSummary

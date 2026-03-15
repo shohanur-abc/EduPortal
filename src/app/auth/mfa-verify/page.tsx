@@ -3,7 +3,7 @@ import MfaVerify from "@/features/auth/sections/mfa-verify";
 import { ROUTES } from "@/lib/routes";
 
 export const metadata: Metadata = {
-    title: "MFA Verification | EduPortal",
+    title: "MFA Verification | EduPortal ",
     description: "Enter your two-factor authentication code",
 };
 

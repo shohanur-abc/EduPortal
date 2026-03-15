@@ -1,13 +1,11 @@
-import type { LucideIcon } from 'lucide-react';
+import type { LucideIcon } from '@/lib/icon';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function WhatYoullSee({ eyebrow, title, subtitle, items }: IWhatYoullSee) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
             <ModulesGrid items={items} />
         </Section>
     );

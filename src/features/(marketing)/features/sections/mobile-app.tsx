@@ -1,4 +1,4 @@
-import { type LucideIcon } from 'lucide-react';
+import { type LucideIcon } from '@/lib/icon';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -15,12 +15,12 @@ export default function MobileApp({ eyebrow, title, description, features, cta }
                 <PhoneMockup />
 
                 {/* Information Content Block */}
-                <ContentBlock 
-                    eyebrow={eyebrow} 
-                    title={title} 
-                    description={description} 
-                    features={features} 
-                    cta={cta} 
+                <ContentBlock
+                    eyebrow={eyebrow}
+                    title={title}
+                    description={description}
+                    features={features}
+                    cta={cta}
                 />
             </div>
         </Section>
@@ -81,13 +81,13 @@ const PhoneMockup = () => (
     <div className="flex items-center justify-center relative @container/phone">
         {/* Glow effect behind the phone */}
         <div className="absolute -inset-10 bg-primary/10 rounded-full blur-[100px] opacity-50" />
-        
+
         <div className="relative w-[280px] @sm:w-[320px] aspect-[9/19] rounded-[3rem] border-[8px] border-foreground/10 bg-black shadow-2xl overflow-hidden ring-4 ring-foreground/5">
             {/* Speaker/Camera Notch */}
             <div className="absolute top-0 inset-x-0 h-6 flex items-center justify-center z-20">
                 <div className="w-20 h-4 bg-black rounded-b-xl" />
             </div>
-            
+
             {/* Placeholder for actual App UI Image or content */}
             <div className="absolute inset-2 rounded-[2.2rem] bg-background flex items-center justify-center overflow-hidden">
                 <div className="text-center space-y-4 px-6">

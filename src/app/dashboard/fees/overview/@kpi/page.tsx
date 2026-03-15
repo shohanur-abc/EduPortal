@@ -1,5 +1,5 @@
 import { FeeKpi } from "@/features/dashboard/fees/overview/@kpi"
-import { Fee } from "@/services/fee.service"
+import { Fee } from "@/services"
 
 export default async function KpiPage() {
     const [totals, methods, statusBreakdown] = await Promise.all([

@@ -7,7 +7,7 @@ function toAdapterUser(user: {
     _id: { toString(): string }
     email: string
     name: string
-    emailVerified?: Date | null 
+    emailVerified?: Date | null
     image?: string | null
 }): AdapterUser {
     return {

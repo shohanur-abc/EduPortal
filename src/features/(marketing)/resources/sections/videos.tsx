@@ -1,46 +1,39 @@
-import { Play } from 'lucide-react';
+import { Play } from '@/lib/icon';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
+import Link from 'next/link';
 
 // ============= MAIN COMPONENT =============
 export default function Videos({ eyebrow, title, subtitle, videos }: IVideos) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
-            <Grid videos={videos} />
+        <Section cols={3} className='' eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {videos.map((video, i) => (
+                <VideoCard key={i} {...video} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const Grid = ({ videos }: { videos: IVideoItem[] }) => (
-    <div className="grid grid-cols-1 @sm:grid-cols-2 @xl:grid-cols-3 gap-6">
-        {videos.map((video, i) => (
-            <VideoCard key={i} {...video} />
-        ))}
-    </div>
-);
+const VideoCard = ({ thumbnail, title, description, duration, category, url }: IVideos['videos'][0]) => (
+    <Card className="relative overflow-hidden group hover:border-primary/50 hover:shadow-md transition-all pt-0 gap-0">
+        <Link href={url} target='_blank' className='absolute inset-0 z-2' />
+        <Thumbnail src={thumbnail} alt={title} duration={duration} />
+        <CardContent className="space-y-2 pt-4">
+            {category && (
+                <Badge variant="secondary" className="text-xs">{category}</Badge>
+            )}
+            <h3 className="font-semibold text-base leading-snug group-hover:text-primary transition-colors">
+                {title}
+            </h3>
+            <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
+                {description}
+            </p>
+        </CardContent>
 
-const VideoCard = ({ thumbnail, title, description, duration, category, url }: IVideoItem) => (
-    <a href={url} className="group block">
-        <Card className="overflow-hidden hover:border-primary/50 hover:shadow-md transition-all">
-            <Thumbnail src={thumbnail} alt={title} duration={duration} />
-            <CardContent className="space-y-2 pt-4">
-                {category && (
-                    <Badge variant="secondary" className="text-xs">{category}</Badge>
-                )}
-                <h3 className="font-semibold text-base leading-snug group-hover:text-primary transition-colors">
-                    {title}
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
-                    {description}
-                </p>
-            </CardContent>
-        </Card>
-    </a>
+    </Card>
 );
 
 const Thumbnail = ({ src, alt, duration }: { src: string; alt: string; duration: string }) => (
@@ -71,18 +64,17 @@ const DurationBadge = ({ duration }: { duration: string }) => (
 );
 
 // ============= TYPES =============
-interface IVideoItem {
-    thumbnail: string;
-    title: string;
-    description: string;
-    duration: string;
-    category?: string;
-    url: string;
-}
 
 interface IVideos {
     eyebrow: string;
     title: string;
     subtitle: string;
-    videos: IVideoItem[];
+    videos: {
+        thumbnail: string;
+        title: string;
+        description: string;
+        duration: string;
+        category?: string;
+        url: string;
+    }[];
 }

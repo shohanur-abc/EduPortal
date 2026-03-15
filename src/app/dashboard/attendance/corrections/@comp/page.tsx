@@ -1,8 +1,8 @@
 import { AttendanceCorrections } from "@/features/dashboard/attendance/corrections/@comp";
-import { Attendance } from "@/services/attendance.service";
+import { Attendance as attendance } from "@/services";
 
 export default async function CorrectionLayout() {
-    const records = await Attendance.getAll()
+    const records = await attendance.getAll()
     return (
         <AttendanceCorrections records={records} />
     )

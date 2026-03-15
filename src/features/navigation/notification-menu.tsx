@@ -1,6 +1,6 @@
 'use client';
 
-import { Bell } from 'lucide-react';
+import { Bell } from '@/lib/icon';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -14,7 +14,7 @@ export default function NotificationMenu({ notifications, unreadCount }: INotifi
     return (
         <DropdownMenu>
             <NotificationTrigger unreadCount={unreadCount} />
-            <DropdownMenuContent align="end" className="w-72 p-0">
+            <DropdownMenuContent align="center" className="w-72 p-0">
                 <NotificationHeader unreadCount={unreadCount} hasNotifications={hasNotifications} />
                 <NotificationContent notifications={notifications} hasNotifications={hasNotifications} />
                 {hasNotifications && <NotificationFooter />}

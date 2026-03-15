@@ -1,12 +1,11 @@
 import { Card, CardContent } from '@/components/ui/card';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
+import { NumberTicker } from '@/components/ui/number-ticker';
 
 // ============= MAIN COMPONENT =============
 export default function DemoStats({ eyebrow, title, subtitle, stats }: IDemoStats) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
             <StatsGrid stats={stats} />
         </Section>
     );
@@ -24,7 +23,9 @@ const StatsGrid = ({ stats }: { stats: IDemoStats['stats'] }) => (
 const StatCard = ({ value, label, description }: IStat) => (
     <Card className="text-center hover:shadow-md transition-shadow">
         <CardContent className="pt-8 pb-6 space-y-2">
-            <div className="text-3xl @sm:text-4xl font-bold text-primary">{value}</div>
+            <div className="text-3xl @sm:text-4xl font-bold text-primary">
+                <NumberTicker value={typeof value === 'number' ? value : parseInt(value) || 0} className="text-3xl @sm:text-4xl" />
+            </div>
             <div className="font-semibold text-sm text-foreground">{label}</div>
             {description && <p className="text-xs text-muted-foreground">{description}</p>}
         </CardContent>
@@ -40,7 +41,7 @@ interface IDemoStats {
 }
 
 interface IStat {
-    value: string;
+    value: string | number;
     label: string;
     description?: string;
 }

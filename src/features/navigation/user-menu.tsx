@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { ROUTES } from '@/lib/routes';
 import { toast } from 'sonner';
 import {
   DropdownMenu,
@@ -12,7 +13,7 @@ import {
   DropdownMenuGroup,
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { BadgeCheck, CreditCard, LogOut, Bell, Sparkles } from 'lucide-react';
+import { BadgeCheck, CreditCard, LogOut, Bell, Sparkles } from '@/lib/icon';
 import { logout } from '@/features/auth/actions';
 
 // ============= MAIN COMPONENT =============
@@ -24,24 +25,24 @@ export default function UserMenu({ user }: IUserMenu) {
           <UserAvatar user={user} />
         </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-56 rounded-lg" sideOffset={4}>
+      <DropdownMenuContent align="center" className="w-56 rounded-lg" sideOffset={4}>
         <UserInfo user={user} />
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem asChild>
-            <Link href="/dashboard" className="cursor-pointer">
+            <Link href={ROUTES.dashboard.home} className="cursor-pointer">
               <Sparkles className="size-4" />
               <span>Dashboard</span>
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
-            <Link href="/dashboard/profile" className="cursor-pointer">
+            <Link href={ROUTES.dashboard.profile} className="cursor-pointer">
               <BadgeCheck className="size-4" />
               <span>Profile</span>
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
-            <Link href="/dashboard/settings" className="cursor-pointer">
+            <Link href={ROUTES.dashboard.settings} className="cursor-pointer">
               <CreditCard className="size-4" />
               <span>Settings</span>
             </Link>

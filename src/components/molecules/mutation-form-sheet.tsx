@@ -8,8 +8,9 @@ import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Form } from "@/components/molecules/form"
 import { toast } from "sonner"
-import { Loader2 } from "lucide-react"
+import { Loader2 } from "@/lib/icon"
 import { cn } from "@/lib/utils"
+import { ActionResult } from "@/types/response"
 
 /**
  * A reusable form sheet that integrates react-hook-form + zod validation
@@ -90,7 +91,7 @@ export function MutationFormSheet<T extends FieldValues>({
                             {children(form as UseFormReturn<T>)}
                         </div>
                     </ScrollArea>
-                    <SheetFooter className="pt-4">
+                    <SheetFooter className="pt-10 flex-row justify-between flex-1 *:flex-1">
                         <SheetClose asChild>
                             <Button type="button" variant="outline" disabled={isPending}>
                                 Cancel
@@ -108,8 +109,6 @@ export function MutationFormSheet<T extends FieldValues>({
 }
 
 // ============= TYPES =============
-type ActionResult = { success: true; message: string } | { success: false; error: string }
-
 interface MutationFormSheetProps<T extends FieldValues> {
     open: boolean
     onOpenChange: (open: boolean) => void

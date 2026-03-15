@@ -1,8 +1,9 @@
-import { ArrowRight, Play } from 'lucide-react';
+import { ArrowRight, Play } from '@/lib/icon';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Section } from '@/components/section';
+import { NumberTicker } from '@/components/ui/number-ticker';
 
 // ============= MAIN COMPONENT =============
 export default function Hero({ announcement, title, description, cta, stats }: IHero) {
@@ -42,7 +43,7 @@ const Description = ({ text }: { text: string }) => (
 );
 
 const CTAButtons = ({ primary, secondary }: IHero['cta']) => (
-    <div className="flex flex-col @sm:flex-row items-center justify-center gap-4">
+    <div className="flex flex-col @md:flex-row items-center justify-center gap-4">
         <Button size="lg" className="rounded-full px-8 text-base" asChild>
             <Link href={primary.href}>
                 {primary.text}
@@ -62,7 +63,9 @@ const StatsRow = ({ stats }: { stats: IHero['stats'] }) => (
     <div className="grid grid-cols-2 @lg:grid-cols-4 gap-8 pt-8 border-t max-w-3xl mx-auto">
         {stats.map(({ value, label }, i) => (
             <div key={i} className="text-center">
-                <div className="text-2xl @sm:text-3xl font-bold text-primary">{value}</div>
+                <div className="text-2xl @sm:text-3xl font-bold text-primary">
+                    <NumberTicker value={typeof value === 'number' ? value : parseInt(value) || 0} className="text-2xl @sm:text-3xl font-bold text-primary" />
+                </div>
                 <div className="text-sm text-muted-foreground mt-1">{label}</div>
             </div>
         ))}
@@ -86,7 +89,7 @@ interface IHero {
         secondary: { text: string; href: string };
     };
     stats: {
-        value: string;
+        value: string | number;
         label: string;
     }[];
 }

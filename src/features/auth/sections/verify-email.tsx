@@ -11,7 +11,7 @@ import { Spinner } from "@/components/ui/spinner";
 import AuthCard, { FooterLink } from "../components/auth-card";
 import { OtpField } from "../components/otp-field";
 import { ROUTES } from "@/lib/routes";
-import { verifyEmailSchema, type VerifyEmailInput } from "../validators/auth";
+import { verifyEmailSchema, type VerifyEmailInput } from "@/schemas/auth";
 import { verifyEmail } from "../actions";
 
 // ============= MAIN COMPONENT =============

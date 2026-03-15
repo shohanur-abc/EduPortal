@@ -1,30 +1,22 @@
-import { ArrowRight, CheckCircle2, LucideIcon } from 'lucide-react';
+import { ArrowRight, CheckCircle2, LucideIcon } from '@/lib/icon';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function Benefits({ eyebrow, title, subtitle, roles }: IBenefits) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
-            <RolesGrid roles={roles} />
+        <Section cols={4} eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {roles.map((role, i) => (
+                <RoleCard key={i} {...role} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const RolesGrid = ({ roles }: { roles: IBenefits['roles'] }) => (
-    <div className="grid grid-cols-1 @md:grid-cols-2 @3xl:grid-cols-4 gap-6">
-        {roles.map((role, i) => (
-            <RoleCard key={i} {...role} />
-        ))}
-    </div>
-);
-
 const RoleCard = ({ icon: Icon, role, tagline, benefits, href }: IBenefits['roles'][number]) => (
     <Card className="group flex flex-col hover:shadow-lg transition-shadow">
         <CardHeader>

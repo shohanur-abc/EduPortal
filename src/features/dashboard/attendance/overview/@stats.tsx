@@ -1,5 +1,5 @@
 import { StatCard as StatCard$ } from "@/components/molecules/stat-card"
-import { CheckCircle, XCircle, Clock, AlertCircle, } from "lucide-react"
+import { CheckCircle, XCircle, Clock, AlertCircle, } from "@/lib/icon"
 import React from "react"
 
 

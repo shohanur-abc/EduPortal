@@ -1,5 +1,5 @@
 import { ReportCardsTable } from "@/features/dashboard/results/report-cards/@table"
-import { Result } from "@/services/result.service"
+import { Result } from "@/services"
 
 export default async function ReportCardTablePage() {
     const results = await Result.getAll()

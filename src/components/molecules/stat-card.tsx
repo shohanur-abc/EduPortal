@@ -2,8 +2,9 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { Card, CardAction, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
-import { TrendingUp, TrendingDown, Minus, type LucideIcon } from "lucide-react"
+import { TrendingUp, TrendingDown, Minus, type LucideIcon } from "@/lib/icon"
 import { ReactNode } from "react"
+import { ShineBorder } from "../ui/shine-border"
 
 
 
@@ -11,7 +12,8 @@ export function StatCard({ title, value, description, trend, trendValue, icon: I
     const TrendIcon = trend ? TREND_ICONS[trend] : null
 
     return (
-        <Card className={cn(statCardVariants({ variant }), className)}>
+        <Card className={cn("relative", statCardVariants({ variant }), className)}>
+            <ShineBorder shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
             <CardHeader className="flex-1">
                 <CardDescription className="flex items-center gap-2">
                     {Icon && <Icon className="size-4" />}

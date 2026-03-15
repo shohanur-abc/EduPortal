@@ -1,29 +1,21 @@
-import { Download, FileText } from 'lucide-react';
+import { Download, FileText } from '@/lib/icon';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function Guides({ eyebrow, title, subtitle, guides }: IGuides) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
-            <Grid guides={guides} />
+        <Section cols={3} eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {guides.map((guide, i) => (
+                <GuideCard key={i} {...guide} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const Grid = ({ guides }: { guides: IGuideItem[] }) => (
-    <div className="grid grid-cols-1 @sm:grid-cols-2 @xl:grid-cols-3 gap-6">
-        {guides.map((guide, i) => (
-            <GuideCard key={i} {...guide} />
-        ))}
-    </div>
-);
-
 const GuideCard = ({ type, title, description, pages, downloadUrl }: IGuideItem) => (
     <Card className="group hover:border-primary/50 hover:shadow-md transition-all flex flex-col">
         <CardHeader className="space-y-3">

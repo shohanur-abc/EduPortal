@@ -1,14 +1,12 @@
-import { type LucideIcon } from 'lucide-react';
+import { type LucideIcon } from '@/lib/icon';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function Infrastructure({ eyebrow, title, subtitle, layers }: IInfrastructure) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
             <LayerList layers={layers} />
         </Section>
     );

@@ -1,10 +1,10 @@
 import { AboutHero, Mission, Values, Timeline, Team, Story, Stats, Partners, AboutCTA, Culture } from '@/features/(marketing)/about';
-import { Heart, Target, Users, Lightbulb, Shield, Globe, Award, Rocket, Handshake, BookOpen } from 'lucide-react';
+import { Heart, Target, Users, Lightbulb, Shield, Globe, Award, Rocket, Handshake, BookOpen } from '@/lib/icon';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'About EduManager — Our Mission to Transform School Management',
-    description: 'Learn about EduManager\'s mission to empower schools with modern management tools. Discover our story, values, team, and the vision driving 2,000+ schools worldwide.',
+    title: 'About EduPortal — Our Mission to Transform School Management',
+    description: 'Learn about EduPortal \'s mission to empower schools with modern management tools. Discover our story, values, team, and the vision driving 2,000+ schools worldwide.',
 };
 
 // TODO: Replace placeholder images with real team photos and office images
@@ -16,12 +16,12 @@ export default function Page() {
     return (
         <>
             <AboutHero
-                badge="About EduManager"
+                badge="About EduPortal "
                 title={{
                     text: 'Empowering Schools to',
                     highlight: 'Shape the Future',
                 }}
-                description="We believe every school deserves world-class management tools. Since 2016, EduManager has been on a mission to simplify school operations so educators can focus on what matters most — teaching and inspiring the next generation."
+                description="We believe every school deserves world-class management tools. Since 2016, EduPortal has been on a mission to simplify school operations so educators can focus on what matters most — teaching and inspiring the next generation."
                 cta={{ text: 'Join Our Mission', href: '/contact' }}
             />
 
@@ -30,13 +30,13 @@ export default function Page() {
                 title="Making Education Management Effortless"
                 subtitle="We exist to remove the administrative burden from educators, enabling them to dedicate their energy to student success."
                 content={[
-                    'At EduManager, we believe that technology should serve education — not complicate it. Our mission is to build intuitive, powerful tools that streamline every aspect of school management, from attendance tracking and grade reporting to fee collection and parent communication.',
+                    'At EduPortal , we believe that technology should serve education — not complicate it. Our mission is to build intuitive, powerful tools that streamline every aspect of school management, from attendance tracking and grade reporting to fee collection and parent communication.',
                     'We partner with schools of all sizes — from single-campus private institutions to multi-district public school networks — providing them with the same caliber of technology used by the world\'s leading organizations, tailored specifically for the unique challenges of K-12 education.',
                     'Every feature we build, every update we ship, and every support call we answer is driven by a single question: does this help educators spend more time with their students?',
                 ]}
                 image={{
                     src: '/placeholder.svg',
-                    alt: 'EduManager team collaborating on education technology solutions',
+                    alt: 'EduPortal team collaborating on education technology solutions',
                 }}
             />
 
@@ -58,7 +58,7 @@ export default function Page() {
                     {
                         icon: Users,
                         title: 'Community Driven',
-                        description: 'Our roadmap is shaped by the educators who use EduManager every day. We listen, learn, and build together with our community of 2,000+ schools.',
+                        description: 'Our roadmap is shaped by the educators who use EduPortal every day. We listen, learn, and build together with our community of 2,000+ schools.',
                     },
                     {
                         icon: Shield,
@@ -83,23 +83,23 @@ export default function Page() {
                 title="From a Classroom Problem to a Global Platform"
                 subtitle="How a frustrated school administrator's spreadsheet nightmare became the solution for thousands of schools."
                 paragraphs={[
-                    'EduManager was born in 2016 when our founder, Arjun Mehta, was working as a school administrator in Mumbai. Every day, he watched talented teachers drown in paperwork — manually tracking attendance in registers, calculating grades on spreadsheets, and chasing parents for fee payments. He knew there had to be a better way.',
+                    'EduPortal was born in 2016 when our founder, Arjun Mehta, was working as a school administrator in Mumbai. Every day, he watched talented teachers drown in paperwork — manually tracking attendance in registers, calculating grades on spreadsheets, and chasing parents for fee payments. He knew there had to be a better way.',
                     'Starting with a simple attendance tracking tool built for his own school, Arjun assembled a small team of engineers and educators who shared his vision. Within six months, neighboring schools were asking to use the system. The demand was clear: schools everywhere were struggling with the same problems.',
-                    'By 2018, EduManager had expanded from attendance to a full-suite platform covering grades, fees, communication, and analytics. Today, we serve over 2,000 schools across 50+ countries, manage more than 10 million student records, and employ a diverse team of 200+ professionals who are passionate about education technology.',
+                    'By 2018, EduPortal had expanded from attendance to a full-suite platform covering grades, fees, communication, and analytics. Today, we serve over 2,000 schools across 50+ countries, manage more than 10 million student records, and employ a diverse team of 200+ professionals who are passionate about education technology.',
                     'But we\'re just getting started. With the launch of AI-powered insights and predictive analytics, we\'re entering our next chapter — one where technology doesn\'t just manage schools, but actively helps them improve student outcomes.',
                 ]}
                 image={{
                     src: 'https://learningmole.com/wp-content/uploads/2025/07/v2-t5dhi-cc2yt.jpg',
-                    alt: 'EduManager founding story — from a small classroom to a global education platform',
+                    alt: 'EduPortal founding story — from a small classroom to a global education platform',
                 }}
             />
 
             <Stats
                 eyebrow="Our Impact"
                 title="Numbers That Tell Our Story"
-                subtitle="Real metrics from real schools — here's the impact EduManager is making in education worldwide."
+                subtitle="Real metrics from real schools — here's the impact EduPortal is making in education worldwide."
                 stats={[
-                    { value: '2,000+', label: 'Schools', description: 'Active schools using EduManager daily' },
+                    { value: '2,000+', label: 'Schools', description: 'Active schools using EduPortal daily' },
                     { value: '500K+', label: 'Students', description: 'Student records managed on our platform' },
                     { value: '50+', label: 'Countries', description: 'Global reach across six continents' },
                     { value: '10M+', label: 'Records', description: 'Attendance and grade entries processed monthly' },
@@ -118,7 +118,7 @@ export default function Page() {
                     {
                         year: '2016',
                         title: 'The Spark',
-                        description: 'EduManager founded in Mumbai by Arjun Mehta. Launched as a simple attendance tracking tool for a single school with 400 students.',
+                        description: 'EduPortal founded in Mumbai by Arjun Mehta. Launched as a simple attendance tracking tool for a single school with 400 students.',
                     },
                     {
                         year: '2017',
@@ -153,7 +153,7 @@ export default function Page() {
                     {
                         year: '2023',
                         title: 'Enterprise & API Platform',
-                        description: 'Launched EduManager Enterprise for large school districts with multi-campus management. Released public API for third-party integrations.',
+                        description: 'Launched EduPortal Enterprise for large school districts with multi-campus management. Released public API for third-party integrations.',
                     },
                     {
                         year: '2024',
@@ -163,14 +163,14 @@ export default function Page() {
                     {
                         year: '2025',
                         title: 'The Next Chapter',
-                        description: 'Launched EduManager 3.0 with predictive student performance analytics, smart scheduling, and an open plugin marketplace for third-party developers.',
+                        description: 'Launched EduPortal 3.0 with predictive student performance analytics, smart scheduling, and an open plugin marketplace for third-party developers.',
                     },
                 ]}
             />
 
             <Team
                 eyebrow="Our Team"
-                title="The People Behind EduManager"
+                title="The People Behind EduPortal "
                 subtitle="A passionate team of educators, engineers, and designers united by a shared mission to transform school management."
                 members={[
                     {
@@ -255,7 +255,7 @@ export default function Page() {
 
             <Culture
                 eyebrow="Our Culture"
-                title="What It's Like to Work at EduManager"
+                title="What It's Like to Work at EduPortal "
                 subtitle="We're building more than software — we're building a team and culture that reflects the values we bring to education."
                 pillars={[
                     {
@@ -298,7 +298,7 @@ export default function Page() {
             />
 
             <AboutCTA
-                title="Ready to Join the EduManager Family?"
+                title="Ready to Join the EduPortal Family?"
                 description="Whether you're a school looking for better management tools or a passionate individual who wants to make a difference in education — we'd love to hear from you."
                 primaryCta={{ text: 'Start Free Trial', href: '/demo' }}
                 secondaryCta={{ text: 'View Open Positions', href: '/contact' }}

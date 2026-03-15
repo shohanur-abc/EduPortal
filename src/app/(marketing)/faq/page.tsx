@@ -1,5 +1,5 @@
 import { type Metadata } from 'next';
-import { BookOpen, CreditCard, GraduationCap, Headphones, HelpCircle, LifeBuoy, Lock, Mail, MessageCircle, Monitor, Phone, Rocket, School, Settings, Shield, Users, Zap, } from 'lucide-react';
+import { BookOpen, CreditCard, GraduationCap, Headphones, HelpCircle, LifeBuoy, Lock, Mail, MessageCircle, Monitor, Phone, Rocket, School, Settings, Shield, Users, Zap, } from '@/lib/icon';
 import { FAQHero, GeneralFAQ, PricingFAQ, TechnicalFAQ, SecurityFAQ, FAQCategories, StillHaveQuestions, PopularFAQ, VideoGuides, FAQCTA, } from '@/features/(marketing)/faq';
 import ROUTES from '@/lib/routes';
 
@@ -8,12 +8,12 @@ import ROUTES from '@/lib/routes';
 // TODO: Add breadcrumb navigation
 
 export const metadata: Metadata = {
-    title: 'FAQ — EduSync School Management System',
+    title: 'FAQ — EduPortal School Management System',
     description:
-        'Find answers to frequently asked questions about EduSync — the all-in-one school management platform for attendance, fees, results, and operations.',
+        'Find answers to frequently asked questions about EduPortal — the all-in-one school management platform for attendance, fees, results, and operations.',
     keywords: [
         'school management system FAQ',
-        'EduSync help',
+        'EduPortal help',
         'school ERP questions',
         'student information system FAQ',
         'school software support',
@@ -22,17 +22,17 @@ export const metadata: Metadata = {
         'fee management questions',
     ],
     openGraph: {
-        title: 'FAQ — EduSync School Management System',
+        title: 'FAQ — EduPortal School Management System',
         description:
-            'Get quick answers about EduSync features, pricing, setup, security, and more. Everything you need to know about our school management platform.',
+            'Get quick answers about EduPortal features, pricing, setup, security, and more. Everything you need to know about our school management platform.',
         url: ROUTES.marketing.faq,
         type: 'website',
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'FAQ — EduSync School Management System',
+        title: 'FAQ — EduPortal School Management System',
         description:
-            'Get quick answers about EduSync features, pricing, setup, security, and more.',
+            'Get quick answers about EduPortal features, pricing, setup, security, and more.',
     },
     alternates: {
         canonical: ROUTES.marketing.faq,
@@ -47,7 +47,7 @@ export default function FAQPage() {
             <FAQHero
                 eyebrow="Help Center"
                 title="Frequently Asked Questions"
-                subtitle="Everything you need to know about EduSync. Can't find what you're looking for? Our support team is always ready to help."
+                subtitle="Everything you need to know about EduPortal . Can't find what you're looking for? Our support team is always ready to help."
                 searchPlaceholder="Search questions — e.g. attendance, fee collection, report cards..."
             />
 
@@ -60,7 +60,7 @@ export default function FAQPage() {
                         icon: HelpCircle,
                         label: 'General',
                         description:
-                            'Learn the basics — what EduSync is, who it\'s for, and how to get started.',
+                            'Learn the basics — what EduPortal is, who it\'s for, and how to get started.',
                         anchor: '#general',
                         count: 8,
                     },
@@ -120,6 +120,13 @@ export default function FAQPage() {
                         anchor: '#still-have-questions',
                         count: 4,
                     },
+                    {
+                        icon: Zap,
+                        label: 'Integrations',
+                        description:
+                            'Connecting EduPortal with your existing tools and software.',
+                        anchor: '#technical',
+                    }
                 ]}
             />
 
@@ -130,26 +137,26 @@ export default function FAQPage() {
                 questions={[
                     {
                         icon: School,
-                        question: 'What is EduSync and how does it help schools?',
-                        answer: 'EduSync is an all-in-one school management system that digitizes attendance, fee collection, exam results, timetabling, and parent communication. It reduces administrative workload by up to 70% and gives principals real-time visibility into every aspect of school operations.',
+                        question: 'What is EduPortal and how does it help schools?',
+                        answer: 'EduPortal is an all-in-one school management system that digitizes attendance, fee collection, exam results, timetabling, and parent communication. It reduces administrative workload by up to 70% and gives principals real-time visibility into every aspect of school operations.',
                         category: 'General',
                     },
                     {
                         icon: Rocket,
-                        question: 'How long does it take to set up EduSync?',
+                        question: 'How long does it take to set up EduPortal ?',
                         answer: 'Most schools are fully operational within 2–4 weeks. Our onboarding team handles data migration, staff training, and initial configuration. Small schools with fewer than 500 students can often go live in under 10 days.',
                         category: 'Setup',
                     },
                     {
                         icon: CreditCard,
                         question: 'Can parents pay fees through the platform?',
-                        answer: 'Yes. EduSync supports online fee collection via credit/debit cards, bank transfers, UPI, and mobile wallets. Parents receive automated receipts, and the finance team gets real-time reconciliation dashboards with overdue alerts.',
+                        answer: 'Yes. EduPortal supports online fee collection via credit/debit cards, bank transfers, UPI, and mobile wallets. Parents receive automated receipts, and the finance team gets real-time reconciliation dashboards with overdue alerts.',
                         category: 'Fees',
                     },
                     {
                         icon: BookOpen,
-                        question: 'Does EduSync generate report cards automatically?',
-                        answer: 'Absolutely. Teachers enter marks once, and EduSync auto-calculates grades, rankings, and cumulative GPAs. Report cards are generated in your school\'s branded template and can be shared digitally with parents or printed in bulk.',
+                        question: 'Does EduPortal generate report cards automatically?',
+                        answer: 'Absolutely. Teachers enter marks once, and EduPortal auto-calculates grades, rankings, and cumulative GPAs. Report cards are generated in your school\'s branded template and can be shared digitally with parents or printed in bulk.',
                         category: 'Results',
                     },
                     {
@@ -160,7 +167,7 @@ export default function FAQPage() {
                     },
                     {
                         icon: Lock,
-                        question: 'Is student data safe on EduSync?',
+                        question: 'Is student data safe on EduPortal ?',
                         answer: 'We use AES-256 encryption at rest and TLS 1.3 in transit. All data is stored in SOC 2 Type II certified data centers with daily backups. Role-based access control ensures that staff only see the data they\'re authorized to view.',
                         category: 'Security',
                     },
@@ -170,38 +177,38 @@ export default function FAQPage() {
             <GeneralFAQ
                 eyebrow="General"
                 title="General Questions"
-                subtitle="Get answers to the most common questions about EduSync, our mission, and how the platform works for schools of all sizes."
+                subtitle="Get answers to the most common questions about EduPortal , our mission, and how the platform works for schools of all sizes."
                 questions={[
                     {
-                        question: 'What types of schools can use EduSync?',
-                        answer: 'EduSync is designed for K-12 schools, pre-schools, international schools, school chains, and after-school programs. Whether you have 50 students or 50,000 across multiple campuses, the platform scales to fit your needs with multi-branch support and role-based access.',
+                        question: 'What types of schools can use EduPortal ?',
+                        answer: 'EduPortal is designed for K-12 schools, pre-schools, international schools, school chains, and after-school programs. Whether you have 50 students or 50,000 across multiple campuses, the platform scales to fit your needs with multi-branch support and role-based access.',
                     },
                     {
-                        question: 'Do we need any special hardware to run EduSync?',
-                        answer: 'No special hardware is required. EduSync is fully cloud-based and works on any modern web browser — Chrome, Firefox, Safari, or Edge. For attendance, you can optionally integrate biometric scanners or RFID readers, but the built-in mobile app also supports QR-code-based attendance.',
+                        question: 'Do we need any special hardware to run EduPortal ?',
+                        answer: 'No special hardware is required. EduPortal is fully cloud-based and works on any modern web browser — Chrome, Firefox, Safari, or Edge. For attendance, you can optionally integrate biometric scanners or RFID readers, but the built-in mobile app also supports QR-code-based attendance.',
                     },
                     {
-                        question: 'Can EduSync handle multiple branches or campuses?',
+                        question: 'Can EduPortal handle multiple branches or campuses?',
                         answer: 'Yes. Our multi-branch architecture lets school chains manage all campuses from a single admin dashboard. Each branch retains its own data isolation while the central office gets consolidated reports, fee summaries, and performance analytics across all locations.',
                     },
                     {
                         question: 'Is there a mobile app available?',
-                        answer: 'EduSync offers dedicated mobile apps for Android and iOS for three user roles: administrators, teachers, and parents. Teachers can mark attendance and enter grades on the go, while parents can view real-time updates, pay fees, and communicate with teachers directly.',
+                        answer: 'EduPortal offers dedicated mobile apps for Android and iOS for three user roles: administrators, teachers, and parents. Teachers can mark attendance and enter grades on the go, while parents can view real-time updates, pay fees, and communicate with teachers directly.',
                     },
                     {
-                        question: 'What languages does EduSync support?',
+                        question: 'What languages does EduPortal support?',
                         answer: 'The platform currently supports English, Hindi, Bengali, Spanish, French, and Arabic with full right-to-left layout support. We add new languages based on demand and can work with your team to provide translations for your region.',
                     },
                     {
-                        question: 'How is EduSync different from a regular ERP?',
-                        answer: 'Unlike generic ERPs, EduSync is purpose-built for education. Every feature — from the attendance engine to the report card generator — is designed around academic workflows. We understand term structures, grading scales, parent-teacher dynamics, and education compliance requirements out of the box.',
+                        question: 'How is EduPortal different from a regular ERP?',
+                        answer: 'Unlike generic ERPs, EduPortal is purpose-built for education. Every feature — from the attendance engine to the report card generator — is designed around academic workflows. We understand term structures, grading scales, parent-teacher dynamics, and education compliance requirements out of the box.',
                     },
                     {
-                        question: 'Can we customize EduSync to match our school branding?',
+                        question: 'Can we customize EduPortal to match our school branding?',
                         answer: 'Absolutely. You can upload your school logo, set brand colors, customize report card templates, and even use your own domain for the parent portal. Premium plans include fully white-labeled experiences with custom email templates and SMS sender IDs.',
                     },
                     {
-                        question: 'Does EduSync work offline?',
+                        question: 'Does EduPortal work offline?',
                         answer: 'The mobile app supports offline mode for critical tasks like attendance marking and grade entry. Data syncs automatically once the device reconnects to the internet. The web dashboard requires an active internet connection for full functionality.',
                     },
                 ]}
@@ -213,8 +220,8 @@ export default function FAQPage() {
                 subtitle="Transparent pricing with no hidden fees. Understand exactly what you're paying for and how our plans work."
                 questions={[
                     {
-                        question: 'How much does EduSync cost?',
-                        answer: 'EduSync offers three tiers: Starter at $2/student/month for small schools up to 300 students, Professional at $3.50/student/month for mid-size schools with advanced analytics and integrations, and Enterprise with custom pricing for school chains with 5+ campuses. All plans include unlimited admin and teacher accounts.',
+                        question: 'How much does EduPortal cost?',
+                        answer: 'EduPortal offers three tiers: Starter at $2/student/month for small schools up to 300 students, Professional at $3.50/student/month for mid-size schools with advanced analytics and integrations, and Enterprise with custom pricing for school chains with 5+ campuses. All plans include unlimited admin and teacher accounts.',
                     },
                     {
                         question: 'Is there a free trial available?',
@@ -249,32 +256,32 @@ export default function FAQPage() {
                 subtitle="Deep-dive into system requirements, integrations, APIs, and data migration. Built for IT administrators and tech-savvy school leaders."
                 questions={[
                     {
-                        question: 'What are the system requirements for EduSync?',
-                        answer: 'EduSync is a cloud-based SaaS platform that runs in any modern browser (Chrome 90+, Firefox 88+, Safari 14+, Edge 90+). The mobile apps require iOS 15+ or Android 10+. A stable internet connection of 2 Mbps or higher is recommended for optimal performance.',
+                        question: 'What are the system requirements for EduPortal ?',
+                        answer: 'EduPortal is a cloud-based SaaS platform that runs in any modern browser (Chrome 90+, Firefox 88+, Safari 14+, Edge 90+). The mobile apps require iOS 15+ or Android 10+. A stable internet connection of 2 Mbps or higher is recommended for optimal performance.',
                     },
                     {
-                        question: 'Does EduSync provide an API for custom integrations?',
-                        answer: 'Yes. EduSync offers a comprehensive RESTful API with full documentation, SDKs for Node.js and Python, and webhook support for real-time event notifications. The API covers all core modules — students, attendance, fees, results, and communications. OAuth 2.0 authentication is supported.',
+                        question: 'Does EduPortal provide an API for custom integrations?',
+                        answer: 'Yes. EduPortal offers a comprehensive RESTful API with full documentation, SDKs for Node.js and Python, and webhook support for real-time event notifications. The API covers all core modules — students, attendance, fees, results, and communications. OAuth 2.0 authentication is supported.',
                     },
                     {
                         question: 'Can we migrate data from our existing system?',
                         answer: 'Absolutely. Our data migration team supports imports from Excel spreadsheets, CSV files, and direct database transfers from popular systems like Fedena, OpenSIS, and PowerSchool. We validate all data during migration and provide a detailed reconciliation report before going live.',
                     },
                     {
-                        question: 'Does EduSync integrate with accounting software?',
-                        answer: 'EduSync integrates natively with Tally, QuickBooks, Xero, and Zoho Books. Fee collection data, expense records, and salary disbursements sync automatically. We also support custom integrations through our API for proprietary accounting systems.',
+                        question: 'Does EduPortal integrate with accounting software?',
+                        answer: 'EduPortal integrates natively with Tally, QuickBooks, Xero, and Zoho Books. Fee collection data, expense records, and salary disbursements sync automatically. We also support custom integrations through our API for proprietary accounting systems.',
                     },
                     {
                         question: 'What is the uptime guarantee?',
                         answer: 'We guarantee 99.9% uptime backed by an SLA. Our infrastructure runs on redundant cloud servers across multiple availability zones. In the past 12 months, our actual uptime has been 99.97%. Scheduled maintenance windows are communicated 72 hours in advance and occur outside school hours.',
                     },
                     {
-                        question: 'Can EduSync integrate with biometric attendance devices?',
-                        answer: 'Yes. EduSync supports integration with popular biometric devices from ZKTeco, eSSL, and HikVision via our hardware bridge application. We also support RFID card readers and NFC-based attendance for younger students who may have difficulty with biometric scanners.',
+                        question: 'Can EduPortal integrate with biometric attendance devices?',
+                        answer: 'Yes. EduPortal supports integration with popular biometric devices from ZKTeco, eSSL, and HikVision via our hardware bridge application. We also support RFID card readers and NFC-based attendance for younger students who may have difficulty with biometric scanners.',
                     },
                     {
                         question: 'How are updates and new features rolled out?',
-                        answer: 'EduSync follows a continuous deployment model. Minor updates and bug fixes are released weekly without any downtime. Major feature releases happen quarterly and are communicated through in-app announcements, email newsletters, and detailed release notes in our knowledge base.',
+                        answer: 'EduPortal follows a continuous deployment model. Minor updates and bug fixes are released weekly without any downtime. Major feature releases happen quarterly and are communicated through in-app announcements, email newsletters, and detailed release notes in our knowledge base.',
                     },
                 ]}
             />
@@ -282,15 +289,15 @@ export default function FAQPage() {
             <SecurityFAQ
                 eyebrow="Security & Privacy"
                 title="Security & Privacy Questions"
-                subtitle="Student data protection is our top priority. Learn how EduSync safeguards sensitive information and meets compliance standards."
+                subtitle="Student data protection is our top priority. Learn how EduPortal safeguards sensitive information and meets compliance standards."
                 questions={[
                     {
-                        question: 'How does EduSync protect student data?',
+                        question: 'How does EduPortal protect student data?',
                         answer: 'All data is encrypted using AES-256 at rest and TLS 1.3 in transit. We implement role-based access control (RBAC) so that each user — teacher, parent, admin — only sees the data they\'re authorized to access. Multi-factor authentication is available for all accounts and enforced for admin roles.',
                     },
                     {
-                        question: 'Is EduSync compliant with data protection regulations?',
-                        answer: 'Yes. EduSync is compliant with GDPR, FERPA, COPPA, and India\'s DPDP Act. We conduct annual third-party security audits and maintain SOC 2 Type II certification. Our data processing agreements (DPAs) are available upon request for institutional review.',
+                        question: 'Is EduPortal compliant with data protection regulations?',
+                        answer: 'Yes. EduPortal is compliant with GDPR, FERPA, COPPA, and India\'s DPDP Act. We conduct annual third-party security audits and maintain SOC 2 Type II certification. Our data processing agreements (DPAs) are available upon request for institutional review.',
                     },
                     {
                         question: 'Where is our school data stored?',
@@ -302,7 +309,7 @@ export default function FAQPage() {
                     },
                     {
                         question: 'Can we control who accesses what data?',
-                        answer: 'Absolutely. EduSync offers granular role-based permissions. School administrators can create custom roles — for example, a "Class Teacher" role that can only see their assigned students, or a "Fee Clerk" role limited to financial data. All access is logged in an immutable audit trail.',
+                        answer: 'Absolutely. EduPortal offers granular role-based permissions. School administrators can create custom roles — for example, a "Class Teacher" role that can only see their assigned students, or a "Fee Clerk" role limited to financial data. All access is logged in an immutable audit trail.',
                     },
                     {
                         question: 'What happens in case of a security breach?',
@@ -314,10 +321,10 @@ export default function FAQPage() {
             <VideoGuides
                 eyebrow="Video Tutorials"
                 title="Watch & Learn"
-                subtitle="Prefer watching over reading? Our video guides walk you through common tasks step-by-step so you can get the most out of EduSync."
+                subtitle="Prefer watching over reading? Our video guides walk you through common tasks step-by-step so you can get the most out of EduPortal ."
                 videos={[
                     {
-                        title: 'Getting Started with EduSync',
+                        title: 'Getting Started with EduPortal ',
                         description:
                             'A complete walkthrough of initial setup — adding your school, importing students, and configuring your first academic year.',
                         thumbnailUrl: 'https://i.ibb.co.com/TqJgTQsK/8o-Eepun-Mjt-U-HD.jpg',
@@ -364,7 +371,7 @@ export default function FAQPage() {
                     {
                         title: 'Parent Portal Overview',
                         description:
-                            'See how parents use the EduSync app to track attendance, view results, pay fees, and communicate with teachers.',
+                            'See how parents use the EduPortal app to track attendance, view results, pay fees, and communicate with teachers.',
                         thumbnailUrl: 'https://i.ibb.co.com/spFWpLTL/KSURo-J9-IVZY-HD.jpg',
                         duration: '5:10',
                         category: 'Parents',
@@ -392,7 +399,7 @@ export default function FAQPage() {
                         description:
                             'Send us a detailed query and our team will respond within 4 business hours. Great for non-urgent or complex questions.',
                         buttonLabel: 'Send Email',
-                        href: 'mailto:support@edusync.io',
+                        href: 'mailto:support@EduPortal .io',
                     },
                     {
                         icon: Phone,
@@ -410,8 +417,8 @@ export default function FAQPage() {
 
             <FAQCTA
                 eyebrow="Ready to Get Started?"
-                title="See EduSync in Action"
-                subtitle="Join 2,500+ schools already using EduSync to streamline operations, engage parents, and improve student outcomes."
+                title="See EduPortal in Action"
+                subtitle="Join 2,500+ schools already using EduPortal to streamline operations, engage parents, and improve student outcomes."
                 actions={[
                     {
                         icon: Rocket,

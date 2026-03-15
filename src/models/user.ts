@@ -19,6 +19,23 @@ const userSchema = new Schema(
             trim: true,
             default: "",
         },
+        firstName: {
+            type: String,
+            trim: true,
+            default: "",
+        },
+        lastName: {
+            type: String,
+            trim: true,
+            default: "",
+        },
+        username: {
+            type: String,
+            unique: true,
+            sparse: true,
+            trim: true,
+            lowercase: true,
+        },
         email: {
             type: String,
             required: true,
@@ -36,7 +53,20 @@ const userSchema = new Schema(
             enum: ["admin", "principal", "teacher", "student", "parent"],
             default: "student",
         },
+        gender: {
+            type: String,
+            enum: ["male", "female", "other"],
+            default: null,
+        },
+        dateOfBirth: {
+            type: Date,
+            default: null,
+        },
         image: {
+            type: String,
+            default: null,
+        },
+        avatar: {
             type: String,
             default: null,
         },
@@ -89,7 +119,7 @@ const userSchema = new Schema(
             getAll: function () {
                 return this.find().sort({ role: 1, name: 1 })
             },
-            registrationTrend: function (months: number = 6) {
+            getRegistrationTrend: function (months: number = 6) {
                 const startDate = new Date()
                 startDate.setMonth(startDate.getMonth() - months)
                 return this.aggregate([
@@ -103,17 +133,15 @@ const userSchema = new Schema(
                     { $sort: { "_id.year": 1, "_id.month": 1 } },
                 ])
             },
-            verificationStats: function () {
-                return this.aggregate([
-                    {
-                        $group: {
-                            _id: null,
-                            total: { $sum: 1 },
-                            verified: { $sum: { $cond: [{ $ne: ["$emailVerified", null] }, 1, 0] } },
-                            unverified: { $sum: { $cond: [{ $eq: ["$emailVerified", null] }, 1, 0] } },
-                        }
-                    },
-                ])
+            getVerificationStats: function () {
+                return this.aggregate([{
+                    $group: {
+                        _id: null,
+                        total: { $sum: 1 },
+                        verified: { $sum: { $cond: [{ $ne: ["$emailVerified", null] }, 1, 0] } },
+                        unverified: { $sum: { $cond: [{ $eq: ["$emailVerified", null] }, 1, 0] } },
+                    }
+                }])
             },
         },
         methods: {
@@ -141,3 +169,5 @@ userSchema.index({ "accounts.provider": 1, "accounts.providerAccountId": 1 })
 
 const y = () => mongoose.model("User", userSchema)
 export const UserModel = mongoose.models.User as ReturnType<typeof y> || y()
+
+

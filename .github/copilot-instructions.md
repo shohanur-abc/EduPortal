@@ -1,6 +1,11 @@
 
 init mcp servers at first
 
+fix errors
+- via typescript
+- via next-devtools-mcp@latest
+- via eslint
+
 route constants: src/lib/routes.ts
 
 

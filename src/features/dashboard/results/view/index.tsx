@@ -1,6 +1,6 @@
 import { EmptyState } from "@/components/molecules/empty-state";
 import { ClassOption, ResultRecord, StudentOption } from "../shared/types";
-import { FileText } from "lucide-react";
+import { FileText } from "@/lib/icon";
 import { ResultsCrudTable } from "../enter/result-crud";
 
 export function ResultsView({ results, students, classes }: { results: ResultRecord[]; students: StudentOption[]; classes: ClassOption[] }) {

@@ -2,17 +2,17 @@
 
 import * as React from "react"
 import { type ColumnDef } from "@tanstack/react-table"
-import { AdvancedDataTable, SortableHeader } from "@/components/molecules/advanced-data-table"
+import { DataTable, SortableHeader } from "@/components/molecules/table"
 import { DropdownActions } from "@/components/molecules/dropdown-actions"
 import { ConfirmDialog } from "@/components/molecules/confirm-dialog"
 import { MutationFormSheet } from "@/components/molecules/mutation-form-sheet"
-import { FormInput } from "@/components/molecules/input"
-import { Select } from "@/components/molecules/select"
+import { FormInput } from "@/components/molecules"
+import { Select } from "@/components/molecules"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { resultSchema, type ResultFormData } from "@/features/dashboard/validators"
-import { createResult, updateResult, deleteResult } from "@/features/dashboard/actions/mutations"
-import { Plus, Edit, Trash2 } from "lucide-react"
+import { resultSchema, type ResultFormData } from "@/schemas/dashboard"
+import { createResult, updateResult, deleteResult } from "@/services/results"
+import { Plus, Edit, Trash2 } from "@/lib/icon"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
 
@@ -117,7 +117,7 @@ export function ResultsCrudTable({ results, students, classes, loading }: { resu
 
     return (
         <>
-            <AdvancedDataTable
+            <DataTable
                 title="Results"
                 description="Enter, edit, or delete student results"
                 columns={columns}

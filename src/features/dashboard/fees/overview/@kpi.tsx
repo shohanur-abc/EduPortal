@@ -1,5 +1,5 @@
 import { MetricCard } from "@/components/molecules/metric-card"
-import { Wallet, TrendingUp, PieChart, Receipt } from "lucide-react"
+import { Wallet, TrendingUp, PieChart, Receipt } from "@/lib/icon"
 
 export function FeeKpi({ collectionRate, monthlyAvg, totalMethods, totalRecords, loading }: FeeKpiProps & { loading?: boolean }) {
     return (

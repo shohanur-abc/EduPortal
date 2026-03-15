@@ -1,34 +1,28 @@
-import { type LucideIcon } from 'lucide-react';
+import { type LucideIcon } from '@/lib/icon';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
+import { ShineBorder } from '@/components/ui/shine-border';
 
 // ============= MAIN COMPONENT =============
 export default function FeatureGrid({ eyebrow, title, subtitle, features }: IFeatureGrid) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
-            <Grid features={features} />
+        <Section cols={4} eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {features.map((feature, i) => (
+                <FeatureCard key={i} {...feature} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const Grid = ({ features }: { features: IFeatureGridItem[] }) => (
-    <div className="grid grid-cols-1 @sm:grid-cols-2 @xl:grid-cols-3 @4xl:grid-cols-4 gap-6">
-        {features.map((feature, i) => (
-            <FeatureCard key={i} {...feature} />
-        ))}
-    </div>
-);
-
 const FeatureCard = ({ icon: Icon, title, description }: IFeatureGridItem) => (
-    <Card className="group hover:border-primary/50 hover:shadow-md transition-all">
+    <Card className="group hover:border-primary/50 hover:shadow-md transition-all gap-4 ">
+        <ShineBorder shineColor={['var(--primary)', 'var(--chart-2)']} className='blur-3xl' />
         <CardHeader>
             <IconBox icon={Icon} />
             <CardTitle className="text-lg">{title}</CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className='gap-'>
             <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
         </CardContent>
     </Card>

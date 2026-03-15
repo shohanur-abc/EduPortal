@@ -1,0 +1,27 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "../*"
+            ],
+            "@/lib": [
+                "@never/path"
+            ],
+            "@/lib/*": [
+                "@never/path"
+            ],
+            "@/utils": [
+                "@never/path"
+            ],
+            "@/utils/*": [
+                "@never/path"
+            ]
+        }
+    },
+    "exclude": [
+        "../lib/**",
+        "../utils/**"
+    ]
+}

@@ -1,7 +1,7 @@
 import { AttendanceTopAbsenteesTable } from "@/features/dashboard/attendance/overview/@table-absentees"
-import { Attendance } from "@/services/attendance.service"
+import { Attendance as attendance } from "@/services"
 
 export default async function TableAbsenteesPage() {
-    const data = await Attendance.topAbsentees()
+    const data = await attendance.getTopAbsentees()
     return <AttendanceTopAbsenteesTable data={data} />
 }

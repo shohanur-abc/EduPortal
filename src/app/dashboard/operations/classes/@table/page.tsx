@@ -1,6 +1,6 @@
 import { ClassesCrudTable } from "@/features/dashboard/operations/classes/@table"
-import { Class } from "@/services/class.service"
-import { Teacher } from "@/services/teacher.service"
+import { Class } from "@/services"
+import { Teacher } from "@/services"
 
 export default async function OperationsClassesPage() {
   const [classes, teachers] = await Promise.all([Class.getAll(), Teacher.getAll()])

@@ -1,7 +1,7 @@
 import { StaffTable } from "@/features/dashboard/operations/staff/teacher-crud"
-import { Teacher } from "@/services/teacher.service"
+import { Teacher } from "@/services"
 
 export default async function StaffTablePage() {
-    const teachers = await Teacher.getAll()
-    return <StaffTable teachers={teachers} />
+    const teachersList = await Teacher.getAll()
+    return <StaffTable teachers={teachersList} />
 }

@@ -1,8 +1,8 @@
 import { AttendanceDayComparison } from "@/features/dashboard/attendance/overview/@comparison"
-import { Attendance } from "@/services/attendance.service"
+import { Attendance as attendance } from "@/services"
 
 export default async function ComparisonPage() {
-    const today = await Attendance.todayStats()
+    const today = await attendance.getTodayStats()
     return (
         <AttendanceDayComparison data={[
             { label: "Present", value: today.present, color: "var(--chart-1)" },

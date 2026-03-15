@@ -5,27 +5,30 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
-import { FormInput, Email, Password } from "@/components/molecules/input";
+import { FormInput, Email, Password } from "@/components/molecules";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { ROUTES } from "@/lib/routes";
-import { signupSchema, type SignupInput } from "../validators/auth";
+import { signupSchema, type SignupInput } from "@/schemas/auth";
 import { signup } from "../actions";
-import { Checkbox } from "@/components/molecules/checkbox";
+import { Checkbox } from "@/components/molecules";
 import { FormCard } from "../components/form";
-import { Select } from "@/components/molecules/select";
+import { Select } from "@/components/molecules";
 
 // ============= MAIN COMPONENT =============
-export default function Signup({ header, footer, name, email, password, confirmPassword, roles, acceptTermsLinks: atl, socialLogin }: SignupProps) {
+export default function Signup({ header, footer, firstNameField, lastNameField, usernameField, genderField, email, password, confirmPassword, roles, acceptTermsLinks: atl, socialLogin }: SignupProps) {
     const router = useRouter();
     const form = useForm<SignupInput>({
         resolver: zodResolver(signupSchema),
         defaultValues: {
-            name: "",
+            firstName: "",
+            lastName: "",
+            username: "",
             email: "",
             password: "",
             confirmPassword: "",
             role: "student",
+            gender: undefined,
             acceptTerms: false as unknown as true,
         },
     });
@@ -44,10 +47,13 @@ export default function Signup({ header, footer, name, email, password, confirmP
 
     return (
         <FormCard header={header} footer={footer} socialLogin={socialLogin} form={form} onSubmit={form.handleSubmit(onSubmit)}>
-            <FormInput {...name} />
+            <FormInput {...firstNameField} />
+            <FormInput {...lastNameField} />
+            <FormInput {...usernameField} />
             <Email {...email} />
             <Password {...password} />
             <Password {...confirmPassword} />
+            <Select {...genderField} />
             <Select {...roles} />
             <Checkbox name="acceptTerms" label={<div className="[&>a]:text-blue-400 [&>a]:hover:underline">
                 I agree to the
@@ -83,7 +89,10 @@ interface SignupProps {
         }
     }
 
-    name: React.ComponentProps<typeof FormInput>;
+    firstNameField: React.ComponentProps<typeof FormInput>;
+    lastNameField: React.ComponentProps<typeof FormInput>;
+    usernameField: React.ComponentProps<typeof FormInput>;
+    genderField: React.ComponentProps<typeof Select>;
     email: React.ComponentProps<typeof Email>;
     password: React.ComponentProps<typeof Password>;
     confirmPassword: React.ComponentProps<typeof Password>;

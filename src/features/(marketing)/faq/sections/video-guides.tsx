@@ -1,50 +1,43 @@
 import Image from 'next/image';
-import { Play, Clock } from 'lucide-react';
+import { Play, Clock } from '@/lib/icon';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Section } from '@/components/section';
-import Heading from '@/components/heading';
+import Link from 'next/link';
 
 // ============= MAIN COMPONENT =============
 export default function VideoGuides({ eyebrow, title, subtitle, videos }: IVideoGuides) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
-            <VideosGrid videos={videos} />
+        <Section cols={3} eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {videos.map((video, i) => (
+                <VideoCard key={i} {...video} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const VideosGrid = ({ videos }: { videos: IVideoGuides['videos'] }) => (
-    <div className="grid grid-cols-1 @md:grid-cols-2 @3xl:grid-cols-3 gap-6">
-        {videos.map((video, i) => (
-            <VideoCard key={i} {...video} />
-        ))}
-    </div>
-);
 
 const VideoCard = ({ title, description, thumbnailUrl, duration, category, href }: IVideoGuide) => (
-    <a href={href} className="group block">
-        <Card className="h-full overflow-hidden gap-0 py-0">
-            <AspectRatio ratio={16 / 9}>
-                <div className="relative size-full bg-muted">
-                    {thumbnailUrl && (
-                        <Image src={thumbnailUrl} alt={title} fill className="object-cover" />
-                    )}
-                    <VideoOverlay duration={duration} />
-                </div>
-            </AspectRatio>
-            <CardContent className="space-y-2 pt-4 pb-5">
-                {category && <Badge variant="secondary">{category}</Badge>}
-                <h3 className="text-base font-semibold text-foreground group-hover:text-primary transition-colors leading-snug">
-                    {title}
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
-            </CardContent>
-        </Card>
-    </a>
+    <Card className="relative group h-full overflow-hidden gap-0 py-0">
+        <Link href={href} className="absolute inset-0 z-1" target='_blank' />
+        <AspectRatio ratio={16 / 9}>
+            <div className="relative size-full bg-muted">
+                {thumbnailUrl && (
+                    <Image src={thumbnailUrl} alt={title} fill className="object-cover" />
+                )}
+                <VideoOverlay duration={duration} />
+            </div>
+        </AspectRatio>
+        <CardContent className="space-y-2 pt-4 pb-5">
+            {category && <Badge variant="secondary">{category}</Badge>}
+            <h3 className="text-base font-semibold text-foreground group-hover:text-primary transition-colors leading-snug">
+                {title}
+            </h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+        </CardContent>
+    </Card>
 );
 
 const VideoOverlay = ({ duration }: { duration: string }) => (

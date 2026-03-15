@@ -1,29 +1,23 @@
-import { DataTable } from "@/components/molecules/data-table"
+import { MiniTable } from "@/components/molecules/mini-table"
 import { StatusBadge } from "@/components/molecules/status-badge"
+import type { NoticeExpiringItem } from "./types"
 
-export function NoticeExpiringTable({ data, loading }: { data: ExpiringNotice[]; loading?: boolean }) {
+export function NoticeExpiringTable({ notices, loading }: { notices: NoticeExpiringItem[]; loading?: boolean }) {
     return (
-        <DataTable<ExpiringNotice>
+        <MiniTable
             title="Expiring Soon"
             description="Notices expiring within 7 days"
-            columns={[
-                { key: "title", header: "Title" },
-                { key: "authorName", header: "Author" },
-                { key: "priority", header: "Priority", render: (r) => <StatusBadge status={r.priority as "low" | "medium" | "high" | "urgent"} /> },
-                { key: "expiryDate", header: "Expiry Date" },
-            ]}
-            data={data}
-            keyExtractor={(r) => r._id}
+            headers={["Title", "Author", "Priority", "Expires"]}
+            rows={notices.map((n) => ({
+                id: n._id,
+                cells: [
+                    <span key="title" className="font-medium line-clamp-1">{n.title}</span>,
+                    n.authorName,
+                    <StatusBadge key="p" status={n.priority as "low" | "medium" | "high" | "urgent"} />,
+                    n.expiryDate,
+                ],
+            }))}
             loading={loading}
         />
     )
-}
-
-interface ExpiringNotice {
-    [key: string]: unknown
-    _id: string
-    title: string
-    authorName: string
-    priority: string
-    expiryDate: string
 }

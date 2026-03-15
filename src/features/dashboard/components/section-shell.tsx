@@ -5,9 +5,6 @@ import { TabsNav } from "@/components/molecules/tabs-nav"
 export function SectionShell({ title, description, tabs, children, actions }: SectionShellProps) {
     return (
         <div className="space-y-6">
-            <PageHeader title={title} description={description}>
-                {actions}
-            </PageHeader>
             {tabs && <TabsNav tabs={tabs} />}
             {children}
         </div>
@@ -16,7 +13,7 @@ export function SectionShell({ title, description, tabs, children, actions }: Se
 
 // ============= TYPES =============
 interface SectionShellProps {
-    title: string
+    title?: string
     description?: string
     tabs?: { label: string; value: string; href: string }[]
     children: React.ReactNode

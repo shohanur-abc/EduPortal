@@ -1,5 +1,5 @@
 import { FeeStatusBarChart } from "@/features/dashboard/fees/overview/@chart"
-import { Fee } from "@/services/fee.service"
+import { Fee } from "@/services"
 
 export default async function FeeChartPage() {
     const [statusBreakdown, overdueList] = await Promise.all([

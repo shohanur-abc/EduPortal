@@ -7,10 +7,10 @@ import {
     Globe,
     GraduationCap,
     LayoutDashboard,
-    Link2,
+    Link,
     Lock,
     Mail,
-    MonitorSmartphone,
+    Monitor,
     RefreshCw,
     Search,
     Settings,
@@ -18,7 +18,7 @@ import {
     Users,
     Video,
     Zap,
-} from 'lucide-react';
+} from '@/lib/icon';
 import { ROUTES } from '@/lib/routes';
 import {
     Hero,
@@ -100,7 +100,7 @@ export default function Page() {
                     { icon: FileText, label: 'Document Management', count: 4 },
                     { icon: Database, label: 'Data & Analytics', count: 5 },
                     { icon: ShieldCheck, label: 'Government & Compliance', count: 3 },
-                    { icon: MonitorSmartphone, label: 'Hardware & Devices', count: 4 },
+                    { icon: Monitor, label: 'Hardware & Devices', count: 4 },
                     { icon: GraduationCap, label: 'Assessment & Exams', count: 6 },
                     { icon: Users, label: 'HR & Staff', count: 3 },
                 ]}
@@ -252,7 +252,7 @@ export default function Page() {
                         name: 'Zoom',
                         category: 'Video Conferencing',
                         description:
-                            'Launch virtual classes, parent-teacher conferences, and administrative meetings from anywhere inside EduPortal. Calendar sync, recording, and attendance tracking included.',
+                            'Launch virtual classes, parent-teacher conferences, and administrative meetings from anywhere inside EduPortal . Calendar sync, recording, and attendance tracking included.',
                         highlights: [
                             'One-click meeting creation from timetable or calendar',
                             'Automatic attendance logging for virtual sessions',
@@ -297,7 +297,7 @@ export default function Page() {
                     language: 'JavaScript',
                     code: `// Fetch all students in Grade 10 with attendance data
 const response = await fetch(
-  'https://api.EduPortal.io/v2/students?grade=10&include=attendance',
+  'https://api.EduPortal .io/v2/students?grade=10&include=attendance',
   {
     headers: {
       'Authorization': 'Bearer YOUR_API_KEY',
@@ -371,7 +371,7 @@ console.log(\`Found \${pagination.total} students\`);`,
                             'Explore our integration marketplace and choose the tools your school already uses or wants to adopt.',
                     },
                     {
-                        icon: Link2,
+                        icon: Link,
                         title: 'Authorize & Connect',
                         description:
                             'Click "Connect" and authorize EduPortal to communicate with your chosen platform via secure OAuth flow.',
@@ -392,7 +392,7 @@ console.log(\`Found \${pagination.total} students\`);`,
             />
 
             <Testimonial
-                quote="Before EduPortal, our staff spent 3 hours every day manually entering attendance and fee data across platforms. With the Google Classroom and Stripe integrations, everything syncs automatically. We've saved over 15 hours per week and eliminated data entry errors completely."
+                quote="Before EduPortal , our staff spent 3 hours every day manually entering attendance and fee data across platforms. With the Google Classroom and Stripe integrations, everything syncs automatically. We've saved over 15 hours per week and eliminated data entry errors completely."
                 author="Priya Sharma"
                 role="Principal"
                 school="Delhi International Academy"

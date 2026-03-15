@@ -5,7 +5,7 @@
 // TODO: Connect demo form to CRM (HubSpot/Salesforce) webhook
 
 import { type Metadata } from 'next';
-import { CalendarCheck, ClipboardList, Clock, CreditCard, FileText, GraduationCap, Headphones, LayoutDashboard, Lock, MessageSquare, Monitor, Phone, PlayCircle, RefreshCw, School, Shield, ShieldCheck, UserCheck, Users, Video, type LucideIcon } from 'lucide-react';
+import { CalendarCheck, ClipboardList, Clock, CreditCard, FileText, GraduationCap, Headphones, LayoutDashboard, Lock, MessageSquare, Monitor, Phone, PlayCircle, RefreshCw, School, Shield, ShieldCheck, UserCheck, Users, Video, type LucideIcon } from '@/lib/icon';
 import { DemoCTA, DemoFAQ, DemoForm, DemoFormats, DemoGuarantee, DemoHero, DemoProcess, DemoStats, DemoTestimonial, WhatYoullSee, } from '@/features/(marketing)/demo';
 import { ROUTES } from '@/lib/routes';
 
@@ -59,7 +59,7 @@ export default function DemoPage() {
                 eyebrow="See EduPortal in Action"
                 title="Experience the Future of"
                 highlight="School Management"
-                description="Join 2,500+ schools that have transformed their operations with EduPortal. Get a personalized walkthrough tailored to your institution's size, curriculum, and unique challenges."
+                description="Join 2,500+ schools that have transformed their operations with EduPortal . Get a personalized walkthrough tailored to your institution's size, curriculum, and unique challenges."
                 trustBadges={[
                     { icon: ShieldCheck as LucideIcon, label: 'SOC 2 Certified' },
                     { icon: Clock as LucideIcon, label: '30-Minute Walkthrough' },
@@ -281,7 +281,7 @@ export default function DemoPage() {
 
             <DemoStats
                 eyebrow="Proven Results"
-                title="The Impact Schools See After Switching to EduPortal"
+                title="The Impact Schools See After Switching to EduPortal "
                 subtitle="Real metrics from real schools — see the measurable difference EduPortal makes in day-to-day operations and long-term outcomes."
                 stats={[
                     {

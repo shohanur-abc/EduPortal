@@ -1,5 +1,5 @@
 import { RecentPaymentsTable } from "@/features/dashboard/fees/overview/@table-payments"
-import { Fee } from "@/services/fee.service"
+import { Fee } from "@/services"
 
 export default async function FeeTablePage() {
     const recentPayments = await Fee.getRecentPayments()

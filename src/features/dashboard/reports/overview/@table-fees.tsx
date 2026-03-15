@@ -1,4 +1,4 @@
-import { DataTable } from "@/components/molecules/data-table"
+import { SimpleTable } from "@/components/molecules/simple-table"
 import { StatusBadge } from "@/components/molecules/status-badge"
 import { Badge } from "@/components/ui/badge"
 
@@ -12,7 +12,7 @@ interface FeeReportRow {
 
 export function FeeReportTable({ data, loading }: { data: FeeReportRow[]; loading?: boolean }) {
     return (
-        <DataTable<FeeReportRow>
+        <SimpleTable<FeeReportRow>
             title="Fee Collection Data"
             description="Fee status and collection amounts"
             columns={[

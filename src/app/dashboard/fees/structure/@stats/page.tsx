@@ -1,5 +1,5 @@
 import { FeeStructureStatCards } from "@/features/dashboard/fees/structure/@stats"
-import { Fee } from "@/services/fee.service"
+import { Fee } from "@/services"
 
 export default async function FeeStructureStatsPage() {
     const structure = await Fee.feeStructure()

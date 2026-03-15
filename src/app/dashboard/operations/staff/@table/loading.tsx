@@ -7,7 +7,7 @@ export default function TableLoading() {
 const data = new Array(10).fill(0).map((_, i) => ({
     _id: `teacher-${i}`,
     name: "Dr. Abdur Rahman",
-    email: "abdur.rahman@eduportal.com",
+    email: "abdur.rahman@EduPortal .com",
     phone: "+8801711001001",
     subject: "Computer Science",
     department: "Science",

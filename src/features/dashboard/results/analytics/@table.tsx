@@ -1,7 +1,7 @@
-import { DataTable } from "@/components/molecules/data-table"
+import { SimpleTable } from "@/components/molecules/simple-table"
 import { EmptyState } from "@/components/molecules/empty-state"
 import { Badge } from "@/components/ui/badge"
-import { BookOpen, LineChart } from "lucide-react"
+import { BookOpen, LineChart } from "@/lib/icon"
 
 interface ExamAnalytics extends Record<string, unknown> {
     exam: string
@@ -31,7 +31,7 @@ export function AnalyticsTables({ byExam, bySubject, loading }: { byExam: ExamAn
 
     return (
         <div className="space-y-6">
-            <DataTable<ExamAnalytics>
+            <SimpleTable<ExamAnalytics>
                 title="Exam-wise Analytics"
                 description={`Performance breakdown for ${byExam.length} exams`}
                 columns={[
@@ -77,7 +77,7 @@ export function AnalyticsTables({ byExam, bySubject, loading }: { byExam: ExamAn
                 loading={loading}
             />
 
-            <DataTable<SubjectAnalytics>
+            <SimpleTable<SubjectAnalytics>
                 title="Subject-wise Analytics"
                 description={`Performance breakdown for ${bySubject.length} subjects`}
                 columns={[

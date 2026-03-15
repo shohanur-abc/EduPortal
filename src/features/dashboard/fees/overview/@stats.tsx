@@ -1,5 +1,5 @@
 import { StatCard } from "@/components/molecules/stat-card"
-import { DollarSign, CreditCard, AlertTriangle } from "lucide-react"
+import { DollarSign, CreditCard, AlertTriangle } from "@/lib/icon"
 
 
 export function FeeStatCards({ totalAmount, totalCollected, paidCount, overdueCount, loading }: FeeStats & { loading?: boolean }) {

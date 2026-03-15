@@ -3,7 +3,7 @@ import ForgotPassword from "@/features/auth/sections/forgot-password";
 import { ROUTES } from "@/lib/routes";
 
 export const metadata: Metadata = {
-    title: "Forgot Password | EduPortal",
+    title: "Forgot Password | EduPortal ",
     description: "Reset your EduPortal password",
 };
 

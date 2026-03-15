@@ -1,28 +1,20 @@
-import { CheckCircle2, X, type LucideIcon } from 'lucide-react';
+import { CheckCircle2, X, type LucideIcon } from '@/lib/icon';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function SupportComparison({ eyebrow, title, subtitle, providers }: ISupportComparison) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
-            <ProvidersGrid providers={providers} />
+        <Section cols={3} eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {providers.map((provider, i) => (
+                <ProviderCard key={i} {...provider} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const ProvidersGrid = ({ providers }: { providers: ISupportComparison['providers'] }) => (
-    <div className="grid grid-cols-1 @2xl:grid-cols-2 @5xl:grid-cols-3 gap-8">
-        {providers.map((provider, i) => (
-            <ProviderCard key={i} {...provider} />
-        ))}
-    </div>
-);
-
 const ProviderCard = ({ icon: Icon, name, highlighted, supportFeatures }: ISupportComparison['providers'][number]) => (
     <Card className={highlighted ? 'border-primary shadow-lg ring-1 ring-primary/20 relative' : 'relative'}>
         {highlighted && (
@@ -45,11 +37,11 @@ const ProviderCard = ({ icon: Icon, name, highlighted, supportFeatures }: ISuppo
 );
 
 const SupportFeatureItem = ({ label, available, detail }: ISupportComparison['providers'][number]['supportFeatures'][number]) => (
-    <div className="flex items-start gap-2.5">
+    <div className="flex items-center gap-3">
         {available ? (
-            <CheckCircle2 className="size-4 text-green-600 shrink-0 mt-0.5" />
+            <CheckCircle2 className="size-5 text-green-600 shrink-0" />
         ) : (
-            <X className="size-4 text-muted-foreground/40 shrink-0 mt-0.5" />
+            <X className="size-5 text-muted-foreground/40 shrink-0 mt-0.5" />
         )}
         <div className="min-w-0">
             <span className="text-sm font-medium text-foreground">{label}</span>

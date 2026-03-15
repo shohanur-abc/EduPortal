@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Provider from "./provider";
-import LayoutClient from "./layout-client";
 import { auth } from "@/lib/auth";
+import { Meteors } from "@/components/ui/meteors";
 
 
-export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
+export default async function RootLayout({ children, auth: authModal }: Readonly<{ children: React.ReactNode; auth: React.ReactNode }>) {
     const session = await auth();
 
     const user = session?.user ? {
@@ -17,10 +17,11 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
     } : undefined;
 
     return (
-        <html lang="en">
-            <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} >
+        <html lang="en" suppressHydrationWarning>
+            <body className={` @container ${geistSans.variable} ${geistMono.variable} antialiased`} >
                 <Provider>
-                    <LayoutClient user={user}>{children}</LayoutClient>
+                    {authModal}
+                    {children}
                 </Provider>
             </body>
         </html>

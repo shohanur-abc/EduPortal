@@ -1,11 +1,11 @@
 import { ResultKpi } from "@/features/dashboard/results/overview/@kpi"
-import { Result } from "@/services/result.service"
+import { Result } from "@/services"
 
 export default async function KpiPage() {
     const [examComparison, gradeDistribution, avgBySubject] = await Promise.all([
-        Result.examComparison(),
-        Result.gradeDistribution(),
-        Result.avgBySubject(),
+        Result.getExamComparison(),
+        Result.getGradeDistribution(),
+        Result.getAvgBySubject(),
     ])
     const totalResults = gradeDistribution.reduce((s, g) => s + g.count, 0)
     const totalAvg = avgBySubject.length > 0 ? Math.round(avgBySubject.reduce((s, a) => s + a.avgMarks, 0) / avgBySubject.length) : 0

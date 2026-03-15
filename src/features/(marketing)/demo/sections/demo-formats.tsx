@@ -1,14 +1,12 @@
-import { type LucideIcon } from 'lucide-react';
+import { type LucideIcon } from '@/lib/icon';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function DemoFormats({ eyebrow, title, subtitle, formats }: IDemoFormats) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
             <FormatsGrid formats={formats} />
         </Section>
     );

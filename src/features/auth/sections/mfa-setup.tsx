@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SmartphoneIcon, MailIcon, ShieldCheckIcon } from "lucide-react";
+import { SmartphoneIcon, MailIcon, ShieldCheckIcon } from "@/lib/icon";
 import AuthCard from "../components/auth-card";
 import { Button } from "@/components/ui/button";
 

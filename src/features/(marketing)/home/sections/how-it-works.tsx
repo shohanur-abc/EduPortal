@@ -1,31 +1,20 @@
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2 } from '@/lib/icon';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Section } from '@/components/section';
-import Heading from '@/components/heading';
 
 // ============= MAIN COMPONENT =============
 export default function HowItWorks({ eyebrow, title, subtitle, steps }: IHowItWorks) {
     return (
-        <Section containerClass="bg-muted/50">
-            <div className="space-y-16">
-                <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
-                <StepsList steps={steps} />
-            </div>
+        <Section className='space-y-20' title={title} subtitle={subtitle} eyebrow={eyebrow}>
+            {steps.map((step, i) => (
+                <StepItem key={i} {...step} index={i} reversed={i % 2 !== 0} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-
-const StepsList = ({ steps }: { steps: IHowItWorks['steps'] }) => (
-    <div className="space-y-20">
-        {steps.map((step, i) => (
-            <StepItem key={i} {...step} index={i} reversed={i % 2 !== 0} />
-        ))}
-    </div>
-);
-
 const StepItem = ({ number, title, description, features, image, reversed }: IHowItWorks['steps'][number] & { index: number; reversed: boolean }) => (
     <div className={`grid grid-cols-1 @3xl:grid-cols-2 gap-12 items-center ${reversed ? '@3xl:[direction:rtl]' : ''}`}>
         <div className="space-y-6 @3xl:[direction:ltr]">
@@ -41,7 +30,7 @@ const StepItem = ({ number, title, description, features, image, reversed }: IHo
                 ))}
             </ul>
         </div>
-        <div className="relative aspect-[4/3] rounded-xl overflow-hidden border bg-background shadow-lg @3xl:[direction:ltr]">
+        <div className="relative aspect-4/3 rounded-xl overflow-hidden border bg-background shadow-lg @3xl:[direction:ltr]">
             <Image src={image} alt={title} fill className="object-cover" />
         </div>
     </div>

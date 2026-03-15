@@ -38,7 +38,7 @@ const attendanceSchema = new Schema(
         timestamps: true,
 
         statics: {
-            stats() {
+            getStats() {
                 return this.aggregate([{
                     $group: {
                         _id: "$status",
@@ -60,7 +60,7 @@ const attendanceSchema = new Schema(
                     .sort({ date: -1 })
                     .limit(limit)
             },
-            todayStats() {
+            getTodayStats() {
                 const todayStart = new Date()
                 todayStart.setHours(0, 0, 0, 0)
                 const todayEnd = new Date()
@@ -95,7 +95,7 @@ const attendanceSchema = new Schema(
                     { $sort: { "_id.year": 1, "_id.week": 1 } },
                 ])
             },
-            classWiseStats() {
+            getClassWiseStats() {
                 return this.aggregate([
                     { $lookup: { from: "classes", localField: "classId", foreignField: "_id", as: "class" } },
                     { $unwind: "$class" },
@@ -112,7 +112,7 @@ const attendanceSchema = new Schema(
                     { $sort: { "_id.className": 1, "_id.section": 1 } },
                 ])
             },
-            topAbsentees(limit: number = 10) {
+            getTopAbsentees(limit: number = 10) {
                 return this.aggregate([
                     { $match: { status: { $in: ["absent", "late"] } } },
                     { $group: { _id: "$student", absences: { $sum: 1 } } },
@@ -132,7 +132,7 @@ const attendanceSchema = new Schema(
                     },
                 ])
             },
-            monthlySummary(months: number = 6) {
+            getMonthlySummary(months: number = 6) {
                 const startDate = new Date()
                 startDate.setMonth(startDate.getMonth() - months)
                 return this.aggregate([
@@ -150,7 +150,7 @@ const attendanceSchema = new Schema(
                     { $sort: { "_id.year": 1, "_id.month": 1 } },
                 ])
             },
-            attendanceRate() {
+            getAttendanceRate() {
                 return this.aggregate([
                     {
                         $group: {

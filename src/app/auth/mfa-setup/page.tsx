@@ -3,7 +3,7 @@ import MfaSetup from "@/features/auth/sections/mfa-setup";
 import { ROUTES } from "@/lib/routes";
 
 export const metadata: Metadata = {
-    title: "MFA Setup | EduPortal",
+    title: "MFA Setup | EduPortal ",
     description: "Set up two-factor authentication for your account",
 };
 

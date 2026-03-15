@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils"
 // ============= COMPONENT =============
 export function ChartCard({ title, description, config, className, children }: ChartCardProps) {
     return (
-        <Card className={cn("@container/card", className)}>
+        <Card className={className}>
             <CardHeader>
                 <CardTitle>{title}</CardTitle>
                 {description && <CardDescription>{description}</CardDescription>}

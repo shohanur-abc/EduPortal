@@ -1,30 +1,22 @@
-import { ArrowRight, type LucideIcon } from 'lucide-react';
+import { ArrowRight, type LucideIcon } from '@/lib/icon';
 import { Card, CardContent } from '@/components/ui/card';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function Results({ eyebrow, title, subtitle, comparisons }: IResults) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
-            <ComparisonsGrid comparisons={comparisons} />
+        <Section cols={2} eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {comparisons.map((comparison, i) => (
+                <ComparisonCard key={i} {...comparison} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const ComparisonsGrid = ({ comparisons }: { comparisons: IResults['comparisons'] }) => (
-    <div className="grid grid-cols-1 @3xl:grid-cols-2 gap-6">
-        {comparisons.map((comparison, i) => (
-            <ComparisonCard key={i} {...comparison} />
-        ))}
-    </div>
-);
-
 const ComparisonCard = ({ icon: Icon, label, before, after }: IResults['comparisons'][number]) => (
     <Card className="hover:shadow-lg transition-shadow">
-        <CardContent className="pt-6 space-y-4">
+        <CardContent className="space-y-4">
             <div className="flex items-center gap-3">
                 <div className="size-10 rounded-xl bg-primary/10 flex items-center justify-center">
                     <Icon className="size-5 text-primary" />

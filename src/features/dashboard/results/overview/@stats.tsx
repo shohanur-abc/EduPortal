@@ -1,5 +1,5 @@
 import { StatCard } from "@/components/molecules/stat-card"
-import { FileText, Award, BarChart3 } from "lucide-react"
+import { FileText, Award, BarChart3 } from "@/lib/icon"
 
 
 export function ResultStatCards({ totalResults, passRate, subjectCount, topSubject, topSubjectAvg, loading }: ResultStats) {

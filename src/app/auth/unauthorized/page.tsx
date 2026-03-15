@@ -3,7 +3,7 @@ import Unauthorized from "@/features/auth/sections/unauthorized";
 import { ROUTES } from "@/lib/routes";
 
 export const metadata: Metadata = {
-    title: "Unauthorized | EduPortal",
+    title: "Unauthorized | EduPortal ",
     description: "You don't have permission to access this page",
 };
 

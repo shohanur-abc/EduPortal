@@ -1,4 +1,4 @@
-import { CheckCircle2, Minus } from 'lucide-react';
+import { CheckCircle2, Minus } from '@/lib/icon';
 import {
     Table,
     TableBody,
@@ -7,14 +7,12 @@ import {
     TableHeader,
     TableRow,
 } from '@/components/ui/table';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function ComparisonTable({ eyebrow, title, subtitle, plans, categories }: IComparisonTable) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
             <TableWrapper plans={plans} categories={categories} />
         </Section>
     );

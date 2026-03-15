@@ -3,20 +3,19 @@ import { SectionShell } from "@/features/dashboard/components/section-shell"
 import { ROUTES } from "@/lib/routes"
 
 export const metadata: Metadata = {
-    title: "Notices | Dashboard",
-    description: "Manage announcements and communications",
+    title: "Notice Board | Dashboard",
+    description: "Create, manage, and track notices for your school community",
 }
 
 const TABS = [
-    { label: "Overview", value: "overview", href: ROUTES.dashboard.notices.overview },
     { label: "Manage", value: "manage", href: ROUTES.dashboard.notices.manage },
-    // { label: "Publish", value: "publish", href: ROUTES.dashboard.notices.publish },
-    { label: "Analytics", value: "analytics", href: ROUTES.dashboard.notices.analytics },
+    { label: "Create", value: "create", href: ROUTES.dashboard.notices.create },
+    { label: "Overview", value: "overview", href: ROUTES.dashboard.notices.overview },
 ]
 
 export default function NoticesLayout({ children }: { children: React.ReactNode }) {
     return (
-        <SectionShell title="Notices" description="Announcements and communications" tabs={TABS}>
+        <SectionShell title="Notice Board" description="Create, manage, and distribute notices" tabs={TABS}>
             {children}
         </SectionShell>
     )

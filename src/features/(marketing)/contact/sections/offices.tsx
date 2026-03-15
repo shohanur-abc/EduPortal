@@ -1,29 +1,21 @@
-import type { LucideIcon } from 'lucide-react';
+import type { LucideIcon } from '@/lib/icon';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function Offices({ eyebrow, title, subtitle, offices }: IOffices) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
-            <OfficesGrid offices={offices} />
+        <Section cols={3} eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {offices.map((office, i) => (
+                <OfficeCard key={i} {...office} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const OfficesGrid = ({ offices }: { offices: IOffice[] }) => (
-    <div className="grid grid-cols-1 @2xl:grid-cols-2 @5xl:grid-cols-3 gap-8">
-        {offices.map((office, i) => (
-            <OfficeCard key={i} {...office} />
-        ))}
-    </div>
-);
-
-const OfficeCard = ({ icon: Icon, city, country, address, phone, email, isHQ, mapPlaceholder }: IOffice) => (
+const OfficeCard = ({ icon: Icon, city, country, address, phone, email, isHQ, mapPlaceholder }: IOffices['offices'][0]) => (
     <Card className='pt-0'>
         <div className="aspect-video bg-muted rounded-t-xl flex items-center justify-center">
             {mapPlaceholder ? (
@@ -60,16 +52,15 @@ interface IOffices {
     eyebrow: string;
     title: string;
     subtitle: string;
-    offices: IOffice[];
+    offices: {
+        icon: LucideIcon;
+        city: string;
+        country: string;
+        address: string;
+        phone?: string;
+        email?: string;
+        isHQ?: boolean;
+        mapPlaceholder?: string;
+    }[];
 }
 
-interface IOffice {
-    icon: LucideIcon;
-    city: string;
-    country: string;
-    address: string;
-    phone?: string;
-    email?: string;
-    isHQ?: boolean;
-    mapPlaceholder?: string;
-}

@@ -1,10 +1,10 @@
-import { DataTable } from "@/components/molecules/data-table"
+import { SimpleTable } from "@/components/molecules/simple-table"
 import { AvatarCell } from "@/components/molecules/avatar-cell"
 import { Badge } from "@/components/ui/badge"
 
 export function RecentResultsTable({ recentResults, loading }: { recentResults: ResultRecord[], loading?: boolean }) {
     return (
-        <DataTable<ResultRecord>
+        <SimpleTable<ResultRecord>
             title="Recent Results"
             description="Latest exam results"
             columns={[

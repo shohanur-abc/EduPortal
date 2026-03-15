@@ -1,0 +1,51 @@
+"use server"
+
+import { db } from "@/fatman"
+import { pop, sid } from "@/fatman/utils"
+
+
+export async function getSearchConversations(
+    userId: string,
+    query: string
+): Promise<SearchResult["conversations"]> {
+    await db.connect()
+    const results = await db.conversation.searchConversations(userId, query)
+    return results.map((c) => ({
+        _id: sid(c),
+        name: c.name || "Direct Message",
+        type: c.type,
+        participantCount: c.participants?.length ?? 0,
+    }))
+}
+
+export async function getSearchMessages(
+    conversationId: string,
+    query: string
+): Promise<SearchResult["messages"]> {
+    await db.connect()
+    const results = await db.message.searchMessages(conversationId, query)
+    return results.map((m) => ({
+        _id: sid(m),
+        content: m.content,
+        senderName: pop(m.sender, "name") || "Unknown",
+        conversationId: String(m.conversation),
+        createdAt: m.createdAt?.toISOString() ?? "",
+    }))
+}
+
+
+export interface SearchResult {
+    conversations: {
+        _id: string
+        name: string
+        type: string
+        participantCount: number
+    }[]
+    messages: {
+        _id: string
+        content: string
+        senderName: string
+        conversationId: string
+        createdAt: string
+    }[]
+}

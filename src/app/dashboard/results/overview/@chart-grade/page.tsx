@@ -1,10 +1,10 @@
 import { ResultOverviewCharts } from "@/features/dashboard/results/overview/@chart-grade"
-import { Result } from "@/services/result.service"
+import { Result } from "@/services"
 
 export default async function ResultChartPage() {
     const [gradeDistribution, avgBySubject] = await Promise.all([
-        Result.gradeDistribution(),
-        Result.avgBySubject(),
+        Result.getGradeDistribution(),
+        Result.getAvgBySubject(),
     ])
 
     return <ResultOverviewCharts gradeDistribution={gradeDistribution} />

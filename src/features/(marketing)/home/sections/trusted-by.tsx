@@ -1,18 +1,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/card';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
+import { NumberTicker } from '@/components/ui/number-ticker';
 
 // ============= MAIN COMPONENT =============
 export default function TrustedBy({ eyebrow, title, subtitle, logos, metrics }: ITrustedBy) {
     return (
-        <Section containerClass="bg-muted/50">
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
-            <div className="space-y-12">
-                <LogoGrid logos={logos} />
-                <MetricsRow metrics={metrics} />
-            </div>
+        <Section className="space-y-12" eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            <LogoGrid logos={logos} />
+            <MetricsRow metrics={metrics} />
         </Section>
     );
 }
@@ -29,11 +26,13 @@ const LogoGrid = ({ logos }: { logos: ITrustedBy['logos'] }) => (
 );
 
 const MetricsRow = ({ metrics }: { metrics: ITrustedBy['metrics'] }) => (
-    <div className="grid grid-cols-2 @lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-2 @3xl:grid-cols-4 gap-6">
         {metrics.map(({ value, label, description }, i) => (
             <Card key={i} className="text-center">
-                <CardContent className="pt-6 space-y-1">
-                    <div className="text-3xl @sm:text-4xl font-bold text-primary">{value}</div>
+                <CardContent className="space-y-1">
+                    <div className="text-3xl @sm:text-4xl font-bold text-primary">
+                        <NumberTicker value={typeof value === 'number' ? value : parseInt(value) || 0} className="text-3xl @sm:text-4xl" />
+                    </div>
                     <div className="font-semibold text-sm">{label}</div>
                     <div className="text-xs text-muted-foreground">{description}</div>
                 </CardContent>
@@ -53,7 +52,7 @@ interface ITrustedBy {
         href: string;
     }[];
     metrics: {
-        value: string;
+        value: string | number;
         label: string;
         description: string;
     }[];

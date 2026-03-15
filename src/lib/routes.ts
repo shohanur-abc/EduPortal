@@ -5,7 +5,7 @@
 
 export const ROUTES = {
     marketing: {
-        home: "/",
+        home: "/home",
         about: "/about",
         blog: "/blog",
         caseStudies: "/case-studies",
@@ -42,6 +42,8 @@ export const ROUTES = {
         principal: "/dashboard/principal",
         student: "/dashboard/student",
         teacher: "/dashboard/teacher",
+        profile: "/dashboard/profile",
+        settings: "/dashboard/settings",
 
         attendance: {
             root: "/dashboard/attendance",
@@ -63,9 +65,8 @@ export const ROUTES = {
         notices: {
             root: "/dashboard/notices",
             overview: "/dashboard/notices/overview",
+            create: "/dashboard/notices/create",
             manage: "/dashboard/notices/manage",
-            publish: "/dashboard/notices/publish",
-            analytics: "/dashboard/notices/analytics",
         },
 
         operations: {
@@ -108,6 +109,13 @@ export const ROUTES = {
             overview: "/dashboard/users/overview",
             credentials: "/dashboard/users/credentials",
             activity: "/dashboard/users/activity",
+        },
+
+        messages: {
+            root: "/dashboard/messages",
+            chat: "/dashboard/messages/chat",
+            overview: "/dashboard/messages/overview",
+            analytics: "/dashboard/messages/analytics",
         },
 
     },

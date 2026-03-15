@@ -1,11 +1,11 @@
 import { ReportStatCards } from "@/features/dashboard/reports/overview/@stats"
-import { Report } from "@/services/report.service"
+import { Report } from "@/services"
 
 export default async function ReportStatsPage() {
     const [attendance, fees, results] = await Promise.all([
-        Report.attendanceReport(),
-        Report.feeReport(),
-        Report.resultReport(),
+        Report.getReport(),
+        Report.getFee(),
+        Report.getResult(),
     ])
 
     return (

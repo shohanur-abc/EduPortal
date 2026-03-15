@@ -1,11 +1,10 @@
 import { OperationsKpi } from "@/features/dashboard/operations/overview/@kpi"
-import { Class } from "@/services/class.service"
-import { Teacher } from "@/services/teacher.service"
+import { Class } from "@/services"
 
 export default async function Page() {
     const [capacity, gradeDistribution] = await Promise.all([
-        Class.capacityUtilization(),
-        Class.gradeDistribution(),
+        Class.getCapacityUtilization(),
+        Class.getGradeDistribution(),
     ])
     const totalCapacity = capacity.reduce((s, c) => s + c.maxStudents, 0)
     const totalStudents = capacity.reduce((s, c) => s + c.studentCount, 0)

@@ -4,13 +4,13 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
-import { CheckCircle2Icon } from "lucide-react";
+import { CheckCircle2Icon } from "@/lib/icon";
 import { Form } from "@/components/molecules/form";
-import { Email } from "@/components/molecules/input";
+import { Email } from "@/components/molecules";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import AuthCard, { FooterLink } from "../components/auth-card";
-import { forgotPasswordSchema, type ForgotPasswordInput } from "../validators/auth";
+import { forgotPasswordSchema, type ForgotPasswordInput } from "@/schemas/auth";
 import { forgotPassword } from "../actions";
 
 // ============= MAIN COMPONENT =============

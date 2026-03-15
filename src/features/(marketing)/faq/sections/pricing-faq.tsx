@@ -1,12 +1,10 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Section } from '@/components/section';
-import Heading from '@/components/heading';
 
 // ============= MAIN COMPONENT =============
 export default function PricingFAQ({ eyebrow, title, subtitle, questions }: IPricingFAQ) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
             <QuestionsList questions={questions} />
         </Section>
     );

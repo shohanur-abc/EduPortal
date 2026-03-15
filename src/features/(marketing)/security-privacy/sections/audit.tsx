@@ -1,29 +1,21 @@
-import { type LucideIcon } from 'lucide-react';
+import { type LucideIcon } from '@/lib/icon';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function Audit({ eyebrow, title, subtitle, features }: IAudit) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
-            <FeatureGrid features={features} />
+        <Section cols={3} eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {features.map((feature, i) => (
+                <AuditCard key={i} {...feature} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const FeatureGrid = ({ features }: { features: IAuditFeature[] }) => (
-    <div className="grid grid-cols-1 @md:grid-cols-2 @3xl:grid-cols-3 gap-6">
-        {features.map((feature, i) => (
-            <AuditCard key={i} {...feature} />
-        ))}
-    </div>
-);
-
-const AuditCard = ({ icon: Icon, title, description, tag, capabilities }: IAuditFeature) => (
+const AuditCard = ({ icon: Icon, title, description, tag, capabilities }: IAudit['features'][0]) => (
     <Card className="group hover:border-primary/50 hover:shadow-md transition-all">
         <CardHeader>
             <div className="flex items-center justify-between">
@@ -57,17 +49,16 @@ const CapabilityList = ({ capabilities }: { capabilities: string[] }) => (
 );
 
 // ============= TYPES =============
-interface IAuditFeature {
-    icon: LucideIcon;
-    title: string;
-    description: string;
-    tag?: string;
-    capabilities: string[];
-}
 
 interface IAudit {
     eyebrow: string;
     title: string;
     subtitle: string;
-    features: IAuditFeature[];
+    features: {
+        icon: LucideIcon;
+        title: string;
+        description: string;
+        tag?: string;
+        capabilities: string[];
+    }[];
 }

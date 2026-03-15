@@ -1,18 +1,18 @@
-import { CheckCircle2, type LucideIcon } from 'lucide-react';
+import { CheckCircle2, type LucideIcon } from '@/lib/icon';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 import { cn } from '@/lib/utils';
 
 // ============= MAIN COMPONENT =============
 export default function PricingPlans({ eyebrow, title, subtitle, plans }: IPricingPlans) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
-            <PlansGrid plans={plans} />
+        <Section cols={3} eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {plans.map((plan, i) => (
+                <PlanCard key={i} {...plan} />
+            ))}
         </Section>
     );
 }
@@ -27,35 +27,38 @@ const PlansGrid = ({ plans }: { plans: IPlanItem[] }) => (
 );
 
 const PlanCard = ({ name, description, price, period, features, cta, popular, icon: Icon }: IPlanItem) => (
-    <Card className={cn(
-        'relative flex flex-col transition-all hover:shadow-lg',
-        popular && 'border-primary shadow-md scale-[1.02]'
-    )}>
+    <div className={`relative ${popular ? 'scale-[1.02]' : ''}`}>
         {popular && <PopularBadge />}
-        <CardHeader className="space-y-2">
-            {Icon && <Icon className="size-8 text-primary" />}
-            <CardTitle className="text-xl">{name}</CardTitle>
-            <p className="text-sm text-muted-foreground">{description}</p>
-        </CardHeader>
-        <CardContent className="flex-1 space-y-6">
-            <PriceDisplay price={price} period={period} />
-            <FeaturesList features={features} />
-        </CardContent>
-        <CardFooter>
-            <Button
-                className="w-full rounded-full"
-                variant={popular ? 'default' : 'outline'}
-                size="lg"
-                asChild
-            >
-                <Link href={cta.href}>{cta.text}</Link>
-            </Button>
-        </CardFooter>
-    </Card>
+        <Card className={cn(
+            'relative flex flex-col transition-all hover:shadow-lg',
+            popular && 'border-primary shadow-md'
+        )}>
+
+            <CardHeader className="space-y-2">
+                {Icon && <Icon className="size-8 text-primary" />}
+                <CardTitle className="text-xl">{name}</CardTitle>
+                <p className="text-sm text-muted-foreground">{description}</p>
+            </CardHeader>
+            <CardContent className="flex-1 space-y-6">
+                <PriceDisplay price={price} period={period} />
+                <FeaturesList features={features} />
+            </CardContent>
+            <CardFooter>
+                <Button
+                    className="w-full rounded-full"
+                    variant={popular ? 'default' : 'outline'}
+                    size="lg"
+                    asChild
+                >
+                    <Link href={cta.href}>{cta.text}</Link>
+                </Button>
+            </CardFooter>
+        </Card>
+    </div>
 );
 
 const PopularBadge = () => (
-    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+    <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-2">
         <Badge className="rounded-full px-4 py-1">Most Popular</Badge>
     </div>
 );

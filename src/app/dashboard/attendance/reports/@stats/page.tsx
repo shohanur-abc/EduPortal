@@ -1,8 +1,8 @@
 import { AttendanceReportStatCards } from "@/features/dashboard/attendance/reports/@stats"
-import { Attendance } from "@/services/attendance.service"
+import { Attendance as attendance } from "@/services"
 
 export default async function ReportStatsPage() {
-    const records = await Attendance.getAll()
+    const records = await attendance.getAll()
 
     const presentCount = records.filter((r) => r.status === "present").length
     const absentCount = records.filter((r) => r.status === "absent").length

@@ -1,8 +1,8 @@
-import { DataTable } from "@/components/molecules/data-table"
+import { SimpleTable } from "@/components/molecules/simple-table"
 import { AvatarCell } from "@/components/molecules/avatar-cell"
 import { EmptyState } from "@/components/molecules/empty-state"
 import { Badge } from "@/components/ui/badge"
-import { Award } from "lucide-react"
+import { Award } from "@/lib/icon"
 
 
 
@@ -18,7 +18,7 @@ export function ReportCardsTable({ summaries, uniqueStudents, loading }: { summa
     }
 
     return (
-        <DataTable<StudentSummary>
+        <SimpleTable<StudentSummary>
             title="Student Report Cards"
             description={`Summary for ${uniqueStudents} students`}
             columns={[

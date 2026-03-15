@@ -2,7 +2,7 @@
 
 import { connectDB } from "@/lib/db"
 import { UserModel } from "@/models/user"
-import { forgotPasswordSchema } from "../validators/auth"
+import { forgotPasswordSchema } from "@/schemas/auth"
 import { sendResetPasswordEmail } from "@/lib/email"
 import crypto from "crypto"
 import { ActionResult } from "./types"

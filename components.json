@@ -19,5 +19,10 @@
     "lib": "@/lib",
     "hooks": "@/hooks"
   },
-  "registries": {}
+  "registries": {
+    "@kibo-ui": {
+      "url": "https://www.kibo-ui.com/r/{name}.json"
+    },
+    "@magicui": "https://magicui.design/r/{name}"
+  }
 }

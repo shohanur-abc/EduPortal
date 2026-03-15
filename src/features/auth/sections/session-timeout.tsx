@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { ClockIcon } from "lucide-react";
+import { ClockIcon } from "@/lib/icon";
 import { Button } from "@/components/ui/button";
 import AuthCard from "../components/auth-card";
 import { ROUTES } from "@/lib/routes";

@@ -1,8 +1,8 @@
 import { FeeStatementStatCards } from "@/features/dashboard/fees/statements/@stats"
-import { Fee } from "@/services/fee.service"
+import { Fee as fees } from "@/services"
 
 export default async function FeeStatementsStatsPage() {
-    const records = await Fee.getAll()
+    const records = await fees.getAll()
 
     const totalFees = records.reduce((s, r) => s + r.amount, 0)
     const totalPaid = records.reduce((s, r) => s + r.paidAmount, 0)

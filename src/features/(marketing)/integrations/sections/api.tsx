@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, type LucideIcon } from 'lucide-react';
+import { ArrowRight, type LucideIcon } from '@/lib/icon';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -8,11 +8,9 @@ import { Section } from '@/components/section';
 // ============= MAIN COMPONENT =============
 export default function Api({ eyebrow, title, description, badge, codePreview, features, cta }: IApi) {
     return (
-        <Section containerClass="bg-muted/50">
-            <div className="grid grid-cols-1 @xl:grid-cols-2 gap-12 @xl:gap-16 items-center">
-                <ContentBlock eyebrow={eyebrow} title={title} description={description} badge={badge} features={features} cta={cta} />
-                <CodePreviewCard {...codePreview} />
-            </div>
+        <Section className="grid grid-cols-1 @xl:grid-cols-2 gap-12 @xl:gap-16 items-center" containerClass="bg-muted/50">
+            <ContentBlock eyebrow={eyebrow} title={title} description={description} badge={badge} features={features} cta={cta} />
+            <CodePreviewCard {...codePreview} />
         </Section>
     );
 }

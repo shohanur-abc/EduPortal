@@ -1,5 +1,5 @@
 import { MetricCard } from "@/components/molecules/metric-card"
-import { Trophy, TrendingUp, BookOpen, Users } from "lucide-react"
+import { Trophy, TrendingUp, BookOpen, Users } from "@/lib/icon"
 
 export function ResultKpi({ avgMarks, passRate, totalExams, totalStudents, loading }: ResultKpiProps & { loading?: boolean }) {
     return (

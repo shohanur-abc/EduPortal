@@ -1,4 +1,4 @@
-import { ShieldCheck, type LucideIcon } from 'lucide-react';
+import { ShieldCheck, type LucideIcon } from '@/lib/icon';
 import { Badge } from '@/components/ui/badge';
 import { Section } from '@/components/section';
 

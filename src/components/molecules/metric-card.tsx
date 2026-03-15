@@ -1,7 +1,7 @@
 import { cva, type VariantProps } from "class-variance-authority"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
-import type { LucideIcon } from "lucide-react"
+import type { LucideIcon } from "@/lib/icon"
 import { ReactNode } from "react"
 
 // ============= CVA VARIANTS =============

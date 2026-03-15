@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ShieldXIcon } from "lucide-react";
+import { ShieldXIcon } from "@/lib/icon";
 import AuthCard, { FooterLink } from "../components/auth-card";
 import { Button } from "@/components/ui/button";
 

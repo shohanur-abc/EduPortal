@@ -11,7 +11,7 @@ export function TabsNav({ tabs, className }: TabsNavProps) {
     const activeTab = tabs.find((t) => t.href === pathname)?.value ?? tabs[0]?.value
 
     return (
-        <Tabs value={activeTab} className={cn("w-full", className)}>
+        <Tabs value={activeTab} className={cn("w-full border-b ", className)}>
             <TabsList variant="line">
                 {tabs.map((tab) => (
                     <TabsTrigger key={tab.value} value={tab.value} asChild>

@@ -1,11 +1,11 @@
-import { DataTable } from "@/components/molecules/data-table"
+import { SimpleTable } from "@/components/molecules/simple-table"
 import { AvatarCell } from "@/components/molecules/avatar-cell"
 import { Badge } from "@/components/ui/badge"
 
 
 export function ClassesTable({ classes, loading }: { classes: ClassRow[]; loading?: boolean }) {
     return (
-        <DataTable<ClassRow>
+        <SimpleTable<ClassRow>
             title="Classes"
             description="Active classes this academic year"
             columns={[

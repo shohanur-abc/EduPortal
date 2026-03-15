@@ -1,4 +1,4 @@
-import { CheckCircle2, ArrowRight, type LucideIcon } from 'lucide-react';
+import { CheckCircle2, ArrowRight, type LucideIcon } from '@/lib/icon';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Section } from '@/components/section';

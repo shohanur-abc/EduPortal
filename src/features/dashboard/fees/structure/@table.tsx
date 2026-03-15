@@ -1,7 +1,7 @@
-import { DataTable } from "@/components/molecules/data-table"
+import { SimpleTable } from "@/components/molecules/simple-table"
 import { EmptyState } from "@/components/molecules/empty-state"
 import { Badge } from "@/components/ui/badge"
-import { Settings } from "lucide-react"
+import { Settings } from "@/lib/icon"
 
 
 export function FeeStructureTable({ structure, loading }: { structure: FeeStructureItem[], loading?: boolean }) {
@@ -16,7 +16,7 @@ export function FeeStructureTable({ structure, loading }: { structure: FeeStruct
     }
 
     return (
-        <DataTable<FeeStructureItem>
+        <SimpleTable<FeeStructureItem>
             title="Fee Structure Breakdown"
             description={`${structure.length} fee types configured`}
             columns={[

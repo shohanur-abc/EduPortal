@@ -1,39 +1,46 @@
 import { MetricCard } from "@/components/molecules/metric-card"
-import { Megaphone, Clock, AlertTriangle, Users } from "lucide-react"
+import { BellRing, Eye, Users, AlertTriangle } from "@/lib/icon"
+import type { NoticeStatusCount, NoticeAudienceCount, NoticeExpiringItem } from "./types"
 
-export function NoticeKpi({ activeCount, expiringCount, urgentCount, audienceCount, loading }: NoticeKpiProps & { loading?: boolean }) {
+export function NoticeKpi({ counts, audienceReach, expiringSoon, loading }: NoticeKpiProps & { loading?: boolean }) {
+    const published = counts.find((c) => c.status === "published")?.count ?? 0
+    const total = counts.reduce((a, c) => a + c.count, 0)
+    const publishRate = total > 0 ? Math.round((published / total) * 100) : 0
+    const totalReach = audienceReach.reduce((a, c) => a + c.count, 0)
+    const expiringCount = expiringSoon.length
+
     return (
         <>
             <MetricCard
+                title="Publish Rate"
+                value={`${publishRate}%`}
+                subtitle="Published vs total notices"
+                icon={BellRing}
+                variant={publishRate >= 50 ? "success" : "warning"}
+                loading={loading}
+            />
+            <MetricCard
                 title="Active Notices"
-                value={activeCount}
-                subtitle="Currently published"
-                icon={Megaphone}
-                variant="success"
+                value={published}
+                subtitle="Currently visible to users"
+                icon={Eye}
+                variant="info"
+                loading={loading}
+            />
+            <MetricCard
+                title="Audience Reach"
+                value={totalReach}
+                subtitle={`${audienceReach.length} audience segments`}
+                icon={Users}
+                variant="default"
                 loading={loading}
             />
             <MetricCard
                 title="Expiring Soon"
                 value={expiringCount}
-                subtitle="Within 7 days"
-                icon={Clock}
-                variant="warning"
-                loading={loading}
-            />
-            <MetricCard
-                title="Urgent Notices"
-                value={urgentCount}
-                subtitle="High/Urgent priority"
+                subtitle="Within next 7 days"
                 icon={AlertTriangle}
-                variant="danger"
-                loading={loading}
-            />
-            <MetricCard
-                title="Audience Reach"
-                value={audienceCount}
-                subtitle="Target groups"
-                icon={Users}
-                variant="info"
+                variant={expiringCount > 0 ? "danger" : "success"}
                 loading={loading}
             />
         </>
@@ -41,8 +48,7 @@ export function NoticeKpi({ activeCount, expiringCount, urgentCount, audienceCou
 }
 
 interface NoticeKpiProps {
-    activeCount: number
-    expiringCount: number
-    urgentCount: number
-    audienceCount: number
+    counts: NoticeStatusCount[]
+    audienceReach: NoticeAudienceCount[]
+    expiringSoon: NoticeExpiringItem[]
 }

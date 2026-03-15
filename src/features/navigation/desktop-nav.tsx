@@ -1,5 +1,6 @@
 
 import Link from 'next/link';
+import { ROUTES } from '@/lib/routes';
 import {
     NavigationMenu,
     NavigationMenuContent,
@@ -12,6 +13,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import UserMenu from './user-menu';
+import { AnimatedThemeToggler } from '@/components/ui/animated-theme-toggler';
 
 // ============= MAIN COMPONENT =============
 export default function DesktopNav({ routes, user }: IDesktopNav) {
@@ -30,11 +32,11 @@ export default function DesktopNav({ routes, user }: IDesktopNav) {
 
 // ============= CHILD COMPONENTS =============
 const BrandLogo = () => (
-    <Link href="/" className="flex items-center gap-2 font-bold text-xl text-primary hover:opacity-80 transition-opacity">
+    <Link href={ROUTES.marketing.home} className="flex items-center gap-2 font-bold text-xl text-primary hover:opacity-80 transition-opacity">
         <div className="bg-primary text-primary-foreground flex aspect-square size-7 items-center justify-center rounded-lg font-bold text-sm">
             E
         </div>
-        <span className="hidden sm:inline">EduPortal</span>
+        <span className="hidden sm:inline">EduPortal </span>
     </Link>
 );
 
@@ -83,15 +85,16 @@ const NavMenu = ({ routes }: { routes: IDesktopNav['routes'] }) => (
 
 const NavActions = ({ user }: { user?: IDesktopNav['user'] }) => (
     <div className="flex items-center gap-2">
+        <AnimatedThemeToggler className='mr-3' />
         {user ? (
             <UserMenu user={user} />
         ) : (
             <>
                 <Button variant="ghost" size="sm" asChild>
-                    <Link href="/auth/login">Login</Link>
+                    <Link href={ROUTES.auth.login}>Login</Link>
                 </Button>
                 <Button size="sm" asChild>
-                    <Link href="/auth/signup">Sign Up</Link>
+                    <Link href={ROUTES.auth.signup}>Sign Up</Link>
                 </Button>
             </>
         )}

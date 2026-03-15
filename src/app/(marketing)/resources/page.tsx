@@ -1,5 +1,5 @@
 import { type Metadata } from 'next';
-import { BookOpen, CalendarCheck, ClipboardList, CreditCard, FileSpreadsheet, GraduationCap, MessageSquare, Rocket, School, Settings, ShieldCheck, Users, } from 'lucide-react';
+import { BookOpen, CalendarCheck, ClipboardList, CreditCard, FileSpreadsheet, GraduationCap, MessageSquare, Rocket, School, Settings, ShieldCheck, Users, } from '@/lib/icon';
 import { Hero, Guides, Webinars, Templates, Videos, HelpCenter, Community, Newsletter, CaseStudiesPreview, CTA, } from '@/features/(marketing)/resources';
 
 import { ROUTES } from '@/lib/routes';
@@ -13,7 +13,7 @@ import { ROUTES } from '@/lib/routes';
 export const metadata: Metadata = {
     title: 'Resources — Guides, Webinars & Templates for School Management',
     description:
-        'Access free guides, webinars, downloadable templates, tutorial videos, and community forums to help your school get the most out of EduSync — the all-in-one school management platform.',
+        'Access free guides, webinars, downloadable templates, tutorial videos, and community forums to help your school get the most out of EduPortal — the all-in-one school management platform.',
     keywords: [
         'school management resources',
         'edtech guides',
@@ -25,15 +25,15 @@ export const metadata: Metadata = {
         'fee management templates',
     ],
     openGraph: {
-        title: 'Resources — Guides, Webinars & Templates | EduSync',
+        title: 'Resources — Guides, Webinars & Templates | EduPortal ',
         description:
-            'Everything you need to succeed with EduSync. Browse our library of guides, templates, recorded webinars, and tutorial videos for school administrators and educators.',
+            'Everything you need to succeed with EduPortal . Browse our library of guides, templates, recorded webinars, and tutorial videos for school administrators and educators.',
         url: '/resources',
         type: 'website',
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Resources — Guides, Webinars & Templates | EduSync',
+        title: 'Resources — Guides, Webinars & Templates | EduPortal ',
         description:
             'Browse our comprehensive resource library with guides, webinars, downloadable templates, and tutorial videos for school management.',
     },
@@ -47,7 +47,7 @@ export default function Page() {
                 badge="Resource Center"
                 title="Everything You Need to"
                 highlight="Succeed"
-                description="Explore our comprehensive library of guides, webinars, templates, and tutorials designed to help school administrators, teachers, and staff master EduSync and streamline school operations."
+                description="Explore our comprehensive library of guides, webinars, templates, and tutorials designed to help school administrators, teachers, and staff master EduPortal and streamline school operations."
                 searchPlaceholder="Search guides, templates, webinars..."
                 categories={[
                     { label: 'All Resources', active: true },
@@ -101,7 +101,7 @@ export default function Page() {
                         type: 'whitepaper',
                         title: 'School Data Security & FERPA Compliance',
                         description:
-                            'Understand how EduSync protects student data with encryption, role-based access, audit trails, and full FERPA/COPPA compliance — including a security audit checklist.',
+                            'Understand how EduPortal protects student data with encryption, role-based access, audit trails, and full FERPA/COPPA compliance — including a security audit checklist.',
                         pages: 18,
                         downloadUrl: '#',
                     },
@@ -124,14 +124,14 @@ export default function Page() {
                 webinars={[
                     {
                         status: 'upcoming',
-                        title: 'Streamlining Mid-Year Admissions with EduSync',
+                        title: 'Streamlining Mid-Year Admissions with EduPortal ',
                         description:
                             'Learn how to handle mid-year student enrollments, transfer records, and section assignments without disrupting ongoing operations.',
                         date: 'March 15, 2026 — 2:00 PM EST',
                         duration: '60 min',
                         speaker: {
                             name: 'Dr. Priya Sharma',
-                            role: 'Head of Product, EduSync',
+                            role: 'Head of Product, EduPortal ',
                             avatar: '/placeholder.svg',
                         },
                         attendees: 342,
@@ -169,7 +169,7 @@ export default function Page() {
                     },
                     {
                         status: 'recorded',
-                        title: 'Getting Started with EduSync: Complete Onboarding',
+                        title: 'Getting Started with EduPortal : Complete Onboarding',
                         description:
                             'A beginner-friendly walkthrough covering initial school setup, academic year configuration, class creation, staff onboarding, and student data import.',
                         date: 'December 5, 2025',
@@ -186,7 +186,7 @@ export default function Page() {
                         status: 'recorded',
                         title: 'Data-Driven Decision Making for School Principals',
                         description:
-                            'How to leverage EduSync analytics dashboards for enrollment trends, attendance patterns, academic performance insights, and resource allocation.',
+                            'How to leverage EduPortal analytics dashboards for enrollment trends, attendance patterns, academic performance insights, and resource allocation.',
                         date: 'November 12, 2025',
                         duration: '55 min',
                         speaker: {
@@ -300,13 +300,13 @@ export default function Page() {
             <Videos
                 eyebrow="Tutorial Videos"
                 title="Watch & Learn"
-                subtitle="Short, focused video tutorials that walk you through every feature of EduSync. Perfect for quick onboarding and ongoing reference."
+                subtitle="Short, focused video tutorials that walk you through every feature of EduPortal . Perfect for quick onboarding and ongoing reference."
                 videos={[
                     {
                         thumbnail: 'https://i.ytimg.com/vi/dQJUDYCiLMs/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDCaZsjSwIvJUUf5tFtX_jgUAoSJw',
                         title: 'Dashboard Overview: Your School at a Glance',
                         description:
-                            'A quick tour of the EduSync dashboard showing real-time enrollment stats, attendance summaries, fee collection status, and upcoming events.',
+                            'A quick tour of the EduPortal dashboard showing real-time enrollment stats, attendance summaries, fee collection status, and upcoming events.',
                         duration: '2:16',
                         category: 'Getting Started',
                         url: 'https://www.youtube.com/watch?v=dQJUDYCiLMs&pp=ygUrRGFzaGJvYXJkIE92ZXJ2aWV3OiBZb3VyIFNjaG9vbCBhdCBhIEdsYW5jZQ%3D%3D',
@@ -476,8 +476,8 @@ export default function Page() {
             {/* TODO: Fetch case studies dynamically from API */}
             <CaseStudiesPreview
                 eyebrow="Success Stories"
-                title="See How Schools Thrive with EduPortal"
-                subtitle="Read real-world case studies from schools that transformed their administration, improved parent engagement, and saved hundreds of hours with EduPortal."
+                title="See How Schools Thrive with EduPortal "
+                subtitle="Read real-world case studies from schools that transformed their administration, improved parent engagement, and saved hundreds of hours with EduPortal ."
                 studies={[
                     {
                         logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSms3UPCR3Bc-__4Xl5EyeNF_AHmyh5l7R_bw&s',

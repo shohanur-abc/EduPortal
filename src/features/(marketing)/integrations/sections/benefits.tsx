@@ -1,28 +1,20 @@
-import { type LucideIcon } from 'lucide-react';
+import { type LucideIcon } from '@/lib/icon';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function Benefits({ eyebrow, title, subtitle, benefits }: IBenefits) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
-            <Grid benefits={benefits} />
+        <Section cols={3} eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {benefits.map((benefit, i) => (
+                <BenefitCard key={i} {...benefit} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const Grid = ({ benefits }: { benefits: IBenefitItem[] }) => (
-    <div className="grid grid-cols-1 @xl:grid-cols-2 @5xl:grid-cols-3 gap-6">
-        {benefits.map((benefit, i) => (
-            <BenefitCard key={i} {...benefit} />
-        ))}
-    </div>
-);
-
-const BenefitCard = ({ icon: Icon, title, description }: IBenefitItem) => (
+const BenefitCard = ({ icon: Icon, title, description }: IBenefits['benefits'][0]) => (
     <Card className="group hover:border-primary/50 hover:shadow-md transition-all text-center">
         <CardHeader className="items-center justify-center">
             <IconBox icon={Icon} />
@@ -41,15 +33,13 @@ const IconBox = ({ icon: Icon }: { icon: LucideIcon }) => (
 );
 
 // ============= TYPES =============
-interface IBenefitItem {
-    icon: LucideIcon;
-    title: string;
-    description: string;
-}
-
 interface IBenefits {
     eyebrow: string;
     title: string;
     subtitle: string;
-    benefits: IBenefitItem[];
+    benefits: {
+        icon: LucideIcon;
+        title: string;
+        description: string;
+    }[];
 }

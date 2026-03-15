@@ -13,7 +13,7 @@ export default function Testimonial({ quote, author, role, school, avatar, logo 
 
 // ============= CHILD COMPONENTS =============
 const TestimonialCard = ({ quote, author, role, school, avatar, logo }: ITestimonial) => (
-    <Card className="max-w-4xl mx-auto border-2">
+    <Card className="max-w-4xl mx-auto border-2 py-0">
         <CardContent className="p-8 @lg:p-12 space-y-8">
             <QuoteIcon />
             <QuoteText text={quote} />

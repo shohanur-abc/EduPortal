@@ -1,30 +1,22 @@
-import { Calendar, Clock, Play, Users } from 'lucide-react';
+import { Calendar, Clock, Play, Users } from '@/lib/icon';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function Webinars({ eyebrow, title, subtitle, webinars }: IWebinars) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
-            <Grid webinars={webinars} />
+        <Section cols={3} eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {webinars.map((webinar, i) => (
+                <WebinarCard key={i} {...webinar} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const Grid = ({ webinars }: { webinars: IWebinarItem[] }) => (
-    <div className="grid grid-cols-1 @sm:grid-cols-2 @xl:grid-cols-3 gap-6">
-        {webinars.map((webinar, i) => (
-            <WebinarCard key={i} {...webinar} />
-        ))}
-    </div>
-);
-
 const WebinarCard = ({ status, title, description, date, duration, speaker, attendees, actionUrl }: IWebinarItem) => (
     <Card className="group hover:border-primary/50 hover:shadow-md transition-all flex flex-col">
         <CardHeader className="space-y-3">

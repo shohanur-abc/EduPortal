@@ -1,13 +1,11 @@
-import type { LucideIcon } from 'lucide-react';
+import type { LucideIcon } from '@/lib/icon';
 import { Card, CardContent } from '@/components/ui/card';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function DemoProcess({ eyebrow, title, subtitle, steps }: IDemoProcess) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+        <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
             <StepsList steps={steps} />
         </Section>
     );

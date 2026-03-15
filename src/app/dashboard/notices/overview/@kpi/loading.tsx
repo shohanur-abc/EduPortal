@@ -1,4 +1,12 @@
 import { NoticeKpi } from "@/features/dashboard/notices/overview/@kpi"
-export default function Loading() {
-    return <NoticeKpi activeCount={33} expiringCount={3} urgentCount={3} audienceCount={3} loading={true} />
+
+export default function KpiLoading() {
+    return (
+        <NoticeKpi
+            counts={[{ status: "published", count: 30 }, { status: "draft", count: 10 }]}
+            audienceReach={[{ audience: "all", count: 40 }]}
+            expiringSoon={[]}
+            loading={true}
+        />
+    )
 }

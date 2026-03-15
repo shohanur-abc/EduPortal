@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import SessionTimeoutSection from "@/features/auth/sections/session-timeout";
 
 export const metadata: Metadata = {
-    title: "Session Expired | EduPortal",
+    title: "Session Expired | EduPortal ",
     description: "Your session has expired",
 };
 

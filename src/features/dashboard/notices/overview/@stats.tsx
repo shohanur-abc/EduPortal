@@ -1,48 +1,46 @@
 import { StatCard } from "@/components/molecules/stat-card"
-import { Bell, Send, FileText, Archive } from "lucide-react"
+import { FileText, Send, Archive, FilePen } from "@/lib/icon"
+import type { NoticeStatusCount } from "./types"
 
+export function NoticeStatCards({ counts, loading }: { counts: NoticeStatusCount[]; loading?: boolean }) {
+    const get = (s: string) => counts.find((c) => c.status === s)?.count ?? 0
+    const total = counts.reduce((a, c) => a + c.count, 0)
+    const pct = (n: number) => (total > 0 ? Math.round((n / total) * 100) : 0)
 
-export function NoticeStatCards({ total, published, drafts, archived, loading = false }: NoticeStats & { loading?: boolean }) {
     return (
         <>
             <StatCard
                 title="Total Notices"
                 value={total}
-                icon={Bell}
-                footer="All notices"
+                icon={FileText}
+                variant="info"
+                footer={<>All notices in system</>}
                 loading={loading}
             />
             <StatCard
                 title="Published"
-                value={published}
+                value={get("published")}
                 icon={Send}
                 variant="success"
-                footer="Currently visible"
+                footer={<><span data-loading={loading}>{pct(get("published"))}</span>% of total</>}
                 loading={loading}
             />
             <StatCard
-                title="Drafts"
-                value={drafts}
-                icon={FileText}
+                title="Draft"
+                value={get("draft")}
+                icon={FilePen}
                 variant="warning"
-                footer="Awaiting publish"
+                footer={<><span data-loading={loading}>{pct(get("draft"))}</span>% of total</>}
                 loading={loading}
             />
             <StatCard
                 title="Archived"
-                value={archived}
+                value={get("archived")}
                 icon={Archive}
-                variant="info"
-                footer="Past notices"
+                variant="default"
+                footer={<><span data-loading={loading}>{pct(get("archived"))}</span>% of total</>}
                 loading={loading}
             />
         </>
     )
-}
-// =========== Types ============
-interface NoticeStats {
-    total: number
-    published: number
-    drafts: number
-    archived: number
 }

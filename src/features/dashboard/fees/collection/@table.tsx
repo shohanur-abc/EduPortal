@@ -2,18 +2,18 @@
 
 import * as React from "react"
 import { type ColumnDef } from "@tanstack/react-table"
-import { AdvancedDataTable, SortableHeader } from "@/components/molecules/advanced-data-table"
+import { DataTable, SortableHeader } from "@/components/molecules/table"
 import { DropdownActions } from "@/components/molecules/dropdown-actions"
 import { ConfirmDialog } from "@/components/molecules/confirm-dialog"
 import { MutationFormSheet } from "@/components/molecules/mutation-form-sheet"
 import { StatusBadge } from "@/components/molecules/status-badge"
-import { FormInput } from "@/components/molecules/input"
-import { Select } from "@/components/molecules/select"
+import { FormInput } from "@/components/molecules"
+import { Select } from "@/components/molecules"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { feeSchema, feePaymentSchema, type FeeFormData, type FeePaymentData } from "@/features/dashboard/validators"
-import { createFee, recordFeePayment, waiveFee, deleteFee } from "@/features/dashboard/actions/mutations"
-import { Plus, Trash2, CreditCard, Ban, DollarSign } from "lucide-react"
+import { feeSchema, feePaymentSchema, type FeeFormData, type FeePaymentData } from "@/schemas/dashboard"
+import { createFee, recordFeePayment, waiveFee, deleteFee } from "@/services/fees"
+import { Plus, Trash2, CreditCard, Ban, DollarSign } from "@/lib/icon"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
 
@@ -181,7 +181,7 @@ export function FeesCrudTable({ records, students, loading }: { records: FeeReco
 
     return (
         <>
-            <AdvancedDataTable
+            <DataTable
                 title="Fee Records"
                 description="Manage fee records — create, collect payment, waive, or delete"
                 columns={columns}

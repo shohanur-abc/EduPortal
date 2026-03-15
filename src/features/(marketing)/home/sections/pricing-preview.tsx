@@ -1,31 +1,23 @@
-import { CheckCircle2, ArrowRight } from 'lucide-react';
+import { CheckCircle2, ArrowRight } from '@/lib/icon';
 import Link from 'next/link';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import Heading from '@/components/heading';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function Pricing({ eyebrow, title, subtitle, plans }: IPricing) {
     return (
-        <Section>
-            <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
-            <PlansGrid plans={plans} />
+        <Section cols={3} eyebrow={eyebrow} title={title} subtitle={subtitle}>
+            {plans.map((plan, i) => (
+                <PlanCard key={i} {...plan} />
+            ))}
         </Section>
     );
 }
 
 // ============= CHILD COMPONENTS =============
-const PlansGrid = ({ plans }: { plans: IPricing['plans'] }) => (
-    <div className="grid grid-cols-1 @md:grid-cols-2 @3xl:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {plans.map((plan, i) => (
-            <PlanCard key={i} {...plan} />
-        ))}
-    </div>
-);
-
 const PlanCard = ({ name, description, price, period, features, cta, popular }: IPricing['plans'][number]) => (
     <Card className={`relative flex flex-col ${popular ? 'border-primary shadow-lg scale-[1.02]' : ''}`}>
         {popular && (

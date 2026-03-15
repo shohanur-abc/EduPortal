@@ -1,24 +1,25 @@
 "use client"
 
-import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts"
+import { Bar, BarChart, XAxis, YAxis, CartesianGrid } from "recharts"
 import { ChartCard, ChartTooltip, ChartTooltipContent, type ChartConfig } from "@/components/molecules/chart-card"
+import type { NoticePublishTrend } from "./types"
 
-const config = {
-    count: { label: "Total", color: "var(--chart-3)" },
+const trendConfig = {
+    count: { label: "Total", color: "var(--chart-2)" },
     published: { label: "Published", color: "var(--chart-1)" },
 } satisfies ChartConfig
 
-export function NoticePublishTrendChart({ data }: { data: { month: string; count: number; published: number }[] }) {
+export function NoticePublishTrendChart({ data }: { data: NoticePublishTrend[] }) {
     return (
-        <ChartCard title="Publish Trend" description="Notices published over time" config={config}>
-            <AreaChart data={data} className="-ml-5">
-                <CartesianGrid vertical={false} strokeDasharray="3 3" />
-                <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} />
+        <ChartCard title="Publish Trend" description="Monthly notice publishing activity" config={trendConfig}>
+            <BarChart data={data} accessibilityLayer>
+                <CartesianGrid vertical={false} />
+                <XAxis dataKey="month" tickLine={false} tickMargin={10} axisLine={false} />
                 <YAxis tickLine={false} axisLine={false} />
                 <ChartTooltip content={<ChartTooltipContent />} />
-                <Area type="monotone" dataKey="count" stroke="var(--chart-3)" fill="var(--chart-3)" fillOpacity={0.1} strokeWidth={2} />
-                <Area type="monotone" dataKey="published" stroke="var(--chart-1)" fill="var(--chart-1)" fillOpacity={0.1} strokeWidth={2} />
-            </AreaChart>
+                <Bar dataKey="count" fill="var(--chart-2)" radius={[4, 4, 0, 0]} name="Total" />
+                <Bar dataKey="published" fill="var(--chart-1)" radius={[4, 4, 0, 0]} name="Published" />
+            </BarChart>
         </ChartCard>
     )
 }

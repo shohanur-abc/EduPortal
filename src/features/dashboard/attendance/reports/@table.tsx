@@ -1,8 +1,8 @@
-import { DataTable } from "@/components/molecules/data-table"
+import { SimpleTable } from "@/components/molecules/simple-table"
 import { StatusBadge } from "@/components/molecules/status-badge"
 import { AvatarCell } from "@/components/molecules/avatar-cell"
 import { EmptyState } from "@/components/molecules/empty-state"
-import { FileBarChart } from "lucide-react"
+import { FileBarChart } from "@/lib/icon"
 
 
 export function AttendanceReportTable({ records, loading }: { records: AttendanceRecord[], loading?: boolean }) {
@@ -17,7 +17,7 @@ export function AttendanceReportTable({ records, loading }: { records: Attendanc
     }
 
     return (
-        <DataTable<AttendanceRecord>
+        <SimpleTable<AttendanceRecord>
             title="Attendance Report"
             description={`Showing ${records.length} attendance records across all classes`}
             columns={[

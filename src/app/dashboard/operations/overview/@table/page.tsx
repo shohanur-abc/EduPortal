@@ -1,7 +1,7 @@
 import { ClassesTable } from "@/features/dashboard/operations/overview/@table"
-import { Class } from "@/services/class.service"
+import { Class } from "@/services"
 
 export default async function OperationTablePage() {
-    const classes = await Class.getActive()
-    return <ClassesTable classes={classes} />
+    const data = await Class.getActive()
+    return <ClassesTable classes={data} />
 }

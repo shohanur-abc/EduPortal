@@ -19,7 +19,7 @@ export const proxy = auth(function proxy(req) {
 
     // Redirect to dashboard if accessing auth pages while logged in
     if (authRoutes.some((route) => pathname.startsWith(route)) && isLoggedIn) {
-        return NextResponse.redirect(new URL("/dashboard", req.url))
+        return NextResponse.redirect(new URL(ROUTES.dashboard.home, req.url))
     }
 
     return NextResponse.next()

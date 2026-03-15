@@ -1,5 +1,5 @@
 import { FeeStatCards } from "@/features/dashboard/fees/overview/@stats"
-import { Fee } from "@/services/fee.service"
+import { Fee } from "@/services"
 
 export default async function FeeStatsPage() {
     const statusBreakdown = await Fee.statusBreakdown()
