@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Signup from "@/features/auth/sections/signup";
 import { ROUTES } from "@/lib/routes";
 import SignupWizard from "@/features/auth/sections/signup-wizard";
 
