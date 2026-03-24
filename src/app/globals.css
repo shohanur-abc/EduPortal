@@ -47,6 +47,12 @@
   --radius-4xl: calc(var(--radius) + 16px);
   --animate-shine: shine var(--duration) infinite linear;
 
+    /* attendance colors */
+  --color-present: var(--present);
+  --color-absent: var(--absent);
+  --color-late: var(--late);
+  --color-excused: var(--excused);
+
   @keyframes shine {
     0% {
       background-position: 0% 0%;
@@ -144,11 +150,10 @@
   --sidebar-border: oklch(0.88 0.01 240);
   --sidebar-ring: oklch(0.55 0.18 250);
 
-  /* attendance colors */
-  --color-present: oklch(0.65 0.22 145);
-  --color-absent: oklch(0.62 0.23 25);
-  --color-late: oklch(0.82 0.19 85);
-  --color-excused: oklch(0.72 0.15 260);
+  --present: oklch(0.65 0.18 145);
+  --absent: oklch(0.62 0.19 25);
+  --late: oklch(0.75 0.17 85);
+  --excused: oklch(0.70 0.13 240);
 }
 
 .dark {
@@ -161,8 +166,8 @@
   --popover: oklch(0.22 0.02 240);
   --popover-foreground: oklch(0.96 0.01 240);
 
-  --primary: oklch(0.65 0.19 250);
-  --primary-foreground: oklch(0.12 0.02 240);
+  --primary: oklch(0.55 0.18 250);
+  --primary-foreground: oklch(0.98 0.01 240);
 
   --secondary: oklch(0.27 0.02 240);
   --secondary-foreground: oklch(0.96 0.01 240);
@@ -196,6 +201,11 @@
 
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.65 0.19 250);
+
+  --present: oklch(0.70 0.18 145);
+  --absent: oklch(0.68 0.19 25);
+  --late: oklch(0.78 0.17 85);
+  --excused: oklch(0.75 0.13 240);
 }
 @layer base {
   * {
