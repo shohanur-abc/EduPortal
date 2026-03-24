@@ -34,11 +34,6 @@ function Button({
     loadingText,
     // Link — automatically enabled when href is provided
     href,
-    target,
-    rel,
-    prefetch,
-    replace,
-    scroll,
     // Hold — automatically enabled when holdDuration is provided
     holdDuration,
     holdText,
@@ -53,7 +48,7 @@ function Button({
     tooltipAlign = "center",
     tooltipDelayDuration = 300,
     // Ripple
-    ripple = true,
+    ripple = false,
     // Badge
     badge,
     // Styling
@@ -64,7 +59,7 @@ function Button({
     className,
     onClick,
     type = "button",
-    ...props
+    ...restProps
 }: ExtendedButtonProps) {
     const isLink = !!href
     const holdEnabled = holdDuration !== undefined
@@ -90,12 +85,14 @@ function Button({
     const resolvedSize = iconOnly ? resolveIconSize(size) : size
 
     // ── Handlers ──────────────────────────────────────────────────────────────
-    function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
-        if (ripple) addRipple(e)
+    function handleClick(e: React.MouseEvent<HTMLElement>) {
+        if (ripple) addRipple(e as React.MouseEvent<HTMLButtonElement>)
         // Hold mode: block regular click; action fires only via onHold after hold completes
         if (holdEnabled) return
         if (delayEnabled) startDelay()
-        onClick?.(e)
+        if (onClick) {
+            onClick(e as React.MouseEvent<HTMLButtonElement>)
+        }
     }
 
     // ── Label resolution ──────────────────────────────────────────────────────
@@ -144,13 +141,11 @@ function Button({
 
     // ── Button props ──────────────────────────────────────────────────────────
     // Spread user props first so our handlers always win when there's a conflict
-    const btnProps = {
-        ...props,
+    const commonProps = {
         "data-slot": "button",
         variant,
         size: resolvedSize,
         disabled: isActuallyDisabled,
-        type: isLink ? undefined : type,
         "aria-busy": loading || undefined,
         className: cn("relative overflow-hidden", cns?.root, className),
         onMouseDown: holdEnabled ? () => startHold() : undefined,
@@ -159,24 +154,31 @@ function Button({
         onTouchStart: holdEnabled ? () => startHold() : undefined,
         onTouchEnd: holdEnabled ? () => cancelHold() : undefined,
         onClick: handleClick,
-    }
+    } as React.ComponentProps<typeof BaseButton>
+
+    // Only use restProps for button mode, not for link mode
+    const buttonModeProps = !isLink ? (restProps as React.ComponentProps<'button'>) : {}
+
+    const buttonProps = {
+        ...buttonModeProps,
+        ...commonProps,
+        type: !isLink ? (type as "button" | "submit" | "reset") : undefined,
+    } as React.ComponentProps<typeof BaseButton>
+
+    const linkProps = {
+        ...commonProps,
+        asChild: true,
+    } as React.ComponentProps<typeof BaseButton> & { asChild: true }
 
     // ── Core button/link element ──────────────────────────────────────────────
-    const buttonEl = isLink ? (
-        <BaseButton {...btnProps} asChild>
-            <Link
-                href={href}
-                target={target}
-                rel={rel ?? (target === "_blank" ? "noopener noreferrer" : undefined)}
-                prefetch={prefetch}
-                replace={replace}
-                scroll={scroll}
-            >
+    const buttonEl = isLink && href ? (
+        <BaseButton {...linkProps}>
+            <Link href={href}>
                 {content}
             </Link>
         </BaseButton>
     ) : (
-        <BaseButton {...btnProps}>{content}</BaseButton>
+        <BaseButton {...buttonProps}>{content}</BaseButton>
     )
 
     // ── Badge wrapper — lives outside button so it isn't clipped ─────────────
@@ -186,10 +188,7 @@ function Button({
                 {buttonEl}
                 <span
                     aria-label={`Badge: ${badge}`}
-                    className={cn(
-                        "pointer-events-none absolute -right-1.5 -top-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-destructive px-1 text-[10px] font-semibold leading-none text-destructive-foreground",
-                        cns?.badge
-                    )}
+                    className={cn("pointer-events-none absolute -right-1.5 -top-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-destructive px-1 text-[10px] font-semibold leading-none text-destructive-foreground", cns?.badge)}
                 >
                     {badge}
                 </span>

@@ -1,5 +1,5 @@
 import { cva, type VariantProps } from "class-variance-authority"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
 import type { LucideIcon } from "@/lib/icon"
 import { ReactNode } from "react"
@@ -22,13 +22,15 @@ const metricVariants = cva(
 )
 
 // ============= COMPONENT =============
-export function MetricCard({ title, value, subtitle, icon: Icon, variant, footer, className, loading }: MetricCardProps) {
+export function MetricCard({ title, value, subtitle, icon: Icon, variant, footer, className, classNames: cns, loading }: MetricCardProps) {
     return (
-        <Card className={cn("@container/card gap-0", className)}>
-            <CardHeader className="pb-2">
-                <CardDescription className="text-xs">{title}</CardDescription>
-            </CardHeader>
-            <CardContent>
+        <Card className={cn("@container/card gap-0", className, cns?.card)}>
+            {title && <CardHeader className={cn("pb-2", cns?.header)}>
+                <CardTitle className={cn("text-sm font-medium uppercase", cns?.title)} data-loading={loading}>
+                    {title}
+                </CardTitle>
+            </CardHeader>}
+            <CardContent className={cns?.cardContent}>
                 <div className="flex items-center gap-3">
                     {Icon && (
                         <div className={metricVariants({ variant })}>
@@ -36,11 +38,17 @@ export function MetricCard({ title, value, subtitle, icon: Icon, variant, footer
                         </div>
                     )}
                     <div>
-                        <CardTitle className="text-2xl font-bold tabular-nums" data-loading={loading}>{value}</CardTitle>
-                        {subtitle && <p className="text-xs text-muted-foreground" data-loading={loading}>{subtitle}</p>}
+                        <CardTitle className={cn("text-2xl font-bold tabular-nums", cns?.title)} data-loading={loading}>
+                            {value}
+                        </CardTitle>
+                        {subtitle && <p className={cn("text-xs text-muted-foreground", cns?.subtitle)} data-loading={loading}>
+                            {subtitle}
+                        </p>}
                     </div>
                 </div>
-                {footer && <div className="mt-3 text-xs text-muted-foreground border-t pt-2">{footer}</div>}
+                {footer && <div className={cn("mt-3 text-xs text-muted-foreground border-t pt-2", cns?.footer)}>
+                    {footer}
+                </div>}
             </CardContent>
         </Card>
     )
@@ -48,11 +56,21 @@ export function MetricCard({ title, value, subtitle, icon: Icon, variant, footer
 
 // ============= TYPES =============
 interface MetricCardProps extends VariantProps<typeof metricVariants> {
-    title: string
+    title?: string
     value: string | number
     subtitle?: string
     icon?: LucideIcon
     footer?: ReactNode
     className?: string
     loading?: boolean
+    classNames?: {
+        card?: string
+        cardContent?: string
+        header?: string
+        title?: string
+        subtitle?: string
+        description?: string
+        content?: string
+        footer?: string
+    }
 }
