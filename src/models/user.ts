@@ -53,6 +53,44 @@ const userSchema = new Schema(
             enum: ["admin", "principal", "teacher", "student", "parent"],
             default: "student",
         },
+        phone: {
+            type: String,
+            trim: true,
+            default: "",
+        },
+        address: {
+            type: String,
+            trim: true,
+            default: "",
+        },
+        status: {
+            type: String,
+            enum: ["active", "inactive"],
+            default: "active",
+        },
+        permissionLevel: {
+            type: String,
+            enum: ["super", "standard"],
+            default: "standard",
+        },
+        schoolName: {
+            type: String,
+            trim: true,
+            default: "",
+        },
+        relation: {
+            type: String,
+            enum: ["father", "mother", "guardian"],
+            default: "guardian",
+        },
+        children: {
+            type: [String],
+            default: [],
+        },
+        joinedDate: {
+            type: Date,
+            default: null,
+        },
         gender: {
             type: String,
             enum: ["male", "female", "other"],
@@ -161,7 +199,6 @@ userSchema.pre("save", async function () {
 })
 
 // ============= INDEXES =============
-userSchema.index({ email: 1 })
 userSchema.index({ resetPasswordToken: 1 })
 userSchema.index({ emailVerificationToken: 1 })
 userSchema.index({ "accounts.provider": 1, "accounts.providerAccountId": 1 })

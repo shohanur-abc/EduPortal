@@ -1,5 +1,5 @@
-import "server-only"
+import "server-only" // Ensure this module is only used in server components
 
 export * from "./schemas";
-export * from "./models";
+export { db } from "./models";
 export * from "./constants";

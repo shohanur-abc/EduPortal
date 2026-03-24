@@ -5,6 +5,8 @@ export * from "./fee";
 export * from "./message";
 export * from "./notice";
 export * from "./result";
+export * from "./staff-attendance";
 export * from "./student";
 export * from "./teacher";
+export * from "./expense";
 export * from "./user";
