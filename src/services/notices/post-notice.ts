@@ -3,9 +3,8 @@
 import { revalidatePath } from "next/cache"
 import { db, ROUTES, schemas } from "@/fatman"
 import { error, success } from "@/fatman/utils"
-import { auth } from "@/lib/auth"
 import { ActionResult } from "@/types/response"
-
+import { auth } from "@/lib/auth"
 export async function postOne(raw: unknown): Promise<ActionResult> {
     const parsed = schemas.notice.safeParse(raw)
     if (!parsed.success) return error(parsed.error.issues[0].message)

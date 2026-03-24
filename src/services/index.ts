@@ -10,3 +10,4 @@ export * as Dashboard from './dashboard'
 export * as Report from './reports'
 export * as Message from './messages'
 export * as Auth from './auth'
+export * as Expense from "./expenses";

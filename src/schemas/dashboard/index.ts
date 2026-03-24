@@ -8,3 +8,4 @@ export * from "./class"
 export * from "./user-role"
 export * from "./message"
 export * from "./conversation"
+export * from "./expense";

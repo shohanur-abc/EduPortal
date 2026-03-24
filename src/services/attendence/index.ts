@@ -10,4 +10,6 @@ export * from './get-today-stats'
 export * from './post-attendance'
 export * from './patch-attendance'
 export * from './delete-attendance'
+export * from './post-staff-attendance'
+export * from './get-matrix'
 

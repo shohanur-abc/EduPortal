@@ -17,7 +17,13 @@
             ],
             "@/utils/*": [
                 "@never/path"
-            ]
+            ],
+            // "@/models": [
+            //     "@never/path"
+            // ],
+            // "@/models/*": [
+            //     "@never/path"
+            // ]
         }
     },
     "exclude": [
