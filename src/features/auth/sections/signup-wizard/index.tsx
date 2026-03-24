@@ -7,9 +7,8 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { Camera, Cake, Sparkles, BookOpen, Shield, Users, ChevronLeft, ChevronRight, } from "lucide-react";
 import { Form } from "@/components/molecules/form";
-import { Button } from "@/components/ui/button";
+import { Button, AvatarMolecule } from "@/components/molecules";
 import { Spinner } from "@/components/ui/spinner";
-import { Avatar, AvatarFallback, } from "@/components/ui/avatar";
 import { ROUTES } from "@/lib/routes";
 import { signup } from "@/services/auth";
 import { cn } from "@/lib/utils";
@@ -51,7 +50,6 @@ export default function SignupWizard({ config }: ISignupWizard) {
             return;
         }
         if (step === 2) {
-            console.log(form.formState.errors);
             const ok = await form.trigger(PROFILE_FIELDS);
             if (!ok) return;
             await handleSubmit();
@@ -62,7 +60,6 @@ export default function SignupWizard({ config }: ISignupWizard) {
 
     const handleSubmit = async () => {
         const values = form.getValues();
-        console.log(values);
         const result = await signup({
             email: values.email,
             password: values.password,
@@ -165,11 +162,7 @@ const InfoPanel = ({ step }: { step: number }) => {
 const SocialProofAvatars = ({ initials }: { initials: string[] }) => (
     <div className="flex -space-x-2">
         {initials.map((init, i) => (
-            <Avatar key={i} className="size-8 border-2 border-background ring-1 ring-border">
-                <AvatarFallback className={cn("text-xs font-semibold", AVATAR_COLORS[i % AVATAR_COLORS.length])}>
-                    {init}
-                </AvatarFallback>
-            </Avatar>
+            <AvatarMolecule key={i} fallback={init} className="size-8 border-2 border-background ring-1 ring-border" classNames={{ fallback: cn("text-xs font-semibold", AVATAR_COLORS[i % AVATAR_COLORS.length]) }} />
         ))}
     </div>
 );
@@ -192,16 +185,20 @@ const StepProgress = ({ current, total }: { current: number; total: number }) =>
 
 const WizardNav = ({ step, total, isSubmitting, onBack, onNext }: WizardNavProps) => (
     <div className="flex items-center justify-between px-8 py-4 border-t">
-        <Button variant="ghost" onClick={onBack} className="gap-1.5">
-            <ChevronLeft className="size-4" /> Previous
+        <Button variant="ghost" onClick={onBack} className="gap-1.5" leftIcon={<ChevronLeft className="size-4" />}>
+            Previous
         </Button>
         <span className="text-xs text-muted-foreground">
             Step {step + 1} of {total}
         </span>
-        <Button onClick={onNext} disabled={isSubmitting} className="gap-1.5">
-            {isSubmitting && <Spinner className="size-4" />}
+        <Button
+            onClick={onNext}
+            disabled={isSubmitting}
+            className="gap-1.5"
+            leftIcon={isSubmitting ? <Spinner className="size-4" /> : undefined}
+            rightIcon={step < total - 1 ? <ChevronRight className="size-4" /> : undefined}
+        >
             {step === total - 1 ? "Create Account" : "Next"}
-            {step < total - 1 && <ChevronRight className="size-4" />}
         </Button>
     </div>
 );

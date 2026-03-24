@@ -1,7 +1,6 @@
-import Link from "next/link";
 import { ShieldXIcon } from "@/lib/icon";
 import AuthCard, { FooterLink } from "../components/auth-card";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/molecules";
 
 // ============= MAIN COMPONENT =============
 export default function Unauthorized({ header, message, actions, footer }: IUnauthorizedSection) {
@@ -36,9 +35,7 @@ const Message = ({ text }: { text: string }) => (
 const Actions = ({ actions }: { actions: IUnauthorizedSection["actions"] }) => (
     <div className="flex flex-col gap-2">
         {actions.map(({ href, label, variant }, i) => (
-            <Button key={i} asChild variant={variant ?? "default"} className="w-full">
-                <Link href={href}>{label}</Link>
-            </Button>
+            <Button key={i} variant={variant ?? "default"} className="w-full" href={href}>{label}            </Button>
         ))}
     </div>
 );

@@ -1,7 +1,6 @@
-import Link from "next/link";
 import { SmartphoneIcon, MailIcon, ShieldCheckIcon } from "@/lib/icon";
 import AuthCard from "../components/auth-card";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/molecules";
 
 // ============= MAIN COMPONENT =============
 export default function MfaSetup({ header, options, comingSoonMessage, footer }: IMfaSetupSection) {
@@ -56,9 +55,7 @@ const MfaOptionCard = ({ icon, title, description, disabled }: {
 );
 
 const FooterSkipButton = ({ href, label }: { href: string; label: string }) => (
-    <Button asChild variant="ghost">
-        <Link href={href}>{label}</Link>
-    </Button>
+    <Button variant="ghost" href={href}>{label}    </Button>
 );
 
 // ============= HELPERS =============

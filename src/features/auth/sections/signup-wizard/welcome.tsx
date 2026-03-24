@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/molecules";
 import { ROUTES } from "@/lib/routes";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -15,9 +15,9 @@ export const WelcomePanel = ({ config, onStart }: { config: ISignupWizard["confi
             <p className="text-sm text-muted-foreground text-center">
                 Ready to join? It only takes a few minutes.
             </p>
-            <Button size="lg" className="w-full gap-2" onClick={onStart}>
-                Get Started <ArrowRight className="size-4" />
-            </Button>
+            <Button size="lg" className="w-full gap-2" onClick={onStart} rightIcon={<ArrowRight className="size-4" />}>
+Get Started
+</Button>
             <p className="text-center text-sm text-muted-foreground">
                 Already have an account?{" "}
                 <Link href={ROUTES.auth.login} className="text-primary hover:underline font-medium">

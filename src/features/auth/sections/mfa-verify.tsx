@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { ShieldCheck } from "@/lib/icon";
 import { Form } from "@/components/molecules/form";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/molecules";
 import { Spinner } from "@/components/ui/spinner";
 import AuthCard, { FooterLink } from "../components/auth-card";
 import { OtpField } from "../components/otp-field";
@@ -46,15 +46,13 @@ const MfaVerifyForm = ({ submitLabel, backup }: {
     const onSubmit = async (data: MfaVerifyInput) => {
         // TODO: Implement MFA verification
         toast.info("MFA verification is not yet implemented");
-        console.log("MFA code:", data.code);
     };
 
     return (
         <Form form={form} onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <>
                 <OtpField name="code" control={form.control} />
-                <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
-                    {form.formState.isSubmitting && <Spinner className="mr-2" />}
+                <Button type="submit" className="w-full" disabled={form.formState.isSubmitting} leftIcon={form.formState.isSubmitting ? <Spinner /> : undefined}>
                     {submitLabel}
                 </Button>
                 <BackupCodePrompt {...backup} />

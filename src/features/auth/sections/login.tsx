@@ -6,15 +6,14 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import React from "react";
-import { DialogDrawer, Email, Password } from "@/components/molecules";
-import { Button } from "@/components/ui/button";
+import { DialogDrawer, Email, Password, AvatarMolecule } from "@/components/molecules";
+import { Button } from "@/components/molecules";
 import { Spinner } from "@/components/ui/spinner";
 import { loginSchema, type LoginInput } from "@/schemas/auth";
 import { login, socialLogin as socialLogin$ } from "@/services/auth";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { FieldSeparator } from "@/components/ui/field";
 import { Form, FormCheckbox } from "@/components/molecules/form";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { cn } from "@/lib";
 import { BorderBeam } from "@/components/ui/border-beam";
 
@@ -48,11 +47,7 @@ export const LoginPage = ({ eyebrow, title, description, features, socialProof, 
                         <div className="flex items-center gap-3">
                             <div className="flex -space-x-2">
                                 {socialProof.initials.map((init, i) => (
-                                    <Avatar key={i} className="size-8 border-2 border-background ring-1 ring-border">
-                                        <AvatarFallback className={cn("text-xs font-semibold", i === 0 ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground")}>
-                                            {init}
-                                        </AvatarFallback>
-                                    </Avatar>
+                                    <AvatarMolecule key={i} fallback={init} className="size-8 border-2 border-background ring-1 ring-border" classNames={{ fallback: cn("text-xs font-semibold", i === 0 ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground") }} />
                                 ))}
                             </div>
                             <p className="text-sm text-muted-foreground">{socialProof.text}</p>
@@ -110,8 +105,8 @@ export const LoginCard = ({ header, footer, email, password, rememberMe, forgotP
             <CardContent>
                 {socialLogin?.map(({ provider, icon }) => (
                     <form key={provider} action={socialLogin$.bind(null, provider)}>
-                        <Button type="submit" variant="outline" className="w-full gap-2 mb-3">
-                            {icon} Continue with {provider.charAt(0).toUpperCase() + provider.slice(1)}
+                        <Button type="submit" variant="outline" className="w-full gap-2 mb-3" leftIcon={icon}>
+                            Continue with {provider.charAt(0).toUpperCase() + provider.slice(1)}
                         </Button>
                     </form>
                 ))}
@@ -125,8 +120,7 @@ export const LoginCard = ({ header, footer, email, password, rememberMe, forgotP
                             {forgotPassword.label}
                         </Link>
                     </div>
-                    <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
-                        {form.formState.isSubmitting && <Spinner className="mr-2" />}
+                    <Button type="submit" className="w-full" disabled={form.formState.isSubmitting} leftIcon={form.formState.isSubmitting ? <Spinner /> : undefined}>
                         Continue
                     </Button>
                 </Form>

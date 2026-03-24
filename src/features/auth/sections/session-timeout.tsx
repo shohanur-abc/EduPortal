@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ClockIcon } from "@/lib/icon";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/molecules";
 import AuthCard from "../components/auth-card";
 import { ROUTES } from "@/lib/routes";
 import { logout } from "@/services/auth";

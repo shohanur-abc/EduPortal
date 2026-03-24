@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { Form } from "@/components/molecules/form";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/molecules";
 import { Spinner } from "@/components/ui/spinner";
 import AuthCard, { FooterLink } from "../components/auth-card";
 import { OtpField } from "../components/otp-field";
@@ -66,8 +66,8 @@ const VerifyEmailForm = ({ submitLabel, resend }: {
                     type="submit"
                     className="w-full"
                     disabled={form.formState.isSubmitting || isRedirecting}
+                    leftIcon={(form.formState.isSubmitting || isRedirecting) ? <Spinner /> : undefined}
                 >
-                    {(form.formState.isSubmitting || isRedirecting) && <Spinner className="mr-2" />}
                     {isRedirecting ? "Redirecting to login..." : submitLabel}
                 </Button>
                 <ResendPrompt {...resend} />

@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/molecules";
 import { FieldSeparator as Separator } from "@/components/ui/field";
 import { Form } from "@/components/molecules/form";
 import { DialogDrawer } from "@/components/molecules";

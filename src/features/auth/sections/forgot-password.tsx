@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import { CheckCircle2Icon } from "@/lib/icon";
 import { Form } from "@/components/molecules/form";
 import { Email } from "@/components/molecules";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/molecules";
 import { Spinner } from "@/components/ui/spinner";
 import AuthCard, { FooterLink } from "../components/auth-card";
 import { forgotPasswordSchema, type ForgotPasswordInput } from "@/schemas/auth";
@@ -64,8 +64,7 @@ const ForgotPasswordForm = ({ email, submitLabel, onSuccess }: {
         <Form form={form} onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <>
                 <Email {...email} />
-                <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
-                    {form.formState.isSubmitting && <Spinner className="mr-2" />}
+                <Button type="submit" className="w-full" disabled={form.formState.isSubmitting} leftIcon={form.formState.isSubmitting ? <Spinner /> : undefined}>
                     {submitLabel}
                 </Button>
             </>

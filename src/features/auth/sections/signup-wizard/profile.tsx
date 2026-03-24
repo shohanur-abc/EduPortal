@@ -1,6 +1,6 @@
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Field, FieldError, FieldLabel } from "@/components/ui/field";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { AvatarMolecule } from "@/components/molecules";
 import { useRef } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import { ISignupWizard } from "../signup-wizard";
@@ -33,10 +33,7 @@ export const ProfilePanel = ({ config }: { config: ISignupWizard["config"]["prof
 
             <div className="flex flex-col items-center gap-2">
                 <button type="button" onClick={() => fileRef.current?.click()} className="group relative">
-                    <Avatar className="size-20 border-2 border-border group-hover:border-primary transition-colors">
-                        <AvatarImage src={avatar} alt="Profile" />
-                        <AvatarFallback className="text-xl font-semibold bg-muted">{initials}</AvatarFallback>
-                    </Avatar>
+                    <AvatarMolecule src={avatar} alt="Profile" fallback={initials} className="size-20 border-2 border-border group-hover:border-primary transition-colors" classNames={{ fallback: "text-xl font-semibold bg-muted" }} />
                     <span className="absolute bottom-0 right-0 size-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center border-2 border-background">
                         <Camera className="size-3" />
                     </span>

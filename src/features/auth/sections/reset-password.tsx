@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { Form } from "@/components/molecules/form";
 import { Password } from "@/components/molecules";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/molecules";
 import { Spinner } from "@/components/ui/spinner";
 import AuthCard, { FooterLink } from "../components/auth-card";
 import { ROUTES } from "@/lib/routes";
@@ -73,8 +73,7 @@ const ResetPasswordForm = ({ password, confirmPassword, requirements, submitLabe
             <Password {...password} />
             <Password {...confirmPassword} />
             <PasswordRequirements items={requirements} />
-            <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
-                {form.formState.isSubmitting && <Spinner className="mr-2" />}
+            <Button type="submit" className="w-full" disabled={form.formState.isSubmitting} leftIcon={form.formState.isSubmitting ? <Spinner /> : undefined}>
                 {submitLabel}
             </Button>
         </Form>
