@@ -2,9 +2,7 @@ import { Calendar, Clock } from '@/lib/icon';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Button } from '@/components/ui/button';
+import { Button, Badge, AvatarMolecule } from "@/components/molecules";
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
@@ -51,10 +49,7 @@ const PostCard = ({ title, excerpt, image, href, category, date, readTime, autho
 const CardMeta = ({ author, date, readTime }: { author: IPostGrid['posts'][number]['author']; date: string; readTime: string }) => (
     <div className="flex items-center justify-between pt-2 border-t">
         <div className="flex items-center gap-2">
-            <Avatar className="size-6">
-                <AvatarImage src={author.avatar} alt={author.name} />
-                <AvatarFallback className="text-[10px]">{author.name.slice(0, 2)}</AvatarFallback>
-            </Avatar>
+            <AvatarMolecule src={author.avatar} alt={author.name} fallback={author.name.slice(0, 2)} className="size-6" classNames={{ fallback: "text-[10px]" }} />
             <span className="text-xs font-medium">{author.name}</span>
         </div>
         <div className="flex items-center gap-3 text-xs text-muted-foreground">
@@ -72,9 +67,7 @@ const CardMeta = ({ author, date, readTime }: { author: IPostGrid['posts'][numbe
 
 const LoadMore = ({ href }: { href: string }) => (
     <div className="flex justify-center mt-10 col-span-full">
-        <Button variant="outline" size="lg" className="rounded-full px-8" asChild>
-            <Link href={href}>View All Posts</Link>
-        </Button>
+        <Button variant="outline" size="lg" className="rounded-full px-8" href={href}>View All Posts        </Button>
     </div>
 );
 

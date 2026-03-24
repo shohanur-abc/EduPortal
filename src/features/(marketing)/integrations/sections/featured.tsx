@@ -1,8 +1,6 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { ArrowRight } from '@/lib/icon';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { Button, Badge } from "@/components/molecules";
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Section } from '@/components/section';
 
@@ -34,12 +32,9 @@ const FeaturedCard = ({ logo, name, category, description, highlights, href, cta
             <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
             <HighlightList highlights={highlights} />
             {href && (
-                <Button variant="ghost" size="sm" className="px-0 text-primary" asChild>
-                    <Link href={href}>
-                        {ctaLabel ?? 'Learn more'}
-                        <ArrowRight className="ml-1 size-4" />
-                    </Link>
-                </Button>
+                <Button variant="ghost" size="sm" className="px-0 text-primary" href={href} rightIcon={<ArrowRight className="size-4" />}>
+{ctaLabel ?? 'Learn more'}
+</Button>
             )}
         </CardContent>
     </Card>

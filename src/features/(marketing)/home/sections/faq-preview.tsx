@@ -1,37 +1,25 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
+import { Accordion, Button } from "@/components/molecules";
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function FAQ({ eyebrow, title, subtitle, faqs, ctaText, ctaHref }: IFAQ) {
     return (
         <Section className="max-w-3xl mx-auto space-y-8" containerClass="bg-muted/50" eyebrow={eyebrow} title={title} subtitle={subtitle}>
-            <FAQList faqs={faqs} />
-            <CTALink text={ctaText} href={ctaHref} />
+            <Accordion
+                items={faqs.map(({ question, answer }, i) => ({
+                    value: `item-${i}`,
+                    title: question,
+                    content: answer,
+                }))}
+                className="w-full"
+                classNames={{ trigger: "text-left text-base font-medium", contentInner: "text-muted-foreground leading-relaxed" }}
+            />
+            <div className="text-center">
+                <Button variant="outline" className="rounded-full" href={ctaHref}>{ctaText}</Button>
+            </div>
         </Section>
     );
 }
-
-// ============= CHILD COMPONENTS =============
-const FAQList = ({ faqs }: { faqs: IFAQ['faqs'] }) => (
-    <Accordion type="single" collapsible className="w-full">
-        {faqs.map(({ question, answer }, i) => (
-            <AccordionItem key={i} value={`item-${i}`}>
-                <AccordionTrigger className="text-left text-base font-medium">{question}</AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed">{answer}</AccordionContent>
-            </AccordionItem>
-        ))}
-    </Accordion>
-);
-
-const CTALink = ({ text, href }: { text: string; href: string }) => (
-    <div className="text-center">
-        <Button variant="outline" className="rounded-full" asChild>
-            <Link href={href}>{text}</Link>
-        </Button>
-    </div>
-);
 
 // ============= TYPES =============
 interface IFAQ {

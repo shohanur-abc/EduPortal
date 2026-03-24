@@ -1,5 +1,5 @@
 import { CheckCircle2, X } from '@/lib/icon';
-import { Badge } from '@/components/ui/badge';
+import { Badge } from "@/components/molecules";
 import {
     Table,
     TableHeader,

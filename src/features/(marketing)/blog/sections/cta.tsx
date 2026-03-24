@@ -1,6 +1,5 @@
 import { ArrowRight, PenLine, CheckCircle } from '@/lib/icon';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/molecules";
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
@@ -46,19 +45,11 @@ const PerkItem = ({ text }: { text: string }) => (
 
 const Actions = ({ primary, secondary }: { primary: IBlogCTA['primaryCta']; secondary: IBlogCTA['secondaryCta'] }) => (
     <div className="flex flex-col @sm:flex-row items-center justify-center gap-4">
-        <Button size="lg" variant="secondary" className="rounded-full px-8" asChild>
-            <Link href={primary.href}>
-                {primary.text}
-                <ArrowRight className="ml-2 size-4" />
-            </Link>
-        </Button>
+        <Button size="lg" variant="secondary" className="rounded-full px-8" href={primary.href} rightIcon={<ArrowRight className="size-4" />}>
+{primary.text}
+</Button>
         <Button
-            size="lg"
-            className="rounded-full px-8 border- text-primary-foreground hover:bg-gray-700 dark:hover:bg-gray-100"
-            asChild
-        >
-            <Link href={secondary.href}>{secondary.text}</Link>
-        </Button>
+size="lg" className="rounded-full px-8 border- text-primary-foreground hover:bg-gray-700 dark:hover:bg-gray-100" href={secondary.href}>{secondary.text}        </Button>
     </div>
 );
 

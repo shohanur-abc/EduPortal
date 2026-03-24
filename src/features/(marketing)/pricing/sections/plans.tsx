@@ -1,7 +1,5 @@
 import { CheckCircle2, type LucideIcon } from '@/lib/icon';
-import Link from 'next/link';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { Button, Badge } from "@/components/molecules";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Section } from '@/components/section';
 import { cn } from '@/lib/utils';
@@ -45,13 +43,7 @@ const PlanCard = ({ name, description, price, period, features, cta, popular, ic
             </CardContent>
             <CardFooter>
                 <Button
-                    className="w-full rounded-full"
-                    variant={popular ? 'default' : 'outline'}
-                    size="lg"
-                    asChild
-                >
-                    <Link href={cta.href}>{cta.text}</Link>
-                </Button>
+className="w-full rounded-full" variant={popular ? 'default' : 'outline'} size="lg" href={cta.href}>{cta.text}                </Button>
             </CardFooter>
         </Card>
     </div>

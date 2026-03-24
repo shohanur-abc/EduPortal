@@ -1,6 +1,5 @@
 import { Quote, Star } from '@/lib/icon';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Badge } from '@/components/ui/badge';
+import { Badge, AvatarMolecule } from "@/components/molecules";
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
@@ -77,12 +76,7 @@ const StarRating = ({ rating }: { rating: number }) => (
 
 const AuthorInfo = ({ name, role, school, avatar }: IComparisonTestimonial['author']) => (
     <div className="flex flex-col items-center gap-4 pt-4 border-t border-dashed border-border/60 w-full max-w-xs">
-        <Avatar className="size-14 @3xl:size-16 border-2 border-background shadow-xl ring-2 ring-primary/10">
-            <AvatarImage src={avatar} alt={name} className="object-cover" />
-            <AvatarFallback className="bg-primary/5 text-primary font-bold">
-                {getInitials(name)}
-            </AvatarFallback>
-        </Avatar>
+        <AvatarMolecule src={avatar} alt={name} fallback={getInitials(name)} className="size-14 @3xl:size-16 border-2 border-background shadow-xl ring-2 ring-primary/10" classNames={{ image: "object-cover", fallback: "bg-primary/5 text-primary font-bold" }} />
         <div className="text-center space-y-0.5">
             <p className="text-lg font-bold text-foreground tracking-tight">{name}</p>
             <p className="text-xs @3xl:text-sm font-medium text-muted-foreground">

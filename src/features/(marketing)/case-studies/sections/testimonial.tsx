@@ -1,5 +1,5 @@
 import { Quote } from '@/lib/icon';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { AvatarMolecule } from '@/components/molecules';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
@@ -30,10 +30,7 @@ const QuoteText = ({ text }: { text: string }) => (
 
 const AuthorInfo = ({ name, role, school, avatar }: ITestimonial['author']) => (
     <div className="flex flex-col items-center gap-3">
-        <Avatar size="lg">
-            <AvatarImage src={avatar} alt={name} />
-            <AvatarFallback>{getInitials(name)}</AvatarFallback>
-        </Avatar>
+        <AvatarMolecule size="lg" src={avatar} alt={name} fallback={getInitials(name)} />
         <div className="text-center">
             <p className="font-semibold text-foreground">{name}</p>
             <p className="text-sm text-muted-foreground">{role}, {school}</p>

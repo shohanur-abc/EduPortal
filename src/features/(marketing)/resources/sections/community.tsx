@@ -1,6 +1,6 @@
 import { ArrowRight, type LucideIcon } from '@/lib/icon';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/molecules";
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Section } from '@/components/section';
 
@@ -64,12 +64,9 @@ const IconBox = ({ icon: Icon }: { icon: LucideIcon }) => (
 
 const CTABlock = ({ cta }: { cta: ICTAAction }) => (
     <div className="flex justify-center mt-10">
-        <Button size="lg" className="rounded-full px-8 gap-2" asChild>
-            <Link href={cta.href}>
-                {cta.text}
-                <ArrowRight className="size-4" />
-            </Link>
-        </Button>
+        <Button size="lg" className="rounded-full px-8 gap-2" href={cta.href} rightIcon={<ArrowRight className="size-4" />}>
+{cta.text}
+</Button>
     </div>
 );
 

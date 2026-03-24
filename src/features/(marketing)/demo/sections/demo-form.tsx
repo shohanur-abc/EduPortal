@@ -1,5 +1,5 @@
 import { ArrowRight } from '@/lib/icon';
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/molecules";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -63,10 +63,9 @@ const SelectField = ({ label, placeholder, options, fullWidth }: ISelectField) =
 
 const SubmitButton = ({ text }: { text: string }) => (
     <div className="mt-6">
-        <Button size="lg" className="w-full rounded-full">
-            {text}
-            <ArrowRight className="ml-2 size-4" />
-        </Button>
+        <Button size="lg" className="w-full rounded-full" rightIcon={<ArrowRight className="size-4" />}>
+{text}
+</Button>
     </div>
 );
 

@@ -1,7 +1,5 @@
 import { ArrowRight, GitCompareArrows, type LucideIcon } from '@/lib/icon';
-import Link from 'next/link';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { Button, Badge } from "@/components/molecules";
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
@@ -59,15 +57,10 @@ const HighlightItem = ({ icon: Icon, label, value }: IComparisonHero['highlights
 
 const Actions = ({ cta }: { cta: IComparisonHero['cta'] }) => (
     <div className="flex flex-col @sm:flex-row items-center justify-center gap-4">
-        <Button size="lg" className="rounded-full px-8" asChild>
-            <Link href={cta.primary.href}>
-                {cta.primary.text}
-                <ArrowRight className="ml-2 size-4" />
-            </Link>
-        </Button>
-        <Button size="lg" variant="outline" className="rounded-full px-8" asChild>
-            <Link href={cta.secondary.href}>{cta.secondary.text}</Link>
-        </Button>
+        <Button size="lg" className="rounded-full px-8" href={cta.primary.href} rightIcon={<ArrowRight className="size-4" />}>
+{cta.primary.text}
+</Button>
+        <Button size="lg" variant="outline" className="rounded-full px-8" href={cta.secondary.href}>{cta.secondary.text}        </Button>
     </div>
 );
 

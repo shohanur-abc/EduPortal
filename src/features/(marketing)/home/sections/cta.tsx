@@ -1,6 +1,5 @@
 import { ArrowRight } from '@/lib/icon';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/molecules";
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
@@ -29,15 +28,10 @@ const Description = ({ text }: { text: string }) => (
 
 const Actions = ({ primary, secondary }: { primary: ICTA['primaryCta']; secondary: ICTA['secondaryCta'] }) => (
     <div className="flex flex-col @sm:flex-row items-center justify-center gap-4">
-        <Button size="lg" variant="default" className="rounded-full px-8" asChild>
-            <Link href={primary.href}>
-                {primary.text}
-                <ArrowRight className="ml-2 size-4" />
-            </Link>
-        </Button>
-        <Button size="lg" variant="outline" className="rounded-full px-8 border-primary-foreground/30 hover:bg-primary-foreground/10" asChild>
-            <Link href={secondary.href}>{secondary.text}</Link>
-        </Button>
+        <Button size="lg" variant="default" className="rounded-full px-8" href={primary.href} rightIcon={<ArrowRight className="size-4" />}>
+{primary.text}
+</Button>
+        <Button size="lg" variant="outline" className="rounded-full px-8 border-primary-foreground/30 hover:bg-primary-foreground/10" href={secondary.href}>{secondary.text}        </Button>
     </div>
 );
 

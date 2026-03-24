@@ -1,8 +1,6 @@
 import { CheckCircle2, ArrowRight } from '@/lib/icon';
-import Link from 'next/link';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { Button, Badge } from "@/components/molecules";
 import { Separator } from '@/components/ui/separator';
 import { Section } from '@/components/section';
 
@@ -45,12 +43,9 @@ const PlanCard = ({ name, description, price, period, features, cta, popular }: 
             </ul>
         </CardContent>
         <CardFooter>
-            <Button className="w-full rounded-full" variant={popular ? 'default' : 'outline'} asChild>
-                <Link href={cta.href}>
-                    {cta.text}
-                    <ArrowRight className="ml-2 size-4" />
-                </Link>
-            </Button>
+            <Button className="w-full rounded-full" variant={popular ? 'default' : 'outline'} href={cta.href} rightIcon={<ArrowRight className="size-4" />}>
+{cta.text}
+</Button>
         </CardFooter>
     </Card>
 );

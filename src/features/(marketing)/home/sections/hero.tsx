@@ -1,7 +1,6 @@
 import { ArrowRight, Play } from '@/lib/icon';
 import Link from 'next/link';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { Button, Badge } from "@/components/molecules";
 import { Section } from '@/components/section';
 import { NumberTicker } from '@/components/ui/number-ticker';
 
@@ -44,17 +43,11 @@ const Description = ({ text }: { text: string }) => (
 
 const CTAButtons = ({ primary, secondary }: IHero['cta']) => (
     <div className="flex flex-col @md:flex-row items-center justify-center gap-4">
-        <Button size="lg" className="rounded-full px-8 text-base" asChild>
-            <Link href={primary.href}>
-                {primary.text}
-                <ArrowRight className="ml-2 size-4" />
-            </Link>
+        <Button size='lg' href={primary.href} rightIcon={<ArrowRight />}>
+            {primary.text}
         </Button>
-        <Button size="lg" variant="outline" className="rounded-full px-8 text-base" asChild>
-            <Link href={secondary.href}>
-                <Play className="mr-2 size-4" />
-                {secondary.text}
-            </Link>
+        <Button size='lg' variant='secondary' href={secondary.href} leftIcon={<Play />}>
+            {secondary.text}
         </Button>
     </div>
 );

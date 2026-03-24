@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/molecules";
 import { Section } from '@/components/section';
 import { ROUTES } from '@/lib/routes';
 

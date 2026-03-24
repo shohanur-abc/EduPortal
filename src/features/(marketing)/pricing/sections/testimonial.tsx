@@ -1,5 +1,5 @@
 import { Quote } from '@/lib/icon';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { AvatarMolecule } from '@/components/molecules';
 import { Card, CardContent } from '@/components/ui/card';
 import { Section } from '@/components/section';
 
@@ -45,10 +45,7 @@ const MetricHighlight = ({ value, label }: IROIMetric) => (
 
 const AuthorInfo = ({ name, role, school, avatar }: IPricingTestimonial['author']) => (
     <div className="flex items-center justify-center gap-3">
-        <Avatar className="size-10">
-            <AvatarImage src={avatar} alt={name} />
-            <AvatarFallback>{name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-        </Avatar>
+        <AvatarMolecule src={avatar} alt={name} fallback={name.split(' ').map(n => n[0]).join('')} className="size-10" />
         <div>
             <div className="text-sm font-semibold text-foreground">{name}</div>
             <div className="text-xs text-muted-foreground">{role}, {school}</div>

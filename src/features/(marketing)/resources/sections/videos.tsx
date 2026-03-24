@@ -1,6 +1,6 @@
 import { Play } from '@/lib/icon';
 import Image from 'next/image';
-import { Badge } from '@/components/ui/badge';
+import { Badge } from "@/components/molecules";
 import { Card, CardContent } from '@/components/ui/card';
 import { Section } from '@/components/section';
 import Link from 'next/link';

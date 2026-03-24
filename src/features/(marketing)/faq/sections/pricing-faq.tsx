@@ -1,42 +1,31 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Accordion } from '@/components/molecules';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function PricingFAQ({ eyebrow, title, subtitle, questions }: IPricingFAQ) {
     return (
         <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
-            <QuestionsList questions={questions} />
+            <div className="max-w-3xl mx-auto">
+                <Accordion
+                    items={questions.map((q, i) => ({
+                        value: `pricing-${i}`,
+                        title: q.question,
+                        content: q.answer,
+                    }))}
+                    classNames={{ trigger: "text-left text-base font-semibold", contentInner: "text-muted-foreground leading-relaxed" }}
+                />
+            </div>
         </Section>
     );
 }
 
-// ============= CHILD COMPONENTS =============
-const QuestionsList = ({ questions }: { questions: IPricingFAQ['questions'] }) => (
-    <div className="max-w-3xl mx-auto">
-        <Accordion type="single" collapsible>
-            {questions.map((q, i) => (
-                <QuestionItem key={i} index={i} {...q} />
-            ))}
-        </Accordion>
-    </div>
-);
-
-const QuestionItem = ({ question, answer, index }: IPricingFAQItem & { index: number }) => (
-    <AccordionItem value={`pricing-${index}`}>
-        <AccordionTrigger className="text-left text-base font-semibold">{question}</AccordionTrigger>
-        <AccordionContent className="text-muted-foreground leading-relaxed">{answer}</AccordionContent>
-    </AccordionItem>
-);
-
 // ============= TYPES =============
-interface IPricingFAQItem {
-    question: string;
-    answer: string;
-}
-
 interface IPricingFAQ {
     eyebrow: string;
     title: string;
     subtitle: string;
-    questions: IPricingFAQItem[];
+    questions: {
+        question: string;
+        answer: string;
+    }[];
 }

@@ -1,6 +1,5 @@
 import { CheckCircle2, ArrowRight, type LucideIcon } from '@/lib/icon';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/molecules";
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
@@ -56,12 +55,9 @@ const FeatureItem = ({ text }: { text: string }) => (
 
 const CTAButton = ({ text, href }: IEnterprise['cta']) => (
     <div className="flex justify-center">
-        <Button size="lg" className="rounded-full px-8" asChild>
-            <Link href={href}>
-                {text}
-                <ArrowRight className="ml-2 size-4" />
-            </Link>
-        </Button>
+        <Button size="lg" className="rounded-full px-8" href={href} rightIcon={<ArrowRight className="size-4" />}>
+{text}
+</Button>
     </div>
 );
 

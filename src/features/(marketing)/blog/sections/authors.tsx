@@ -1,10 +1,8 @@
 "use client";
 
 import { ArrowRight } from '@/lib/icon';
-import Link from 'next/link';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Button } from '@/components/ui/button';
+import { Button, AvatarMolecule } from "@/components/molecules";
 import { Section } from '@/components/section';
 import { Separator } from '@/components/ui/separator';
 
@@ -24,12 +22,7 @@ const AuthorCard = ({ name, avatar, role, expertise, postCount, readCount, href 
     <Card className="group gap-3 p-6 pb-5 hover:border-border/60 transition-colors">
         <CardContent className='flex flex-col items-center gap-3'>
             <div className="relative">
-                <Avatar className="size-16">
-                    <AvatarImage src={avatar} alt={name} />
-                    <AvatarFallback className="text-base font-medium bg-blue-50 text-blue-600">
-                        {name.slice(0, 2)}
-                    </AvatarFallback>
-                </Avatar>
+                <AvatarMolecule src={avatar} alt={name} fallback={name.slice(0, 2)} className="size-16" classNames={{ fallback: "text-base font-medium bg-blue-50 text-blue-600" }} />
             </div>
 
             <div className="text-center">
@@ -44,12 +37,9 @@ const AuthorCard = ({ name, avatar, role, expertise, postCount, readCount, href 
             <AuthorStats postCount={postCount} readCount={readCount} />
         </CardContent>
         <CardFooter>
-            <Button variant="outline" size="sm" className="w-full text-[13px] font-medium" asChild>
-                <Link href={href}>
-                    View articles
-                    <ArrowRight className="ml-1.5 size-3.5 opacity-60" />
-                </Link>
-            </Button>
+            <Button variant="outline" size="sm" className="w-full text-[13px] font-medium" href={href} rightIcon={<ArrowRight className="size-3.5 opacity-60" />}>
+View articles
+</Button>
         </CardFooter>
     </Card>
 );

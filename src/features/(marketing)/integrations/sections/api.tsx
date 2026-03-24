@@ -1,7 +1,5 @@
-import Link from 'next/link';
 import { ArrowRight, type LucideIcon } from '@/lib/icon';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { Button, Badge } from "@/components/molecules";
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Section } from '@/components/section';
 
@@ -25,12 +23,9 @@ const ContentBlock = ({ eyebrow, title, description, badge, features, cta }: Omi
         {features && <FeatureList features={features} />}
         {cta && (
             <div className="pt-2">
-                <Button size="lg" className="rounded-full px-8" asChild>
-                    <Link href={cta.href}>
-                        {cta.text}
-                        <ArrowRight className="ml-2 size-4" />
-                    </Link>
-                </Button>
+                <Button size="lg" className="rounded-full px-8" href={cta.href} rightIcon={<ArrowRight className="size-4" />}>
+{cta.text}
+</Button>
             </div>
         )}
     </div>

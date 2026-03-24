@@ -1,8 +1,7 @@
 import { ArrowRight } from '@/lib/icon';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { Button, Badge } from "@/components/molecules";
 import { Card, CardContent } from '@/components/ui/card';
 import { Section } from '@/components/section';
 import { ROUTES } from '@/lib/routes';
@@ -71,12 +70,9 @@ const MetricHighlight = ({ value, label }: { value: string; label: string }) => 
 
 const ViewAllLink = ({ text }: { text: string }) => (
     <div className="flex justify-center mt-10 col-span-full">
-        <Button variant="outline" size="lg" className="rounded-full px-8 gap-2" asChild>
-            <Link href={ROUTES.marketing.caseStudies}>
-                {text}
-                <ArrowRight className="size-4" />
-            </Link>
-        </Button>
+        <Button variant="outline" size="lg" className="rounded-full px-8 gap-2" href={ROUTES.marketing.caseStudies} rightIcon={<ArrowRight className="size-4" />}>
+{text}
+</Button>
     </div>
 );
 

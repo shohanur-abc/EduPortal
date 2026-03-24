@@ -1,9 +1,7 @@
 import { ArrowRight, Calendar, Clock } from '@/lib/icon';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Button, Badge, AvatarMolecule } from "@/components/molecules";
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
@@ -60,10 +58,7 @@ const PostDetails = ({ post }: { post: IFeaturedPost['post'] }) => (
 const PostMeta = ({ author, date, readTime }: { author: IFeaturedPost['post']['author']; date: string; readTime: string }) => (
     <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
         <div className="flex items-center gap-2">
-            <Avatar className="size-8">
-                <AvatarImage src={author.avatar} alt={author.name} />
-                <AvatarFallback className="text-xs">{author.name.slice(0, 2)}</AvatarFallback>
-            </Avatar>
+            <AvatarMolecule src={author.avatar} alt={author.name} fallback={author.name.slice(0, 2)} className="size-8" classNames={{ fallback: "text-xs" }} />
             <span className="font-medium text-foreground">{author.name}</span>
         </div>
         <div className="flex items-center gap-1">
@@ -79,10 +74,9 @@ const PostMeta = ({ author, date, readTime }: { author: IFeaturedPost['post']['a
 
 const ReadMoreButton = () => (
     <div className="pt-2">
-        <Button variant="ghost" className="px-0 text-primary group-hover:underline">
-            Read Full Article
-            <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" />
-        </Button>
+        <Button variant="ghost" className="px-0 text-primary group-hover:underline" rightIcon={<ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />}>
+Read Full Article
+</Button>
     </div>
 );
 

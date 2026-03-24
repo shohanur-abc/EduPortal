@@ -1,6 +1,5 @@
 import { ArrowRight, type LucideIcon } from '@/lib/icon';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/molecules";
 import { Card, CardContent } from '@/components/ui/card';
 import { Section } from '@/components/section';
 
@@ -59,12 +58,9 @@ const StepCard = ({ step, index, isLast }: { step: IMigration['steps'][number]; 
 
 const CtaButton = ({ cta }: { cta: IMigration['cta'] }) => (
     <div className="flex justify-center pt-4 col-span-full">
-        <Button size="lg" className="rounded-full px-10 h-14 text-base font-bold transition-transform hover:scale-105" asChild>
-            <Link href={cta.href}>
-                {cta.text}
-                <ArrowRight className="ml-2 size-5" />
-            </Link>
-        </Button>
+        <Button size="lg" className="rounded-full px-10 h-14 text-base font-bold transition-transform hover:scale-105" href={cta.href} rightIcon={<ArrowRight className="size-5" />}>
+{cta.text}
+</Button>
     </div>
 );
 

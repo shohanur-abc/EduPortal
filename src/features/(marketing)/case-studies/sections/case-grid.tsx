@@ -2,8 +2,7 @@ import Image from 'next/image';
 import { ArrowRight } from '@/lib/icon';
 import Link from 'next/link';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { Button, Badge } from "@/components/molecules";
 import { Section } from '@/components/section';
 import { NumberTicker } from '@/components/ui/number-ticker';
 

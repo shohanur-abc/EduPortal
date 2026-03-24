@@ -1,8 +1,6 @@
 import { type LucideIcon } from '@/lib/icon';
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/molecules";
 import { Section } from '@/components/section';
-import Link from 'next/link';
-
 // ============= MAIN COMPONENT =============
 export default function FAQCTA({ eyebrow, title, subtitle, actions }: IFAQCTA) {
     return (
@@ -16,11 +14,8 @@ export default function FAQCTA({ eyebrow, title, subtitle, actions }: IFAQCTA) {
 
 // ============= CHILD COMPONENTS =============
 const ActionButton = ({ icon: Icon, label, href, variant = 'default' }: IFAQCTA['actions'][0]) => (
-    <Button variant={variant} size="lg" asChild>
-        <Link href={href}>
-            {Icon && <Icon className="size-4" />}
-            {label}
-        </Link>
+    <Button variant={variant} size="lg" href={href} leftIcon={Icon ? <Icon className="size-4" /> : undefined}>
+        {label}
     </Button>
 );
 

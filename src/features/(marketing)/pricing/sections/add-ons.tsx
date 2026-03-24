@@ -1,5 +1,5 @@
 import { type LucideIcon } from '@/lib/icon';
-import { Badge } from '@/components/ui/badge';
+import { Badge } from "@/components/molecules";
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Section } from '@/components/section';
 

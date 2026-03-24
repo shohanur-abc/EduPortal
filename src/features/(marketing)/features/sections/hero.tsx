@@ -1,7 +1,5 @@
 import { ArrowRight } from '@/lib/icon';
-import Link from 'next/link';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { Button, Badge } from "@/components/molecules";
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
@@ -40,16 +38,11 @@ const Description = ({ text }: { text: string }) => (
 
 const CTAButtons = ({ primary, secondary }: IHeroCTA) => (
     <div className="flex flex-col @sm:flex-row items-center justify-center gap-4 pt-2">
-        <Button size="lg" className="rounded-full px-8 text-base" asChild>
-            <Link href={primary.href}>
-                {primary.text}
-                <ArrowRight className="ml-2 size-4" />
-            </Link>
-        </Button>
+        <Button size="lg" className="rounded-full px-8 text-base" href={primary.href} rightIcon={<ArrowRight className="size-4" />}>
+{primary.text}
+</Button>
         {secondary && (
-            <Button size="lg" variant="outline" className="rounded-full px-8 text-base" asChild>
-                <Link href={secondary.href}>{secondary.text}</Link>
-            </Button>
+            <Button size="lg" variant="outline" className="rounded-full px-8 text-base" href={secondary.href}>{secondary.text}            </Button>
         )}
     </div>
 );

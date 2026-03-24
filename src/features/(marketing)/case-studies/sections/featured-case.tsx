@@ -1,8 +1,6 @@
 import Image from 'next/image';
 import { ArrowRight } from '@/lib/icon';
-import Link from 'next/link';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { Button, Badge } from "@/components/molecules";
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
@@ -32,12 +30,9 @@ const CaseContent = ({ schoolName, category, challenge, solution, results, href 
         <CaseDetail label="Challenge" text={challenge} />
         <CaseDetail label="Solution" text={solution} />
         <ResultsBadges results={results} />
-        <Button className="rounded-full px-6" asChild>
-            <Link href={href}>
-                Read Full Story
-                <ArrowRight className="ml-2 size-4" />
-            </Link>
-        </Button>
+        <Button className="rounded-full px-6" href={href} rightIcon={<ArrowRight className="size-4" />}>
+Read Full Story
+</Button>
     </div>
 );
 

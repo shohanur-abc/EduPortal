@@ -1,7 +1,5 @@
 import { ArrowRight } from '@/lib/icon';
-import Link from 'next/link';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { Button, Badge } from "@/components/molecules";
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
@@ -38,12 +36,9 @@ const Description = ({ text }: { text: string }) => (
 
 const CTAButton = ({ text, href }: IAboutHero['cta']) => (
     <div className="flex justify-center">
-        <Button size="lg" className="rounded-full px-8" asChild>
-            <Link href={href}>
-                {text}
-                <ArrowRight className="ml-2 size-4" />
-            </Link>
-        </Button>
+        <Button size="lg" className="rounded-full px-8" href={href} rightIcon={<ArrowRight className="size-4" />}>
+{text}
+</Button>
     </div>
 );
 

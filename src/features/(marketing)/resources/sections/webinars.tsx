@@ -1,7 +1,5 @@
 import { Calendar, Clock, Play, Users } from '@/lib/icon';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { Button, Badge, AvatarMolecule } from "@/components/molecules";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Section } from '@/components/section';
 
@@ -49,11 +47,10 @@ const WebinarCard = ({ status, title, description, date, duration, speaker, atte
             <Button
                 variant={status === 'upcoming' ? 'default' : 'outline'}
                 className="w-full gap-2"
-                asChild
+                href={actionUrl}
+                leftIcon={status === 'upcoming' ? undefined : <Play className="size-4" />}
             >
-                <a href={actionUrl}>
-                    {status === 'upcoming' ? 'Register Now' : <><Play className="size-4" /> Watch Recording</>}
-                </a>
+                {status === 'upcoming' ? 'Register Now' : <>Watch Recording</>}
             </Button>
         </CardFooter>
     </Card>
@@ -67,10 +64,7 @@ const StatusBadge = ({ status }: { status: IWebinarItem['status'] }) => (
 
 const SpeakerInfo = ({ speaker }: { speaker: ISpeaker }) => (
     <div className="flex items-center gap-3">
-        <Avatar className="size-8">
-            <AvatarImage src={speaker.avatar} alt={speaker.name} />
-            <AvatarFallback>{getInitials(speaker.name)}</AvatarFallback>
-        </Avatar>
+        <AvatarMolecule src={speaker.avatar} alt={speaker.name} fallback={getInitials(speaker.name)} className="size-8" />
         <div>
             <p className="text-sm font-medium">{speaker.name}</p>
             <p className="text-xs text-muted-foreground">{speaker.role}</p>

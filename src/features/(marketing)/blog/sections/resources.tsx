@@ -1,8 +1,6 @@
 import { ArrowRight, Download, type LucideIcon } from '@/lib/icon';
-import Link from 'next/link';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { Button, Badge } from "@/components/molecules";
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
@@ -33,34 +31,30 @@ const ResourceCard = ({ icon: Icon, title, description, type, href, downloadable
 
         </CardContent>
         <CardFooter>
-            <Button variant="ghost" size="sm" className="px-0 text-primary" asChild>
-                <Link href={href}>
-                    {downloadable ? (
-                        <><Download className="mr-1.5 size-3.5" />Download Resource</>
-                    ) : (
-                        <>Read More <ArrowRight className="ml-1.5 size-3.5" /></>
-                    )}
-                </Link>
+            <Button
+                variant="ghost"
+                size="sm"
+                className="px-0 text-primary"
+                href={href}
+                leftIcon={downloadable ? <Download className="size-3.5" /> : undefined}
+                rightIcon={!downloadable ? <ArrowRight className="size-3.5" /> : undefined}
+            >
+                {downloadable ? 'Download Resource' : 'Read More'}
             </Button>
         </CardFooter>
     </Card>
 );
 
 const ResourceAction = ({ href, downloadable }: { href: string; downloadable?: boolean }) => (
-    <Button variant="ghost" size="sm" className="px-0 text-primary" asChild>
-        <Link href={href}>
-            {downloadable ? (
-                <>
-                    <Download className="mr-1.5 size-3.5" />
-                    Download Resource
-                </>
-            ) : (
-                <>
-                    Read More
-                    <ArrowRight className="ml-1.5 size-3.5" />
-                </>
-            )}
-        </Link>
+    <Button
+        variant="ghost"
+        size="sm"
+        className="px-0 text-primary"
+        href={href}
+        leftIcon={downloadable ? <Download className="size-3.5" /> : undefined}
+        rightIcon={!downloadable ? <ArrowRight className="size-3.5" /> : undefined}
+    >
+        {downloadable ? 'Download Resource' : 'Read More'}
     </Button>
 );
 

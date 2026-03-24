@@ -1,7 +1,7 @@
 import { Star } from '@/lib/icon';
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { AvatarMolecule } from '@/components/molecules';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
@@ -20,10 +20,7 @@ const FeaturedTestimonial = ({ quote, author, role, school, avatar, rating }: IT
         <CardContent className="p-8 @lg:p-12">
             <div className="flex flex-col @lg:flex-row gap-8 items-center">
                 <div className="shrink-0">
-                    <Avatar className="size-20">
-                        <AvatarImage src={avatar} alt={author} />
-                        <AvatarFallback className="text-xl">{author.slice(0, 2)}</AvatarFallback>
-                    </Avatar>
+                    <AvatarMolecule src={avatar} alt={author} fallback={author.slice(0, 2)} className="size-20" classNames={{ fallback: "text-xl" }} />
                 </div>
                 <div className="space-y-4 text-center @lg:text-left">
                     <StarRating rating={rating} />
@@ -56,10 +53,7 @@ const TestimonialCard = ({ quote, author, role, school, avatar, rating }: ITesti
                 &ldquo;{quote}&rdquo;
             </blockquote>
             <div className="flex items-center gap-3 pt-2">
-                <Avatar className="size-10">
-                    <AvatarImage src={avatar} alt={author} />
-                    <AvatarFallback>{author.slice(0, 2)}</AvatarFallback>
-                </Avatar>
+                <AvatarMolecule src={avatar} alt={author} fallback={author.slice(0, 2)} className="size-10" />
                 <div>
                     <p className="text-sm font-semibold">{author}</p>
                     <p className="text-xs text-muted-foreground">{role}, {school}</p>

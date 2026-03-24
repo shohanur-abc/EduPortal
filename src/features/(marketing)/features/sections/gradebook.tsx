@@ -1,6 +1,6 @@
 import { type LucideIcon, CheckCircle } from '@/lib/icon';
 import Image from 'next/image';
-import { Badge } from '@/components/ui/badge';
+import { Badge } from "@/components/molecules";
 import { Section } from '@/components/section';
 import { cn } from '@/lib/utils'; // Standard shadcn utility for class merging
 

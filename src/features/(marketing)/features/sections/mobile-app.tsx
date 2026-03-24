@@ -1,7 +1,5 @@
 import { type LucideIcon } from '@/lib/icon';
-import Link from 'next/link';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { Button, Badge } from "@/components/molecules";
 import { Section } from '@/components/section';
 import { cn } from '@/lib/utils'; // Standard shadcn utility
 
@@ -47,9 +45,7 @@ const ContentBlock = ({ eyebrow, title, description, features, cta }: Omit<IMobi
 
         {cta && (
             <div className="pt-4">
-                <Button size="lg" className="rounded-full px-8 shadow-lg transition-all" asChild>
-                    <Link href={cta.href}>{cta.text}</Link>
-                </Button>
+                <Button size="lg" className="rounded-full px-8 shadow-lg transition-all" href={cta.href}>{cta.text}                </Button>
             </div>
         )}
     </div>

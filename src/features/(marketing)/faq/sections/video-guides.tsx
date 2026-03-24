@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { Play, Clock } from '@/lib/icon';
 import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { Badge } from "@/components/molecules";
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Section } from '@/components/section';
 import Link from 'next/link';

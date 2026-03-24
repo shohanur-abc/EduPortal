@@ -1,5 +1,5 @@
 import { Search } from '@/lib/icon';
-import { Badge } from '@/components/ui/badge';
+import { Badge } from "@/components/molecules";
 import { Input } from '@/components/ui/input';
 import { Section } from '@/components/section';
 

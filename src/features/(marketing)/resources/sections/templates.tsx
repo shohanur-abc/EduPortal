@@ -1,6 +1,5 @@
 import { Download, type LucideIcon } from '@/lib/icon';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { Button, Badge } from "@/components/molecules";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Section } from '@/components/section';
 
@@ -30,11 +29,8 @@ const TemplateCard = ({ icon: Icon, title, description, format, category, downlo
             <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
         </CardContent>
         <CardFooter>
-            <Button variant="outline" className="w-full gap-2" asChild>
-                <a href={downloadUrl} download>
-                    <Download className="size-4" />
-                    Download {format.toUpperCase()}
-                </a>
+            <Button variant="outline" className="w-full gap-2" href={downloadUrl} leftIcon={<Download />} download>
+                Download {format.toUpperCase()}
             </Button>
         </CardFooter>
     </Card>

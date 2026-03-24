@@ -1,51 +1,32 @@
-import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
-} from '@/components/ui/accordion';
+import { Accordion } from '@/components/molecules';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function DemoFAQ({ eyebrow, title, subtitle, items }: IDemoFAQ) {
     return (
         <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
-            <FAQList items={items} />
+            <div className="max-w-3xl mx-auto">
+                <Accordion
+                    items={items.map((item, i) => ({
+                        value: `item-${i}`,
+                        title: item.question,
+                        content: item.answer,
+                    }))}
+                    className="w-full"
+                    classNames={{ trigger: "text-left text-base font-medium", contentInner: "text-muted-foreground leading-relaxed" }}
+                />
+            </div>
         </Section>
     );
 }
-
-// ============= CHILD COMPONENTS =============
-const FAQList = ({ items }: { items: IDemoFAQ['items'] }) => (
-    <div className="max-w-3xl mx-auto">
-        <Accordion type="single" collapsible className="w-full">
-            {items.map((item, i) => (
-                <FAQItem key={i} index={i} {...item} />
-            ))}
-        </Accordion>
-    </div>
-);
-
-const FAQItem = ({ question, answer, index }: IFAQItem & { index: number }) => (
-    <AccordionItem value={`item-${index}`}>
-        <AccordionTrigger className="text-left text-base font-medium">
-            {question}
-        </AccordionTrigger>
-        <AccordionContent className="text-muted-foreground leading-relaxed">
-            {answer}
-        </AccordionContent>
-    </AccordionItem>
-);
 
 // ============= TYPES =============
 interface IDemoFAQ {
     eyebrow: string;
     title: string;
     subtitle: string;
-    items: IFAQItem[];
-}
-
-interface IFAQItem {
-    question: string;
-    answer: string;
+    items: {
+        question: string;
+        answer: string;
+    }[];
 }

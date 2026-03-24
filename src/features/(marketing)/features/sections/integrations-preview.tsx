@@ -1,8 +1,6 @@
 import { ArrowRight } from '@/lib/icon';
 import Image from 'next/image';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
+import { Button, Badge } from "@/components/molecules";
 import { Section } from '@/components/section';
 import { cn } from '@/lib/utils'; // Standard shadcn utility
 
@@ -70,12 +68,9 @@ const LogoCard = ({ name, logo, description }: IIntegration) => (
 
 const CTALink = ({ text, href }: { text: string; href: string }) => (
     <div className="flex justify-center pt-4">
-        <Button size="lg" className="rounded-full px-10 group shadow-md hover:shadow-primary/20 transition-all" asChild>
-            <Link href={href}>
-                {text}
-                <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-        </Button>
+        <Button size="lg" className="rounded-full px-10 group shadow-md hover:shadow-primary/20 transition-all" href={href} rightIcon={<ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />}>
+{text}
+</Button>
     </div>
 );
 

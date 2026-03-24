@@ -1,11 +1,6 @@
 import { type LucideIcon } from '@/lib/icon';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
-} from '@/components/ui/accordion';
+import { Accordion } from '@/components/molecules';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
@@ -19,11 +14,15 @@ export default function PrivacyPolicy({ eyebrow, title, subtitle, highlights, de
             </div>
 
             <div className="flex items-start">
-                <Accordion type="single" collapsible className="w-full">
-                    {details.map((detail, i) => (
-                        <PolicyItem key={i} index={i} {...detail} />
-                    ))}
-                </Accordion>
+                <Accordion
+                    items={details.map((detail, i) => ({
+                        value: `policy-${i}`,
+                        title: detail.title,
+                        content: detail.content,
+                    }))}
+                    className="w-full"
+                    classNames={{ trigger: "text-left text-base font-medium", contentInner: "text-muted-foreground leading-relaxed" }}
+                />
             </div>
         </Section>
     );
@@ -34,7 +33,9 @@ const HighlightCard = ({ icon: Icon, title, description }: IPrivacyPolicy['highl
     <Card className="group hover:border-primary/50 hover:shadow-md transition-all">
         <CardHeader>
             <div className="flex items-center gap-3">
-                <IconBox icon={Icon} />
+                <div className="size-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
+                    <Icon className="size-5 text-primary" />
+                </div>
                 <CardTitle className="text-base">{title}</CardTitle>
             </div>
         </CardHeader>
@@ -42,24 +43,6 @@ const HighlightCard = ({ icon: Icon, title, description }: IPrivacyPolicy['highl
             <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
         </CardContent>
     </Card>
-);
-
-const IconBox = ({ icon: Icon }: { icon: LucideIcon }) => (
-    <div className="size-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
-        <Icon className="size-5 text-primary" />
-    </div>
-);
-
-
-const PolicyItem = ({ title, content, index }: IPrivacyPolicy['details'][0] & { index: number }) => (
-    <AccordionItem value={`policy-${index}`}>
-        <AccordionTrigger className="text-left text-base font-medium">
-            {title}
-        </AccordionTrigger>
-        <AccordionContent className="text-muted-foreground leading-relaxed">
-            {content}
-        </AccordionContent>
-    </AccordionItem>
 );
 
 // ============= TYPES =============

@@ -1,5 +1,5 @@
 import type { LucideIcon } from '@/lib/icon';
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/molecules";
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============

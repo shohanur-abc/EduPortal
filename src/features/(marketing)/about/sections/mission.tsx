@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { Section } from '@/components/section';
-import { Badge } from '@/components/ui/badge';
+import { Badge } from "@/components/molecules";
 
 // ============= MAIN COMPONENT =============
 export default function Mission({ eyebrow, title, subtitle, content, image }: IMission) {

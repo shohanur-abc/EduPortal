@@ -1,8 +1,7 @@
 import { TrendingUp, ArrowRight } from '@/lib/icon';
 import Link from 'next/link';
-import { Badge } from '@/components/ui/badge';
+import { Badge, AvatarMolecule } from "@/components/molecules";
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Separator } from '@/components/ui/separator';
 import { Section } from '@/components/section';
 
@@ -39,10 +38,7 @@ const TrendingItem = ({ post, rank }: { post: ITrending['posts'][number]; rank: 
             </h3>
             <div className="flex items-center gap-3 text-xs text-muted-foreground">
                 <div className="flex items-center gap-1.5">
-                    <Avatar className="size-5">
-                        <AvatarImage src={post.author.avatar} alt={post.author.name} />
-                        <AvatarFallback className="text-[8px]">{post.author.name.slice(0, 2)}</AvatarFallback>
-                    </Avatar>
+                    <AvatarMolecule src={post.author.avatar} alt={post.author.name} fallback={post.author.name.slice(0, 2)} className="size-5" classNames={{ fallback: "text-[8px]" }} />
                     <span>{post.author.name}</span>
                 </div>
                 <span className='hidden @md:block'>·</span>

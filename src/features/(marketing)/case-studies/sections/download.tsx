@@ -1,6 +1,5 @@
 import { Download, FileText } from '@/lib/icon';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/molecules";
 import { Card, CardContent } from '@/components/ui/card';
 import { Section } from '@/components/section';
 
@@ -43,12 +42,9 @@ const DownloadCard = ({ title, fileSize, href }: IDownloadCaseStudy['downloads']
                 <p className="font-medium text-sm truncate">{title}</p>
                 <p className="text-xs text-muted-foreground">{fileSize}</p>
             </div>
-            <Button size="sm" variant="outline" className="rounded-full shrink-0" asChild>
-                <Link href={href}>
-                    <Download className="mr-1.5 size-3.5" />
-                    PDF
-                </Link>
-            </Button>
+            <Button size="sm" variant="outline" className="rounded-full shrink-0" href={href} leftIcon={<Download className="size-3.5" />}>
+PDF
+</Button>
         </CardContent>
     </Card>
 );

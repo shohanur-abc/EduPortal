@@ -1,42 +1,31 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Accordion } from '@/components/molecules';
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
 export default function GeneralFAQ({ eyebrow, title, subtitle, questions }: IGeneralFAQ) {
     return (
         <Section eyebrow={eyebrow} title={title} subtitle={subtitle}>
-            <QuestionsList questions={questions} />
+            <div className="max-w-3xl mx-auto">
+                <Accordion
+                    items={questions.map((q, i) => ({
+                        value: `general-${i}`,
+                        title: q.question,
+                        content: q.answer,
+                    }))}
+                    classNames={{ trigger: "text-left text-base font-semibold", contentInner: "text-muted-foreground leading-relaxed" }}
+                />
+            </div>
         </Section>
     );
 }
 
-// ============= CHILD COMPONENTS =============
-const QuestionsList = ({ questions }: { questions: IGeneralFAQ['questions'] }) => (
-    <div className="max-w-3xl mx-auto">
-        <Accordion type="single" collapsible>
-            {questions.map((q, i) => (
-                <QuestionItem key={i} index={i} {...q} />
-            ))}
-        </Accordion>
-    </div>
-);
-
-const QuestionItem = ({ question, answer, index }: IFAQItem & { index: number }) => (
-    <AccordionItem value={`general-${index}`}>
-        <AccordionTrigger className="text-left text-base font-semibold">{question}</AccordionTrigger>
-        <AccordionContent className="text-muted-foreground leading-relaxed">{answer}</AccordionContent>
-    </AccordionItem>
-);
-
 // ============= TYPES =============
-interface IFAQItem {
-    question: string;
-    answer: string;
-}
-
 interface IGeneralFAQ {
     eyebrow: string;
     title: string;
     subtitle: string;
-    questions: IFAQItem[];
+    questions: {
+        question: string;
+        answer: string;
+    }[];
 }

@@ -1,8 +1,6 @@
 import { ArrowRight, CheckCircle2, LucideIcon } from '@/lib/icon';
-import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
+import { Button, Badge } from "@/components/molecules";
 import { Section } from '@/components/section';
 
 // ============= MAIN COMPONENT =============
@@ -35,11 +33,9 @@ const RoleCard = ({ icon: Icon, role, tagline, benefits, href }: IBenefits['role
                     </li>
                 ))}
             </ul>
-            <Button variant="ghost" size="sm" className="group-hover:text-primary p-0" asChild>
-                <Link href={href}>
-                    Learn more <ArrowRight className="ml-1 size-3" />
-                </Link>
-            </Button>
+            <Button variant="ghost" size="sm" className="group-hover:text-primary p-0" href={href} rightIcon={<ArrowRight className="size-3" />}>
+Learn more
+</Button>
         </CardContent>
     </Card>
 );
