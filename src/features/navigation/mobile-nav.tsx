@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { ROUTES } from '@/lib/routes';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/molecules";
 import { Menu } from '@/lib/icon';
 import UserMenu from './user-menu';
 import { AnimatedThemeToggler } from '@/components/ui/animated-theme-toggler';

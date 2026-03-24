@@ -10,7 +10,7 @@ import {
     NavigationMenuTrigger,
     navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/molecules";
 import { cn } from '@/lib/utils';
 import UserMenu from './user-menu';
 import { AnimatedThemeToggler } from '@/components/ui/animated-theme-toggler';
@@ -90,12 +90,8 @@ const NavActions = ({ user }: { user?: IDesktopNav['user'] }) => (
             <UserMenu user={user} />
         ) : (
             <>
-                <Button variant="ghost" size="sm" asChild>
-                    <Link href={ROUTES.auth.login}>Login</Link>
-                </Button>
-                <Button size="sm" asChild>
-                    <Link href={ROUTES.auth.signup}>Sign Up</Link>
-                </Button>
+                <Button variant="ghost" size="sm" href={ROUTES.auth.login}>Login                </Button>
+                <Button size="sm" href={ROUTES.auth.signup}>Sign Up                </Button>
             </>
         )}
     </div>

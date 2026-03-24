@@ -12,7 +12,7 @@ import {
   DropdownMenuTrigger,
   DropdownMenuGroup,
 } from '@/components/ui/dropdown-menu';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { AvatarMolecule } from '@/components/molecules';
 import { BadgeCheck, CreditCard, LogOut, Sparkles } from '@/lib/icon';
 import { logout } from '@/services/auth';
 
@@ -72,19 +72,13 @@ export default function UserMenu({ user }: IUserMenu) {
 
 // ============= CHILD COMPONENTS =============
 const UserAvatar = ({ user }: { user: IUserMenu['user'] }) => (
-  <Avatar className="h-8 w-8 rounded-lg hover:opacity-80 transition-opacity cursor-pointer">
-    {user.avatar && <AvatarImage src={user.avatar} alt={user.name} />}
-    <AvatarFallback className="rounded-lg">{user.name.charAt(0).toUpperCase()}</AvatarFallback>
-  </Avatar>
+  <AvatarMolecule src={user.avatar} alt={user.name} fallback={user.name.charAt(0).toUpperCase()} shape="square" className="h-8 w-8 hover:opacity-80 transition-opacity cursor-pointer" />
 );
 
 const UserInfo = ({ user }: { user: IUserMenu['user'] }) => (
   <DropdownMenuLabel className="p-0 font-normal">
     <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-      <Avatar className="h-8 w-8 rounded-lg">
-        {user.avatar && <AvatarImage src={user.avatar} alt={user.name} />}
-        <AvatarFallback className="rounded-lg">{user.name.charAt(0).toUpperCase()}</AvatarFallback>
-      </Avatar>
+      <AvatarMolecule src={user.avatar} alt={user.name} fallback={user.name.charAt(0).toUpperCase()} shape="square" className="h-8 w-8" />
       <div className="grid flex-1 text-left text-sm leading-tight">
         <span className="truncate font-medium">{user.name}</span>
         <span className="truncate text-xs text-muted-foreground">{user.email}</span>
