@@ -29,7 +29,7 @@ import {
   FloatingMenu,
   type FloatingMenuProps,
 } from "@tiptap/react/menus";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/molecules";
 import {
   Command,
   CommandEmpty,
