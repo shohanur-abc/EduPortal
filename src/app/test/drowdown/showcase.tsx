@@ -31,10 +31,7 @@ import {
 } from "@/lib/icon"
 
 import { Dropdown, type DropdownItem } from "@/components/molecules/dropdown"
-import { Button } from "@/components/ui/button"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Badge } from "@/components/ui/badge"
-
+import { Button, Badge, AvatarMolecule } from "@/components/molecules"
 // ─── 1. BASIC ACTIONS ──────────────────────────────────────────────────────────
 const basicItems: DropdownItem[] = [
     { type: "item", label: "New File", icon: FileText, shortcut: "⌘N" },
@@ -108,7 +105,9 @@ function CheckboxDropdown() {
 
     return (
         <Dropdown
-            trigger={<Button variant="outline">View <ChevronDown className="ml-2 size-4" /></Button>}
+            trigger={<Button variant="outline" rightIcon={<ChevronDown className="size-4" />}>
+                View
+            </Button>}
             items={checkboxItems}
             align="start"
             contentWidth="12rem"
@@ -136,7 +135,9 @@ function RadioDropdown() {
 
     return (
         <Dropdown
-            trigger={<Button variant="outline">Position: {position} <ChevronDown className="ml-2 size-4" /></Button>}
+            trigger={<Button variant="outline" rightIcon={<ChevronDown className="size-4" />}>
+                Position: {position}
+            </Button>}
             items={radioItems}
             align="start"
         />
@@ -181,10 +182,7 @@ const customItems: DropdownItem[] = [
         type: "custom",
         children: (
             <div className="flex items-center gap-3 px-1 py-0.5">
-                <Avatar className="size-7">
-                    <AvatarImage src="/avatars/01.png" />
-                    <AvatarFallback>JD</AvatarFallback>
-                </Avatar>
+                <AvatarMolecule src="/avatars/01.png" fallback="JD" className="size-7" />
                 <div className="flex flex-col leading-tight">
                     <span className="text-sm font-medium">John Doe</span>
                     <span className="text-xs text-muted-foreground">john@EduPortal .dev</span>
@@ -241,8 +239,7 @@ function ThemeDropdown() {
     return (
         <Dropdown
             trigger={
-                <Button variant="outline" size="sm">
-                    <Settings className="mr-2 size-4" />
+                <Button variant="outline" size="sm" leftIcon={<Settings className="size-4" />}>
                     {theme.charAt(0).toUpperCase() + theme.slice(1)}
                 </Button>
             }
@@ -277,7 +274,9 @@ export function DropdownShowcase() {
             <div className="grid gap-10 @container">
                 <ShowcaseSection title="1. Basic Actions" description="Simple menu items with icons, shortcuts, and destructive intent.">
                     <Dropdown
-                        trigger={<Button variant="outline">File <ChevronDown className="ml-2 size-4" /></Button>}
+                        trigger={<Button variant="outline" rightIcon={<ChevronDown className="size-4" />}>
+                            File
+                        </Button>}
                         items={basicItems}
                         align="start"
                         contentWidth="14rem"
@@ -287,12 +286,8 @@ export function DropdownShowcase() {
                 <ShowcaseSection title="2. Account Menu" description="Groups, separators, deep recursive submenus (3 levels), disabled items, and external links.">
                     <Dropdown
                         trigger={
-                            <Button variant="outline">
-                                <Avatar className="mr-2 size-5">
-                                    <AvatarFallback>JD</AvatarFallback>
-                                </Avatar>
+                            <Button variant="outline" leftIcon={<AvatarMolecule fallback="JD" className="size-5" />} rightIcon={<ChevronDown className="size-4" />}>
                                 Account
-                                <ChevronDown className="ml-2 size-4" />
                             </Button>
                         }
                         items={accountItems}
@@ -336,7 +331,9 @@ export function DropdownShowcase() {
 
                 <ShowcaseSection title="7. Custom Children" description="Fully custom node injected via 'custom' item type.">
                     <Dropdown
-                        trigger={<Button variant="outline">Workspace <ChevronDown className="ml-2 size-4" /></Button>}
+                        trigger={<Button variant="outline" rightIcon={<ChevronDown className="size-4" />}>
+                            Workspace
+                        </Button>}
                         items={customItems}
                         align="start"
                         contentWidth="16rem"
@@ -346,10 +343,8 @@ export function DropdownShowcase() {
                 <ShowcaseSection title="8. Security Menu" description="Link items with grouped destructive actions.">
                     <Dropdown
                         trigger={
-                            <Button variant="outline">
-                                <Shield className="mr-2 size-4" />
+                            <Button variant="outline" leftIcon={<Shield className="size-4" />} rightIcon={<ChevronDown className="size-4" />}>
                                 Security
-                                <ChevronDown className="ml-2 size-4" />
                             </Button>
                         }
                         items={securityItems}
@@ -364,7 +359,9 @@ export function DropdownShowcase() {
 
                 <ShowcaseSection title="10. classNames Customization" description="All styling tokens overridden via classNames prop without touching the component.">
                     <Dropdown
-                        trigger={<Button>Custom Styled <ChevronDown className="ml-2 size-4" /></Button>}
+                        trigger={<Button rightIcon={<ChevronDown className="size-4" />}>
+                            Custom Styled
+                        </Button>}
                         items={[
                             { type: "label", label: "Options" },
                             { type: "item", label: "Action A", icon: Zap },
