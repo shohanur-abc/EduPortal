@@ -33,24 +33,20 @@ export default function FeesOverviewLayout({
 }: LayoutProps) {
     return (
         <div className="space-y-6">
-            <div className="grid grid-cols-1 gap-4 @xl:grid-cols-2 @5xl:grid-cols-4">
-                {stats}
+            <div className="grid grid-cols-12 gap-4 items-stretch ">
+                <div className="col-span-full grid grid-cols-1 gap-4 @xl:grid-cols-2 @5xl:grid-cols-4">
+                    {stats}
+                </div>
+                <div className="col-span-9">{chartCollection}</div>
+                <div className="col-span-3">{summary}</div>
+                <div className="col-span-full">
+                    <div className="grid grid-cols-4 gap-4">{kpi}</div>
+                </div>
             </div>
-
-            <div className="grid grid-cols-1 gap-4 @xl:grid-cols-2 @5xl:grid-cols-4">
-                {kpi}
-            </div>
-
-            {summary}
 
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
                 {chart}
                 {tableOverdue}
-            </div>
-
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-                {chartCollection}
-                {chartMethods}
             </div>
 
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">

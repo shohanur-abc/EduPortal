@@ -4,19 +4,18 @@ import { ROUTES } from "@/lib/routes"
 
 export const metadata: Metadata = {
     title: "Attendance | Dashboard",
-    description: "Track and manage student attendance records",
+    description: "Track and manage student and staff attendance records",
 }
 
 const TABS = [
     { label: "Overview", value: "overview", href: ROUTES.dashboard.attendance.overview },
-    { label: "Mark Attendance", value: "mark", href: ROUTES.dashboard.attendance.mark },
-    { label: "Corrections", value: "corrections", href: ROUTES.dashboard.attendance.corrections },
-    { label: "Reports", value: "reports", href: ROUTES.dashboard.attendance.reports },
+    { label: "Student", value: "student", href: ROUTES.dashboard.attendance.student },
+    { label: "Staff", value: "staff", href: ROUTES.dashboard.attendance.staff },
 ]
 
 export default function AttendanceLayout({ children }: { children: React.ReactNode }) {
     return (
-        <SectionShell title="Attendance" description="Track and manage student attendance" tabs={TABS}>
+        <SectionShell title="Attendance" description="Track and manage student and staff attendance" tabs={TABS}>
             {children}
         </SectionShell>
     )

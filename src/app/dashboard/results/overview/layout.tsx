@@ -43,7 +43,7 @@ export default function ResultsOverviewLayout({
 
             {summary}
 
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 h-100">
                 {chartGrade}
                 {chartSubject}
             </div>

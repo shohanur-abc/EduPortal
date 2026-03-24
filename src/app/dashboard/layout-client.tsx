@@ -68,7 +68,7 @@ const DASHBOARD_NAV: SidebarNavItem[] = [
             {
                 label: "Messages",
                 icon: MessageSquare,
-                href: ROUTES.dashboard.messages.overview,
+                href: ROUTES.dashboard.messages.chat,
             },
         ],
     },
@@ -88,17 +88,6 @@ const DASHBOARD_NAV: SidebarNavItem[] = [
             },
         ],
     },
-    {
-        type: "group",
-        label: "Portals",
-        items: [
-            { label: "Admin", href: ROUTES.dashboard.admin, icon: Lock },
-            { label: "Teacher", href: ROUTES.dashboard.teacher, icon: School },
-            { label: "Student", href: ROUTES.dashboard.student, icon: GraduationCap },
-            { label: "Parent", href: ROUTES.dashboard.parent, icon: Users },
-            { label: "Principal", href: ROUTES.dashboard.principal, icon: UserCog },
-        ],
-    },
 ]
 
 // ─── NOTIFICATIONS ────────────────────────────────────────────────────────────
@@ -110,7 +99,7 @@ const NOTIFICATIONS = [
         description: "Class A submitted attendance",
         time: "5 minutes ago",
         read: false,
-        href: ROUTES.dashboard.attendance.reports,
+        href: ROUTES.dashboard.attendance.overview,
     },
     {
         id: "2",
