@@ -2,21 +2,24 @@
 
 import * as React from "react"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/molecules"
 import { ChatBubble } from "@/features/dashboard/messages/chat/components/chat-bubble"
 import { MessageInput } from "@/features/dashboard/messages/chat/components/message-input"
 import { GroupInfoPanel } from "@/features/dashboard/messages/chat/components/group-info-panel"
-import { ConversationList, type ConversationListItem } from "@/features/dashboard/messages/chat/components/conversation-list"
+import {
+    ConversationList,
+    type ConversationListItem,
+    type ConversationListTab,
+} from "@/features/dashboard/messages/chat/components/conversation-list"
 import { NewConversationDialog } from "./new-conversation-dialog"
 import { EmptyState } from "@/components/molecules/empty-state"
 import { Skeleton } from "@/components/ui/skeleton"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, } from "@/components/ui/dropdown-menu"
-import { postMessage, patchRemoveMessage, patchMessage, patchArchiveConversation, } from "@/services/messages"
-import { fetchConversations, fetchMessages, fetchSearchConversations, } from "@/features/dashboard/actions/queries"
+import { postMessage, patchRemoveMessage, patchMessage, patchArchiveConversation, getConversation } from "@/services/messages"
+import { fetchConversations, fetchMessages } from "@/features/dashboard/actions/queries"
 import { MessageSquare, Video, Phone, Search, MoreVertical, Reply, Pencil, Trash2, Archive, Info, } from "@/lib/icon"
 import { toast } from "sonner"
 import type { ConversationItem, ConversationDetail, MessageItem, ChatUser } from "./types"
-import { Message } from "@/services"
 
 // ============= MAIN CHAT ROOM COMPONENT =============
 export function ChatRoom({
@@ -39,6 +42,9 @@ export function ChatRoom({
     const [replyTo, setReplyTo] = React.useState<{ _id: string; senderName: string; content: string } | null>(null)
     const [messagePage, setMessagePage] = React.useState(1)
     const [hasMoreMessages, setHasMoreMessages] = React.useState(false)
+    const [listTab, setListTab] = React.useState<ConversationListTab>("message")
+    const [isRefreshingConversations, setIsRefreshingConversations] = React.useState(false)
+    const [mutedConversationIds, setMutedConversationIds] = React.useState<string[]>([])
 
     const messagesEndRef = React.useRef<HTMLDivElement>(null)
     const scrollAreaRef = React.useRef<HTMLDivElement>(null)
@@ -61,7 +67,7 @@ export function ChatRoom({
 
         try {
             const [detail, msgResult] = await Promise.all([
-                Message.getConversation(conversationId),
+                getConversation(conversationId),
                 fetchMessages(conversationId, 1, 50),
             ])
             setConversationDetail(detail)
@@ -192,22 +198,18 @@ export function ChatRoom({
         }
     }, [activeConversationId, hasMoreMessages, isLoadingMessages, messagePage])
 
-    // Search conversations
-    const handleSearchConversations = React.useCallback(async (query: string) => {
-        if (!query.trim()) {
+    // Refresh conversations
+    const refreshConversations = React.useCallback(async () => {
+        setIsRefreshingConversations(true)
+        try {
             const refreshed = await fetchConversations(currentUserId)
             setConversations(refreshed)
-            return
-        }
-        try {
-            const results = await fetchSearchConversations(currentUserId, query)
-            // Match results to conversations
-            const matchedIds = new Set(results.map((r) => r._id))
-            setConversations(conversations.filter((c) => matchedIds.has(c._id)))
         } catch {
-            toast.error("Search failed")
+            toast.error("Failed to refresh conversations")
+        } finally {
+            setIsRefreshingConversations(false)
         }
-    }, [currentUserId, conversations])
+    }, [currentUserId])
 
     // On new conversation created
     const handleConversationCreated = React.useCallback(async (conversationId: string) => {
@@ -215,6 +217,55 @@ export function ChatRoom({
         setConversations(refreshed)
         handleSelectConversation(conversationId)
     }, [currentUserId, handleSelectConversation])
+
+    // Mark all as read (local state)
+    const handleMarkAllAsRead = React.useCallback(() => {
+        setConversations((prev) => prev.map((conversation) => ({ ...conversation, unreadCount: 0 })))
+        toast.success("All conversations marked as read")
+    }, [])
+
+    // Toggle mute current conversation (local preference)
+    const handleToggleMuteCurrent = React.useCallback(() => {
+        if (!activeConversationId) return
+
+        setMutedConversationIds((prev) => {
+            const next = prev.includes(activeConversationId)
+                ? prev.filter((id) => id !== activeConversationId)
+                : [...prev, activeConversationId]
+
+            toast.success(next.includes(activeConversationId) ? "Conversation muted" : "Conversation unmuted")
+            return next
+        })
+    }, [activeConversationId])
+
+    const isCurrentConversationMuted = Boolean(activeConversationId && mutedConversationIds.includes(activeConversationId))
+
+    const conversationSettingsContent = (
+        <div className="space-y-2">
+            <Button variant="outline" className="w-full justify-start" onClick={handleMarkAllAsRead}>
+                Mark all as read
+            </Button>
+            <Button variant="outline" className="w-full justify-start" onClick={refreshConversations} disabled={isRefreshingConversations}>
+                {isRefreshingConversations ? "Refreshing..." : "Refresh conversations"}
+            </Button>
+            <Button
+                variant="outline"
+                className="w-full justify-start"
+                onClick={handleToggleMuteCurrent}
+                disabled={!activeConversationId}
+            >
+                {isCurrentConversationMuted ? "Unmute selected chat" : "Mute selected chat"}
+            </Button>
+            <Button
+                variant="outline"
+                className="w-full justify-start text-destructive"
+                onClick={handleArchiveConversation}
+                disabled={!activeConversationId}
+            >
+                Archive selected chat
+            </Button>
+        </div>
+    )
 
     // Map conversations for list
     const conversationListItems: ConversationListItem[] = React.useMemo(
@@ -226,6 +277,7 @@ export function ChatRoom({
                 lastMessage: c.lastMessage?.content,
                 lastMessageTime: c.lastMessage?.createdAt ? formatTime(c.lastMessage.createdAt) : undefined,
                 unreadCount: c.unreadCount,
+                isOnline: isRecentlyActive(c.updatedAt),
                 type: c.type,
             })),
         [conversations]
@@ -242,7 +294,9 @@ export function ChatRoom({
                     conversations={conversationListItems}
                     activeId={activeConversationId ?? undefined}
                     onSelect={handleSelectConversation}
-                    onSearch={handleSearchConversations}
+                    activeTab={listTab}
+                    onTabChange={setListTab}
+                    settingsContent={conversationSettingsContent}
                     header={
                         <div className="flex items-center justify-between">
                             <h2 className="font-semibold text-sm">Messages</h2>
@@ -463,4 +517,12 @@ function formatTime(isoString: string): string {
     } catch {
         return isoString.split("T")[0] ?? ""
     }
+}
+
+function isRecentlyActive(isoString: string, withinMinutes: number = 10): boolean {
+    if (!isoString) return false
+    const date = new Date(isoString)
+    if (Number.isNaN(date.getTime())) return false
+    const elapsedMinutes = (Date.now() - date.getTime()) / (1000 * 60)
+    return elapsedMinutes >= 0 && elapsedMinutes <= withinMinutes
 }

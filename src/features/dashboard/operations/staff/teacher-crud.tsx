@@ -8,10 +8,9 @@ import { ConfirmDialog } from "@/components/molecules/confirm-dialog"
 import { MutationFormSheet } from "@/components/molecules/mutation-form-sheet"
 import { StatusBadge } from "@/components/molecules/status-badge"
 import { AvatarCell } from "@/components/molecules/avatar-cell"
-import { FormInput } from "@/components/molecules"
+import { FormInput, Badge } from "@/components/molecules"
 import { Select } from "@/components/molecules"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/molecules"
 import { teacherSchema, type TeacherFormData } from "@/schemas/dashboard"
 import { createTeacher, updateTeacher, deleteTeacher } from "@/services/teachers"
 import { Plus, Edit, Trash2 } from "@/lib/icon"
@@ -141,9 +140,9 @@ export function StaffTable({ teachers, loading }: { teachers: TeacherRow[], load
                 searchKey="name"
                 searchPlaceholder="Search teachers..."
                 toolbar={
-                    <Button size="sm" onClick={handleCreate}>
-                        <Plus className="mr-2 size-4" /> Add Teacher
-                    </Button>
+                    <Button size="sm" onClick={handleCreate} leftIcon={<Plus className="size-4" />}>
+Add Teacher
+</Button>
                 }
                 loading={loading}
             />

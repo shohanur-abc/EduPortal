@@ -1,6 +1,6 @@
 import { SimpleTable } from "@/components/molecules/simple-table"
 import { EmptyState } from "@/components/molecules/empty-state"
-import { Badge } from "@/components/ui/badge"
+import { Badge } from "@/components/molecules"
 import { BookOpen, LineChart } from "@/lib/icon"
 
 interface ExamAnalytics extends Record<string, unknown> {

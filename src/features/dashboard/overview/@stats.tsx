@@ -15,7 +15,6 @@ export function DashboardStats({ stats, loading = false }: { stats: DashboardSta
                 value={stats.studentCount.toLocaleString()}
                 icon={GraduationCap}
                 trend="up"
-                trendValue="+5.2%"
                 footer="Active enrolled students"
                 variant="info"
                 loading={loading}
@@ -25,7 +24,6 @@ export function DashboardStats({ stats, loading = false }: { stats: DashboardSta
                 value={`${stats.attendanceRate}%`}
                 icon={CheckCircle}
                 trend={stats.attendanceRate >= 90 ? "up" : "down"}
-                trendValue={stats.attendanceRate >= 90 ? "Good" : "Needs attention"}
                 footer="Today's attendance"
                 variant={stats.attendanceRate >= 90 ? "success" : "warning"}
                 loading={loading}
@@ -35,7 +33,6 @@ export function DashboardStats({ stats, loading = false }: { stats: DashboardSta
                 value={`৳${stats.feesCollected.toLocaleString()}`}
                 icon={DollarSign}
                 trend={collectionRate >= 70 ? "up" : "down"}
-                trendValue={`${collectionRate}%`}
                 footer={`Total: ৳${stats.feesTotal.toLocaleString()}`}
                 variant={collectionRate >= 70 ? "success" : "danger"}
                 loading={loading}
@@ -44,7 +41,7 @@ export function DashboardStats({ stats, loading = false }: { stats: DashboardSta
                 title="Active Notices"
                 value={stats.activeNotices}
                 icon={Bell}
-                footer="Published announcements"
+                footer="Published"
                 loading={loading}
             />
         </>

@@ -1,5 +1,5 @@
 import { SimpleTable } from "@/components/molecules/simple-table"
-import { Badge } from "@/components/ui/badge"
+import { Badge } from "@/components/molecules"
 
 interface ResultReportRow {
     [key: string]: unknown

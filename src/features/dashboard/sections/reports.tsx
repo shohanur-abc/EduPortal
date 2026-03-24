@@ -1,7 +1,7 @@
 import { StatCard } from "@/components/molecules/stat-card"
 import { SimpleTable } from "@/components/molecules/simple-table"
 import { StatusBadge } from "@/components/molecules/status-badge"
-import { Badge } from "@/components/ui/badge"
+import { Badge } from "@/components/molecules"
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card"
 import {
     FileBarChart,

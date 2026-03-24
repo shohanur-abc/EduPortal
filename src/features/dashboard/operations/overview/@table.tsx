@@ -1,6 +1,6 @@
 import { SimpleTable } from "@/components/molecules/simple-table"
 import { AvatarCell } from "@/components/molecules/avatar-cell"
-import { Badge } from "@/components/ui/badge"
+import { Badge } from "@/components/molecules"
 
 
 export function ClassesTable({ classes, loading }: { classes: ClassRow[]; loading?: boolean }) {

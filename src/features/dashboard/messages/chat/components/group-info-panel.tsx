@@ -1,8 +1,6 @@
 "use client"
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import { Button, Badge, AvatarMolecule } from "@/components/molecules"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import { cn } from "@/lib/utils"
@@ -51,10 +49,7 @@ export function GroupInfoPanel({
                 <div className="p-4 space-y-4">
                     {/* Avatar & Name */}
                     <div className="flex flex-col items-center text-center gap-2">
-                        <Avatar className="size-20">
-                            <AvatarImage src={avatar ?? undefined} alt={name} />
-                            <AvatarFallback className="text-lg">{initials}</AvatarFallback>
-                        </Avatar>
+                        <AvatarMolecule src={avatar ?? undefined} alt={name} fallback={initials} className="size-20" classNames={{ fallback: "text-lg" }} />
                         <div>
                             <h4 className="font-semibold">{name}</h4>
                             <p className="text-xs text-muted-foreground">
@@ -86,12 +81,7 @@ export function GroupInfoPanel({
                         <div className="space-y-2">
                             {members.map((member) => (
                                 <div key={member._id} className="flex items-center gap-2.5">
-                                    <Avatar className="size-8">
-                                        <AvatarImage src={member.image ?? undefined} alt={member.name} />
-                                        <AvatarFallback className="text-xs">
-                                            {member.name.split(" ").map((n) => n[0]).join("").toUpperCase().slice(0, 2)}
-                                        </AvatarFallback>
-                                    </Avatar>
+                                    <AvatarMolecule src={member.image ?? undefined} alt={member.name} fallback={member.name.split(" ").map((n) => n[0]).join("").toUpperCase().slice(0, 2)} className="size-8" classNames={{ fallback: "text-xs" }} />
                                     <div className="flex-1 min-w-0">
                                         <div className="flex items-center gap-1.5">
                                             <span className="text-sm font-medium truncate">{member.name}</span>

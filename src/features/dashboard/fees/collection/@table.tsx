@@ -7,10 +7,9 @@ import { DropdownActions } from "@/components/molecules/dropdown-actions"
 import { ConfirmDialog } from "@/components/molecules/confirm-dialog"
 import { MutationFormSheet } from "@/components/molecules/mutation-form-sheet"
 import { StatusBadge } from "@/components/molecules/status-badge"
-import { FormInput } from "@/components/molecules"
+import { FormInput, Badge } from "@/components/molecules"
 import { Select } from "@/components/molecules"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/molecules"
 import { feeSchema, feePaymentSchema, type FeeFormData, type FeePaymentData } from "@/schemas/dashboard"
 import { createFee, recordFeePayment, waiveFee, deleteFee } from "@/services/fees"
 import { Plus, Trash2, CreditCard, Ban, DollarSign } from "@/lib/icon"
@@ -37,44 +36,13 @@ const emptyPayment: FeePaymentData = {
 }
 
 import { EmptyState } from "@/components/molecules/empty-state"
-
-
-// ============= COLLECTION SECTION =============
-export function FeesCollectionSection({ records, students, loading }: { records: FeeRecord[]; students: StudentOption[]; loading?: boolean }) {
-    if (records.length === 0) {
-        return (
-            <EmptyState
-                title="No Payments Recorded"
-                description="There are no fee payments recorded yet. Payments will appear here once students begin making payments."
-                icon={CreditCard}
-            />
-        )
-    }
-
-    return <FeesCrudTable records={records} students={students} loading={loading} />
-}
-
-// ============= TRACKING SECTION =============
-export function FeesTrackingSection({ records, students, loading }: { records: FeeRecord[]; students: StudentOption[], loading?: boolean }) {
-    if (records.length === 0) {
-        return (
-            <EmptyState
-                title="No Fee Records"
-                description="There are no fee records to track. Records will appear here once fees are assigned to students."
-                icon={DollarSign}
-            />
-        )
-    }
-
-    return <FeesCrudTable records={records} students={students} loading={loading} />
-}
-
+import { AvatarCell } from "@/components/molecules/avatar-cell"
 
 
 
 
 // ============= FEES CRUD TABLE =============
-export function FeesCrudTable({ records, students, loading }: { records: FeeRecord[]; students: StudentOption[]; loading?: boolean }) {
+export function FeesCollectionSection({ records, students, loading }: { records: FeeRecord[]; students: StudentOption[]; loading?: boolean }) {
     const router = useRouter()
     const [createOpen, setCreateOpen] = React.useState(false)
     const [paymentOpen, setPaymentOpen] = React.useState(false)
@@ -109,17 +77,14 @@ export function FeesCrudTable({ records, students, loading }: { records: FeeReco
         {
             accessorKey: "studentName",
             header: ({ column }) => <SortableHeader column={column} title="Student" />,
-            cell: ({ row }) => (
-                <div>
-                    <span className="font-medium">{row.original.studentName}</span>
-                    <span className="text-xs text-muted-foreground ml-2">{row.original.rollNumber}</span>
-                </div>
-            ),
+            cell: ({ row }) => <AvatarCell name={row.original.studentName} secondary={row.original.rollNumber} />,
+            meta: { title: "Student" },
         },
         {
             accessorKey: "type",
             header: ({ column }) => <SortableHeader column={column} title="Type" />,
             cell: ({ row }) => <Badge variant="outline" className="capitalize">{row.original.type}</Badge>,
+            meta: { title: "Type" },
         },
         {
             accessorKey: "amount",
@@ -153,6 +118,7 @@ export function FeesCrudTable({ records, students, loading }: { records: FeeReco
             accessorKey: "status",
             header: ({ column }) => <SortableHeader column={column} title="Status" />,
             cell: ({ row }) => <StatusBadge status={row.original.status as "paid" | "unpaid" | "partial" | "overdue" | "waived"} />,
+            meta: { title: "Status" },
         },
         {
             accessorKey: "paymentMethod",
@@ -187,13 +153,14 @@ export function FeesCrudTable({ records, students, loading }: { records: FeeReco
                 columns={columns}
                 data={records}
                 searchKey="studentName"
-                searchPlaceholder="Search by student..."
+                searchPlaceholder="Search..."
                 toolbar={
-                    <Button size="sm" onClick={() => setCreateOpen(true)}>
-                        <Plus className="mr-2 size-4" /> Create Fee
+                    <Button size="sm" onPointerDown={() => setCreateOpen(true)} leftIcon={<Plus className="size-4" />}>
+                        Create Fee
                     </Button>
                 }
                 loading={loading}
+                pageSize={10}
             />
 
             {/* Create Fee Sheet */}

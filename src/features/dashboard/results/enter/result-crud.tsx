@@ -6,10 +6,9 @@ import { DataTable, SortableHeader } from "@/components/molecules/table"
 import { DropdownActions } from "@/components/molecules/dropdown-actions"
 import { ConfirmDialog } from "@/components/molecules/confirm-dialog"
 import { MutationFormSheet } from "@/components/molecules/mutation-form-sheet"
-import { FormInput } from "@/components/molecules"
+import { FormInput, Badge } from "@/components/molecules"
 import { Select } from "@/components/molecules"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/molecules"
 import { resultSchema, type ResultFormData } from "@/schemas/dashboard"
 import { createResult, updateResult, deleteResult } from "@/services/results"
 import { Plus, Edit, Trash2 } from "@/lib/icon"
@@ -125,9 +124,9 @@ export function ResultsCrudTable({ results, students, classes, loading }: { resu
                 searchKey="studentName"
                 searchPlaceholder="Search by student..."
                 toolbar={
-                    <Button size="sm" onClick={handleCreate}>
-                        <Plus className="mr-2 size-4" /> Enter Result
-                    </Button>
+                    <Button size="sm" onClick={handleCreate} leftIcon={<Plus className="size-4" />}>
+Enter Result
+</Button>
                 }
                 loading={loading}
             />

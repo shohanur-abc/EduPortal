@@ -1,7 +1,7 @@
 import { SimpleTable } from "@/components/molecules/simple-table"
 import { AvatarCell } from "@/components/molecules/avatar-cell"
 import { EmptyState } from "@/components/molecules/empty-state"
-import { Badge } from "@/components/ui/badge"
+import { Badge } from "@/components/molecules"
 import { Award } from "@/lib/icon"
 
 

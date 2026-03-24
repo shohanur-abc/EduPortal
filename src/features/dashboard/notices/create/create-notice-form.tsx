@@ -4,7 +4,7 @@ import * as React from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/molecules"
 import { Checkbox as CB } from "@/components/ui/checkbox"
 import { FormInput } from "@/components/molecules"
 import { Select } from "@/components/molecules"
@@ -116,8 +116,8 @@ export function CreateNoticeForm() {
                         size="sm"
                         onClick={() => setPreview(!preview)}
                         className="gap-2"
+                        leftIcon={preview ? <PenLine className="size-4" /> : <Eye className="size-4" />}
                     >
-                        {preview ? <PenLine className="size-4" /> : <Eye className="size-4" />}
                         {preview ? "Edit" : "Preview"}
                     </Button>
                 </div>
@@ -265,8 +265,7 @@ export function CreateNoticeForm() {
                         <Button type="button" variant="outline" onClick={() => router.back()} disabled={isPending}>
                             Cancel
                         </Button>
-                        <Button type="submit" disabled={isPending}>
-                            {isPending ? <Loader2 className="mr-2 size-4 animate-spin" /> : <Send className="mr-2 size-4" />}
+                        <Button type="submit" disabled={isPending} leftIcon={isPending ? <Loader2 className="size-4 animate-spin" /> : <Send className="size-4" />}>
                             Create Notice
                         </Button>
                     </div>

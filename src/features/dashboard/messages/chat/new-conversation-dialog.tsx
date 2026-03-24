@@ -10,13 +10,11 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
-import { Button } from "@/components/ui/button"
+import { Button, Badge, AvatarMolecule } from "@/components/molecules"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Badge } from "@/components/ui/badge"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Plus, Search, Users, MessageSquare } from "@/lib/icon"
@@ -185,12 +183,7 @@ export function NewConversationDialog({
                                         {tab === "group" && (
                                             <Checkbox checked={selectedUsers.includes(user._id)} />
                                         )}
-                                        <Avatar className="size-8">
-                                            <AvatarImage src={user.image ?? undefined} />
-                                            <AvatarFallback className="text-xs">
-                                                {user.name.split(" ").map((n) => n[0]).join("").toUpperCase().slice(0, 2)}
-                                            </AvatarFallback>
-                                        </Avatar>
+                                        <AvatarMolecule src={user.image ?? undefined} alt={user.name} fallback={user.name.split(" ").map((n) => n[0]).join("").toUpperCase().slice(0, 2)} className="size-8" classNames={{ fallback: "text-xs" }} />
                                         <div className="flex-1 min-w-0">
                                             <p className="text-sm font-medium truncate">{user.name}</p>
                                             <p className="text-xs text-muted-foreground capitalize">{user.role}</p>

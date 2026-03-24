@@ -10,7 +10,7 @@ import { StatusBadge } from "@/components/molecules/status-badge"
 import { AvatarCell } from "@/components/molecules/avatar-cell"
 import { FormInput } from "@/components/molecules"
 import { Select } from "@/components/molecules"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/molecules"
 import { studentSchema, type StudentFormData } from "@/schemas/dashboard"
 import { createStudent, updateStudent, deleteStudent } from "@/services/students"
 import { Plus, Edit, Trash2 } from "@/lib/icon"
@@ -116,9 +116,9 @@ export function StudentsCrudTable({ students, classes, loading }: { students: St
                 searchKey="name"
                 searchPlaceholder="Search students..."
                 toolbar={
-                    <Button size="sm" onClick={handleCreate}>
-                        <Plus className="mr-2 size-4" /> Add Student
-                    </Button>
+                    <Button size="sm" onClick={handleCreate} leftIcon={<Plus className="size-4" />}>
+Add Student
+</Button>
                 }
                 loading={loading}
             />

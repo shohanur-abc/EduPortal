@@ -1,7 +1,7 @@
 "use client"
 
 import { cva, type VariantProps } from "class-variance-authority"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { AvatarMolecule } from "@/components/molecules"
 import { cn } from "@/lib/utils"
 
 // ============= CVA VARIANTS =============
@@ -52,10 +52,7 @@ export function ChatBubble({
     return (
         <div className={cn("group flex gap-2", isSent ? "flex-row-reverse" : "flex-row", className)}>
             {!isSent && (
-                <Avatar className="size-8 shrink-0 mt-1">
-                    <AvatarImage src={senderImage ?? undefined} alt={senderName} />
-                    <AvatarFallback className="text-xs">{initials}</AvatarFallback>
-                </Avatar>
+                <AvatarMolecule src={senderImage ?? undefined} alt={senderName} fallback={initials} className="size-8 shrink-0 mt-1" classNames={{ fallback: "text-xs" }} />
             )}
             <div className={cn("flex flex-col gap-0.5", isSent ? "items-end" : "items-start")}>
                 {!isSent && (

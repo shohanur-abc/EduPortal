@@ -1,6 +1,6 @@
 import { SimpleTable } from "@/components/molecules/simple-table"
 import { EmptyState } from "@/components/molecules/empty-state"
-import { Badge } from "@/components/ui/badge"
+import { Badge } from "@/components/molecules"
 import { Settings } from "@/lib/icon"
 
 

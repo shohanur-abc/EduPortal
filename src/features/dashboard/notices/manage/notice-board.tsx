@@ -2,8 +2,7 @@
 
 import * as React from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import { Button, Badge } from "@/components/molecules"
 import {
     AlertDialog,
     AlertDialogAction,
@@ -26,11 +25,10 @@ import { Input, Select } from "@/components/molecules"
 import { DatePicker } from "@/components/molecules/date-picker"
 import { Checkbox as CB } from "@/components/ui/checkbox"
 import { noticeSchema, type NoticeFormData } from "@/schemas/dashboard"
-import { postOne, patchById, deleteById, patchMarkAsPublished, patchMarkAsArchived } from "@/services/notices"
+import { postOne, patchById, deleteById, patchMarkAsPublished, patchMarkAsArchived, getPaginated } from "@/services/notices"
 import { Plus, Send, Archive, Eye, Pencil, Trash2, FileText, Clock, Search, X } from "@/lib/icon"
 import { toast } from "sonner"
 import type { NoticeItem } from "../overview/types"
-import { Notice } from "@/services"
 
 const PAGE_SIZE = 12
 
@@ -65,7 +63,7 @@ export function NoticeBoard({
     const fetchFiltered = React.useCallback(async (s: string, status: string, priority: string) => {
         setIsLoading(true)
         try {
-            const result = await Notice.getPaginated(1, PAGE_SIZE, {
+            const result = await getPaginated(1, PAGE_SIZE, {
                 search: s || undefined,
                 status: status !== "all" ? status : undefined,
                 priority: priority !== "all" ? priority : undefined,
@@ -85,7 +83,7 @@ export function NoticeBoard({
         setIsLoading(true)
         try {
             const nextPage = page + 1
-            const result = await Notice.getPaginated(nextPage, PAGE_SIZE, {
+            const result = await getPaginated(nextPage, PAGE_SIZE, {
                 search: search || undefined,
                 status: statusFilter !== "all" ? statusFilter : undefined,
                 priority: priorityFilter !== "all" ? priorityFilter : undefined,
@@ -186,8 +184,7 @@ export function NoticeBoard({
                     <span className="text-xs text-muted-foreground whitespace-nowrap">
                         {total} notice{total !== 1 ? "s" : ""}
                     </span>
-                    <Button onClick={openCreate}>
-                        <Plus className="mr-2 size-4" />
+                    <Button onClick={openCreate} leftIcon={<Plus className="size-4" />}>
                         Create Notice
                     </Button>
                 </div>
