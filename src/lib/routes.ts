@@ -37,26 +37,21 @@ export const ROUTES = {
     dashboard: {
         home: "/dashboard",
         overview: "/dashboard/overview",
-        admin: "/dashboard/admin",
-        parent: "/dashboard/parent",
-        principal: "/dashboard/principal",
-        student: "/dashboard/student",
-        teacher: "/dashboard/teacher",
         profile: "/dashboard/profile",
         settings: "/dashboard/settings",
 
         attendance: {
             root: "/dashboard/attendance",
             overview: "/dashboard/attendance/overview",
-            mark: "/dashboard/attendance/mark",
-            corrections: "/dashboard/attendance/corrections",
-            reports: "/dashboard/attendance/reports",
+            student: "/dashboard/attendance/student",
+            staff: "/dashboard/attendance/staff",
         },
 
         fees: {
             root: "/dashboard/fees",
             overview: "/dashboard/fees/overview",
             collection: "/dashboard/fees/collection",
+            schoolExpenses: "/dashboard/fees/school-expenses",
             tracking: "/dashboard/fees/tracking",
             statements: "/dashboard/fees/statements",
             structure: "/dashboard/fees/structure",

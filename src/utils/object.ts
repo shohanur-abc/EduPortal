@@ -7,7 +7,6 @@ export const pick = <T extends object, K extends keyof T>(
 ): Pick<T, K> => {
     const result = {} as Pick<T, K>
     for (const k of keys) if (k in obj) result[k] = obj[k]
-    console.log("ami pick")
     return result
 }
 
