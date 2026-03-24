@@ -320,10 +320,8 @@ export function DataTable<TData, TValue = unknown>({
                         {enableColumnVisibility && visibleColumns.length > 0 && (
                             <Dropdown
                                 trigger={
-                                    <Button variant="outline" size="sm" className={cns?.columnsButton}>
-                                        <Settings className="mr-2 size-3.5" />
+                                    <Button variant="outline" size="sm" className={cns?.columnsButton} leftIcon={<Settings className="size-3.5" />} rightIcon={<ChevronDown className="size-3.5" />}>
                                         Columns
-                                        <ChevronDown className="ml-2 size-3.5" />
                                     </Button>
                                 }
                                 items={[

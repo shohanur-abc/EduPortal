@@ -6,7 +6,7 @@ import { CalendarIcon } from "@/lib/icon"
 import { Controller, useFormContext } from "react-hook-form"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/molecules"
 import { Calendar } from "@/components/ui/calendar"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Field, FieldLabel, FieldDescription, FieldError } from "@/components/ui/field"
@@ -62,6 +62,7 @@ export function DatePicker({
                                     type="button"
                                     variant="outline"
                                     disabled={disabled}
+                                    leftIcon={<CalendarIcon className="size-4 shrink-0" />}
                                     className={cn(
                                         "w-full justify-start text-left font-normal",
                                         !isValidDate && "text-muted-foreground",
@@ -69,7 +70,6 @@ export function DatePicker({
                                         className,
                                     )}
                                 >
-                                    <CalendarIcon className="mr-2 size-4 shrink-0" />
                                     {isValidDate
                                         ? format(dateValue, displayFormat)
                                         : <span>{placeholder}</span>}

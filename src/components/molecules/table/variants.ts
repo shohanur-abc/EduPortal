@@ -64,7 +64,7 @@ export const tableHeadVariants = cva("bg-muted/50", {
 
 /** Sortable header button */
 export const sortableHeaderVariants = cva(
-    "inline-flex items-center gap-1.5 whitespace-nowrap rounded px-2 -ml-2 py-1 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground",
+    "inline-flex items-center gap-1.5 whitespace-nowrap rounded px-2 -ml-2 py-1 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground capitalize",
     {
         variants: {
             sorted: {

@@ -17,12 +17,13 @@ import {
 import {
     BarChart3, ChevronDown, Settings,
     ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight,
-    ArrowUp, ArrowDown, MoreHorizontal,
+    ArrowUp, ArrowDown,
     Search,
+    ArrowUpDown,
 } from "@/lib/icon"
 
 import { Table as Table$, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/molecules"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Dropdown } from "../"
 import { Select } from "../"
@@ -30,7 +31,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Skeleton } from "@/components/ui/skeleton"
 import { cn } from "@/lib/utils"
 import { tableRowVariants, tableWrapperVariants, tableHeadVariants, sortableHeaderVariants, skeletonCellVariants } from "./variants"
-import type { DataTableProps, DataTableClassNames, RowAction, RowActionItem } from "./types"
+import type { DataTableProps, DataTableClassNames } from "./types"
 import { Input } from "../form"
 import { ButtonGroup } from "@/components/ui/button-group"
 
@@ -54,25 +55,18 @@ export function SortableHeader({
             onClick={() => column.toggleSorting(sorted === "asc")}
         >
             {title}
-            {sorted === "asc" ? (
-                <ArrowUp className="size-3" />
-            ) : sorted === "desc" ? (
-                <ArrowDown className="size-3" />
-            ) : (
-                <BarChart3 className="size-3 opacity-50" />
-            )}
+            {({
+                "asc": <ArrowUp className="size-3" />,
+                "desc": <ArrowDown className="size-3" />,
+                "false": <ArrowUpDown className="size-3 opacity-50" />,
+            }[sorted || "false"])}
         </button>
     )
 }
 
 
 /** Loading skeleton rows */
-function SkeletonRows({
-    columns,
-    rows,
-    density,
-    classNames: cns,
-}: {
+function SkeletonRows({ columns, rows, density, classNames: cns, }: {
     columns: number
     rows: number
     density?: "compact" | "default" | "comfortable"
@@ -119,7 +113,7 @@ export function DataTable<TData, TValue = unknown>({
     bordered = true,
     // loading
     loading = false,
-    skeletonRows = 5,
+    skeletonRows = 15,
     // controlled visibility
     columnVisibility: controlledVisibility,
     onColumnVisibilityChange,
@@ -129,6 +123,7 @@ export function DataTable<TData, TValue = unknown>({
     // slots
     emptyState,
     toolbar,
+    toolbarPro,
     caption,
     footer,
     // styling
@@ -141,7 +136,13 @@ export function DataTable<TData, TValue = unknown>({
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
     const [internalVisibility, setInternalVisibility] = React.useState<VisibilityState>({})
     const [rowSelection, setRowSelection] = React.useState({})
-    const [key, setKey] = React.useState(searchKey) // Used to reset internal state when data changes
+    const [key, setKey] = React.useState(searchKey)
+
+    // Sync key when searchKey prop changes
+    React.useEffect(() => {
+        setKey(searchKey)
+    }, [searchKey])
+
 
     // Merge controlled / internal visibility
     const visibility = controlledVisibility ?? internalVisibility
@@ -201,7 +202,12 @@ export function DataTable<TData, TValue = unknown>({
         onRowSelectionChange: setRowSelection,
         enableRowSelection,
         state: { sorting, columnFilters, columnVisibility: visibility, rowSelection },
+        defaultColumn: { size: 0, minSize: 0, maxSize: 0 },
     })
+
+    const selectOptions = table.getVisibleLeafColumns()
+        .filter(c => c.columnDef?.meta?.title)
+        .map(col => ({ label: col.columnDef?.meta?.title as string, value: String(col.id) }))
 
     // Expose table instance
     React.useImperativeHandle(tableRef as React.Ref<unknown>, () => table, [table])
@@ -231,23 +237,30 @@ export function DataTable<TData, TValue = unknown>({
                 {/* ─── Toolbar ─── */}
                 {(searchKey || enableColumnVisibility || toolbar) && (
                     <div className={cn("flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between", cns?.toolbar)}>
-                        <div className="flex flex-1 items-center gap-2">
+                        {toolbarPro ? toolbarPro(table) : null}
+                        <div className="flex flex-wrap flex-1 items-center gap-2">
                             {key && (
                                 <>
                                     <ButtonGroup className="*:h-8!">
-                                        <Select
+                                        {selectOptions.length > 1 && <Select
                                             defaultValue={key}
                                             onValueChange={setKey}
-                                            options={visibleColumns.map(({ id }) => ({ label: String(id), value: String(id) }))}
-                                            className="w-35 "
+                                            options={selectOptions}
+                                            className="w-fit "
                                             classNames={{ content: 'min-w-auto' }}
-                                        />
-
-                                        <Input
-                                            placeholder={searchPlaceholder ?? "Search..."}
-                                            onChange={(e) => table.getColumn(key)?.setFilterValue(e.target.value)}
-                                            className={cn("max-w-xs", cns?.searchInput)}
-                                        />
+                                        />}
+                                        {selectOptions.length > 1 ?
+                                            <Input
+                                                placeholder={searchPlaceholder ?? "Search..."}
+                                                onChange={(e) => table.getColumn(key)?.setFilterValue(e.target.value)}
+                                                className={cn("max-w-md", cns?.searchInput)}
+                                            />
+                                            : <SearchBar
+                                                placeholder={searchPlaceholder ?? "Search..."}
+                                                onChange={(e) => table.getColumn(key)?.setFilterValue(e.target.value)}
+                                                className={cn("max-w-md", cns?.searchInput)}
+                                            />
+                                        }
                                     </ButtonGroup>
                                 </>
                             )}
@@ -258,10 +271,14 @@ export function DataTable<TData, TValue = unknown>({
                             <>
                                 <Dropdown
                                     trigger={
-                                        <Button variant="outline" size="sm" className={cns?.columnsButton}>
-                                            <Settings className="mr-2 size-3.5" />
+                                        <Button
+                                            variant="outline"
+                                            size="sm"
+                                            className={cns?.columnsButton}
+                                            leftIcon={<Settings className="size-3.5" />}
+                                            rightIcon={<ChevronDown className="size-3.5" />}
+                                        >
                                             Columns
-                                            <ChevronDown className="ml-2 size-3.5" />
                                         </Button>
                                     }
                                     items={visibleColumns.map((column) => ({
@@ -351,13 +368,13 @@ export function DataTable<TData, TValue = unknown>({
                 {/* ─── Pagination ─── */}
                 {enablePagination && (
                     <div className={cn("flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between", cns?.pagination)}>
-                        <p className={cn("text-sm text-muted-foreground", cns?.rowCount)}>
+                        {/* <p className={cn("text-sm text-muted-foreground", cns?.rowCount)}>
                             {enableRowSelection && table.getFilteredSelectedRowModel().rows.length > 0 ? (
                                 <>{table.getFilteredSelectedRowModel().rows.length} of{" "}</>
                             ) : null}
                             {table.getFilteredRowModel().rows.length} row(s)
                             {enableRowSelection && table.getFilteredSelectedRowModel().rows.length > 0 ? " selected" : ""}
-                        </p>
+                        </p> */}
 
                         <div className={cn("flex items-center gap-2", cns?.paginationButtons)}>
                             {/* Page size */}
@@ -410,13 +427,36 @@ export function DataTable<TData, TValue = unknown>({
                                 </Button>
                             </div>
                         </div>
+                        {footer}
                     </div>
                 )}
 
-                {footer}
             </CardContent>
         </Card>
     )
+}
+
+import { useState } from "react";
+
+export default function SearchBar({ onChange, ...props }: React.ComponentPropsWithoutRef<typeof Input>) {
+    const [expanded, setExpanded] = useState(false);
+    const [value$, setValue] = useState("");
+
+    return (
+        <div onClick={() => setExpanded(true)} onBlur={!value$.trim() ? () => setExpanded(false) : undefined}>
+            <Input
+                {...props}
+                type="text"
+                value={value$}
+                onChange={(e) => { setValue(e.target.value); onChange?.(e) }}
+
+                autoFocus={expanded}
+                leftAddon={<Search />}
+                className={`bg-transparent  transition-all duration-300 ${expanded ? "w-60" : "w-0 p-0!"}`}
+                classNames={{ leftAddon: `${expanded ? "" : "p-2.5"}`, group: `${expanded ? "" : "rounded-full"}` }}
+            />
+        </div>
+    );
 }
 
 // ============= RE-EXPORTS =============

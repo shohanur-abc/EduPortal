@@ -1,6 +1,13 @@
 import type * as React from "react"
-import type { ColumnDef, Table, VisibilityState } from "@tanstack/react-table"
+import type { ColumnDef, Table, VisibilityState, ColumnMeta } from "@tanstack/react-table"
 import type { LucideIcon } from "@/lib/icon"
+
+// Extend ColumnMeta to support title property
+declare module "@tanstack/react-table" {
+    interface ColumnMeta<TData, TValue> {
+        title?: string
+    }
+}
 
 // ============= CLASS NAMES =============
 
@@ -78,7 +85,7 @@ export interface DataTableProps<TData, TValue = unknown> {
     data: TData[]
 
     // --- Card header ---
-    title?: string
+    title?: React.ReactNode
     description?: string
 
     // --- Search ---
@@ -131,6 +138,7 @@ export interface DataTableProps<TData, TValue = unknown> {
     emptyState?: React.ReactNode
     /** Extra toolbar content rendered between search and column button */
     toolbar?: React.ReactNode
+    toolbarPro?: (table: Table<TData>) => React.ReactNode
     /** Caption rendered below the table */
     caption?: React.ReactNode
 

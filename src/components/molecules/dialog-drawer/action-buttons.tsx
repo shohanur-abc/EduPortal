@@ -4,7 +4,7 @@ import * as React from "react";
 import { Loader2 } from "@/lib/icon";
 
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/molecules";
 import type { DialogDrawerAction, DialogDrawerClassNames } from "./types";
 
 // ============= HELPER: ACTION BUTTONS =============
@@ -40,12 +40,8 @@ export function ActionButtons({
                         disabled={action.disabled || isLoading}
                         onClick={action.onClick}
                         className={cn(isDrawer && "w-full", cns?.action, action.className)}
+                        leftIcon={isLoading ? <Loader2 className="size-4 animate-spin" /> : (Icon ? <Icon className="size-4" /> : undefined)}
                     >
-                        {isLoading ? (
-                            <Loader2 className="mr-2 size-4 animate-spin" />
-                        ) : (
-                            Icon && <Icon className="mr-2 size-4" />
-                        )}
                         {action.label}
                     </Button>
                 );

@@ -77,13 +77,14 @@ export const Select = ({
     };
 
     return (
-        <Comp {...(Comp !== Fragment && { "data-invalid": fieldState?.invalid, className: cn(className, cns?.field) })}>
+        <Comp {...(Comp !== Fragment && { "data-invalid": fieldState?.invalid, className: cn(cns?.field) })}>
             {label && (
                 <FieldLabel htmlFor={name} className={cns?.label}>
                     {label}
                 </FieldLabel>
             )}
             <SelectCN
+
                 value={controlledValue}
                 defaultValue={defaultValue}
                 onValueChange={handleValueChange}

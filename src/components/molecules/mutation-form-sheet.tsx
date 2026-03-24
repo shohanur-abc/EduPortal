@@ -4,11 +4,11 @@ import * as React from "react"
 import { useForm, type DefaultValues, type FieldValues, type UseFormReturn } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetFooter, SheetClose } from "@/components/ui/sheet"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/molecules"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Form } from "@/components/molecules/form"
 import { toast } from "sonner"
-import { Loader2 } from "@/lib/icon"
+import { Loader2, Trash2 } from "@/lib/icon"
 import { cn } from "@/lib/utils"
 import { ActionResult } from "@/types/response"
 
@@ -42,6 +42,7 @@ export function MutationFormSheet<T extends FieldValues>({
     side = "right",
     className,
     children,
+    onDelete,
 }: MutationFormSheetProps<T>) {
     const [isPending, setIsPending] = React.useState(false)
 
@@ -91,14 +92,17 @@ export function MutationFormSheet<T extends FieldValues>({
                             {children(form as UseFormReturn<T>)}
                         </div>
                     </ScrollArea>
-                    <SheetFooter className="pt-10 flex-row justify-between flex-1 *:flex-1">
+                    <SheetFooter className="flex-row justify-between *:flex-1">
+
                         <SheetClose asChild>
                             <Button type="button" variant="outline" disabled={isPending}>
                                 Cancel
                             </Button>
                         </SheetClose>
-                        <Button type="submit" disabled={isPending}>
-                            {isPending && <Loader2 className="mr-2 size-4 animate-spin" />}
+                        {/* <Button onClick={onDelete} variant="destructive" disabled={isPending} leftIcon={isPending ? <Loader2 className="animate-spin" /> : <Trash2 />}>
+                            Delete
+                        </Button> */}
+                        <Button type="submit" disabled={isPending} leftIcon={isPending ? <Loader2 className="size-4 animate-spin" /> : undefined}>
                             {submitLabel}
                         </Button>
                     </SheetFooter>
@@ -122,4 +126,5 @@ interface MutationFormSheetProps<T extends FieldValues> {
     side?: "top" | "right" | "bottom" | "left"
     className?: string
     children: (form: UseFormReturn<T>) => React.ReactNode
+    onDelete?: () => void
 }
