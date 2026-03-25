@@ -11,6 +11,7 @@ export async function getAll(limit?: number) {
         _id: sid(s),
         name: s.name,
         email: s.email,
+        classId: s.classId ? sid(s.classId) : "",
         rollNumber: s.rollNumber,
         section: s.section,
         guardianName: s.guardianName,

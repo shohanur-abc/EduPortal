@@ -46,10 +46,10 @@ const PerkItem = ({ text }: { text: string }) => (
 const Actions = ({ primary, secondary }: { primary: IBlogCTA['primaryCta']; secondary: IBlogCTA['secondaryCta'] }) => (
     <div className="flex flex-col @sm:flex-row items-center justify-center gap-4">
         <Button size="lg" variant="secondary" className="rounded-full px-8" href={primary.href} rightIcon={<ArrowRight className="size-4" />}>
-{primary.text}
-</Button>
+            {primary.text}
+        </Button>
         <Button
-size="lg" className="rounded-full px-8 border- text-primary-foreground hover:bg-gray-700 dark:hover:bg-gray-100" href={secondary.href}>{secondary.text}        </Button>
+            size="lg" className="rounded-full px-8 border- text-primary-foreground hover:bg-gray-700 dark:hover:bg-gray-100" href={secondary.href}>{secondary.text}        </Button>
     </div>
 );
 

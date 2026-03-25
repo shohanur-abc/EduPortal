@@ -78,11 +78,11 @@ const studentSchema = new Schema(
                 return this.findById(studentId).populate("classId", "name").select("classId")
             },
             getAll(limit?: number) {
-                const q = this.find().sort({ name: 1 })
+                const q = this.find().sort({ rollNumber: -1 })
                 return limit ? q.limit(limit) : q
             },
             getActive(limit?: number) {
-                const q = this.find({ status: "active" }).sort({ name: 1 })
+                const q = this.find({ status: "active" }).sort({ rollNumber: 1 })
                 return limit ? q.limit(limit) : q
             },
             getOptions() {

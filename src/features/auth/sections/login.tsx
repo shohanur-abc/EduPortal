@@ -148,7 +148,7 @@ export const LoginCard = ({ header, footer, email, password, rememberMe, forgotP
                         <Dropdown
                             // defaultOpen={true}
                             trigger={
-                                <Button variant="ghost" size="icon-sm" className="rounded-full" tooltip="Quick login" tooltipDefaultOpen>
+                                <Button variant="ghost" size="icon-sm" className="rounded-full" tooltip="Demo login" tooltipDefaultOpen>
                                     <MoreHorizontal className="size-4" />
                                 </Button>
                             }

@@ -52,19 +52,19 @@ const reducer = (state: UseAttendanceMarkState, action: UseAttendanceMarkAction)
     }
 }
 
-export function useAttendanceMark(selectedClassId: string | null, selectedDate: string, selectedClassSection: string) {
+export function useAttendanceMark(selectedClassId: string | null, selectedDate: string) {
     const router = useRouter()
     const [state, dispatch] = React.useReducer(reducer, initialState)
     const [isPending, startTransition] = React.useTransition()
 
-    const fetchRecords = (section: string) => {
+    const fetchRecords = (classId: string, section: string) => {
         startTransition(async () => {
-            if (!section) {
+            if (!classId || !section) {
                 dispatch({ type: "SET_RECORDS", payload: [] })
                 return
             }
             try {
-                const data = await getForClass(section)
+                const data = await getForClass(classId, section)
                 const mappedRecords = data.map((record) => ({
                     _id: record._id,
                     name: record.name,

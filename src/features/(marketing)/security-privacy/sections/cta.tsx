@@ -6,7 +6,7 @@ import { Section } from '@/components/section';
 export default function CTA({ icon, title, description, primaryCta, secondaryCta }: ICTA) {
     return (
         <Section>
-            <div className="rounded-2xl bg-primary px-8 py-16 @lg:px-16 @lg:py-20 text-center space-y-6">
+            <div className="rounded-2xl bg-muted/60  px-8 py-16 @lg:px-16 @lg:py-20 text-center space-y-6">
                 {icon && <CTAIcon icon={icon} />}
                 <Title text={title} />
                 <Description text={description} />
@@ -39,9 +39,9 @@ const Description = ({ text }: { text: string }) => (
 
 const Actions = ({ primary, secondary }: { primary: ICTA['primaryCta']; secondary?: ICTA['secondaryCta'] }) => (
     <div className="flex flex-col @3xl:flex-row items-center justify-center gap-4 pt-2">
-        <Button size="lg" variant="secondary" className="rounded-full px-8" href={primary.href} rightIcon={<ArrowRight className="size-4" />}>
-{primary.text}
-</Button>
+        <Button size="lg" className="rounded-full px-8" href={primary.href} rightIcon={<ArrowRight className="size-4" />}>
+            {primary.text}
+        </Button>
         {secondary && (
             <Button size="lg" variant="outline" className="rounded-full px-8 border-primary-foreground/30 text-primary-foreground bg-primary-foreground/10" href={secondary.href}>{secondary.text}            </Button>
         )}

@@ -1,11 +1,16 @@
 "use server"
 import { db } from '@/fatman'
 import { sid } from '@/fatman/utils'
+import mongoose from 'mongoose'
 
-export async function getForClass(classSection: string) {
+export async function getForClass(classId: string, classSection: string) {
     await db.connect()
+
+    if (!classId || !classSection) return []
+    if (!mongoose.Types.ObjectId.isValid(classId)) return []
+
     const students = await db.student
-        .find({ section: classSection, status: "active" })
+        .find({ classId: new mongoose.Types.ObjectId(classId), section: classSection, status: "active" })
         .sort({ rollNumber: 1 })
         .lean()
 

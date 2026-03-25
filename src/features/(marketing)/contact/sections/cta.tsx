@@ -14,12 +14,12 @@ export default function ContactCTA({ eyebrow, title, subtitle, primaryCTA, secon
 // ============= CHILD COMPONENTS =============
 const CTAButtons = ({ primary, secondary }: { primary: ICTAButton; secondary?: ICTAButton }) => (
     <div className="flex flex-col @sm:flex-row items-center justify-center gap-4">
-        <Button size="lg" asChild>
-            <a href={primary.href ?? ROUTES.marketing.demo}>{primary.label}</a>
+        <Button size="lg" href={primary.href ?? ROUTES.marketing.demo}>
+            {primary.label}
         </Button>
         {secondary && (
-            <Button variant="outline" size="lg" asChild>
-                <a href={secondary.href ?? ROUTES.marketing.contact}>{secondary.label}</a>
+            <Button variant="secondary" size="lg" href={secondary.href ?? ROUTES.marketing.contact}>
+                {secondary.label}
             </Button>
         )}
     </div>
