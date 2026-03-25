@@ -10,16 +10,14 @@ export function NoticeSummary({ counts, audienceReach, expiringSoon, loading }: 
     return (
         <SummaryGrid
             title="Notice Board Snapshot"
-            description="Quick overview of current notice status"
+            // description="Quick overview of current notice status"
             items={[
                 { label: "Total Notices", value: total },
                 { label: "Published", value: published },
                 { label: "Drafts", value: draft },
                 { label: "Expiring Soon", value: expiringSoon.length },
-                { label: "Audience Segments", value: audienceReach.length },
-                { label: "Top Audience", value: topAudience.charAt(0).toUpperCase() + topAudience.slice(1) },
             ]}
-            columns={3}
+            columns={1}
             loading={loading}
         />
     )

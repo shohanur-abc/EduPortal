@@ -141,6 +141,7 @@ export interface DropdownProps {
     alignOffset?: number;
     open?: boolean;
     onOpenChange?: (open: boolean) => void;
+    defaultOpen?: boolean;
     modal?: boolean;
     contentWidth?: string;
     className?: string;

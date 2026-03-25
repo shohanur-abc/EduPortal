@@ -6,16 +6,39 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import React from "react";
-import { DialogDrawer, Email, Password, AvatarMolecule } from "@/components/molecules";
+import { DialogDrawer, Email, Password, AvatarMolecule, Dropdown } from "@/components/molecules";
 import { Button } from "@/components/molecules";
 import { Spinner } from "@/components/ui/spinner";
 import { loginSchema, type LoginInput } from "@/schemas/auth";
 import { login, socialLogin as socialLogin$ } from "@/services/auth";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { FieldSeparator } from "@/components/ui/field";
-import { Form, FormCheckbox } from "@/components/molecules/form";
+import { Form, FormCheckbox, Select } from "@/components/molecules/form";
 import { cn } from "@/lib";
-import { BorderBeam } from "@/components/ui/border-beam";
+import { MoreHorizontal } from "lucide-react";
+
+const QuickLogin = {
+    admin: {
+        email: "admin@example.com",
+        password: "admin123"
+    },
+    student: {
+        email: "student@example.com",
+        password: "student123"
+    },
+    teacher: {
+        email: "teacher@example.com",
+        password: "teacher123"
+    },
+    principal: {
+        email: "principal@example.com",
+        password: "principal123"
+    },
+    false: {
+        email: "",
+        password: ""
+    }
+};
 
 
 export const LoginPage = ({ eyebrow, title, description, features, socialProof, ...props }: LoginPageProps) => {
@@ -70,11 +93,12 @@ export const LoginCard = ({ header, footer, email, password, rememberMe, forgotP
     const callbackUrl = searchParams.get("callbackUrl");
     const emailFromVerification = searchParams.get("email") ?? "";
     const isVerified = searchParams.get("verified") === "true";
+    const [loginAs, setLoginAs] = React.useState<keyof typeof QuickLogin>('false');
     const form = useForm<LoginInput>({
         resolver: zodResolver(loginSchema),
         defaultValues: {
-            email: emailFromVerification,
-            password: "",
+            email: emailFromVerification || QuickLogin[loginAs].email || "",
+            password: QuickLogin[loginAs].password || "",
             rememberMe: true,
         },
     });
@@ -84,6 +108,14 @@ export const LoginCard = ({ header, footer, email, password, rememberMe, forgotP
             toast.success("Email verified! Please login with your password.");
         }
     }, [isVerified]);
+
+    React.useEffect(() => {
+        form.reset({
+            email: QuickLogin[loginAs].email,
+            password: QuickLogin[loginAs].password,
+            rememberMe: true,
+        });
+    }, [loginAs, form]);
 
     const onSubmit = async (data: LoginInput) => {
         const result = await login({
@@ -112,7 +144,30 @@ export const LoginCard = ({ header, footer, email, password, rememberMe, forgotP
                 ))}
                 <FieldSeparator className="my-3">Or continue with email</FieldSeparator>
                 <Form form={form} className="space-y-3 mb-3" onSubmit={form.handleSubmit(onSubmit)}>
-                    <Email {...email} classNames={{ label: 'sr-only' }} />
+                    <Email {...email} classNames={{ label: 'sr-only' }} rightAddon={
+                        <Dropdown
+                            // defaultOpen={true}
+                            trigger={
+                                <Button variant="ghost" size="icon-sm" className="rounded-full" tooltip="Quick login" tooltipDefaultOpen>
+                                    <MoreHorizontal className="size-4" />
+                                </Button>
+                            }
+                            side="right" align="center"
+                            items={[
+                                {
+                                    type: "group",
+                                    label: "Login as",
+                                    items: [
+                                        { label: "Admin", value: "admin" },
+                                        { label: "Teacher", value: "teacher" },
+                                        { label: "Student", value: "student" },
+                                        { label: "Principal", value: "principal" }
+                                    ].map(item => ({ ...item, onClick: () => setLoginAs(item.value as keyof typeof QuickLogin) }))
+                                },
+                            ]}
+                        />
+                    }
+                    />
                     <Password {...password} classNames={{ label: 'sr-only' }} />
                     <div className="flex items-center justify-between mb-5 text-muted-foreground has-checked:text-secondary-foreground">
                         <FormCheckbox {...rememberMe} className="flex-0 whitespace-nowrap" />

@@ -30,7 +30,7 @@ export function AttendanceKpi({ rate, todayPresent, todayTotal, avgLate, loading
             />
             <MetricCard
                 title="Trend"
-                value={rate >= 85 ? "Improving" : "Needs Attention"}
+                value={rate >= 85 ? "Improving" : rate >= 70 ? "Stable" : "Declining"}
                 subtitle="Based on monthly comparison"
                 icon={TrendingUp}
                 variant={rate >= 85 ? "success" : "warning"}

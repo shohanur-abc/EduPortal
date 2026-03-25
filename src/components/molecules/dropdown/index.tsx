@@ -22,13 +22,14 @@ export function Dropdown({
     alignOffset,
     open,
     onOpenChange,
+    defaultOpen,
     modal,
     contentWidth,
     className,
     classNames: cns,
 }: DropdownProps) {
     return (
-        <DropdownMenu open={open} onOpenChange={onOpenChange} modal={modal} >
+        <DropdownMenu open={open} onOpenChange={onOpenChange} modal={modal} defaultOpen={defaultOpen}>
             <DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger>
             <DropdownMenuContent
                 align={align}

@@ -32,6 +32,7 @@ type SharedProps = VariantProps<typeof buttonVariants> & {
     tooltipSide?: "top" | "right" | "bottom" | "left"
     tooltipAlign?: "start" | "center" | "end"
     tooltipDelayDuration?: number
+    tooltipDefaultOpen?: boolean
     ripple?: boolean
     badge?: string | number
     classNames?: ButtonClassNames

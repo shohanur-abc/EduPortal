@@ -37,16 +37,18 @@ export default function ResultsOverviewLayout({
                 {stats}
             </div>
 
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 h-100">
+                {chartGrade}
+                {chartSubject}
+            </div>
+
             <div className="grid grid-cols-1 gap-4 @xl:grid-cols-2 @5xl:grid-cols-4">
                 {kpi}
             </div>
 
             {summary}
 
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 h-100">
-                {chartGrade}
-                {chartSubject}
-            </div>
+
 
             {table}
 

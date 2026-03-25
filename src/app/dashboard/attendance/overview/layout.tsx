@@ -38,7 +38,10 @@ export default function AttendanceOverview({
             <div className="grid grid-cols-1 gap-4 @xl:grid-cols-2 @5xl:grid-cols-4">
                 {stats}
             </div>
-
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+                {chartTrend}
+                {chartMonthly}
+            </div>
             <div className="grid grid-cols-1 gap-4 @xl:grid-cols-2 @5xl:grid-cols-4">
                 {kpi}
             </div>
@@ -50,10 +53,7 @@ export default function AttendanceOverview({
                 <div className="lg:col-span-1">{chart}</div>
             </div>
 
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-                {chartTrend}
-                {chartMonthly}
-            </div>
+
 
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
                 <div className="lg:col-span-2">{tableClasswise}</div>

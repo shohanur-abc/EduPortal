@@ -36,7 +36,7 @@ function isAnyChildActive(items: SidebarNavItem[], pathname: string): boolean {
         if (i.type === "group" || i.type === "collapsible") {
             if (isAnyChildActive(i.items, pathname)) return true
         } else if (!i.type || i.type === "item") {
-            if (i.href && i.href !== "#" && (pathname === i.href || pathname.startsWith(i.href + "/"))) return true
+            if (i.href && i.href !== "#" && (pathname === i.href || pathname.startsWith(i.href))) return true
         }
     }
     return false
@@ -178,6 +178,7 @@ function NavItem({
     classNames?: SidebarClassNames
 }) {
     const pathname = usePathname()
+    const { state: sidebarState } = useSidebar()
 
     // SEPARATOR
     if (item.type === "separator") {
@@ -215,8 +216,6 @@ function NavItem({
     if (item.type === "collapsible") {
         const childActive = isAnyChildActive(item.items, pathname)
         if (depth === 0) {
-            // eslint-disable-next-line react-hooks/rules-of-hooks
-            const { state: sidebarState } = useSidebar()
             const isIconMode = sidebarState === "collapsed"
 
             // Icon/collapsed mode: show Dropdown popover with sub-items
@@ -320,8 +319,10 @@ function NavItem({
 
     // LEAF ITEM — depth 0
     if (depth === 0) {
+        const segs = item.href?.split("/").filter(Boolean) || []
+        // console.log(segs, segs?.length)
         const effectiveActive = item.active ?? (
-            item.href != null && item.href !== "#" && (pathname === item.href || pathname.startsWith(item.href + "/"))
+            item.href != null && item.href !== "#" && (pathname === item.href || (segs?.length > 2 ? pathname.startsWith(item.href.split('/').slice(0, -1).join('/')) : pathname.startsWith(item.href)))
         )
         const Btn = item.href ? (
             <SidebarMenuButton
@@ -702,7 +703,7 @@ export function SidebarInsetHeader({
     return (
         <header className={cn("flex h-14 shrink-0 items-center gap-2 border-b px-4", className)}>
             <SidebarTrigger className="-ml-1" />
-            {children}
+            <main className="@container">{children}</main>
         </header>
     )
 }

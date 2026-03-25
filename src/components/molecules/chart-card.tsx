@@ -7,13 +7,13 @@ import { cn } from "@/lib/utils"
 // ============= COMPONENT =============
 export function ChartCard({ title, description, config, className, children }: ChartCardProps) {
     return (
-        <Card className={cn("h-full", className)} >
+        <Card className={cn("h-full min-h-100", className)} >
             <CardHeader>
                 <CardTitle>{title}</CardTitle>
                 {description && <CardDescription>{description}</CardDescription>}
             </CardHeader>
             <CardContent className="px-2 pt-4 sm:px-6 sm:pt-6">
-                <ChartContainer config={config} className="aspect-auto h-full w-full">
+                <ChartContainer config={config} className="aspect-auto  h-full w-full">
                     {children}
                 </ChartContainer>
             </CardContent>

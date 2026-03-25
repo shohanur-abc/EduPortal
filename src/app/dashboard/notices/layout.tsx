@@ -8,9 +8,9 @@ export const metadata: Metadata = {
 }
 
 const TABS = [
+    { label: "Overview", value: "overview", href: ROUTES.dashboard.notices.overview },
     { label: "Manage", value: "manage", href: ROUTES.dashboard.notices.manage },
     { label: "Create", value: "create", href: ROUTES.dashboard.notices.create },
-    { label: "Overview", value: "overview", href: ROUTES.dashboard.notices.overview },
 ]
 
 export default function NoticesLayout({ children }: { children: React.ReactNode }) {

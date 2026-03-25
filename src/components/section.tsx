@@ -3,8 +3,8 @@ import { cn } from "@/lib/utils";
 import { Playground } from "./playground";
 import { ReactNode } from "react";
 import { cva } from "class-variance-authority";
-import { Badge } from "./molecules";
 import { AnimatedGradientText } from "./ui/animated-gradient-text";
+import { Badge } from "./ui/badge";
 
 const Comp = ({ title, eyebrow, subtitle, align = "center", className, classNames: cns, containerClass, decorative, children, cols }: CompProps) => (
     <section className={cn("@container relative overflow-hidden", containerClass, cns?.outerContainer)}>

@@ -17,37 +17,37 @@ export default function Pricing({ eyebrow, title, subtitle, plans }: IPricing) {
 
 // ============= CHILD COMPONENTS =============
 const PlanCard = ({ name, description, price, period, features, cta, popular }: IPricing['plans'][number]) => (
-    <Card className={`relative flex flex-col ${popular ? 'border-primary shadow-lg scale-[1.02]' : ''}`}>
+    <div className='relative'>
         {popular && (
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                <Badge className="rounded-full px-4">Most Popular</Badge>
-            </div>
+            <Badge className="absolute -top-3 left-1/2 -translate-x-1/2  z-10 rounded-full px-4">Most Popular</Badge>
         )}
-        <CardHeader className="text-center pb-2">
-            <CardTitle className="text-xl">{name}</CardTitle>
-            <CardDescription>{description}</CardDescription>
-        </CardHeader>
-        <CardContent className="flex-1 space-y-6">
-            <div className="text-center">
-                <span className="text-4xl font-bold">{price}</span>
-                {period && <span className="text-muted-foreground ml-1">/{period}</span>}
-            </div>
-            <Separator />
-            <ul className="space-y-3">
-                {features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-3 text-sm">
-                        <CheckCircle2 className="size-4 text-primary mt-0.5 shrink-0" />
-                        <span>{feature}</span>
-                    </li>
-                ))}
-            </ul>
-        </CardContent>
-        <CardFooter>
-            <Button className="w-full rounded-full" variant={popular ? 'default' : 'outline'} href={cta.href} rightIcon={<ArrowRight className="size-4" />}>
-{cta.text}
-</Button>
-        </CardFooter>
-    </Card>
+        <Card className={`relative flex flex-col ${popular ? 'border-primary shadow-lg scale-[1.02]' : ''}`}>
+            <CardHeader className="text-center pb-2">
+                <CardTitle className="text-xl">{name}</CardTitle>
+                <CardDescription>{description}</CardDescription>
+            </CardHeader>
+            <CardContent className="flex-1 space-y-6">
+                <div className="text-center">
+                    <span className="text-4xl font-bold">{price}</span>
+                    {period && <span className="text-muted-foreground ml-1">/{period}</span>}
+                </div>
+                <Separator />
+                <ul className="space-y-3">
+                    {features.map((feature, i) => (
+                        <li key={i} className="flex items-start gap-3 text-sm">
+                            <CheckCircle2 className="size-4 text-primary mt-0.5 shrink-0" />
+                            <span>{feature}</span>
+                        </li>
+                    ))}
+                </ul>
+            </CardContent>
+            <CardFooter>
+                <Button className="w-full rounded-full" variant={popular ? 'default' : 'outline'} href={cta.href} rightIcon={<ArrowRight className="size-4" />}>
+                    {cta.text}
+                </Button>
+            </CardFooter>
+        </Card>
+    </div>
 );
 
 // ============= TYPES =============

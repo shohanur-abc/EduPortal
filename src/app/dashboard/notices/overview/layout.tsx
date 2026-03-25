@@ -28,36 +28,30 @@ export default function NoticeOverviewLayout({
     summary,
 }: NoticeOverviewLayoutProps) {
     return (
-        <div className="space-y-6">
-            {/* Status Stat Cards */}
-            <div className="grid grid-cols-1 gap-4 @xl:grid-cols-2 @5xl:grid-cols-4">
+        <div className="col-span-full grid grid-cols-12 gap-4">
+
+            {/* Row 1: Stats — full width */}
+            <div className="col-span-full grid grid-cols-2 gap-4 @xl:grid-cols-4">
                 {stats}
             </div>
 
-            {/* KPI Metrics */}
-            <div className="grid grid-cols-1 gap-4 @xl:grid-cols-2 @5xl:grid-cols-4">
+            {/* Row 2: Trend (9) + KPI (3) */}
+            <div className="col-span-full @3xl:col-span-9">
+                {chartTrend}
+            </div>
+            <div className="col-span-full @3xl:col-span-3 grid grid-cols-2 gap-4 @3xl:grid-cols-1">
                 {kpi}
             </div>
 
-            {/* Summary Snapshot */}
-            {summary}
-
-            {/* Table + Priority Chart */}
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-                <div className="lg:col-span-2">{table}</div>
-                <div className="lg:col-span-1">{chartPriority}</div>
+            {/* Row 3: Summary + Priority (3) + Table (9) */}
+            <div className="col-span-full @3xl:col-span-4 @5xl:col-span-3 grid grid-cols-1 gap-4">
+                <div>{summary}</div>
+                <div>{chartPriority}</div>
+            </div>
+            <div className="col-span-full @3xl:col-span-8 @5xl:col-span-9">
+                {table}
             </div>
 
-            {/* Trend + Audience Charts */}
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-                {chartTrend}
-                {chartAudience}
-            </div>
-
-            {/* Expiring Table + Activity Feed */}
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-                {tableExpiring}
-            </div>
         </div>
     )
 }

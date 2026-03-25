@@ -49,9 +49,9 @@ export default function FeesOverviewLayout({
                 {tableOverdue}
             </div>
 
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 h-125">
                 <div className="lg:col-span-2">{tableDefaulters}</div>
-                <div className="lg:col-span-1">{progressClasswise}</div>
+                <div className="lg:col-span-1  overflow-y-auto">{progressClasswise}</div>
             </div>
 
             {tablePayments}

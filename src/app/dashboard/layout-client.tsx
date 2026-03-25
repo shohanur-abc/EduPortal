@@ -128,7 +128,6 @@ interface DashboardLayoutClientProps {
 export function DashboardLayoutClient({ user, children }: DashboardLayoutClientProps) {
     const pathname = usePathname()
     const activeNavItem = pathname.split("/")[2]
-    console.log("Current path:", typeof pathname)
     return (
         <SidebarLayout
             nav={DASHBOARD_NAV}

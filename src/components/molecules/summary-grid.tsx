@@ -11,33 +11,29 @@ export function SummaryGrid({ title, description, items, className, classNames, 
                     {description && <CardDescription>{description}</CardDescription>}
                 </CardHeader>
             )}
-            <CardContent>
-                <div
-                    className={cn(
-                        "grid gap-4",
-                        columns === 1 && "grid-cols-1",
-                        columns === 2 && "grid-cols-2",
-                        columns === 3 && "grid-cols-3",
-                        columns === 4 && "grid-cols-2 @sm:grid-cols-4",
-                        classNames?.grid
-                    )}
-                >
-                    {items.map((item, i) => (
-                        <div key={item.id ?? `item-${i}`} className={cn("space-y-1 rounded-lg border p-3 text-center", classNames?.item)}>
-                            <p className="text-2xl font-bold tabular-nums" data-loading={loading}>
-                                {item.value}
+            <CardContent className={cn(
+                "grid gap-4",
+                columns === 1 && "grid-cols-1",
+                columns === 2 && "grid-cols-2",
+                columns === 3 && "grid-cols-3",
+                columns === 4 && "grid-cols-2 @sm:grid-cols-4",
+                classNames?.grid
+            )}>
+                {items.map((item, i) => (
+                    <div key={item.id ?? `item-${i}`} className={cn("space-y-1 rounded-lg border p-3 text-center bg-accent/60", classNames?.item)}>
+                        <p className="text-2xl font-bold tabular-nums" data-loading={loading}>
+                            {item.value}
+                        </p>
+                        <p className={cn("text-xs text-muted-foreground", classNames?.label)} data-loading={loading}>
+                            {item.label}
+                        </p>
+                        {item.subtitle && (
+                            <p className="text-xs text-muted-foreground/70" data-loading={loading}>
+                                {item.subtitle}
                             </p>
-                            <p className={cn("text-xs text-muted-foreground", classNames?.label)} data-loading={loading}>
-                                {item.label}
-                            </p>
-                            {item.subtitle && (
-                                <p className="text-xs text-muted-foreground/70" data-loading={loading}>
-                                    {item.subtitle}
-                                </p>
-                            )}
-                        </div>
-                    ))}
-                </div>
+                        )}
+                    </div>
+                ))}
             </CardContent>
         </Card>
     )

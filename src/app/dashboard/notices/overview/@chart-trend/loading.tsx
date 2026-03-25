@@ -1,5 +1,6 @@
-import { ChartCardSkeleton } from "@/components/molecules/chart-card"
+import { NoticePublishTrendChart } from "@/features/dashboard/notices/overview/@chart-trend"
 
 export default function ChartTrendLoading() {
-    return <ChartCardSkeleton />
+    return <NoticePublishTrendChart data={[]} />
+
 }

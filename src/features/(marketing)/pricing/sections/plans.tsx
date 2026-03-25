@@ -16,14 +16,6 @@ export default function PricingPlans({ eyebrow, title, subtitle, plans }: IPrici
 }
 
 // ============= CHILD COMPONENTS =============
-const PlansGrid = ({ plans }: { plans: IPlanItem[] }) => (
-    <div className="grid grid-cols-1 @xl:grid-cols-2 @4xl:grid-cols-3 gap-8 items-stretch">
-        {plans.map((plan, i) => (
-            <PlanCard key={i} {...plan} />
-        ))}
-    </div>
-);
-
 const PlanCard = ({ name, description, price, period, features, cta, popular, icon: Icon }: IPlanItem) => (
     <div className={`relative ${popular ? 'scale-[1.02]' : ''}`}>
         {popular && <PopularBadge />}
@@ -43,7 +35,7 @@ const PlanCard = ({ name, description, price, period, features, cta, popular, ic
             </CardContent>
             <CardFooter>
                 <Button
-className="w-full rounded-full" variant={popular ? 'default' : 'outline'} size="lg" href={cta.href}>{cta.text}                </Button>
+                    className="w-full rounded-full" variant={popular ? 'default' : 'outline'} size="lg" href={cta.href}>{cta.text}                </Button>
             </CardFooter>
         </Card>
     </div>

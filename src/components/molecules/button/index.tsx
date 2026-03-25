@@ -47,6 +47,7 @@ function Button({
     tooltipSide = "top",
     tooltipAlign = "center",
     tooltipDelayDuration = 300,
+    tooltipDefaultOpen = false,
     // Ripple
     ripple = false,
     // Badge
@@ -199,8 +200,8 @@ function Button({
     if (!tooltip) return withBadge
 
     return (
-        <TooltipProvider delayDuration={tooltipDelayDuration}>
-            <Tooltip>
+        <TooltipProvider delayDuration={tooltipDelayDuration} >
+            <Tooltip defaultOpen={tooltipDefaultOpen}>
                 <TooltipTrigger asChild>{withBadge}</TooltipTrigger>
                 <TooltipContent side={tooltipSide} align={tooltipAlign}>
                     {tooltip}
