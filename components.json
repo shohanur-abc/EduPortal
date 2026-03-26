@@ -23,6 +23,9 @@
     "@kibo-ui": {
       "url": "https://www.kibo-ui.com/r/{name}.json"
     },
-    "@magicui": "https://magicui.design/r/{name}"
+    "@magicui": "https://magicui.design/r/{name}",
+    "@prompt-kit": {
+      "url": "https://www.prompt-kit.com/c/{name}.json"
+    }
   }
 }

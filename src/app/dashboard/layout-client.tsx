@@ -1,13 +1,16 @@
 "use client"
 
-import { LayoutDashboard, CheckCircle2, BarChart3, FileText, DollarSign, Settings, Bell, Users, Shield, Lock, GraduationCap, UserCog, School, MessageSquare, Link, } from "@/lib/icon"
+import { LayoutDashboard, CheckCircle2, BarChart3, FileText, DollarSign, Settings, Bell, Users, Shield, GraduationCap, MessageSquare, Bot, } from "@/lib/icon"
 import { Separator } from "@/components/ui/separator"
-import { SidebarLayout, SidebarBrand, SidebarUser, SidebarTrigger, type SidebarNavItem, } from "@/components/molecules/sidebar"
+import { SidebarLayout, SidebarBrand, SidebarTrigger, type SidebarNavItem, } from "@/components/molecules/sidebar"
 import { ROUTES } from "@/lib/routes"
 import NotificationMenu from "@/features/navigation/notification-menu"
 import UserMenu from "@/features/navigation/user-menu"
 import { usePathname } from "next/navigation"
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler"
+import AiChatbotSidebar from "@/features/dashboard/ai-chatbot-sidebar"
+import { useState } from "react"
+import { Button } from "@/components/molecules/button"
 
 // ─── NAV DEFINITION ───────────────────────────────────────────────────────────
 
@@ -128,6 +131,7 @@ interface DashboardLayoutClientProps {
 export function DashboardLayoutClient({ user, children }: DashboardLayoutClientProps) {
     const pathname = usePathname()
     const activeNavItem = pathname.split("/")[2]
+    const [open, setOpen] = useState(true)
     return (
         <SidebarLayout
             nav={DASHBOARD_NAV}
@@ -149,6 +153,14 @@ export function DashboardLayoutClient({ user, children }: DashboardLayoutClientP
                         <Separator orientation="vertical" className="mr-2 h-12!" />
                         <h1 className="font-semibold text-sm capitalize">{activeNavItem}</h1>
                         <div className="ml-auto flex items-center gap-4">
+                            <Button
+                                size="icon-sm"
+                                className="rounded-full shadow-lg bg-primary/70"
+                                onClick={() => setOpen((prev) => !prev)}
+                                aria-label={open ? "Hide AI assistant" : "Show AI assistant"}
+                            >
+                                <Bot className="size-5" />
+                            </Button>
                             <AnimatedThemeToggler />
                             <NotificationMenu notifications={NOTIFICATIONS} unreadCount={1} />
                             <UserMenu user={user} />
@@ -157,7 +169,11 @@ export function DashboardLayoutClient({ user, children }: DashboardLayoutClientP
                 </header>
             }
         >
-            <main className="@container px-4 py-2 @md:px-6 @md:py-3">{children}</main>
+            <div className="min-h-[calc(100dvh-3rem)] ">
+                <main className="@container px-4 py-2 @md:px-6 @md:py-3">{children}</main>
+
+            </div>
+            {open && <AiChatbotSidebar open={open} setOpen={setOpen} />}
         </SidebarLayout>
     )
 }
