@@ -9,8 +9,9 @@ import UserMenu from "@/features/navigation/user-menu"
 import { usePathname } from "next/navigation"
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler"
 import AiChatbotSidebar from "@/features/dashboard/ai-chatbot-sidebar"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Button } from "@/components/molecules/button"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 // ─── NAV DEFINITION ───────────────────────────────────────────────────────────
 
@@ -131,7 +132,12 @@ interface DashboardLayoutClientProps {
 export function DashboardLayoutClient({ user, children }: DashboardLayoutClientProps) {
     const pathname = usePathname()
     const activeNavItem = pathname.split("/")[2]
-    const [open, setOpen] = useState(true)
+
+    const [open, setOpen] = useState(() => {
+        if (typeof window === 'undefined') return false
+        return window.innerWidth >= 768
+    })
+
     return (
         <SidebarLayout
             nav={DASHBOARD_NAV}
@@ -148,7 +154,7 @@ export function DashboardLayoutClient({ user, children }: DashboardLayoutClientP
             persistScrollKey="dashboard-sidebar-scroll"
             topbar={
                 <header className="bg-background sticky top-0 z-50 flex w-full items-center border-b h-12 shrink-0">
-                    <div className="flex h-14 w-full items-center gap-2 px-4">
+                    <div className="flex h-14 w-full items-center gap-2 px-4 @md:pr-6">
                         <SidebarTrigger className="-ml-1" />
                         <Separator orientation="vertical" className="mr-2 h-12!" />
                         <h1 className="font-semibold text-sm capitalize">{activeNavItem}</h1>
