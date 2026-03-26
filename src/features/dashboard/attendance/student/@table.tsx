@@ -13,7 +13,6 @@ import { cn } from "@/lib"
 import { patchAttendance } from "@/services/attendence"
 import { useAttendanceMark } from "./use-attendance-mark"
 import { Separator } from "@/components/ui/separator"
-import SearchBar from "@/components/molecules/table"
 
 
 export function StudentAttendance({ classes }: { classes: ClassInfo[] }) {
@@ -35,7 +34,6 @@ export function StudentAttendance({ classes }: { classes: ClassInfo[] }) {
 export function AttendanceMarkForm({ classes }: { classes: ClassInfo[] }) {
     // const { selectedClassId, selectedClassSection, selectedDate } = useMarkContext()
     const [selectedClassId, setSelectedClassId] = React.useState<string | null>(classes[0]?._id || null)
-    const [selectedClassSection, setSelectedClassSection] = React.useState<string>(classes[0]?.section || "")
     const [selectedDate, setSelectedDate] = React.useState<string>(new Date().toISOString().split("T")[0]) // Default to today
 
     const [statusFilter, setStatusFilter] = React.useState<StatusType | "all">("all")
@@ -53,15 +51,14 @@ export function AttendanceMarkForm({ classes }: { classes: ClassInfo[] }) {
         isSubmitting,
         isPending,
         fetchRecords
-    } = useAttendanceMark(selectedClassId, selectedDate, selectedClassSection)
+    } = useAttendanceMark(selectedClassId, selectedDate)
 
 
     const handleClassChange = (classId: string) => {
         const selectedClass = classes.find((cls) => cls._id === classId)
         if (selectedClass) {
             setSelectedClassId(classId)
-            setSelectedClassSection(selectedClass.section)
-            fetchRecords(selectedClass.section)
+            fetchRecords(classId, selectedClass.section)
         }
     }
 

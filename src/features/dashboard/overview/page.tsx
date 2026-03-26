@@ -91,7 +91,7 @@ export async function DashboardOverviewPage() {
         <div className="grid grid-cols-1 gap-4 xl:grid-cols-12">
             <div className="space-y-4 xl:col-span-9">
                 <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
-                    <Card className="lg:col-span-6">
+                    <Card className="lg:col-span-6 py-0">
                         <CardContent className="flex items-center gap-4 pt-6">
                             <Avatar className="size-16 border">
                                 <AvatarImage src={userImage} alt={userName} />

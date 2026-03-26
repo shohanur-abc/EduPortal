@@ -8,8 +8,7 @@ import { ConfirmDialog } from "@/components/molecules/confirm-dialog"
 import { MutationFormSheet } from "@/components/molecules/mutation-form-sheet"
 import { StatusBadge } from "@/components/molecules/status-badge"
 import { AvatarCell } from "@/components/molecules/avatar-cell"
-import { FormInput } from "@/components/molecules"
-import { Select } from "@/components/molecules"
+import { FormInput, FormSelect } from "@/components/molecules"
 import { Button } from "@/components/molecules"
 import { studentSchema, type StudentFormData } from "@/schemas/dashboard"
 import { createStudent, updateStudent, deleteStudent } from "@/services/students"
@@ -25,14 +24,15 @@ export function StudentsCrudTable({ students, classes, loading }: { students: St
     const [editingId, setEditingId] = React.useState<string | null>(null)
     const [defaults, setDefaults] = React.useState<StudentFormData>(emptyStudent)
     const [deleteId, setDeleteId] = React.useState<string | null>(null)
-
+    // console.warn(classes)
     const handleEdit = (row: StudentRow) => {
+        console.warn("Editing student:", row)
         setEditingId(row._id)
         setDefaults({
             name: row.name,
             email: row.email,
             rollNumber: row.rollNumber,
-            classId: "",
+            classId: row.classId,
             section: row.section,
             guardianName: row.guardianName,
             guardianPhone: row.guardianPhone,
@@ -117,8 +117,8 @@ export function StudentsCrudTable({ students, classes, loading }: { students: St
                 searchPlaceholder="Search students..."
                 toolbar={
                     <Button size="sm" onClick={handleCreate} leftIcon={<Plus className="size-4" />}>
-Add Student
-</Button>
+                        Add Student
+                    </Button>
                 }
                 loading={loading}
             />
@@ -144,7 +144,7 @@ Add Student
                         </div>
                         <div className="grid grid-cols-2 gap-4">
                             <FormInput name="rollNumber" label="Roll Number" placeholder="e.g. 2025-001" />
-                            <Select
+                            <FormSelect
                                 name="classId"
                                 label="Class"
                                 placeholder="Select class"
@@ -153,7 +153,7 @@ Add Student
                         </div>
                         <div className="grid grid-cols-2 gap-4">
                             <FormInput name="section" label="Section" placeholder="e.g. A" />
-                            <Select
+                            <FormSelect
                                 name="gender"
                                 label="Gender"
                                 options={[
@@ -170,7 +170,7 @@ Add Student
                         <FormInput name="guardianEmail" label="Guardian Email (optional)" type="email" placeholder="guardian@email.com" />
                         <div className="grid grid-cols-2 gap-4">
                             <FormInput name="dateOfBirth" label="Date of Birth" type="date" />
-                            <Select
+                            <FormSelect
                                 name="status"
                                 label="Status"
                                 options={[
@@ -206,6 +206,7 @@ interface StudentRow {
     _id: string
     name: string
     email: string
+    classId: string
     rollNumber: string
     section: string
     guardianName: string

@@ -16,8 +16,8 @@ export default async function MarketingLayout({ children }: { children: React.Re
     return <>
         <main className="h-full">
             <div className="fixed inset-0 pointer-events-none">
-                <Particles />
                 <Meteors number={10} maxDelay={.5} minDuration={4} maxDuration={10} />
+                <Particles />
             </div>
             <LayoutClient user={user}>{children}</LayoutClient>
         </main>

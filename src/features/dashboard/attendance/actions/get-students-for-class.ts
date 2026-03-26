@@ -2,6 +2,6 @@
 
 import { Student } from "@/services"
 
-export async function getStudentsForClass(section: string) {
-    return Student.getForClass(section)
+export async function getStudentsForClass(classId: string, section: string) {
+    return Student.getForClass(classId, section)
 }

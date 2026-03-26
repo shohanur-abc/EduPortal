@@ -8,6 +8,7 @@ const students = new Array(10).fill(0).map((_, i) => ({
     _id: "student-045",
     name: "Bappy Mahmud",
     email: "bappy.mahmud42@school.edu",
+    classId: "class-1",
     rollNumber: "STU-2025-045",
     section: "AA",
     guardianName: "Guardian of Alamin",

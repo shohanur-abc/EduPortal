@@ -41,6 +41,19 @@
       "env": {
         "MDB_MCP_CONNECTION_STRING": "${env:MONGODB_URI}"
       }
+    },
+    "prompt-kit": {
+      "description": "prompt-kit registry",
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "shadcn@canary",
+        "mcp"
+      ],
+      "env": {
+        "REGISTRY_URL": "https://www.prompt-kit.com/c/registry.json"
+      }
     }
   }
 }
